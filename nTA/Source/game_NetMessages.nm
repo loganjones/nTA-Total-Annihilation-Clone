@@ -1,0 +1,28 @@
+// game_NetMessages.nm //                          \author Logan Jones
+////////////////////////                              \date 9/30/2002
+/// \file
+/// \brief ...
+/////////////////////////////////////////////////////////////////////
+
+
+[Client Requests]
+
+%INTERFACE	Stop()
+%INTERFACE	MoveTo( const std_Point& ptWhere, bool bEnqueue )
+%INTERFACE	Build( const unit_Type* pType, const std_Point& ptWhere, bool bEnqueue )
+%INTERFACE	Activate( bool bActivate )
+%INTERFACE	Attack( const std_Point& ptWhere, bool bEnqueue )
+
+%INTERFACE	Unit( const unit_Type* pType )
+
+
+[Server Notifications]
+
+%GAME		SpawnCompleteUnit( const unit_Type* pType, const std_Point& ptWhere, UINT8 iPlayer )
+%INTERFACE	PrepareToBuild( const unit_Type* pType, const std_Point& ptWhere )
+%INTERFACE	SpawnNewUnit( const unit_Type* pType, const std_Point& ptWhere )
+
+
+/////////////////////////////////////////////////////////////////////
+// End - game_NetMessages.nm //
+//////////////////////////////

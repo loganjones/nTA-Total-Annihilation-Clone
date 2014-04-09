@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="Assemble Net Messages"
+	SccProjectName=""
+	SccLocalPath="">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory=".\Debug"
+			IntermediateDirectory=".\Debug"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories=".\Source\"
+				PreprocessorDefinitions="WIN32,_DEBUG,_WINDOWS"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="5"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile=".\Debug/Assemble Net Messages.pch"
+				AssemblerListingLocation=".\Debug/"
+				ObjectFile=".\Debug/"
+				ProgramDataBaseFileName=".\Debug/"
+				WarningLevel="3"
+				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="4"
+				CompileAs="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="TRUE"
+				AdditionalOptions="/MACHINE:I386"
+				OutputFile="Debug/AsmNetMsg.exe"
+				LinkIncremental="2"
+				SuppressStartupBanner="TRUE"
+				IgnoreDefaultLibraryNames="libcmtd;libcmt"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile=".\Debug/AsmNetMsg.pdb"
+				SubSystem="2"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/Assemble Net Messages.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory=".\Release"
+			IntermediateDirectory=".\Release"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories=".\Source\"
+				PreprocessorDefinitions="WIN32,NDEBUG,_WINDOWS"
+				StringPooling="TRUE"
+				RuntimeLibrary="4"
+				EnableFunctionLevelLinking="TRUE"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile=".\Release/Assemble Net Messages.pch"
+				AssemblerListingLocation=".\Release/"
+				ObjectFile=".\Release/"
+				ProgramDataBaseFileName=".\Release/"
+				WarningLevel="3"
+				SuppressStartupBanner="TRUE"
+				CompileAs="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/MACHINE:I386"
+				OutputFile="Release/AsmNetMsg.exe"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				IgnoreDefaultLibraryNames="libcmt"
+				ProgramDatabaseFile=".\Release/AsmNetMsg.pdb"
+				SubSystem="2"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/Assemble Net Messages.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copying Net Messages Assembler to bin"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)bin\$(TargetName).exe&quot;"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<File
+			RelativePath=".\Source\game_NetMessages.l">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating lexer from $(InputFileName)"
+					CommandLine="&quot;$(SolutionDir)bin\flex.exe&quot; -o&quot;$(InputDir)$(InputName)_Lexer.cpp&quot; &quot;$(InputPath)&quot;
+"
+					Outputs="$(InputDir)$(InputName)_Lexer.cpp"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating lexer from $(InputFileName)"
+					CommandLine="&quot;$(SolutionDir)bin\flex.exe&quot; -o&quot;$(InputDir)$(InputName)_Lexer.cpp&quot; &quot;$(InputPath)&quot;
+"
+					Outputs="$(InputDir)$(InputName)_Lexer.cpp"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\Source\game_NetMessages.y">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating parser from $(InputFileName)"
+					CommandLine="&quot;$(SolutionDir)bin\bison.exe&quot; --defines --verbose -o &quot;$(InputDir)$(InputName)_Parser.cpp&quot; &quot;$(InputPath)&quot;
+"
+					Outputs="$(InputDir)$(InputName)_Parser.cpp"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating parser from $(InputFileName)"
+					CommandLine="&quot;$(SolutionDir)bin\bison.exe&quot; --defines -o &quot;$(InputDir)$(InputName)_Parser.cpp&quot; &quot;$(InputPath)&quot;
+"
+					Outputs="$(InputDir)$(InputName)_Parser.cpp"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\Source\game_NetMessages_Lexer.cpp">
+		</File>
+		<File
+			RelativePath=".\Source\game_NetMessages_Lexer.h">
+		</File>
+		<File
+			RelativePath=".\Source\game_netmessages_parser.cpp">
+		</File>
+		<File
+			RelativePath=".\Source\game_netmessages_parser.cpp.h">
+		</File>
+		<File
+			RelativePath="..\..\Source\std_FileIO_Win32.cpp">
+		</File>
+		<File
+			RelativePath=".\Source\sys.h">
+		</File>
+		<File
+			RelativePath=".\Source\sys_Main.cpp">
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

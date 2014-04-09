@@ -1,0 +1,191 @@
+// d3d_Terrain.h //                        Author: Logan "Burn" Jones
+//////////////////                                     Date: 2/6/2002
+//
+/////////////////////////////////////////////////////////////////////
+#ifndef _D3D_TERRAIN_H_
+#define _D3D_TERRAIN_H_
+/////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////// d3d_Terrain ////////////////////////////
+//
+class d3d_Terrain : public gfx_Terrain
+{
+	friend class gfx_Direct3D8;
+
+/////////////////////////////////////////////////
+// Interface
+public:
+
+	// Destroys the terrain and this object
+	void Destroy();
+
+	// Renders the terrain image
+	void Render() const;
+
+	// Initializes the viewport with image data from the given center point and size
+	void InitializeViewport( std_Point ptCenterPosition, std_Size szViewport );
+
+	// Scrolls the viewport to a position centered at the given point
+	void CenterViewAt( std_Point ptCenterPosition );
+
+	// Scrolls the view
+	void Scroll( std_Point ptScroll );
+	void ScrollHorizontaly( long lX, BOOL EarlyOutIsOK=TRUE );
+	void ScrollVerticaly( long lY, BOOL EarlyOutIsOK=TRUE );
+
+	// Sets and returns the viewport size respectively
+	BOOL SetViewportSize( std_Size szViewport );
+	std_Size GetViewportSize() const;
+
+	// Returns a rect with the current terrain viewport
+	std_Rect GetViewportRect() const;
+
+	// Returns a rect with the dimensions of the entire map
+	std_Rect GetWorldRect() const;
+
+
+/////////////////////////////////////////////////
+// Utility methods
+protected:
+
+	// Called by the gfx system to create and initialize the terrain
+	BOOL Create( BYTE* pTntBuffer );
+
+	// Recalculates some of the necessary metrics
+	INLINE void RecalculateMetrics();
+
+	// Allocate and initialize the ScreenTile array
+	void AllocateScreenTiles( long iColumns, long iRows );
+
+	// Fills the current screen tile setup with the appropriate map image data
+	// SLOW! Uses up a lot of mem bandwidth. Use only on initialization, and worst case
+	INLINE void FillScreenTiles();
+
+	// Fills a subset of the screen tile grid with image data
+	INLINE void UploadGfxRectToScreenTiles( long LeftIndex, long TopIndex, long FillWidth, long FillHeight );
+
+	// These shift the screen tiles around when neccessary
+	INLINE void ShiftColumnsLeft();
+	INLINE void ShiftColumnsRight();
+	INLINE void ShiftRowsUp();
+	INLINE void ShiftRowsDown();
+
+
+/////////////////////////////////////////////////////////////////////
+// Map metrics
+protected:
+
+	// These define the largest possible size for the map window
+	int				m_MaxMapWindowWidth;
+	int				m_MaxMapWindowHeight;
+
+	// This is the size in pixels of a single screen tile
+	// ie, a screen tile would contain m_ScreenTileSize x m_ScreenTileSize pixels
+	int				m_ScreenTileSize;
+
+	// These define the amount of screen tiles in the screen tile grid
+	// ( m_ScreenTileColumns x m_ScreenTileRows )
+	int				m_ScreenTileColumns;
+	int				m_ScreenTileRows;
+	int				m_NumberOfScreenTiles;
+
+	// These indicate the size (in pixels) of the grid
+	int				m_ScreenTileGridWidth;
+	int				m_ScreenTileGridHeight;
+
+	// These indicate the amount of graphical tile in side a screen tile or grid
+	int				m_GfxPerScreenTile;
+	int				m_GfxPerGridWidth;
+	int				m_GfxPerGridHeight;
+
+	// This is the Z depth at which the visible grid will be rendered
+	const float		m_ScreenTileRenderDepth;
+
+	// This is the scrolling metric. When the view offset moves out of this
+	// range, the grid is shifted, thus scolled.
+	int				m_ComfortZone;
+
+
+/////////////////////////////////////////////////
+// Data members
+protected:
+
+	// Pointer to the interface that created this terrain object
+	gfx_Direct3D8*			m_pHostInterface;
+
+	// Pointer to the valid tnt file buffer
+	BYTE*					m_pTntBuffer;
+
+	// Holds the current position and dimension of the map viewport
+	std_Rect				m_MapView;
+	std_Rect				m_MapViewFootprint;
+
+	// The viewable map size measured in pixels
+	std_Size				m_MapDimensions;
+
+	// Pointer into the map file at which the gfx tile indeces reside
+	WORD*					m_TileIndeces;
+	std_Size				m_NumTileIndeces;
+
+	// Pointer into the map file at which the gfx tiles reside
+	BYTE*					m_GfxTiles;
+
+	// A screen tile acts as a portion of visible map.
+	// As the viewpoint is scrolled, the furthest column or row is
+	// moved to its opposite side and its texture is updated.
+	struct ScreenTile
+	{
+		LPDIRECT3DTEXTURE8	pTexture;
+
+		// Neighbors
+		ScreenTile*			Left;
+		ScreenTile*			Right;
+		ScreenTile*			Top;
+		ScreenTile*			Bottom;
+	};
+	ScreenTile*				m_ScreenTiles;
+	LPDIRECT3DTEXTURE8*		m_ScreenTileTextures;
+	LPDIRECT3DVERTEXBUFFER8	m_ScreenTileVertexBuffer;
+	//std_Size				m_NumberOfScreenTiles;
+	std_Point				m_ScreenTilePosition;
+	std_Point				m_ScreenTileStartingIndex;
+	std_Point				m_ComfortPoint;
+	std_Size				m_ScreenTileGridExtent;
+
+	// Pointers to specific tiles in the array
+	ScreenTile*				m_TopLeftTile;
+	ScreenTile*				m_TopRightTile;
+	ScreenTile*				m_BottomLeftTile;
+	ScreenTile*				m_BottomRightTile;
+
+	// The boundries of the "clean" rect for the screen tile grid
+	// Anything outside needs to be "refreshed" before being displayed
+	std_Rect				m_DirtyStrips;
+
+	struct ScreenTile_Vert_t
+	{
+		D3DXVECTOR3	position;
+		FLOAT       tu, tv;
+	};
+	#define D3DFVF_SCREENTILE_VERT ( D3DFVF_XYZ | D3DFVF_TEX1 )
+
+
+/////////////////////////////////////////////////
+// Default Constructor/Deconstructor
+public:
+	d3d_Terrain();
+	virtual ~d3d_Terrain();
+/////////////////////////////////////////////////
+
+}; // End class - d3d_Terrain
+/////////////////////////////////////////////////////////////////////
+
+// Implement inline methods here for a NON debug build
+#ifndef _DEBUG
+ #include "d3d_Terrain.inl"
+#endif // !defined( _DEBUG )
+
+
+/////////////////////////////////////////////////////////////////////
+#endif // !defined(_D3D_TERRAIN_H_)

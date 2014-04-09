@@ -1,0 +1,7 @@
+[MenuEntry1]
+{
+	UnitMenu = CORCOM;
+	Menu = 2;
+	Button = 3;
+	UnitName = CORDRAG;
+}

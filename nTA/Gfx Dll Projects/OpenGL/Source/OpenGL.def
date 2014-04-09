@@ -1,0 +1,7 @@
+; OpenGL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "OpenGL"
+
+EXPORTS
+    RetrieveGfxInterface;
+	gfx_EnumDisplayMode;

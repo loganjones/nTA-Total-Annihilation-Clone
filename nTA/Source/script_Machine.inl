@@ -1,0 +1,26 @@
+// script_Machine.inl //                           \author Logan Jones
+///////////////////////                               \date 4/17/2002
+/// \file
+/// \brief ...
+/////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+// script_Machine::RunProccess() //                \author Logan Jones
+//////////////////////////////////                      \date 5/5/2002
+//               
+//====================================================================
+// Parameters:
+//  ProccessMap_t::value_type& Proccess - 
+//
+void script_Machine::RunProccess( ProccessMap_t::value_type& Proccess )
+{
+	Proccess.second.Run();
+}
+// End script_Machine::RunProccess()
+//////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////
+// End - script_Machine.inl //
+/////////////////////////////

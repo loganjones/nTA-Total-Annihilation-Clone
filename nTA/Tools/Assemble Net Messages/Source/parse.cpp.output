@@ -1,0 +1,272 @@
+
+
+Terminals which are not used:
+
+   END_STMT
+   BEGIN_CS
+   END_CS
+   INT_VALUE
+
+
+
+Grammar
+rule 1    Format -> Requests Notifications
+rule 2    Requests -> START_REQUESTS
+rule 3    Requests -> START_REQUESTS NetMessages
+rule 4    Notifications -> START_NOTIFICATIONS
+rule 5    Notifications -> START_NOTIFICATIONS NetMessages
+rule 6    NetMessages -> NetMessage
+rule 7    NetMessages -> NetMessages NetMessage
+rule 8    NetMessage -> ID ParameterList
+rule 9    ParameterList -> OPEN_PAR CLOSE_PAR
+rule 10   ParameterList -> OPEN_PAR Parameters CLOSE_PAR
+rule 11   Parameters -> Parameter
+rule 12   Parameters -> Parameters COMMA Parameter
+rule 13   Parameter -> ID ID
+
+Terminals, with rules where they appear
+
+$ (-1)
+error (256)
+END_STMT (258)
+OPEN_PAR (259) 9 10
+CLOSE_PAR (260) 9 10
+COMMA (261) 12
+START_REQUESTS (262) 2 3
+START_NOTIFICATIONS (263) 4 5
+BEGIN_CS (264)
+END_CS (265)
+ID (266) 8 13
+INT_VALUE (267)
+
+Nonterminals, with rules where they appear
+
+Format (13)
+    on left: 1
+Requests (14)
+    on left: 2 3, on right: 1
+Notifications (15)
+    on left: 4 5, on right: 1
+NetMessages (16)
+    on left: 6 7, on right: 3 5 7
+NetMessage (17)
+    on left: 8, on right: 6 7
+ParameterList (18)
+    on left: 9 10, on right: 8
+Parameters (19)
+    on left: 11 12, on right: 10 12
+Parameter (20)
+    on left: 13, on right: 11 12
+
+
+state 0
+
+    START_REQUESTS	shift, and go to state 1
+
+    Format	go to state 20
+    Requests	go to state 2
+
+
+
+state 1
+
+    Requests  ->  START_REQUESTS .   (rule 2)
+    Requests  ->  START_REQUESTS . NetMessages   (rule 3)
+
+    ID  	shift, and go to state 3
+
+    $default	reduce using rule 2 (Requests)
+
+    NetMessages	go to state 4
+    NetMessage	go to state 5
+
+
+
+state 2
+
+    Format  ->  Requests . Notifications   (rule 1)
+
+    START_NOTIFICATIONS	shift, and go to state 6
+
+    Notifications	go to state 7
+
+
+
+state 3
+
+    NetMessage  ->  ID . ParameterList   (rule 8)
+
+    OPEN_PAR	shift, and go to state 8
+
+    ParameterList	go to state 9
+
+
+
+state 4
+
+    Requests  ->  START_REQUESTS NetMessages .   (rule 3)
+    NetMessages  ->  NetMessages . NetMessage   (rule 7)
+
+    ID  	shift, and go to state 3
+
+    $default	reduce using rule 3 (Requests)
+
+    NetMessage	go to state 10
+
+
+
+state 5
+
+    NetMessages  ->  NetMessage .   (rule 6)
+
+    $default	reduce using rule 6 (NetMessages)
+
+
+
+state 6
+
+    Notifications  ->  START_NOTIFICATIONS .   (rule 4)
+    Notifications  ->  START_NOTIFICATIONS . NetMessages   (rule 5)
+
+    ID  	shift, and go to state 3
+
+    $default	reduce using rule 4 (Notifications)
+
+    NetMessages	go to state 11
+    NetMessage	go to state 5
+
+
+
+state 7
+
+    Format  ->  Requests Notifications .   (rule 1)
+
+    $default	reduce using rule 1 (Format)
+
+
+
+state 8
+
+    ParameterList  ->  OPEN_PAR . CLOSE_PAR   (rule 9)
+    ParameterList  ->  OPEN_PAR . Parameters CLOSE_PAR   (rule 10)
+
+    CLOSE_PAR	shift, and go to state 12
+    ID  	shift, and go to state 13
+
+    Parameters	go to state 14
+    Parameter	go to state 15
+
+
+
+state 9
+
+    NetMessage  ->  ID ParameterList .   (rule 8)
+
+    $default	reduce using rule 8 (NetMessage)
+
+
+
+state 10
+
+    NetMessages  ->  NetMessages NetMessage .   (rule 7)
+
+    $default	reduce using rule 7 (NetMessages)
+
+
+
+state 11
+
+    Notifications  ->  START_NOTIFICATIONS NetMessages .   (rule 5)
+    NetMessages  ->  NetMessages . NetMessage   (rule 7)
+
+    ID  	shift, and go to state 3
+
+    $default	reduce using rule 5 (Notifications)
+
+    NetMessage	go to state 10
+
+
+
+state 12
+
+    ParameterList  ->  OPEN_PAR CLOSE_PAR .   (rule 9)
+
+    $default	reduce using rule 9 (ParameterList)
+
+
+
+state 13
+
+    Parameter  ->  ID . ID   (rule 13)
+
+    ID  	shift, and go to state 16
+
+
+
+state 14
+
+    ParameterList  ->  OPEN_PAR Parameters . CLOSE_PAR   (rule 10)
+    Parameters  ->  Parameters . COMMA Parameter   (rule 12)
+
+    CLOSE_PAR	shift, and go to state 17
+    COMMA	shift, and go to state 18
+
+
+
+state 15
+
+    Parameters  ->  Parameter .   (rule 11)
+
+    $default	reduce using rule 11 (Parameters)
+
+
+
+state 16
+
+    Parameter  ->  ID ID .   (rule 13)
+
+    $default	reduce using rule 13 (Parameter)
+
+
+
+state 17
+
+    ParameterList  ->  OPEN_PAR Parameters CLOSE_PAR .   (rule 10)
+
+    $default	reduce using rule 10 (ParameterList)
+
+
+
+state 18
+
+    Parameters  ->  Parameters COMMA . Parameter   (rule 12)
+
+    ID  	shift, and go to state 13
+
+    Parameter	go to state 19
+
+
+
+state 19
+
+    Parameters  ->  Parameters COMMA Parameter .   (rule 12)
+
+    $default	reduce using rule 12 (Parameters)
+
+
+
+state 20
+
+    $   	go to state 21
+
+
+
+state 21
+
+    $   	go to state 22
+
+
+
+state 22
+
+    $default	accept

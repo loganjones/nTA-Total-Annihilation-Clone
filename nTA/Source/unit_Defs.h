@@ -1,0 +1,17 @@
+// unit_Defs.h //                                  \author Logan Jones
+////////////////                                       \date 3/5/2002
+/// \file
+/// \brief ...
+/////////////////////////////////////////////////////////////////////
+#ifndef _UNIT_DEFS_H_
+#define _UNIT_DEFS_H_
+/////////////////////////////////////////////////////////////////////
+
+
+// Define this to view the path finding proccess
+//#define VISUAL_PATHFIND
+#define VISUAL_PATHFIND_RESULT
+
+
+/////////////////////////////////////////////////////////////////////
+#endif // !defined(_UNIT_DEFS_H_)

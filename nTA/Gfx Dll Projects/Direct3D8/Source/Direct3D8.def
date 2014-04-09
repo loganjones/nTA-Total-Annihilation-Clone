@@ -1,0 +1,7 @@
+; Direct3D8.def : Declares the module parameters for the DLL.
+
+LIBRARY      "Direct3D8"
+
+EXPORTS
+    RetrieveGfxInterface;
+	gfx_EnumDisplayMode;
