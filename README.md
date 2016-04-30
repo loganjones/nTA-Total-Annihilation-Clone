@@ -1,7 +1,7 @@
 # nTA - A partial clone of Total Annihilation
 
 
-This is a side project that I was working while attending [TTU](https://www.ttu.edu) in the early 2000's. The code was originally released to the public on [TA Universe](http://www.tauniverse.com)'s fourms ([see thread](http://www.tauniverse.com/forum/showthread.php?t=15783)).
+This is a side project that I was working on while attending [TTU](https://www.ttu.edu) as an undergraduate in the early 2000's. The code was originally released to the public on [TA Universe](http://www.tauniverse.com)'s fourms ([see thread](http://www.tauniverse.com/forum/showthread.php?t=15783)).
 
 nTA grew out of some tools that I had built for creating and editing Total Annihilation units. I think Scriptor (a unit script compiler) was the only one released publicly; but after cobbling together a unit viewer (with animations!), a map viewer, an hpi compressor, and so on, I eventually decided to just try and recreate the whole game (I was young and optimistic/naive).
 
