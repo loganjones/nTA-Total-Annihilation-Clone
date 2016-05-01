@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Standard / Utility">
+      <UniqueIdentifier>{1451993a-0119-4c65-8f1b-ac05e687152d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Subclasses">
+      <UniqueIdentifier>{f8f62d14-cbbd-4380-98d5-a822483a3bc5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\std_FileIO_Win32.cpp">
+      <Filter>Standard / Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\std_Types.cpp">
+      <Filter>Standard / Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\util_RectFiller.cpp">
+      <Filter>Standard / Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Cursor.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_DynamicImage.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Font.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Matrix.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Model.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_ModelInstance.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_ModelPiece.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Palettes.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Sprite.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Surface.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_Terrain.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\d3d_VertexArray.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gfx_Direct3D8.cpp" />
+    <ClCompile Include="Source\sys_DLL_Win32.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\d3d_Cursor.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_DynamicImage.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_Font.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_Model.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_ModelInstance.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_ModelPiece.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_Sprite.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_Surface.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_Terrain.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d_Utility.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\d3d.h" />
+    <ClInclude Include="Source\gfx_Direct3D8.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\d3d_Model.inl">
+      <Filter>Subclasses</Filter>
+    </None>
+    <None Include="Source\d3d_ModelInstance.inl">
+      <Filter>Subclasses</Filter>
+    </None>
+    <None Include="Source\d3d_Terrain.inl">
+      <Filter>Subclasses</Filter>
+    </None>
+    <None Include="Source\Direct3D8.def" />
+    <None Include="Source\gfx_Direct3D8.inl" />
+  </ItemGroup>
+</Project>

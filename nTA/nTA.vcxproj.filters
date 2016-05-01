@@ -1,0 +1,1036 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4aa27821-f1c7-4bf0-9953-1ca35f438bb6}</UniqueIdentifier>
+      <Extensions>h;cpp;c;cxx;inl;def</Extensions>
+    </Filter>
+    <Filter Include="Source\Standard">
+      <UniqueIdentifier>{c2d7cc34-c848-4d3e-a941-c27ce458adb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\System">
+      <UniqueIdentifier>{c369c636-477b-49e9-a347-83631cafb9e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Subsystems">
+      <UniqueIdentifier>{218986bb-0daf-4e81-8ff1-0acad24e09df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Subsystems\Graphics">
+      <UniqueIdentifier>{26ec7378-6fa8-4d99-badd-b2ff0292c140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Subsystems\Input">
+      <UniqueIdentifier>{dcf5121a-d235-4d3f-a70a-ce52414dbd69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Subsystems\Sound">
+      <UniqueIdentifier>{e19c01ef-f906-42f8-9402-2f7de2c8ab29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Subsystems\Network">
+      <UniqueIdentifier>{8969c5d9-18f1-4114-b737-b5e73c0b8e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application">
+      <UniqueIdentifier>{6df84e5f-d42f-44b8-be85-c9c88bfc80a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application\nTA">
+      <UniqueIdentifier>{f0273dbb-5392-46a9-b1ff-22d59ec8b8f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application\File Tree">
+      <UniqueIdentifier>{d44870e0-8481-4d26-9e85-af4ab462f3fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application\Console">
+      <UniqueIdentifier>{816ef7ed-1f9f-43be-aab0-54c82b80f561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utility">
+      <UniqueIdentifier>{e651bc36-6ae3-407c-844f-ea06e0680024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\TA">
+      <UniqueIdentifier>{72c2cb9f-98a0-40d5-90a8-d4c551ed730a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Windowing">
+      <UniqueIdentifier>{0bbfc3c7-f134-4228-8162-b911a8d9ee89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Gui">
+      <UniqueIdentifier>{16873017-05df-4c0c-aac2-73f6f7e9349a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Gui\Gadgets">
+      <UniqueIdentifier>{090ebe0e-fd81-406b-9304-8eb9406a76e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Front End">
+      <UniqueIdentifier>{bea0e57c-b682-4151-9517-dd44240d3f37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Front End\Menus">
+      <UniqueIdentifier>{c45c6f5c-0f61-4d72-93ef-0e8f025e8f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game">
+      <UniqueIdentifier>{5d5c1b95-f82a-41bd-9206-fecf58db4cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Base Objects">
+      <UniqueIdentifier>{a2ee1844-6524-4ada-839b-28350ef00517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Base Objects\Scene">
+      <UniqueIdentifier>{a438a635-7a25-4ee4-8260-575f259c4970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Base Objects\Physics">
+      <UniqueIdentifier>{b312d6d4-7738-4aff-be26-aae59eba2c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Units">
+      <UniqueIdentifier>{d60b9dde-4562-4478-ae9a-9cbf17a3dbce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Units\Unit Object">
+      <UniqueIdentifier>{7a7de7a0-d88b-4496-af55-1fc2d4337a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Units\Unit Factory">
+      <UniqueIdentifier>{3ae20dce-6c90-48e6-9c4f-fa034c70673c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Units\Script">
+      <UniqueIdentifier>{5573ab2f-27e0-4571-9f13-80c54f73cfd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Units\Base Behaviours">
+      <UniqueIdentifier>{8653cae0-0065-473c-aaa2-2ff754e0053a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Features">
+      <UniqueIdentifier>{1a9220d5-0880-4a50-a523-6baf554f4dc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Weapons">
+      <UniqueIdentifier>{05939186-c962-4fdd-94bb-de286acab047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Player">
+      <UniqueIdentifier>{27556edf-5089-426a-b621-604a5a01a7c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\Player\Types">
+      <UniqueIdentifier>{738cdf75-0e4f-4e02-a628-1dd27de8d6fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\User Interface">
+      <UniqueIdentifier>{1e3fbe79-839f-4c17-8247-e9ee82b8b5ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\User Interface\IGUI Derivations">
+      <UniqueIdentifier>{8a143554-ac79-4aff-a002-f597d7eebcae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game\User Interface\Controls">
+      <UniqueIdentifier>{fe9c5730-0d7d-4700-a1f2-e9b0fe593a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{1924d075-f917-489e-b1c2-0308cdb55918}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Configurations">
+      <UniqueIdentifier>{9155f1e0-ce59-484d-85e8-d527aebb5810}</UniqueIdentifier>
+      <Extensions>cfg</Extensions>
+    </Filter>
+    <Filter Include="Configurations\root">
+      <UniqueIdentifier>{6d69fe0f-a857-4e58-af1b-fa59cc25c1af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configurations\OTA">
+      <UniqueIdentifier>{c86f568c-c29d-47e9-b8c9-c259fffe3bad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{fb5114e5-9fed-442b-b4a5-27d0edcd3118}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\std.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Assert.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Defs.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_FileIO.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Math.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_OS_Includes.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Platform.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Point.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Rect.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_RectF.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Size.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_SizeF.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Time.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Types.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Vector.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Vector2.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\std_Vector3.h">
+      <Filter>Source\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sys.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sys_App.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sys_Defs.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sys_DLL.h">
+      <Filter>Source\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Cursor.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Defs.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_DynamicImage.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Font.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Interface.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Model.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_ModelInstance.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_ModelPiece.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Sprite.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Surface.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_Terrain.h">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\in_Defs.h">
+      <Filter>Source\Subsystems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\in_DInput8.h">
+      <Filter>Source\Subsystems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\input.h">
+      <Filter>Source\Subsystems\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\snd.h">
+      <Filter>Source\Subsystems\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\snd_DSound8.h">
+      <Filter>Source\Subsystems\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\net.h">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\net_Client.h">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\net_PacketHeader.h">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\net_RecvBuffer.h">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\net_SendBuffer.h">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\net_Sockets.h">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app.h">
+      <Filter>Source\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app_Defs.h">
+      <Filter>Source\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app_nTA.h">
+      <Filter>Source\Application\nTA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app_FileTree.h">
+      <Filter>Source\Application\File Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\zconf.h">
+      <Filter>Source\Application\File Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\zlib.h">
+      <Filter>Source\Application\File Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\app_Console.h">
+      <Filter>Source\Application\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\astar.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\util_RectFiller.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\util_TxtParse.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cavedog\exptype.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cavedog\sfxtype.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_3DO.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_COB.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_COB_Instructions.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_GAF.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_GUI.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_HPI.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_OTA.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_TDF.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ta_TNT.h">
+      <Filter>Source\TA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\wnd.h">
+      <Filter>Source\Windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\wnd_Manager.h">
+      <Filter>Source\Windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\wnd_TextBox.h">
+      <Filter>Source\Windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\wnd_Window.h">
+      <Filter>Source\Windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui.h">
+      <Filter>Source\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui_Messages.h">
+      <Filter>Source\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui_Resources.h">
+      <Filter>Source\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui_Window.h">
+      <Filter>Source\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gadget_Button.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gadget_ListBox.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gadget_Pic.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gadget_Slider.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gadget_String.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gadget_TextEdit.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui_Gadget.h">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe.h">
+      <Filter>Source\Front End</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_GuiManager.h">
+      <Filter>Source\Front End</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_Wnd.h">
+      <Filter>Source\Front End</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_MainMenu.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_MS_PlayerSelection.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_MultiplayerSetup.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_NewMultiplayerGame.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_Options.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_SelectConnection.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_SelectGame.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_SelectMap.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_Single.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fe_Skirmish.h">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Constants.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Defs.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_LoadFacilitator.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Main.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_NetMessages.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Settings.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Terrain.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\object.h">
+      <Filter>Source\Game\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\object_Defs.h">
+      <Filter>Source\Game\Base Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene_Object.h">
+      <Filter>Source\Game\Base Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scene_System.h">
+      <Filter>Source\Game\Base Objects\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics_Object.h">
+      <Filter>Source\Game\Base Objects\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics_System.h">
+      <Filter>Source\Game\Base Objects\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Defs.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Group.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Interface.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Job.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Orders.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Project.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_SoundCategory.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Task.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Type.h">
+      <Filter>Source\Game\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Locomotion.h">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Object.h">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Factory.h">
+      <Filter>Source\Game\Units\Unit Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\script.h">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\script_Code.h">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\script_Instructions.h">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\script_Machine.h">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\script_Proccess.h">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Aircraft.h">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Ground.h">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Hovercraft.h">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Seacraft.h">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unit_Structure.h">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\feature.h">
+      <Filter>Source\Game\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\feature_Factory.h">
+      <Filter>Source\Game\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\feature_Object.h">
+      <Filter>Source\Game\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Weapon.h">
+      <Filter>Source\Game\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\weapon.h">
+      <Filter>Source\Game\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\weapon_Factory.h">
+      <Filter>Source\Game\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_Player.h">
+      <Filter>Source\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\player.h">
+      <Filter>Source\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\player_AI.h">
+      <Filter>Source\Game\Player\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\player_Local.h">
+      <Filter>Source\Game\Player\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\player_Network.h">
+      <Filter>Source\Game\Player\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\game_UserInterface.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_BuildOrders.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_Console.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_Defs.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_GameWindow.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_Messages.h">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_BuildButton.h">
+      <Filter>Source\Game\User Interface\IGUI Derivations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_Menu.h">
+      <Filter>Source\Game\User Interface\IGUI Derivations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_OrderButton.h">
+      <Filter>Source\Game\User Interface\IGUI Derivations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_ControlBar.h">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_InfoBar.h">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_MiniMap.h">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\igui_ResourceBar.h">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="res\resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\std_FileIO_Win32.cpp">
+      <Filter>Source\Standard</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\std_Types.cpp">
+      <Filter>Source\Standard</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\sys_App.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\sys_Win32.cpp">
+      <Filter>Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gfx_Interface.cpp">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\in_DInput8.cpp">
+      <Filter>Source\Subsystems\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\snd_DSound8.cpp">
+      <Filter>Source\Subsystems\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\net_RecvBuffer.cpp">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\net_SendBuffer.cpp">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\net_Sockets.cpp">
+      <Filter>Source\Subsystems\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\app_nTA.cpp">
+      <Filter>Source\Application\nTA</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\app_nTA_Win32.cpp">
+      <Filter>Source\Application\nTA</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\app_FileTree.cpp">
+      <Filter>Source\Application\File Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\app_Console.cpp">
+      <Filter>Source\Application\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\util_RectFiller.cpp">
+      <Filter>Source\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\util_TxtParse.cpp">
+      <Filter>Source\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ta_GUI.cpp">
+      <Filter>Source\TA</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ta_OTA.cpp">
+      <Filter>Source\TA</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ta_TDF.cpp">
+      <Filter>Source\TA</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\wnd_Manager.cpp">
+      <Filter>Source\Windowing</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\wnd_TextBox.cpp">
+      <Filter>Source\Windowing</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\wnd_Window.cpp">
+      <Filter>Source\Windowing</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\wnd_Window_Events.cpp">
+      <Filter>Source\Windowing</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gui_Resources.cpp">
+      <Filter>Source\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gui_Window.cpp">
+      <Filter>Source\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gadget_Button.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gadget_ListBox.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gadget_Pic.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gadget_Slider.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gadget_String.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gadget_TextEdit.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gui_Gadget.cpp">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_GuiManager.cpp">
+      <Filter>Source\Front End</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_Wnd.cpp">
+      <Filter>Source\Front End</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_MainMenu.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_MS_PlayerSelection.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_MultiplayerSetup.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_MultiplayerSetup_Win32.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_NewMultiplayerGame.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_Options.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_SelectConnection.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_SelectGame.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_SelectMap.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_Single.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_Skirmish.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fe_Skirmish_Win32.cpp">
+      <Filter>Source\Front End\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_Load.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_Main.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_NetMessages.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_Terrain.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene_Object.cpp">
+      <Filter>Source\Game\Base Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene_System.cpp">
+      <Filter>Source\Game\Base Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\physics_Object.cpp">
+      <Filter>Source\Game\Base Objects\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\physics_System.cpp">
+      <Filter>Source\Game\Base Objects\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Group.cpp">
+      <Filter>Source\Game\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Interface.cpp">
+      <Filter>Source\Game\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Job.cpp">
+      <Filter>Source\Game\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Orders.cpp">
+      <Filter>Source\Game\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Project.cpp">
+      <Filter>Source\Game\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Object.cpp">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Object_Commands.cpp">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Object_Events.cpp">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Object_Handlers.cpp">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Factory.cpp">
+      <Filter>Source\Game\Units\Unit Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Factory_Load.cpp">
+      <Filter>Source\Game\Units\Unit Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\script_Code.cpp">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\script_Functions.cpp">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\script_Machine.cpp">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\script_Proccess.cpp">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\script_Proccess_Handlers.cpp">
+      <Filter>Source\Game\Units\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Aircraft.cpp">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Ground.cpp">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Hovercraft.cpp">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Seacraft.cpp">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unit_Structure.cpp">
+      <Filter>Source\Game\Units\Base Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\feature_Factory.cpp">
+      <Filter>Source\Game\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\feature_Object.cpp">
+      <Filter>Source\Game\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_Weapon.cpp">
+      <Filter>Source\Game\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\weapon_Factory.cpp">
+      <Filter>Source\Game\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_Player.cpp">
+      <Filter>Source\Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\player_AI.cpp">
+      <Filter>Source\Game\Player\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\player_Local.cpp">
+      <Filter>Source\Game\Player\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\player_Network.cpp">
+      <Filter>Source\Game\Player\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_UserInterface.cpp">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\game_UserInterface_Load.cpp">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_BuildOrders.cpp">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_Console.cpp">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_GameWindow.cpp">
+      <Filter>Source\Game\User Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_BuildButton.cpp">
+      <Filter>Source\Game\User Interface\IGUI Derivations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_Menu.cpp">
+      <Filter>Source\Game\User Interface\IGUI Derivations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_OrderButton.cpp">
+      <Filter>Source\Game\User Interface\IGUI Derivations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_ControlBar.cpp">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_InfoBar.cpp">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_MiniMap.cpp">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\igui_ResourceBar.cpp">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\std_Math.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Point.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Rect.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_RectF.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Size.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_SizeF.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Time.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Types.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Vector2.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\std_Vector3.inl">
+      <Filter>Source\Standard</Filter>
+    </None>
+    <None Include="Source\sys_App.inl">
+      <Filter>Source\System</Filter>
+    </None>
+    <None Include="Source\sys_DLL_Win32.inl">
+      <Filter>Source\System</Filter>
+    </None>
+    <None Include="Source\gfx_Interface.inl">
+      <Filter>Source\Subsystems\Graphics</Filter>
+    </None>
+    <None Include="Source\net_Sockets.inl">
+      <Filter>Source\Subsystems\Network</Filter>
+    </None>
+    <None Include="Source\app_nTA.inl">
+      <Filter>Source\Application\nTA</Filter>
+    </None>
+    <None Include="Source\app_nTA_Exposed.inl">
+      <Filter>Source\Application\nTA</Filter>
+    </None>
+    <None Include="Source\app_FileTree.inl">
+      <Filter>Source\Application\File Tree</Filter>
+    </None>
+    <None Include="Source\app_Console.inl">
+      <Filter>Source\Application\Console</Filter>
+    </None>
+    <None Include="Source\util_TxtParse.inl">
+      <Filter>Source\Utility</Filter>
+    </None>
+    <None Include="Source\wnd_Manager.inl">
+      <Filter>Source\Windowing</Filter>
+    </None>
+    <None Include="Source\wnd_Window.inl">
+      <Filter>Source\Windowing</Filter>
+    </None>
+    <None Include="Source\gui_Window.inl">
+      <Filter>Source\Gui</Filter>
+    </None>
+    <None Include="Source\gadget_ListBox.inl">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </None>
+    <None Include="Source\gadget_Slider.inl">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </None>
+    <None Include="Source\gui_Gadget.inl">
+      <Filter>Source\Gui\Gadgets</Filter>
+    </None>
+    <None Include="Source\game_Main.inl">
+      <Filter>Source\Game</Filter>
+    </None>
+    <None Include="Source\game_Terrain.inl">
+      <Filter>Source\Game</Filter>
+    </None>
+    <None Include="Source\scene_Object.inl">
+      <Filter>Source\Game\Base Objects\Scene</Filter>
+    </None>
+    <None Include="Source\scene_System.inl">
+      <Filter>Source\Game\Base Objects\Scene</Filter>
+    </None>
+    <None Include="Source\physics_Object.inl">
+      <Filter>Source\Game\Base Objects\Physics</Filter>
+    </None>
+    <None Include="Source\physics_System.inl">
+      <Filter>Source\Game\Base Objects\Physics</Filter>
+    </None>
+    <None Include="Source\unit_Object.inl">
+      <Filter>Source\Game\Units\Unit Object</Filter>
+    </None>
+    <None Include="Source\unit_Factory.inl">
+      <Filter>Source\Game\Units\Unit Factory</Filter>
+    </None>
+    <None Include="Source\script_Code.inl">
+      <Filter>Source\Game\Units\Script</Filter>
+    </None>
+    <None Include="Source\script_Machine.inl">
+      <Filter>Source\Game\Units\Script</Filter>
+    </None>
+    <None Include="Source\script_Proccess.inl">
+      <Filter>Source\Game\Units\Script</Filter>
+    </None>
+    <None Include="Source\feature_Factory.inl">
+      <Filter>Source\Game\Features</Filter>
+    </None>
+    <None Include="Source\game_Player.inl">
+      <Filter>Source\Game\Player</Filter>
+    </None>
+    <None Include="Source\game_UserInterface.inl">
+      <Filter>Source\Game\User Interface</Filter>
+    </None>
+    <None Include="Source\igui_ControlBar.inl">
+      <Filter>Source\Game\User Interface\Controls</Filter>
+    </None>
+    <None Include="Distribution\root\Startup.cfg">
+      <Filter>Configurations\root</Filter>
+    </None>
+    <None Include="Distribution\OTA\Startup.cfg">
+      <Filter>Configurations\OTA</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\nTA.ico">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="res\TA.ico">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\nTA.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Distribution\Log.txt">
+      <Filter>Documentation</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Source\game_NetMessages.nm">
+      <Filter>Source\Game</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
