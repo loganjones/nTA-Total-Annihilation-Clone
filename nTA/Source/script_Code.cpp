@@ -82,10 +82,11 @@ void script_Code::RealizePieces( BYTE* pScript, gfx_Model* pModel )
 	BOOL				RealizationNeeded = FALSE;
 	UINT32*				pCode = (UINT32*)(pScript + pHeader->OffsetToFirstModule);
 	LPTSTR				PieceName;
+    UINT32				n;
 
 	// Iterate through each piece
 	PieceIndices.resize( pHeader->NumberOfPieces );
-	for( UINT32 n=0; n<pHeader->NumberOfPieces; ++n)
+	for( n=0; n<pHeader->NumberOfPieces; ++n)
 	{
 		// Get the pointer to the name
 		PieceName = (LPTSTR)(pScript + PieceNamePointers[n]);
