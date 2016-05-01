@@ -33,7 +33,7 @@ BOOL gfx_OpenGL::CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppImag
 	ogl_DynamicImage*	pImage;
 	BOOL				bResult = FALSE;
 
-	m_DynamicImages.push_front();
+	m_DynamicImages.push_front(ogl_DynamicImage());
 	pImage = &m_DynamicImages.front();
 
 	BEGIN_CODE_BLOCK
