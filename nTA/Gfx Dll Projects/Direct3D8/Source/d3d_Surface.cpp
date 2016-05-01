@@ -307,9 +307,10 @@ void gfx_Direct3D8::RenderSurface( gfx_Surface* pSurface )
 	//m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ADDRESSV, D3DTADDRESS_CLAMP );
 	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MINFILTER, D3DTEXF_POINT );
 	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MAGFILTER, D3DTEXF_POINT );
-	for( long y=0,z=0; y<Surface->m_Tiles.height; y++)
+	long x,y,z;
+	for( y=0,z=0; y<Surface->m_Tiles.height; y++)
 	{
-		for( long x=0; x<Surface->m_Tiles.width; x++,z++)
+		for( x=0; x<Surface->m_Tiles.width; x++,z++)
 		{
 			m_pD3DDevice->SetTexture( 0, Surface->m_Textures[z] );
 			m_pD3DDevice->DrawPrimitiveUP(
@@ -350,9 +351,10 @@ void gfx_Direct3D8::RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface
 	//m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ADDRESSV, D3DTADDRESS_CLAMP );
 	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MINFILTER, D3DTEXF_POINT );
 	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MAGFILTER, D3DTEXF_POINT );
-	for( long y=0,z=0; y<Surface->m_Tiles.height; y++)
+	long x, y, z;
+	for( y=0,z=0; y<Surface->m_Tiles.height; y++)
 	{
-		for( long x=0; x<Surface->m_Tiles.width; x++,z++)
+		for( x=0; x<Surface->m_Tiles.width; x++,z++)
 		{
 			m_pD3DDevice->SetTexture( 0, Surface->m_Textures[z] );
 			m_pD3DDevice->DrawPrimitiveUP(
@@ -522,9 +524,10 @@ void d3d_Surface::Render()
 	pD3D->m_pD3DDevice->SetVertexShader( D3DFVF_SURFACE_VERT );
 	pD3D->m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MINFILTER, D3DTEXF_POINT );
 	pD3D->m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MAGFILTER, D3DTEXF_POINT );
-	for( long y=0,z=0; y<m_Tiles.height; y++)
+	long x, y, z;
+	for( y=0,z=0; y<m_Tiles.height; y++)
 	{
-		for( long x=0; x<m_Tiles.width; x++,z++)
+		for( x=0; x<m_Tiles.width; x++,z++)
 		{
 			pD3D->m_pD3DDevice->SetTexture( 0, m_Textures[z] );
 			pD3D->m_pD3DDevice->DrawPrimitiveUP(
@@ -558,9 +561,10 @@ void d3d_Surface::Render( std_Vector3 vPos )
 	pD3D->m_pD3DDevice->SetVertexShader( D3DFVF_SURFACE_VERT );
 	pD3D->m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MINFILTER, D3DTEXF_POINT );
 	pD3D->m_pD3DDevice->SetTextureStageState( 0, D3DTSS_MAGFILTER, D3DTEXF_POINT );
-	for( long y=0,z=0; y<m_Tiles.height; y++)
+	long x, y, z;
+	for( y=0,z=0; y<m_Tiles.height; y++)
 	{
-		for( long x=0; x<m_Tiles.width; x++,z++)
+		for( x=0; x<m_Tiles.width; x++,z++)
 		{
 			pD3D->m_pD3DDevice->SetTexture( 0, m_Textures[z] );
 			pD3D->m_pD3DDevice->DrawPrimitiveUP(
