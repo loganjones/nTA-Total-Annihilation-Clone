@@ -27,11 +27,11 @@ public:
 	struct ModelVertex_t;
 	struct UsedTexture_t;
 	typedef list< UsedTexture_t >	UsedTextureList_t;
-	typedef hash_map< string, long >	PieceNameMap_t;
+	typedef unordered_map< string, long >	PieceNameMap_t;
 
 	struct PieceInstance_t;
 	struct lpvoid_hash{ size_t operator()(const LPVOID pA) const { return (size_t)pA; } };
-	typedef hash_map< const LPVOID, PieceInstance_t*, lpvoid_hash >	PieceInstanceMap_t;
+	typedef unordered_map< const LPVOID, PieceInstance_t*, lpvoid_hash >	PieceInstanceMap_t;
 
 	struct Instance_t
 	{
@@ -40,7 +40,7 @@ public:
 //		LPDIRECT3DINDEXBUFFER8		VisibleIndices;
 //		DWORD						VisiblePrimitives;
 	};
-	typedef hash_map< LPVOID, Instance_t >	InstanceMap_t;
+	typedef unordered_map< LPVOID, Instance_t >	InstanceMap_t;
 
 
 /////////////////////////////////////////////////

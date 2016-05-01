@@ -65,10 +65,10 @@ protected:
 		char				Name[ 32 ];
 		int					SearchAdded;
 	};
-	typedef hash_map< DWORD, FeatureToLoad_t >	FeatureToLoadList_t;
+	typedef unordered_map< DWORD, FeatureToLoad_t >	FeatureToLoadList_t;
 
 	typedef feature_Type						FeatureType_t;
-	typedef hash_map< DWORD, FeatureType_t >	FeatureTypeMap_t;
+	typedef unordered_map< DWORD, FeatureType_t >	FeatureTypeMap_t;
 
 	struct FeatureFileInfo_t;
 

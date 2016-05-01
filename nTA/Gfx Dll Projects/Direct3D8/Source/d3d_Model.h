@@ -33,7 +33,7 @@ class d3d_Model : public gfx_Model
 // Type delarations
 public:
 
-	typedef hash_map< DWORD, long >	PieceNameHash_t;
+	typedef unordered_map< DWORD, long >	PieceNameHash_t;
 
 	struct UsedTexture_t;
 	typedef list< UsedTexture_t >	UsedTextureList_t;
