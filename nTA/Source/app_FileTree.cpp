@@ -627,7 +627,7 @@ DWORD app_FileTree::DumpFileToBuffer( LPCTSTR strFilePath, BYTE** ppBuffer, _Pro
 	DWORD				TotalBytes = 0;
 
 	Progress.Update( 0, 1 );
-	RetrieveFile( strFilePath, m_theTree )
+    HFILEENTRY pFile = RetrieveFile( strFilePath, m_theTree );
 
 	// Sanity check
 	if( (pFile==NULL)||(ppBuffer==NULL) )
@@ -790,7 +790,7 @@ DWORD app_FileTree::DumpFileToBuffer( LPCTSTR strFilePath, BYTE** ppBuffer, _Pro
 				if( inflate( &zlibStream, Z_SYNC_FLUSH )!=Z_OK )
 					break;
 
-				ReadProc( pFile->DecompressedSize, pFile->DecompressedSize - zlibStream.avail_out );
+                Progress.Update( pFile->DecompressedSize, pFile->DecompressedSize - zlibStream.avail_out );
 			}
 			TotalBytes = pFile->DecompressedSize - zlibStream.avail_out;
 

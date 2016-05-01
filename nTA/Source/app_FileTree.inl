@@ -96,7 +96,8 @@ BOOL  app_FileTree::FindCentralDirectoryRecord( void* hFile, ZIP_Central_Directo
 			ppNewDir = &pRoot->SubDirs;
 		else // Make sure it doesn't already exist
 		{
-			for( DirEntry_t* pPrev=NULL,*pDir=pRoot->SubDirs; pDir; pDir=pDir->Next)
+            DirEntry_t* pPrev, *pDir;
+			for( pPrev=NULL,pDir=pRoot->SubDirs; pDir; pDir=pDir->Next)
 			{
 				pPrev = pDir;
 				if( stricmp(pDir->Name,strName)==0 ) return pDir;
@@ -147,7 +148,8 @@ BOOL  app_FileTree::FindCentralDirectoryRecord( void* hFile, ZIP_Central_Directo
 		ppNewFile = &pRoot->SubFiles;
 	else // Find the last sub file
 	{
-		for( FileEntry_t* pPrev=NULL,*pFile=pRoot->SubFiles; pFile; pFile=pFile->Next)
+        FileEntry_t* pPrev, *pFile;
+		for( pPrev=NULL,pFile=pRoot->SubFiles; pFile; pFile=pFile->Next)
 		{
 			pPrev = pFile;
 			if( stricmp(pFile->Name,feData.Name)==0 )
