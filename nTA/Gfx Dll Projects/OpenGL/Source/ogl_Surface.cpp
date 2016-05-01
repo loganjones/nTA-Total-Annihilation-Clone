@@ -217,7 +217,7 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
 	glNewList( NewSurface.m_DisplayList, GL_COMPILE );
 
     // Iterate through each column, again
-	for( y=0,z=0; y<NewSurface.m_Tiles.height; y++)
+	for( int y=0,z=0; y<NewSurface.m_Tiles.height; y++)
 	{
 		// Is this tile on the bottom row
 		if( (y+1)==NewSurface.m_Tiles.height )
