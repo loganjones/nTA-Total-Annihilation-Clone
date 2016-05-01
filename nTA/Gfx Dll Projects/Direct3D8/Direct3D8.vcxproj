@@ -46,12 +46,16 @@
     <IntDir>.\Debug\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\Development\DXSDK81\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Development\DXSDK81\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>.\Release\</OutDir>
     <IntDir>.\Release\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\Development\DXSDK81\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Development\DXSDK81\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

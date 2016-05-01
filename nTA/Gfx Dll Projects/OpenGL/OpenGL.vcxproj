@@ -46,12 +46,14 @@
     <IntDir>.\Release\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\Dropbox\Development\nTA-Total-Annihilation-Clone\nTA\Gfx Dll Projects\OpenGL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>.\Debug\</OutDir>
     <IntDir>.\Debug\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\Dropbox\Development\nTA-Total-Annihilation-Clone\nTA\Gfx Dll Projects\OpenGL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
