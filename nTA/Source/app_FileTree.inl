@@ -219,7 +219,7 @@ void  app_FileTree::CopyFileData( FileEntry_t& destFile, const FileEntry_t& srcF
 {
 	BOOL		ThisIsTheTarget;
 	char		Target[ 64 ];
-	LPTSTR		Next;
+	LPCTSTR		Next;
 	DirEntry_t*	pDir;
 
 	// Find the next occurance of the '/' (if any)
@@ -270,7 +270,7 @@ void  app_FileTree::CopyFileData( FileEntry_t& destFile, const FileEntry_t& srcF
 {
 	DirEntry_t*		pDir;
 	char			Path[ MAX_PATH ];
-	LPTSTR			FileName;
+	LPCTSTR			FileName;
 	FileEntry_t*	pFile;
 
 	// Get the position of the last '/' (if any)
