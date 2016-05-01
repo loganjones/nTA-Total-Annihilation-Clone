@@ -568,7 +568,8 @@ BOOL feature_Factory::CreateFeatureImages( FeatureFileInfo_t* pFeatureFileInfo, 
 		// Place the shadow in the final image at its offset
 		BYTE* pFinal = FinalImage.pBytes + ( ((AboveTexture-AboveShadow)*FinalImage.Pitch) + (LeftOfTexture-LeftOfShadow) );
 		BYTE* pShadow= ShadowImage.pBytes;
-		for( DWORD y=0; y<pShadowFrameData->Height; y++)
+        DWORD y;
+		for( y=0; y<pShadowFrameData->Height; y++)
 		{
 			for( DWORD x=0; x<pShadowFrameData->Width; x++)
 				if( pShadow[x]!=PALETTE_CLEAR && pShadow[x]!=PALETTE_CLEAR2 )
