@@ -126,6 +126,7 @@
       <ModuleDefinitionFile>.\Source\Direct3D8.def</ModuleDefinitionFile>
       <ProgramDatabaseFile>.\Release/Direct3D8.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Release/Direct3D8.lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Midl>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
