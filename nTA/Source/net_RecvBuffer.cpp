@@ -133,9 +133,9 @@ bool net_RecvBuffer::RecvFrom( net_Client& sender )
 //
 void net_RecvBuffer::RecvFrom( SOCKET sender )
 {
-	int	BytesReceived;
+	ssize_t	BytesReceived;
 	sockaddr_in	SourceAddress;
-	int			SourceAddressSize = sizeof( SourceAddress );
+	socklen_t   SourceAddressSize = sizeof( SourceAddress );
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recv from SOCKET %d", sender );
 
 	// Back to front?

@@ -96,7 +96,7 @@ void net_SendBuffer::InitializeTarget( net_Client& target )
 //
 void net_SendBuffer::SendTo( net_Client& target )
 {
-	int		BytesSent;
+	ssize_t BytesSent;
 	UINT32	Destination;
 
 	// Send data that remains in the packet
