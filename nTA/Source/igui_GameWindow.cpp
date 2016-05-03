@@ -286,7 +286,7 @@ void igui_GameWindow::DoOrder( InterafceOrder_t Order, DWORD dwParam )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void igui_GameWindow::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void igui_GameWindow::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// Point on the map where the button was pressed
 	const std_Point	ptMap = theGame.Terrain.GetPoint( ptCursor, theGame.Interface.GuiResolution(), m_TerrainRes );
@@ -355,7 +355,7 @@ void igui_GameWindow::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL
 //  long lData            - 
 //  DWORD dwFlags         - 
 //
-void igui_GameWindow::OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags )
+void igui_GameWindow::OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags )
 {
 	if( lData<0 )	theGame.Terrain.Zoom( 16, 12 );
 	else	theGame.Terrain.Zoom( -16, -12 );

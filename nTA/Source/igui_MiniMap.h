@@ -27,8 +27,8 @@ public:
 	BOOL OnCreate();
 	void OnDestroy();
 
-	void OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
-	void OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags );
+	void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
+	void OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags );
 
 	void OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlags );
 

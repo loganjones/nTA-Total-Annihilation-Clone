@@ -59,7 +59,7 @@ void igui_OrderButton::SetStageCount( UINT32 uiStageCount )
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void igui_OrderButton::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void igui_OrderButton::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	// Skip the gadget_Button implementation
 	gui_Gadget::OnCursorMove(ptCursor,dwFlags);
@@ -79,7 +79,7 @@ void igui_OrderButton::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void igui_OrderButton::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void igui_OrderButton::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// If a primary button was pressed then do our stuff
 	if( (dwButton==1 || dwButton==2) && bDown )

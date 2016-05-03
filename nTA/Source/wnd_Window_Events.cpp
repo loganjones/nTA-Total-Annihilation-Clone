@@ -132,7 +132,7 @@ DWORD wnd_Window::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwPa
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void wnd_Window::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void wnd_Window::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	// No parent, no point going on
 	if( m_pParent==NULL ) return;
@@ -167,7 +167,7 @@ void wnd_Window::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void wnd_Window::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void wnd_Window::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// No parent, no point going on
 	if( m_pParent==NULL ) return;
@@ -189,7 +189,7 @@ void wnd_Window::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDow
 //  long lData            - 
 //  DWORD dwFlags         - 
 //
-void wnd_Window::OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags )
+void wnd_Window::OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags )
 {
 	// No parent, no point going on
 	if( m_pParent==NULL ) return;

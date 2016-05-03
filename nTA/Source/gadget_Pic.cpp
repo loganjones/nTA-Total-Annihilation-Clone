@@ -219,7 +219,7 @@ void gadget_Pic::OnRender()
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_Pic::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_Pic::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// If a primary button was pressed or released then do our stuff
 	if( dwButton==1 || dwButton==2 )

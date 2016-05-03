@@ -27,7 +27,7 @@ public:
 	INLINE LPCTSTR GetName() const;
 	INLINE void SetName( LPCTSTR strName );
 
-	virtual void OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
+	virtual void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
 
 
 /////////////////////////////////////////////////

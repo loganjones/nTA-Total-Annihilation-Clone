@@ -158,7 +158,7 @@ void igui_MiniMap::Update()
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void igui_MiniMap::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void igui_MiniMap::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	switch( dwButton )
 	{
@@ -192,7 +192,7 @@ void igui_MiniMap::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bD
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void igui_MiniMap::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void igui_MiniMap::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	if( m_bScrolling && m_MiniMapScreenRect.PointInRect(ptCursor) )
 		theGame.Terrain.SetCenter( std_Point(

@@ -201,7 +201,7 @@ DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD d
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void gadget_Slider::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void gadget_Slider::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	if( m_bDraggingKnob && m_pWndManager->GetCapture()==this )
 		if( m_bVertical ) MoveKnobNear( ptCursor.y );
@@ -222,7 +222,7 @@ void gadget_Slider::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_Slider::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_Slider::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// Check if this is the primary button
 	if( dwButton==1 )

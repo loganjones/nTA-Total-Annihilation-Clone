@@ -169,7 +169,7 @@ public:
 	//virtual void DestroySurface( gfx_Surface** pSurface ) = 0;
 
 	virtual void RenderSurface( gfx_Surface* pSurface ) = 0;
-	virtual void RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface ) = 0;
+	virtual void RenderSurfaceEx( const std_Point_t& ptWhere, gfx_Surface* pSurface ) = 0;
 
 
 /////////////////////////////////////////////////
@@ -195,8 +195,8 @@ public:
 	
 	virtual void RenderStringRight( LPCTSTR strToRender, const std_Vector3 vWhere, const DWORD dwColor, gfx_Font* pFont=NULL ) = 0;
 
-	virtual void RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender ) = 0;
-	virtual void RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal=TRUE, BOOL bCenterVertical=TRUE ) = 0;
+	virtual void RenderStringAt( const std_Point_t& ptWhere, LPCTSTR strToRender ) = 0;
+	virtual void RenderStringCenteredAt( const std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal=TRUE, BOOL bCenterVertical=TRUE ) = 0;
 
 
 /////////////////////////////////////////////////

@@ -70,8 +70,8 @@ public:
 
 	DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
 
-	void OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
-	void OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags );
+	void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
+	void OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags );
 	void OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlags );
 
 

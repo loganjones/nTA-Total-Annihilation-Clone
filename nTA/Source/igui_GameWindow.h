@@ -36,8 +36,8 @@ public:
 	void DoOrder( InterafceOrder_t Order, DWORD dwParam=0 );
 
 	BOOL OnCreate();
-	void OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
-	void OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags );
+	void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
+	void OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags );
 	void OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlags );
 
 

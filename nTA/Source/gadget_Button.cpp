@@ -335,7 +335,7 @@ void gadget_Button::OnRender()
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void gadget_Button::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void gadget_Button::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	// Check if we have capture
 	if( m_pWndManager->GetCapture()==this )
@@ -373,7 +373,7 @@ void gadget_Button::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_Button::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_Button::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// If a primary button was pressed or released then do our stuff
 	if( dwButton==1 || dwButton==2 )

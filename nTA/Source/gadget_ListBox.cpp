@@ -149,7 +149,7 @@ DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD 
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_ListBox::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_ListBox::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	const int	ItemHeight = guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION;
 	const int	ItemsDown = ptCursor.y / ItemHeight;
@@ -177,7 +177,7 @@ void gadget_ListBox::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL 
 //  long lData            - 
 //  DWORD dwFlags         - 
 //
-void gadget_ListBox::OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags )
+void gadget_ListBox::OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags )
 {
 	if( lData>0 ) ShiftSelection( -4 );
 	else ShiftSelection( 4 );
