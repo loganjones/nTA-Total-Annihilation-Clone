@@ -307,7 +307,7 @@ void app_Console::AddCommentToBuffer( LPTSTR strComment, DWORD dwType )
 	CommentInfo.dwOffset = m_CurrentOffset;
 	m_CurrentOffset += Size;
 	CommentInfo.dwType = dwType;
-	CommentInfo.dwTime = timeGetTime();
+	CommentInfo.dwTime = std_Time();
 	m_CommentStack.push_back( CommentInfo );
 }
 // End app_Console::AddCommentToBuffer()

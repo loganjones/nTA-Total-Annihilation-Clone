@@ -119,12 +119,12 @@ void gadget_Slider::OnUpdate()
 {
 	if( m_FowardButton.IsDown() )
 	{
-		if( (timeGetTime() - m_DownTime) > 500 )
+		if( (std_Time() - m_DownTime) > 500 )
 			MoveKnobFoward();
 	}
 	else if( m_BackButton.IsDown() )
 	{
-		if( (timeGetTime() - m_DownTime) > 500 )
+		if( (std_Time() - m_DownTime) > 500 )
 			MoveKnobBackward();
 	}
 
@@ -174,12 +174,12 @@ DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD d
 
 			CASE( "FOWARD" )
 				MoveKnobFoward();
-				m_DownTime = timeGetTime();
+				m_DownTime = std_Time();
 				return 1;
 
 			CASE( "BACK" )
 				MoveKnobBackward();
-				m_DownTime = timeGetTime();
+				m_DownTime = std_Time();
 				return 1;
 
 		END_STRING_SWITCH

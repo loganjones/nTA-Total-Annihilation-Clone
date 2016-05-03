@@ -34,7 +34,7 @@ fe_GuiManager::~fe_GuiManager()
 //
 BOOL fe_GuiManager::Create( LPTSTR strStartMenu )
 {
-	DWORD TotalTime = timeGetTime();
+	DWORD TotalTime = std_Time();
 
 	// Call the default
 	if( bFAILED(wnd_Manager::Create()) )
@@ -74,7 +74,7 @@ BOOL fe_GuiManager::Create( LPTSTR strStartMenu )
 	//m_Cursor.Set( m_pRootWindow->GetWndSize().width / 2, m_pRootWindow->GetWndSize().height / 2 );
 	SetCursorSpeed( 1.75f );
 
-	theApp.Console.Comment( CT_EXTRA_LOAD, "Front-End load time: %.2f seconds", (timeGetTime() - TotalTime) * (1/1000.0f) );
+	theApp.Console.Comment( CT_EXTRA_LOAD, "Front-End load time: %.2f seconds", (std_Time() - TotalTime) * (1/1000.0f) );
 	return TRUE;
 }
 // End fe_GuiManager::Create()
@@ -117,10 +117,10 @@ void fe_GuiManager::OnFrame()
 {
 	if( m_pRootWindow==NULL ) return ;
 
-	if( (timeGetTime()-m_UpdateTime)>=75 )
+	if( (std_Time()-m_UpdateTime)>=75 )
 	{
 		Update();
-		m_UpdateTime = timeGetTime();
+		m_UpdateTime = std_Time();
 	}
 
 	if( m_pRootWindow )
@@ -167,13 +167,13 @@ void fe_GuiManager::Render()
 
 	gfx->EndScene();
 
-	if( (timeGetTime()-m_FrameTime)>500.0f )
+	if( (std_Time()-m_FrameTime)>500.0f )
 	{
 		m_FrameCount++;
 		sprintf( m_strFPS, "FPS: %.2f",
-			     (1000.0f/(timeGetTime() - m_FrameTime))*m_FrameCount );
+			     (1000.0f/(std_Time() - m_FrameTime))*m_FrameCount );
 		m_FrameCount = 0;
-		m_FrameTime = timeGetTime();
+		m_FrameTime = std_Time();
 	}
 	else m_FrameCount++;
 }
