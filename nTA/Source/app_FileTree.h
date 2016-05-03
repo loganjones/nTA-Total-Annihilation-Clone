@@ -19,7 +19,7 @@ protected:
 
 	struct FileEntry_t;
 	struct DirEntry_t;
-	enum FileEntryType_t;
+    enum FileEntryType_t : short;
 
 	struct ScanDir_t;
 	struct ScanExt_t;
@@ -28,7 +28,7 @@ protected:
 	struct ZIP_Central_Directory_File_Header;
 	struct ZIP_Local_File_Header;
 	struct ZIP_Local_File_Data_Descriptor;
-	enum ZIP_Compression_t;
+    enum ZIP_Compression_t : short;
 
 	struct FindHandle_t;
 
@@ -52,7 +52,7 @@ public:
 	typedef DirEntry_t*		HDIRENTRY;
 
 	// Find types
-	enum FindType_t;
+    enum FindType_t : short;
 	struct FindData_t;
 	typedef FindHandle_t*	HFIND;
 
@@ -192,7 +192,7 @@ protected:
 		FileEntry_t*	Next;
 	};
 
-	enum FileEntryType_t
+	enum FileEntryType_t : short
 	{
 		TA_FILE,
 		TA_FILE_LZ77,
@@ -209,7 +209,7 @@ protected:
 // Scan Directoy + File Type
 protected:
 
-	enum ScanDirFlags_t
+	enum ScanDirFlags_t : short
 	{
 		SDF_NO_FLAG = 0,
 		SDF_VERIFY					=	(1<<0),
@@ -258,7 +258,7 @@ protected:
 
 public:
 
-	enum FindType_t
+	enum FindType_t : short
 	{
 		EVERYTHING,
 		FILES_WITH_EXTENSIONS,
@@ -292,7 +292,7 @@ protected:
 #define ZIP_DEFLATION_FLAG			( 1<<4 )
 #define ZIP_COMPRESSED_PATCHED_DATA	( 1<<5 )
 
-	enum ZIP_Compression_t
+	enum ZIP_Compression_t : short
 	{
 		ZIP_COMPRESSION_NONE = 0,
 		ZIP_COMPRESSION_SHRUNK,

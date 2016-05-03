@@ -12,7 +12,7 @@
 //
 class unit_Aircraft : public unit_Object
 {
-	enum MoveStates_t;
+    enum MoveStates_t : short;
 
 /////////////////////////////////////////////////
 // Inherited physics_Object methods
@@ -61,7 +61,7 @@ protected:
 private:
 
 	// Potential movement states for m_MoveState
-	enum MoveStates_t {
+    enum MoveStates_t : short {
 		Idle,
 		TakingOff,
 		Landing,

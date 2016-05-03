@@ -18,8 +18,8 @@ class igui_GameWindow : public wnd_Window
 // Types
 public:
 
-	enum InterafceModes_t;
-	enum InterafceOrder_t;
+	enum InterafceModes_t : short;
+	enum InterafceOrder_t : short;
 
 
 /////////////////////////////////////////////////
@@ -93,7 +93,7 @@ protected:
 // Type definitions
 public:
 
-	enum InterafceModes_t
+	enum InterafceModes_t : short
 	{
 		MODE_Select,		// Nothing is selected and we are searching for something to select
 		MODE_Default,		// Something is selected, but we haven't been told to do anything specifically
@@ -110,7 +110,7 @@ public:
 		MODE_Unload,
 	};
 
-	enum InterafceOrder_t
+	enum InterafceOrder_t : short
 	{
 		ORDER_Stop,			//  Commands the selection to stop
 		ORDER_FireOrd,
