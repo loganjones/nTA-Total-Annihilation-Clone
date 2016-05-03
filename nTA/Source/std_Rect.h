@@ -27,13 +27,17 @@ struct std_Rect
 	// Other constructors
 	INLINE std_Rect( const long newLeft, const long newTop, const long newRight, const long newBottom );
 	INLINE std_Rect( const std_RectF& rctCopy );
+#ifdef _WIN32
 	INLINE std_Rect( const RECT& rctCopy );
+#endif
 	INLINE std_Rect( const long newLeft, const long newTop, const std_Size& newSize );
 	INLINE std_Rect( const std_Point& newTopLeft, const long newWidth, const long newHeight );
 	INLINE std_Rect( const std_Point& newTopLeft, const std_Size& newSize );
 
-	// Casting
+    // Casting
+#ifdef _WIN32
 	INLINE operator RECT();
+#endif
 
 	// Unary Operators
 	INLINE std_Rect operator +() const;

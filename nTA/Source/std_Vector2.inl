@@ -68,7 +68,7 @@ std_Vector2::std_Vector2( const std_Vector3& v ):x(v.x),y(v.y){}
 // End std_Vector2::std_Vector2()
 //////////////////////////////////////////////////////////////////////
 
-
+#ifdef _WIN32
 //////////////////////////////////////////////////////////////////////
 // std_Vector2::std_Vector2() //                   \author Logan Jones
 ////////////////////////////                            \date 9/8/2001
@@ -80,7 +80,7 @@ std_Vector2::std_Vector2( const std_Vector3& v ):x(v.x),y(v.y){}
 std_Vector2::std_Vector2( const POINT& ptCopy ):x(ptCopy.x),y(ptCopy.y){}
 // End std_Vector2::std_Vector2()
 //////////////////////////////////////////////////////////////////////
-
+#endif
 
 //////////////////////////////////////////////////////////////////////
 // std_Vector2::std_Vector2() //                   \author Logan Jones

@@ -26,11 +26,15 @@ struct std_Point
 	INLINE std_Point( const long lX, const long lY );
 	INLINE std_Point( const std_Vector2& vCopy );
 	INLINE std_Point( const std_Vector3& vCopy );
+#ifdef _WIN32
 	INLINE std_Point( const POINT& ptCopy );
+#endif
 	INLINE std_Point( const DWORD dwCopy );
 
 	// Casting
+#ifdef _WIN32
 	INLINE operator POINT();
+#endif
 
 	// Unary Operators
 	INLINE std_Point operator +() const;

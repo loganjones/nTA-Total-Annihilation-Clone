@@ -27,7 +27,9 @@ struct std_RectF
 	// Other constructors
 	INLINE std_RectF( const float newLeft, const float newTop, const float newRight, const float newBottom );
 	INLINE std_RectF( const std_Rect& rctCopy );
+#ifdef _WIN32
 	INLINE std_RectF( const RECT& rctCopy );
+#endif
 	INLINE std_RectF( const float newLeft, const float newTop, const std_SizeF& newSize );
 	INLINE std_RectF( const std_Vector2& newTopLeft, const float newWidth, const float newHeight );
 	INLINE std_RectF( const std_Vector2& newTopLeft, const std_SizeF& newSize );
@@ -36,7 +38,9 @@ struct std_RectF
 	INLINE std_RectF( const std_RectF& rctA, const std_RectF& rctB );
 
 	// Casting
+#ifdef _WIN32
 	INLINE operator RECT();
+#endif
 
 	// Unary Operators
 	INLINE std_RectF operator +() const;
