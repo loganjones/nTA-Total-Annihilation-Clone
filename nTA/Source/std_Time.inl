@@ -72,7 +72,19 @@ std_ExactTime std_TimeDifferenceInmSecs( std_PreciseTime_t ptA, std_PreciseTime_
 // End std_TimeDifferenceInmSecs()
 //////////////////////////////////////////////////////////////////////
 
-#endif // defined( _WIN32 )
+
+#else // any other platform; just wrap the standard C time() API.
+
+#include <sys/time.h>
+
+std_Time_t std_Time()
+{
+    struct timeval t;
+    gettimeofday(&t, NULL);
+    return (t.tv_sec * 1000) + std_Time_t((t.tv_usec / 1000.0) + 0.5);
+}
+
+#endif // Platforms
 
 
 /////////////////////////////////////////////////////////////////////
