@@ -9,7 +9,7 @@
 
 
 #define DEFINE_OPCODE_HANDLER( NAME, CODE ) \
-	static long CALLBACK handler_##NAME##( script_Proccess& Proccess, Thread_t& Thread );
+	static long CALLBACK handler_##NAME( script_Proccess& Proccess, Thread_t& Thread );
 #define IMPLEMENT_OPCODE_HANDLER( NAME ) \
 	long CALLBACK script_Proccess::handler_##NAME##( script_Proccess& Proccess, Thread_t& Thread )
 #define ASSOCCIATE_INSTRUCTION_TO_OPCODE_HANDLER( NAME, CODE ) \
