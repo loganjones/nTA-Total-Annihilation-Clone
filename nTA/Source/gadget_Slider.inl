@@ -172,7 +172,7 @@ void gadget_Slider::MoveKnobNear( long lWhere )
 		long Dist = 1000, i=0, Closest=1000; 
 		for( long n=0; n<Size; ++n)
 		{
-			Dist = abs( m_PosArray[n] - lWhere );
+            Dist = ::abs( m_PosArray[n] - lWhere );
 			if( Dist<Closest )
 			{
 				Closest = Dist;
