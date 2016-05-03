@@ -34,7 +34,7 @@ BOOL gfx_Direct3D8::CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppI
 	BOOL				bResult = FALSE;
 	LRESULT				lResult;
 
-	m_DynamicImages.push_front();
+	m_DynamicImages.push_front(d3d_DynamicImage());
 	pImage = &m_DynamicImages.front();
 
 	BEGIN_CODE_BLOCK

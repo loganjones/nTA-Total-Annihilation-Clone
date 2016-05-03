@@ -384,7 +384,8 @@ BOOL d3d_Model::AssembleTexture( UsedTextureList_t& Textures )
 
 	} // end while( CurrentSize is too large )
 
-	for( std_Size sz=TextureSize; *sz>CurrentSize; ) sz /= 2;
+	std_Size sz;
+	for( sz=TextureSize; *sz>CurrentSize; ) sz /= 2;
 	TextureSize = sz * 2;
 
 	// Create the texture and lock it

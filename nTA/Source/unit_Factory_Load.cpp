@@ -457,7 +457,7 @@ void unit_Factory::ProccessFBI( void* hFile, unit_Type& Type, LPTSTR strObjectNa
 //
 BOOL unit_Factory::GetSoundCategories()
 {
-	typedef hash_map< string, LPVOID >	SoundMap_t;
+	typedef unordered_map< string, LPVOID >	SoundMap_t;
 
 	BYTE*							pFileBuf;
 	DWORD							Size;

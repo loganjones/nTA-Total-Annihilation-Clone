@@ -17,7 +17,7 @@ class igui_ControlBar : public wnd_Window
 	typedef list< string >		MenuModsToLoad_t;
 
 	struct Surface_t { gfx_Surface* Surfaces[6]; };
-	typedef hash_map< string, Surface_t >		SurfaceMap_t;
+	typedef unordered_map< string, Surface_t >		SurfaceMap_t;
 
 	typedef map< string, igui_Menu >		MenuMap_t;
 

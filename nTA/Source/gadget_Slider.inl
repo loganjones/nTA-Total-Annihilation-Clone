@@ -215,8 +215,9 @@ void gadget_Slider::MoveKnobFoward()
 	{
 		if( m_Knob_CurrentPos!=m_Knob_MaxPos )
 		{
+            long n;
 			const long Size = m_PosArray.size();
-			for( long n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n);
+			for( n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n);
 			assert( n+1<Size );
 			SetKnobPosition( m_PosArray[n+1] );
 			SendKnobMovedMessage();
@@ -249,8 +250,9 @@ void gadget_Slider::MoveKnobBackward()
 	{
 		if( m_Knob_CurrentPos!=m_Knob_MinPos )
 		{
+            long n;
 			const long Size = m_PosArray.size();
-			for( long n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n);
+			for( n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n);
 			assert( n-1>=0 );
 			SetKnobPosition( m_PosArray[n-1] );
 			SendKnobMovedMessage();

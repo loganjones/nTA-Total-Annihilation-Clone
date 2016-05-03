@@ -362,7 +362,7 @@ BOOL  fio_FindNextFile( void* hFind, LPfio_FindFileData FileData )
 void  fio_FindClose( void* hFind )
 {
     // Close the search
-    FindClose( hFind );
+    if ( hFind ) FindClose( hFind );
 }
 // End fio_FindClose()
 //////////////////////////////////////////////////////////////////////

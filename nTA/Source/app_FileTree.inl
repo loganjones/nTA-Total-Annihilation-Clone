@@ -96,7 +96,8 @@ BOOL  app_FileTree::FindCentralDirectoryRecord( void* hFile, ZIP_Central_Directo
 			ppNewDir = &pRoot->SubDirs;
 		else // Make sure it doesn't already exist
 		{
-			for( DirEntry_t* pPrev=NULL,*pDir=pRoot->SubDirs; pDir; pDir=pDir->Next)
+            DirEntry_t* pPrev, *pDir;
+			for( pPrev=NULL,pDir=pRoot->SubDirs; pDir; pDir=pDir->Next)
 			{
 				pPrev = pDir;
 				if( stricmp(pDir->Name,strName)==0 ) return pDir;
@@ -147,7 +148,8 @@ BOOL  app_FileTree::FindCentralDirectoryRecord( void* hFile, ZIP_Central_Directo
 		ppNewFile = &pRoot->SubFiles;
 	else // Find the last sub file
 	{
-		for( FileEntry_t* pPrev=NULL,*pFile=pRoot->SubFiles; pFile; pFile=pFile->Next)
+        FileEntry_t* pPrev, *pFile;
+		for( pPrev=NULL,pFile=pRoot->SubFiles; pFile; pFile=pFile->Next)
 		{
 			pPrev = pFile;
 			if( stricmp(pFile->Name,feData.Name)==0 )
@@ -217,7 +219,7 @@ void  app_FileTree::CopyFileData( FileEntry_t& destFile, const FileEntry_t& srcF
 {
 	BOOL		ThisIsTheTarget;
 	char		Target[ 64 ];
-	LPTSTR		Next;
+	LPCTSTR		Next;
 	DirEntry_t*	pDir;
 
 	// Find the next occurance of the '/' (if any)
@@ -268,7 +270,7 @@ void  app_FileTree::CopyFileData( FileEntry_t& destFile, const FileEntry_t& srcF
 {
 	DirEntry_t*		pDir;
 	char			Path[ MAX_PATH ];
-	LPTSTR			FileName;
+	LPCTSTR			FileName;
 	FileEntry_t*	pFile;
 
 	// Get the position of the last '/' (if any)

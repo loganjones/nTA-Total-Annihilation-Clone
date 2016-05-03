@@ -134,7 +134,8 @@ void d3d_Terrain::UploadGfxRectToScreenTiles( long LeftIndex, long TopIndex, lon
 	BYTE*			pTileImage;
 
 	ScreenTile* pStartingTile = m_TopLeftTile;
-	for( long n=0; n<XSreenTile; n++,pStartingTile=pStartingTile->Right);
+	long n;
+	for( n=0; n<XSreenTile; n++,pStartingTile=pStartingTile->Right);
 	for( n=0; n<YSreenTile; n++,pStartingTile=pStartingTile->Bottom);
 	
 	long StartingXOffset = XOffset - (XSreenTile*m_ScreenTileSize);

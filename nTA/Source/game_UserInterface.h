@@ -37,7 +37,7 @@ public:
 
 	typedef map< long, string >						DownloadMenuPage_t;
 	typedef vector< DownloadMenuPage_t >			DownloadMenuPages_t;
-	typedef hash_map< DWORD, DownloadMenuPages_t >	DownloadMenus_t;
+	typedef unordered_map< DWORD, DownloadMenuPages_t >	DownloadMenus_t;
 
 
 /////////////////////////////////////////////////

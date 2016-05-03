@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{B7C2539E-5899-47EB-809F-81B8698E294F}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.24720.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(ProjectDir)Libraies\Win32\zlib\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(ProjectDir)Libraies\Win32\zlib\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)_dbg</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/nTA.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>winmm.lib;zlib.lib;dxguid.lib;dinput8.lib;dsound.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\Release/nTA.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ProgramDatabaseFile>.\Release/nTA.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/nTA.tlb</TypeLibraryName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying exe to distribution directory</Message>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)Distribution\$(TargetName).exe"
+"$(SolutionDir)bin/AsmNetMsg.exe" -backup "$(SolutionDir)source/"
+</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Debug/nTA.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>winmm.lib;zlib.lib;dxguid.lib;dinput8.lib;dsound.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Debug/nTA_dbg.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <IgnoreSpecificDefaultLibraries>libcmtd;libcd;libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/nTA_dbg.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/nTA.tlb</TypeLibraryName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying exe to distribution directory</Message>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)Distribution\$(TargetName).exe"
+"$(SolutionDir)bin/AsmNetMsg.exe" -backup "$(SolutionDir)source/"
+</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="res\resource.h" />
+    <ClInclude Include="Source\app.h" />
+    <ClInclude Include="Source\app_Console.h" />
+    <ClInclude Include="Source\app_Defs.h" />
+    <ClInclude Include="Source\app_FileTree.h" />
+    <ClInclude Include="Source\app_nTA.h" />
+    <ClInclude Include="Source\astar.h" />
+    <ClInclude Include="Source\Cavedog\exptype.h" />
+    <ClInclude Include="Source\Cavedog\sfxtype.h" />
+    <ClInclude Include="Source\fe.h" />
+    <ClInclude Include="Source\feature.h" />
+    <ClInclude Include="Source\feature_Factory.h" />
+    <ClInclude Include="Source\feature_Object.h" />
+    <ClInclude Include="Source\fe_GuiManager.h" />
+    <ClInclude Include="Source\fe_MainMenu.h" />
+    <ClInclude Include="Source\fe_MS_PlayerSelection.h" />
+    <ClInclude Include="Source\fe_MultiplayerSetup.h" />
+    <ClInclude Include="Source\fe_NewMultiplayerGame.h" />
+    <ClInclude Include="Source\fe_Options.h" />
+    <ClInclude Include="Source\fe_SelectConnection.h" />
+    <ClInclude Include="Source\fe_SelectGame.h" />
+    <ClInclude Include="Source\fe_SelectMap.h" />
+    <ClInclude Include="Source\fe_Single.h" />
+    <ClInclude Include="Source\fe_Skirmish.h" />
+    <ClInclude Include="Source\fe_Wnd.h" />
+    <ClInclude Include="Source\gadget_Button.h" />
+    <ClInclude Include="Source\gadget_ListBox.h" />
+    <ClInclude Include="Source\gadget_Pic.h" />
+    <ClInclude Include="Source\gadget_Slider.h" />
+    <ClInclude Include="Source\gadget_String.h" />
+    <ClInclude Include="Source\gadget_TextEdit.h" />
+    <ClInclude Include="Source\game.h" />
+    <ClInclude Include="Source\game_Constants.h" />
+    <ClInclude Include="Source\game_Defs.h" />
+    <ClInclude Include="Source\game_LoadFacilitator.h" />
+    <ClInclude Include="Source\game_Main.h" />
+    <ClInclude Include="Source\game_NetMessages.h" />
+    <ClInclude Include="Source\game_Player.h" />
+    <ClInclude Include="Source\game_Settings.h" />
+    <ClInclude Include="Source\game_Terrain.h" />
+    <ClInclude Include="Source\game_UserInterface.h" />
+    <ClInclude Include="Source\game_Weapon.h" />
+    <ClInclude Include="Source\gfx.h" />
+    <ClInclude Include="Source\gfx_Cursor.h" />
+    <ClInclude Include="Source\gfx_Defs.h" />
+    <ClInclude Include="Source\gfx_DynamicImage.h" />
+    <ClInclude Include="Source\gfx_Font.h" />
+    <ClInclude Include="Source\gfx_Interface.h" />
+    <ClInclude Include="Source\gfx_Model.h" />
+    <ClInclude Include="Source\gfx_ModelInstance.h" />
+    <ClInclude Include="Source\gfx_ModelPiece.h" />
+    <ClInclude Include="Source\gfx_Sprite.h" />
+    <ClInclude Include="Source\gfx_Surface.h" />
+    <ClInclude Include="Source\gfx_Terrain.h" />
+    <ClInclude Include="Source\gui.h" />
+    <ClInclude Include="Source\gui_Gadget.h" />
+    <ClInclude Include="Source\gui_Messages.h" />
+    <ClInclude Include="Source\gui_Resources.h" />
+    <ClInclude Include="Source\gui_Window.h" />
+    <ClInclude Include="Source\igui.h" />
+    <ClInclude Include="Source\igui_BuildButton.h" />
+    <ClInclude Include="Source\igui_BuildOrders.h" />
+    <ClInclude Include="Source\igui_Console.h" />
+    <ClInclude Include="Source\igui_ControlBar.h" />
+    <ClInclude Include="Source\igui_Defs.h" />
+    <ClInclude Include="Source\igui_GameWindow.h" />
+    <ClInclude Include="Source\igui_InfoBar.h" />
+    <ClInclude Include="Source\igui_Menu.h" />
+    <ClInclude Include="Source\igui_Messages.h" />
+    <ClInclude Include="Source\igui_MiniMap.h" />
+    <ClInclude Include="Source\igui_OrderButton.h" />
+    <ClInclude Include="Source\igui_ResourceBar.h" />
+    <ClInclude Include="Source\input.h" />
+    <ClInclude Include="Source\in_Defs.h" />
+    <ClInclude Include="Source\in_DInput8.h" />
+    <ClInclude Include="Source\net.h" />
+    <ClInclude Include="Source\net_Client.h" />
+    <ClInclude Include="Source\net_PacketHeader.h" />
+    <ClInclude Include="Source\net_RecvBuffer.h" />
+    <ClInclude Include="Source\net_SendBuffer.h" />
+    <ClInclude Include="Source\net_Sockets.h" />
+    <ClInclude Include="Source\object.h" />
+    <ClInclude Include="Source\object_Defs.h" />
+    <ClInclude Include="Source\physics_Object.h" />
+    <ClInclude Include="Source\physics_System.h" />
+    <ClInclude Include="Source\player.h" />
+    <ClInclude Include="Source\player_AI.h" />
+    <ClInclude Include="Source\player_Local.h" />
+    <ClInclude Include="Source\player_Network.h" />
+    <ClInclude Include="Source\scene_Object.h" />
+    <ClInclude Include="Source\scene_System.h" />
+    <ClInclude Include="Source\script.h" />
+    <ClInclude Include="Source\script_Code.h" />
+    <ClInclude Include="Source\script_Instructions.h" />
+    <ClInclude Include="Source\script_Machine.h" />
+    <ClInclude Include="Source\script_Proccess.h" />
+    <ClInclude Include="Source\snd.h" />
+    <ClInclude Include="Source\snd_DSound8.h" />
+    <ClInclude Include="Source\std.h" />
+    <ClInclude Include="Source\std_Assert.h" />
+    <ClInclude Include="Source\std_Defs.h" />
+    <ClInclude Include="Source\std_FileIO.h" />
+    <ClInclude Include="Source\std_Math.h" />
+    <ClInclude Include="Source\std_OS_Includes.h" />
+    <ClInclude Include="Source\std_Platform.h" />
+    <ClInclude Include="Source\std_Point.h" />
+    <ClInclude Include="Source\std_Rect.h" />
+    <ClInclude Include="Source\std_RectF.h" />
+    <ClInclude Include="Source\std_Size.h" />
+    <ClInclude Include="Source\std_SizeF.h" />
+    <ClInclude Include="Source\std_Time.h" />
+    <ClInclude Include="Source\std_Types.h" />
+    <ClInclude Include="Source\std_Vector.h" />
+    <ClInclude Include="Source\std_Vector2.h" />
+    <ClInclude Include="Source\std_Vector3.h" />
+    <ClInclude Include="Source\sys.h" />
+    <ClInclude Include="Source\sys_App.h" />
+    <ClInclude Include="Source\sys_Defs.h" />
+    <ClInclude Include="Source\sys_DLL.h" />
+    <ClInclude Include="Source\ta_3DO.h" />
+    <ClInclude Include="Source\ta_COB.h" />
+    <ClInclude Include="Source\ta_COB_Instructions.h" />
+    <ClInclude Include="Source\ta_GAF.h" />
+    <ClInclude Include="Source\ta_GUI.h" />
+    <ClInclude Include="Source\ta_HPI.h" />
+    <ClInclude Include="Source\ta_OTA.h" />
+    <ClInclude Include="Source\ta_TDF.h" />
+    <ClInclude Include="Source\ta_TNT.h" />
+    <ClInclude Include="Source\unit.h" />
+    <ClInclude Include="Source\unit_Aircraft.h" />
+    <ClInclude Include="Source\unit_Defs.h" />
+    <ClInclude Include="Source\unit_Factory.h" />
+    <ClInclude Include="Source\unit_Ground.h" />
+    <ClInclude Include="Source\unit_Group.h" />
+    <ClInclude Include="Source\unit_Hovercraft.h" />
+    <ClInclude Include="Source\unit_Interface.h" />
+    <ClInclude Include="Source\unit_Job.h" />
+    <ClInclude Include="Source\unit_Locomotion.h" />
+    <ClInclude Include="Source\unit_Object.h" />
+    <ClInclude Include="Source\unit_Orders.h" />
+    <ClInclude Include="Source\unit_Project.h" />
+    <ClInclude Include="Source\unit_Seacraft.h" />
+    <ClInclude Include="Source\unit_SoundCategory.h" />
+    <ClInclude Include="Source\unit_Structure.h" />
+    <ClInclude Include="Source\unit_Task.h" />
+    <ClInclude Include="Source\unit_Type.h" />
+    <ClInclude Include="Source\util_RectFiller.h" />
+    <ClInclude Include="Source\util_TxtParse.h" />
+    <ClInclude Include="Source\weapon.h" />
+    <ClInclude Include="Source\weapon_Factory.h" />
+    <ClInclude Include="Source\wnd.h" />
+    <ClInclude Include="Source\wnd_Manager.h" />
+    <ClInclude Include="Source\wnd_TextBox.h" />
+    <ClInclude Include="Source\wnd_Window.h" />
+    <ClInclude Include="Source\zconf.h" />
+    <ClInclude Include="Source\zlib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\app_Console.cpp" />
+    <ClCompile Include="Source\app_FileTree.cpp" />
+    <ClCompile Include="Source\app_nTA.cpp" />
+    <ClCompile Include="Source\app_nTA_Win32.cpp" />
+    <ClCompile Include="Source\feature_Factory.cpp" />
+    <ClCompile Include="Source\feature_Object.cpp" />
+    <ClCompile Include="Source\fe_GuiManager.cpp" />
+    <ClCompile Include="Source\fe_MainMenu.cpp" />
+    <ClCompile Include="Source\fe_MS_PlayerSelection.cpp" />
+    <ClCompile Include="Source\fe_MultiplayerSetup.cpp" />
+    <ClCompile Include="Source\fe_MultiplayerSetup_Win32.cpp" />
+    <ClCompile Include="Source\fe_NewMultiplayerGame.cpp" />
+    <ClCompile Include="Source\fe_Options.cpp" />
+    <ClCompile Include="Source\fe_SelectConnection.cpp" />
+    <ClCompile Include="Source\fe_SelectGame.cpp" />
+    <ClCompile Include="Source\fe_SelectMap.cpp" />
+    <ClCompile Include="Source\fe_Single.cpp" />
+    <ClCompile Include="Source\fe_Skirmish.cpp" />
+    <ClCompile Include="Source\fe_Skirmish_Win32.cpp" />
+    <ClCompile Include="Source\fe_Wnd.cpp" />
+    <ClCompile Include="Source\gadget_Button.cpp" />
+    <ClCompile Include="Source\gadget_ListBox.cpp" />
+    <ClCompile Include="Source\gadget_Pic.cpp" />
+    <ClCompile Include="Source\gadget_Slider.cpp" />
+    <ClCompile Include="Source\gadget_String.cpp" />
+    <ClCompile Include="Source\gadget_TextEdit.cpp" />
+    <ClCompile Include="Source\game_Load.cpp" />
+    <ClCompile Include="Source\game_Main.cpp" />
+    <ClCompile Include="Source\game_NetMessages.cpp" />
+    <ClCompile Include="Source\game_Player.cpp" />
+    <ClCompile Include="Source\game_Terrain.cpp" />
+    <ClCompile Include="Source\game_UserInterface.cpp" />
+    <ClCompile Include="Source\game_UserInterface_Load.cpp" />
+    <ClCompile Include="Source\game_Weapon.cpp" />
+    <ClCompile Include="Source\gfx_Interface.cpp" />
+    <ClCompile Include="Source\gui_Gadget.cpp" />
+    <ClCompile Include="Source\gui_Resources.cpp" />
+    <ClCompile Include="Source\gui_Window.cpp" />
+    <ClCompile Include="Source\igui_BuildButton.cpp" />
+    <ClCompile Include="Source\igui_BuildOrders.cpp" />
+    <ClCompile Include="Source\igui_Console.cpp" />
+    <ClCompile Include="Source\igui_ControlBar.cpp" />
+    <ClCompile Include="Source\igui_GameWindow.cpp" />
+    <ClCompile Include="Source\igui_InfoBar.cpp" />
+    <ClCompile Include="Source\igui_Menu.cpp" />
+    <ClCompile Include="Source\igui_MiniMap.cpp" />
+    <ClCompile Include="Source\igui_OrderButton.cpp" />
+    <ClCompile Include="Source\igui_ResourceBar.cpp" />
+    <ClCompile Include="Source\in_DInput8.cpp" />
+    <ClCompile Include="Source\net_RecvBuffer.cpp" />
+    <ClCompile Include="Source\net_SendBuffer.cpp" />
+    <ClCompile Include="Source\net_Sockets.cpp" />
+    <ClCompile Include="Source\physics_Object.cpp" />
+    <ClCompile Include="Source\physics_System.cpp" />
+    <ClCompile Include="Source\player_AI.cpp" />
+    <ClCompile Include="Source\player_Local.cpp" />
+    <ClCompile Include="Source\player_Network.cpp" />
+    <ClCompile Include="Source\scene_Object.cpp" />
+    <ClCompile Include="Source\scene_System.cpp" />
+    <ClCompile Include="Source\script_Code.cpp" />
+    <ClCompile Include="Source\script_Functions.cpp" />
+    <ClCompile Include="Source\script_Machine.cpp" />
+    <ClCompile Include="Source\script_Proccess.cpp" />
+    <ClCompile Include="Source\script_Proccess_Handlers.cpp" />
+    <ClCompile Include="Source\snd_DSound8.cpp" />
+    <ClCompile Include="Source\std_FileIO_Win32.cpp" />
+    <ClCompile Include="Source\std_Types.cpp" />
+    <ClCompile Include="Source\sys_App.cpp" />
+    <ClCompile Include="Source\sys_Win32.cpp" />
+    <ClCompile Include="Source\ta_GUI.cpp" />
+    <ClCompile Include="Source\ta_OTA.cpp" />
+    <ClCompile Include="Source\ta_TDF.cpp" />
+    <ClCompile Include="Source\unit_Aircraft.cpp" />
+    <ClCompile Include="Source\unit_Factory.cpp" />
+    <ClCompile Include="Source\unit_Factory_Load.cpp" />
+    <ClCompile Include="Source\unit_Ground.cpp" />
+    <ClCompile Include="Source\unit_Group.cpp" />
+    <ClCompile Include="Source\unit_Hovercraft.cpp" />
+    <ClCompile Include="Source\unit_Interface.cpp" />
+    <ClCompile Include="Source\unit_Job.cpp" />
+    <ClCompile Include="Source\unit_Object.cpp" />
+    <ClCompile Include="Source\unit_Object_Commands.cpp" />
+    <ClCompile Include="Source\unit_Object_Events.cpp" />
+    <ClCompile Include="Source\unit_Object_Handlers.cpp" />
+    <ClCompile Include="Source\unit_Orders.cpp" />
+    <ClCompile Include="Source\unit_Project.cpp" />
+    <ClCompile Include="Source\unit_Seacraft.cpp" />
+    <ClCompile Include="Source\unit_Structure.cpp" />
+    <ClCompile Include="Source\util_RectFiller.cpp" />
+    <ClCompile Include="Source\util_TxtParse.cpp" />
+    <ClCompile Include="Source\weapon_Factory.cpp" />
+    <ClCompile Include="Source\wnd_Manager.cpp" />
+    <ClCompile Include="Source\wnd_TextBox.cpp" />
+    <ClCompile Include="Source\wnd_Window.cpp" />
+    <ClCompile Include="Source\wnd_Window_Events.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Distribution\OTA\Startup.cfg" />
+    <None Include="Distribution\root\Startup.cfg" />
+    <None Include="Source\app_Console.inl" />
+    <None Include="Source\app_FileTree.inl" />
+    <None Include="Source\app_nTA.inl" />
+    <None Include="Source\app_nTA_Exposed.inl" />
+    <None Include="Source\feature_Factory.inl" />
+    <None Include="Source\gadget_ListBox.inl" />
+    <None Include="Source\gadget_Slider.inl" />
+    <None Include="Source\game_Main.inl" />
+    <CustomBuild Include="Source\game_NetMessages.nm">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Assembling NetMessages from %(Filename)%(Extension)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(SolutionDir)bin/AsmNetMsg.exe" "%(FullPath)" "$(SolutionDir)source/"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)unit_Interface.h;%(RootDir)%(Directory)unit_Interface.cpp;%(RootDir)%(Directory)game_Main.h;%(RootDir)%(Directory)game_NetMessages.cpp;%(RootDir)%(Directory)game_NetMessages.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Assembling NetMessages from %(Filename)%(Extension)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(SolutionDir)bin/AsmNetMsg.exe" "%(FullPath)" "$(SolutionDir)source/"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)unit_Interface.h;%(RootDir)%(Directory)unit_Interface.cpp;%(RootDir)%(Directory)game_Main.h;%(RootDir)%(Directory)game_NetMessages.cpp;%(RootDir)%(Directory)game_NetMessages.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="Source\game_Player.inl" />
+    <None Include="Source\game_Terrain.inl" />
+    <None Include="Source\game_UserInterface.inl" />
+    <None Include="Source\gfx_Interface.inl" />
+    <None Include="Source\gui_Gadget.inl" />
+    <None Include="Source\gui_Window.inl" />
+    <None Include="Source\igui_ControlBar.inl" />
+    <None Include="Source\net_Sockets.inl" />
+    <None Include="Source\physics_Object.inl" />
+    <None Include="Source\physics_System.inl" />
+    <None Include="Source\scene_Object.inl" />
+    <None Include="Source\scene_System.inl" />
+    <None Include="Source\script_Code.inl" />
+    <None Include="Source\script_Machine.inl" />
+    <None Include="Source\script_Proccess.inl" />
+    <None Include="Source\std_Math.inl" />
+    <None Include="Source\std_Point.inl" />
+    <None Include="Source\std_Rect.inl" />
+    <None Include="Source\std_RectF.inl" />
+    <None Include="Source\std_Size.inl" />
+    <None Include="Source\std_SizeF.inl" />
+    <None Include="Source\std_Time.inl" />
+    <None Include="Source\std_Types.inl" />
+    <None Include="Source\std_Vector2.inl" />
+    <None Include="Source\std_Vector3.inl" />
+    <None Include="Source\sys_App.inl" />
+    <None Include="Source\sys_DLL_Win32.inl" />
+    <None Include="Source\unit_Factory.inl" />
+    <None Include="Source\unit_Object.inl" />
+    <None Include="Source\util_TxtParse.inl" />
+    <None Include="Source\wnd_Manager.inl" />
+    <None Include="Source\wnd_Window.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\nTA.ico" />
+    <Image Include="res\TA.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\nTA.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">res</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">res</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Distribution\Log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Gfx Dll Projects\Direct3D8\Direct3D8.vcxproj">
+      <Project>{d631d610-2398-4195-b990-37110d343cc0}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Gfx Dll Projects\OpenGL\OpenGL.vcxproj">
+      <Project>{f18c45d9-84a3-4b7d-a97e-c9c23264843f}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Tools\Assemble Net Messages\Assemble Net Messages.vcxproj">
+      <Project>{f1214df4-f38d-494d-9d32-3b59b1cd9dbe}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,48 +1,37 @@
-Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assemble Net Messages", "TOOLS\Assemble Net Messages\Assemble Net Messages.vcproj", "{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assemble Net Messages", "Tools\Assemble Net Messages\Assemble Net Messages.vcxproj", "{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Direct3D8", "Gfx Dll Projects\Direct3D8\Direct3D8.vcproj", "{D631D610-2398-4195-B990-37110D343CC0}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Direct3D8", "Gfx Dll Projects\Direct3D8\Direct3D8.vcxproj", "{D631D610-2398-4195-B990-37110D343CC0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "Gfx Dll Projects\OpenGL\OpenGL.vcproj", "{F18C45D9-84A3-4B7D-A97E-C9C23264843F}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "Gfx Dll Projects\OpenGL\OpenGL.vcxproj", "{F18C45D9-84A3-4B7D-A97E-C9C23264843F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nTA", "nTA.vcproj", "{B7C2539E-5899-47EB-809F-81B8698E294F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D631D610-2398-4195-B990-37110D343CC0} = {D631D610-2398-4195-B990-37110D343CC0}
-		{F18C45D9-84A3-4B7D-A97E-C9C23264843F} = {F18C45D9-84A3-4B7D-A97E-C9C23264843F}
-		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE} = {F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nTA", "nTA.vcxproj", "{B7C2539E-5899-47EB-809F-81B8698E294F}"
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		Debug = Debug
-		Release = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}.Debug.ActiveCfg = Debug|Win32
-		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}.Debug.Build.0 = Debug|Win32
-		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}.Release.ActiveCfg = Release|Win32
-		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}.Release.Build.0 = Release|Win32
-		{D631D610-2398-4195-B990-37110D343CC0}.Debug.ActiveCfg = Debug|Win32
-		{D631D610-2398-4195-B990-37110D343CC0}.Debug.Build.0 = Debug|Win32
-		{D631D610-2398-4195-B990-37110D343CC0}.Release.ActiveCfg = Release|Win32
-		{D631D610-2398-4195-B990-37110D343CC0}.Release.Build.0 = Release|Win32
-		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Debug.ActiveCfg = Debug|Win32
-		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Debug.Build.0 = Debug|Win32
-		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Release.ActiveCfg = Release|Win32
-		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Release.Build.0 = Release|Win32
-		{B7C2539E-5899-47EB-809F-81B8698E294F}.Debug.ActiveCfg = Debug|Win32
-		{B7C2539E-5899-47EB-809F-81B8698E294F}.Debug.Build.0 = Debug|Win32
-		{B7C2539E-5899-47EB-809F-81B8698E294F}.Release.ActiveCfg = Release|Win32
-		{B7C2539E-5899-47EB-809F-81B8698E294F}.Release.Build.0 = Release|Win32
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}.Debug|x86.ActiveCfg = Debug|Win32
+		{F1214DF4-F38D-494D-9D32-3B59B1CD9DBE}.Release|x86.ActiveCfg = Release|Win32
+		{D631D610-2398-4195-B990-37110D343CC0}.Debug|x86.ActiveCfg = Debug|Win32
+		{D631D610-2398-4195-B990-37110D343CC0}.Debug|x86.Build.0 = Debug|Win32
+		{D631D610-2398-4195-B990-37110D343CC0}.Release|x86.ActiveCfg = Release|Win32
+		{D631D610-2398-4195-B990-37110D343CC0}.Release|x86.Build.0 = Release|Win32
+		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Debug|x86.ActiveCfg = Debug|Win32
+		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Debug|x86.Build.0 = Debug|Win32
+		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Release|x86.ActiveCfg = Release|Win32
+		{F18C45D9-84A3-4B7D-A97E-C9C23264843F}.Release|x86.Build.0 = Release|Win32
+		{B7C2539E-5899-47EB-809F-81B8698E294F}.Debug|x86.ActiveCfg = Debug|Win32
+		{B7C2539E-5899-47EB-809F-81B8698E294F}.Debug|x86.Build.0 = Debug|Win32
+		{B7C2539E-5899-47EB-809F-81B8698E294F}.Release|x86.ActiveCfg = Release|Win32
+		{B7C2539E-5899-47EB-809F-81B8698E294F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

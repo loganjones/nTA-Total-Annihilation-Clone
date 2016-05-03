@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Standard / Utility">
+      <UniqueIdentifier>{5faff7bf-6bec-46ef-b145-a8c0f60fc9de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Subclasses">
+      <UniqueIdentifier>{e1528a1c-b924-4e65-b5ac-080c19326506}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\std_FileIO_Win32.cpp">
+      <Filter>Standard / Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\std_Types.cpp">
+      <Filter>Standard / Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\util_RectFiller.cpp">
+      <Filter>Standard / Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Cursor.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_DynamicImage.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Font.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Matrix.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Model.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Palettes.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Sprite.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Surface.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ogl_Terrain.cpp">
+      <Filter>Subclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gfx_OpenGL.cpp" />
+    <ClCompile Include="Source\gfx_OpenGL_Win32.cpp" />
+    <ClCompile Include="Source\ogl_ModelInstance.cpp" />
+    <ClCompile Include="Source\ogl_ModelPiece.cpp" />
+    <ClCompile Include="Source\sys_DLL_Win32.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\ogl_Cursor.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ogl_DynamicImage.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ogl_Font.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ogl_Model.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ogl_Sprite.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ogl_Surface.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ogl_Terrain.h">
+      <Filter>Subclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gfx_OpenGL.h" />
+    <ClInclude Include="Source\ogl.h" />
+    <ClInclude Include="Source\ogl_ModelInstance.h" />
+    <ClInclude Include="Source\ogl_ModelPiece.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\ogl_Terrain.inl">
+      <Filter>Subclasses</Filter>
+    </None>
+    <None Include="Source\ogl_ModelInstance.inl" />
+    <None Include="Source\OpenGL.def" />
+  </ItemGroup>
+</Project>

@@ -58,12 +58,12 @@ public:
 protected:
 
 	typedef list< unit_Type >				UnitTypeList_t;
-//	typedef hash_map< DWORD, unit_Type* >	UnitTypeMap_t;
-	typedef hash_map< DWORD, unit_Type >	UnitTypeMap_t;
-	typedef hash_map< UINT32, unit_Object*>	UnitMap_t;
+//	typedef unordered_map< DWORD, unit_Type* >	UnitTypeMap_t;
+	typedef unordered_map< DWORD, unit_Type >	UnitTypeMap_t;
+	typedef unordered_map< UINT32, unit_Object*>	UnitMap_t;
 
 	typedef list< unit_SoundCategory >		SoundCategoryList_t;
-	typedef hash_map< string, unit_SoundCategory* >	SoundCategoryMap_t;
+	typedef unordered_map< string, unit_SoundCategory* >	SoundCategoryMap_t;
 
 	struct SearchNode_t;
 
@@ -72,7 +72,7 @@ protected:
 
 	struct PointHash_t { size_t operator()( const std_Point& pt ) const { return (pt.x + (pt.y * 4096)); } };
 	struct PointEql_t { bool operator()( const std_Point& ptA, const std_Point& ptB ) const { return (ptA == ptB)==TRUE; } };
-	typedef hash_map< std_Point, SearchNode_t*, PointHash_t, PointEql_t >	SearchNodeBank_t;
+	typedef unordered_map< std_Point, SearchNode_t*, PointHash_t, PointEql_t >	SearchNodeBank_t;
 
 	typedef map< unit_Object*, PathFind_t >	PathsInProgress_t;
 

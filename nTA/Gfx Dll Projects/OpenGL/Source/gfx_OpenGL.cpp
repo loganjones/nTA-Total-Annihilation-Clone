@@ -217,8 +217,8 @@ void gfx_OpenGL::EndScene()
 BOOL gfx_OpenGL::CheckForExtensionString( LPCTSTR strExtension )
 {
     LPCTSTR     ExtensionString;
-    LPTSTR      PossibleOccurance;
-    LPTSTR      EndOfOccurance;
+    LPCTSTR     PossibleOccurance;
+    LPCTSTR     EndOfOccurance;
 
     // Check if the given string is valid
 	if( (strchr(strExtension,' ')!=NULL)||(strExtension==NULL)||(strExtension[0]=='\0') )

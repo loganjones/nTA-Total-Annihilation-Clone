@@ -313,7 +313,7 @@ protected:
 	FileBufferList_t			m_ModelTextureFiles;
 
 	//struct streq { bool operator()(const char* strA, const char* strB) const { return strcmp(strA,strB)==0; } };
-	//typedef hash_map< char*, BYTE*, hash<char*>, streq >	TextureMap_t;
+	//typedef unordered_map< char*, BYTE*, hash<char*>, streq >	TextureMap_t;
 	struct strless { bool operator()(const char* strA, const char* strB) const { return strcmp(strA,strB)<0; } };
 	typedef map< char*, BYTE*, strless >	TextureMap_t;
 	TextureMap_t				m_ModelTextures;

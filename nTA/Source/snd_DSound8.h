@@ -22,7 +22,7 @@ class snd_DSound8
 //	};
 
 	//typedef list< Sound_t >	SoundList_t;
-	typedef hash_map< LPVOID, LPDIRECTSOUNDBUFFER >	SoundList_t;
+	typedef unordered_map< LPVOID, LPDIRECTSOUNDBUFFER >	SoundList_t;
 
 /////////////////////////////////////////////////
 // INTERFACE
