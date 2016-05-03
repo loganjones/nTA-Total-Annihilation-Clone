@@ -368,3 +368,4 @@ fastlane/screenshots
 *.exe
 *.out
 *.app
+Log.txt
