@@ -49,27 +49,27 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreGraphics/CoreGraphics.h>
 
-#define BOOL bool
-#define LPVOID void *
-#define LPCTSTR const char *
-#define LPTSTR char *
-#define LPSTR char *
-#define DWORD uint32_t
-#define WORD uint16_t
-#define BYTE uint8_t
-#define UINT32 uint32_t
-#define INT32 int32_t
-#define UINT16 uint16_t
-#define INT16 int16_t
-#define UINT8 uint8_t
-#define INT8 int8_t
-#define UINT unsigned int
-#define LRESULT long
+typedef bool BOOL;
+typedef void * LPVOID;
+typedef const char * LPCTSTR;
+typedef char * LPTSTR;
+typedef char * LPSTR;
+typedef size_t DWORD;
+typedef uint16_t WORD;
+typedef uint8_t BYTE;
+typedef uint32_t UINT32;
+typedef int32_t INT32;
+typedef uint16_t UINT16;
+typedef int16_t INT16;
+typedef uint8_t UINT8;
+typedef int8_t INT8;
+typedef unsigned int UINT;
+typedef long LRESULT;
 #define stricmp strcasecmp
 #define strnicmp strncasecmp
 #define ZeroMemory(P,SZ) memset(P,0,SZ)
 #define CALLBACK
-#define SOCKET int
+typedef int SOCKET;
 
 #define Param_t size_t
 
