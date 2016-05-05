@@ -12,6 +12,9 @@
 #ifdef _WIN32
 	typedef HINSTANCE HDLL;
 	typedef FARPROC HDLLPROC;
+#else
+    typedef void * HDLL;
+    typedef void * HDLLPROC;
 #endif
 
 
@@ -32,7 +35,11 @@ inline void sys_UnloadDll( HDLL hDll );
 
 
 #ifdef _WIN32
-#include "sys_DLL_Win32.inl"
+#  include "sys_DLL_Win32.inl"
+#elif __APPLE__
+#  include "sys_DLL_macOS.inl"
+#else
+#  error "Unknown Platform"
 #endif
 
 
