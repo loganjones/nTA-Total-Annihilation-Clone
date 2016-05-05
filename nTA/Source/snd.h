@@ -15,7 +15,11 @@
 #ifdef _WIN32
  #include "snd_DSound8.h"
  typedef snd_DSound8			snd_Interface;
-#else // Other platforms go here
+#elif __APPLE__
+ #include "snd_Mac.h"
+ typedef snd_Mac                snd_Interface;
+#else
+#  error "No sound interface known for this platform."
 #endif
 
 // Global snd_Interface object

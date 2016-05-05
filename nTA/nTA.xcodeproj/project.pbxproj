@@ -152,6 +152,7 @@
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
+		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -468,6 +469,8 @@
 		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
 		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
+		B5D033471CDAD74300409327 /* snd_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snd_Mac.cpp; sourceTree = "<group>"; };
+		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -714,6 +717,8 @@
 				B508FF3B1C4BCE34008CFEB9 /* snd.h */,
 				B508FF3C1C4BCE34008CFEB9 /* snd_DSound8.cpp */,
 				B508FF3D1C4BCE34008CFEB9 /* snd_DSound8.h */,
+				B5D033471CDAD74300409327 /* snd_Mac.cpp */,
+				B5D033481CDAD74300409327 /* snd_Mac.h */,
 				B508FF3E1C4BCE34008CFEB9 /* std.h */,
 				B508FF3F1C4BCE34008CFEB9 /* std_Assert.h */,
 				B508FF401C4BCE34008CFEB9 /* std_Defs.h */,
@@ -1032,6 +1037,7 @@
 				B508FFD11C4BCE34008CFEB9 /* game_Load.cpp in Sources */,
 				B50800391C4BCE34008CFEB9 /* unit_Requests.cpp in Sources */,
 				B508FFEE1C4BCE34008CFEB9 /* igui_Menu.cpp in Sources */,
+				B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */,
 				B508FFBD1C4BCE34008CFEB9 /* fe_NewMultiplayerGame.cpp in Sources */,
 				B508002F1C4BCE34008CFEB9 /* unit_Locomotion.cpp in Sources */,
 				B508FFD41C4BCE34008CFEB9 /* game_NetMessage_Handlers.cpp in Sources */,
