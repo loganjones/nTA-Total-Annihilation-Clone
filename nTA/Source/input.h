@@ -19,6 +19,8 @@
  #include "in_DInput8.h"
  typedef in_DInput8			input_Interface;
 #else // Other platforms go here
+ #include "in_Mac.hpp"
+ typedef in_Mac             input_Interface;
 #endif
 
 // Global input_Interface object

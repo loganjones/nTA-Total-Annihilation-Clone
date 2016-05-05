@@ -8,6 +8,8 @@
 /////////////////////////////////////////////////////////////////////
 
 
+#ifdef _WIN32
+
 #define IN_MOUSE_AXIS_X			DIMOFS_X
 #define IN_MOUSE_AXIS_Y			DIMOFS_Y
 #define IN_MOUSE_AXIS_Z			DIMOFS_Z
@@ -136,6 +138,151 @@
 #define IN_KEY_LWIN				DIK_LWIN
 #define IN_KEY_RWIN				DIK_RWIN
 #define IN_KEY_APPMENU			DIK_APPS
+
+
+#elif __APPLE__
+
+#include "std_Platform.h"
+
+enum in_MouseAxis : DWORD {
+    IN_MOUSE_AXIS_X = 10000,
+    IN_MOUSE_AXIS_Y,
+    IN_MOUSE_AXIS_Z,
+};
+
+enum in_MouseButton : DWORD {
+    IN_MOUSE_BUTTON_1 = 10100,
+    IN_MOUSE_BUTTON_2,
+    IN_MOUSE_BUTTON_3,
+    IN_MOUSE_BUTTON_4,
+    IN_MOUSE_BUTTON_5,
+    IN_MOUSE_BUTTON_6,
+    IN_MOUSE_BUTTON_7,
+    IN_MOUSE_BUTTON_8,
+};
+
+enum in_KeyboardButton : DWORD {
+    IN_KEY_ESCAPE = 1000,
+    IN_KEY_1,
+    IN_KEY_2,
+    IN_KEY_3,
+    IN_KEY_4,
+    IN_KEY_5,
+    IN_KEY_6,
+    IN_KEY_7,
+    IN_KEY_8,
+    IN_KEY_9,
+    IN_KEY_0,
+    IN_KEY_MINUS,
+    IN_KEY_EQUALS,
+    IN_KEY_BACKSPACE,
+    IN_KEY_TAB,
+    IN_KEY_Q,
+    IN_KEY_W,
+    IN_KEY_E,
+    IN_KEY_R,
+    IN_KEY_T,
+    IN_KEY_Y,
+    IN_KEY_U,
+    IN_KEY_I,
+    IN_KEY_O,
+    IN_KEY_P,
+    IN_KEY_LBRACKET,
+    IN_KEY_RBRACKET,
+    IN_KEY_ENTER,
+    IN_KEY_RETURN,
+    IN_KEY_LCTRL,
+    IN_KEY_LCONTROL,
+    IN_KEY_A,
+    IN_KEY_S,
+    IN_KEY_D,
+    IN_KEY_F,
+    IN_KEY_G,
+    IN_KEY_H,
+    IN_KEY_J,
+    IN_KEY_K,
+    IN_KEY_L,
+    IN_KEY_SEMICOLON,
+    IN_KEY_APOSTROPHE,
+    IN_KEY_TILDE,
+    IN_KEY_GRAVE,
+    IN_KEY_LSHIFT,
+    IN_KEY_BACKSLASH,
+    IN_KEY_Z,
+    IN_KEY_X,
+    IN_KEY_C,
+    IN_KEY_V,
+    IN_KEY_B,
+    IN_KEY_N,
+    IN_KEY_M,
+    IN_KEY_COMMA,
+    IN_KEY_PERIOD,
+    IN_KEY_SLASH,
+    IN_KEY_RSHIFT,
+    IN_KEY_KP_MULTIPLY,
+    IN_KEY_LALT,
+    IN_KEY_SPACE,
+    IN_KEY_CAPSLOCK,
+    IN_KEY_F1,
+    IN_KEY_F2,
+    IN_KEY_F3,
+    IN_KEY_F4,
+    IN_KEY_F5,
+    IN_KEY_F6,
+    IN_KEY_F7,
+    IN_KEY_F8,
+    IN_KEY_F9,
+    IN_KEY_F10,
+    IN_KEY_NUMLOCK,
+    IN_KEY_SCROLLLOCK,
+    IN_KEY_KP_7,
+    IN_KEY_KP_8,
+    IN_KEY_KP_9,
+    IN_KEY_KP_MINUS,
+    IN_KEY_KP_SUBTRACT,
+    IN_KEY_KP_4,
+    IN_KEY_KP_5,
+    IN_KEY_KP_6,
+    IN_KEY_KP_PLUS,
+    IN_KEY_KP_ADD,
+    IN_KEY_KP_1,
+    IN_KEY_KP_2,
+    IN_KEY_KP_3,
+    IN_KEY_KP_0,
+    IN_KEY_KP_DECIMAL,
+    IN_KEY_KP_PERIOD,
+    IN_KEY_F11,
+    IN_KEY_F12,
+    IN_KEY_F13,
+    IN_KEY_F14,
+    IN_KEY_F15,
+    IN_KEY_KP_EQUALS,
+    IN_KEY_RCTR,
+    IN_KEY_KP_COMMA,
+    IN_KEY_KP_DIVIDE,
+    IN_KEY_KP_SLASH,
+    IN_KEY_RALT,
+    IN_KEY_PAUSE,
+    IN_KEY_INSERT,
+    IN_KEY_DELETE,
+    IN_KEY_HOME,
+    IN_KEY_UP,
+    IN_KEY_PGUP,
+    IN_KEY_LEFT,
+    IN_KEY_RIGHT,
+    IN_KEY_END,
+    IN_KEY_DOWN,
+    IN_KEY_PGDOWN,
+    IN_KEY_KP_INS,
+    IN_KEY_KP_DEL,
+    IN_KEY_LWIN,
+    IN_KEY_RWIN,
+    IN_KEY_APPMENU,
+};
+
+#else
+#  error "Unknown Platform"
+#endif
 
 
 /////////////////////////////////////////////////////////////////////

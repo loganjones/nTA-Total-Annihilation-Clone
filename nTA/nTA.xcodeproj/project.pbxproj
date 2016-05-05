@@ -150,6 +150,7 @@
 		B508FFF71C4BCE34008CFEB9 /* net_Sockets.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF0C1C4BCE34008CFEB9 /* net_Sockets.inl */; };
 		B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF1B1C4BCE34008CFEB9 /* physics_Object.cpp */; };
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
+		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -463,6 +464,8 @@
 		B508FFAB1C4BCE34008CFEB9 /* wnd_Window_Events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wnd_Window_Events.cpp; sourceTree = "<group>"; };
 		B508FFAC1C4BCE34008CFEB9 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
 		B508FFAD1C4BCE34008CFEB9 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
+		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -657,6 +660,8 @@
 				B508FEFD1C4BCE34008CFEB9 /* in_Defs.h */,
 				B508FEFE1C4BCE34008CFEB9 /* in_DInput8.cpp */,
 				B508FEFF1C4BCE34008CFEB9 /* in_DInput8.h */,
+				B5D033421CD97E2500409327 /* in_Mac.cpp */,
+				B5D033431CD97E2500409327 /* in_Mac.hpp */,
 				B508FF001C4BCE34008CFEB9 /* input.h */,
 				B508FF011C4BCE34008CFEB9 /* net.h */,
 				B508FF021C4BCE34008CFEB9 /* net_Client.h */,
@@ -992,6 +997,7 @@
 				B50800431C4BCE34008CFEB9 /* wnd_Window.cpp in Sources */,
 				B508FFC41C4BCE34008CFEB9 /* fe_Skirmish_Win32.cpp in Sources */,
 				B508003D1C4BCE34008CFEB9 /* util_TxtParse.cpp in Sources */,
+				B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */,
 				B508001A1C4BCE34008CFEB9 /* std_Types.cpp in Sources */,
 				B50800361C4BCE34008CFEB9 /* unit_Object_Handlers.cpp in Sources */,
 				B508FE5E1C4BCCFD008CFEB9 /* main.m in Sources */,
