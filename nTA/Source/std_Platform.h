@@ -78,6 +78,9 @@ typedef int SOCKET;
 #define LOBYTE(w) ((BYTE)(w))
 #define HIBYTE(w) ((BYTE)(((WORD)(w) >> 8) & 0xFF))
 
+#define __min(a,b)  MIN(a,b)
+#define __max(a,b)  MAX(a,b)
+
 #define MAX_PATH 255
 
 typedef struct PALETTEENTRY {

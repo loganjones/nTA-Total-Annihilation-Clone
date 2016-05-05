@@ -16,7 +16,7 @@
 //
 void game_Player::Consume( ResourceType_t eWhat, float fHowMuch )
 {
-	m_Resources[eWhat].Amount = max( m_Resources[eWhat].Amount - fHowMuch, 0 );
+	m_Resources[eWhat].Amount = __max( m_Resources[eWhat].Amount - fHowMuch, 0 );
 }
 // End game_Player::Consume()
 /////////////////////////////////////////////////////////////////////
