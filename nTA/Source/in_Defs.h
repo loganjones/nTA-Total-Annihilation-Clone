@@ -257,7 +257,7 @@ enum in_KeyboardButton : DWORD {
     IN_KEY_F14,
     IN_KEY_F15,
     IN_KEY_KP_EQUALS,
-    IN_KEY_RCTR,
+    IN_KEY_RCTRL,
     IN_KEY_KP_COMMA,
     IN_KEY_KP_DIVIDE,
     IN_KEY_KP_SLASH,

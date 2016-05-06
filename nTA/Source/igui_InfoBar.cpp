@@ -160,7 +160,7 @@ void igui_InfoBar::DisplayObjectInfo( class scene_Object* pObject )
 	else if( pObject->GetSceneryType()==OBJ_Feature )
 	{
 		m_What.Feature = static_cast<feature_Object*>(pObject);
-		sprintf( m_Line1, "%s", m_What.Feature->GetType()->Name );
+		sprintf( m_Line1, "%s", m_What.Feature->GetType()->Name.c_str() );
 		m_DisplayingWhat = DISP_FeatureInfo;
 	}
 	else if( pObject->GetSceneryType()==OBJ_Unit )
