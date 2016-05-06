@@ -496,6 +496,11 @@ void app_nTA::SetStartMenu( LPCTSTR strMenuName )
 //////////////////////////////////////////////////////////////////////
 
 
+#if __APPLE__
+extern "C" const int _MakeARGV_macOS(char ***pargv);
+extern "C" void _FreeARGV_macOS(char **argv, const int argc);
+#endif
+
 //////////////////////////////////////////////////////////////////////
 // app_nTA::ProcessCommandLine() //                \author Logan Jones
 ///////////////////////////////////                    \date 9/20/2001
@@ -504,6 +509,11 @@ void app_nTA::SetStartMenu( LPCTSTR strMenuName )
 //
 void app_nTA::ProcessCommandLine()
 {
+#if __APPLE__
+    char **__argv;
+    const int __argc = _MakeARGV_macOS(&__argv);
+#endif
+
     LPTSTR      Value;
 	int			x;
 
@@ -574,6 +584,10 @@ void app_nTA::ProcessCommandLine()
             ++x; // Try the next argument
 
     } // End for( Number Of Command-Line Arguments )
+    
+#if __APPLE__
+    _FreeARGV_macOS(__argv, __argc);
+#endif
 }
 // End app_nTA::ProcessCommandLine()
 //////////////////////////////////////////////////////////////////////

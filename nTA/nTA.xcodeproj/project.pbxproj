@@ -152,6 +152,7 @@
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
+		B5D0334B1CDC215D00409327 /* app_nTA_macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -470,6 +471,7 @@
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
 		B5D033471CDAD74300409327 /* snd_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snd_Mac.cpp; sourceTree = "<group>"; };
 		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
+		B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = app_nTA_macOS.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,6 +538,7 @@
 				B508FE741C4BCE33008CFEB9 /* app_nTA.h */,
 				B508FE751C4BCE33008CFEB9 /* app_nTA.inl */,
 				B508FE761C4BCE33008CFEB9 /* app_nTA_Exposed.inl */,
+				B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */,
 				B508FE771C4BCE33008CFEB9 /* app_nTA_Win32.cpp */,
 				B508FE781C4BCE33008CFEB9 /* astar.h */,
 				B508FE801C4BCE33008CFEB9 /* Cavedog */,
@@ -992,6 +995,7 @@
 				B50800381C4BCE34008CFEB9 /* unit_Project.cpp in Sources */,
 				B508FFE51C4BCE34008CFEB9 /* gui_Window.cpp in Sources */,
 				B508002E1C4BCE34008CFEB9 /* unit_Job.cpp in Sources */,
+				B5D0334B1CDC215D00409327 /* app_nTA_macOS.m in Sources */,
 				B508001E1C4BCE34008CFEB9 /* sys_App.cpp in Sources */,
 				B508003C1C4BCE34008CFEB9 /* util_RectFiller.cpp in Sources */,
 				B50800371C4BCE34008CFEB9 /* unit_Orders.cpp in Sources */,
