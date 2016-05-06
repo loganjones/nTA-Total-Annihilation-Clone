@@ -153,6 +153,7 @@
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
 		B5D0334B1CDC215D00409327 /* app_nTA_macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */; };
+		B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -472,6 +473,7 @@
 		B5D033471CDAD74300409327 /* snd_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snd_Mac.cpp; sourceTree = "<group>"; };
 		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
 		B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = app_nTA_macOS.m; sourceTree = "<group>"; };
+		B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = std_Platform_macOS.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -730,6 +732,7 @@
 				B508FF441C4BCE34008CFEB9 /* std_Math.inl */,
 				B508FF451C4BCE34008CFEB9 /* std_OS_Includes.h */,
 				B508FF461C4BCE34008CFEB9 /* std_Platform.h */,
+				B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */,
 				B508FF471C4BCE34008CFEB9 /* std_Point.h */,
 				B508FF481C4BCE34008CFEB9 /* std_Point.inl */,
 				B508FF491C4BCE34008CFEB9 /* std_Rect.h */,
@@ -1015,6 +1018,7 @@
 				B508FE5E1C4BCCFD008CFEB9 /* main.m in Sources */,
 				B50800031C4BCE34008CFEB9 /* player_Local.cpp in Sources */,
 				B508FFCC1C4BCE34008CFEB9 /* gadget_Pic.cpp in Sources */,
+				B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */,
 				B508FFB01C4BCE34008CFEB9 /* app_FileTree.cpp in Sources */,
 				B508FFC61C4BCE34008CFEB9 /* feature_Factory.cpp in Sources */,
 				B508FFB51C4BCE34008CFEB9 /* app_nTA_Win32.cpp in Sources */,

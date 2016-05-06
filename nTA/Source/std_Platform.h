@@ -69,6 +69,7 @@ typedef long LRESULT;
 #define strnicmp strncasecmp
 #define ZeroMemory(P,SZ) memset(P,0,SZ)
 #define CALLBACK
+#define WINAPI
 typedef int SOCKET;
 
 #define Param_t size_t
@@ -108,6 +109,9 @@ struct std_PlatformParameters
     // Name given for the main window
     char				MainWindowName[ 128 ];
 };
+
+extern char * itoa(  int value, char * buffer, int radix );
+extern char * ltoa( long value, char * buffer, int radix );
 
 
 #else
