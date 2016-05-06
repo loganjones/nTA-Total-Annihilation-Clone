@@ -236,18 +236,18 @@ bool unit_Factory::LoadUnitType( void* hFile )
 
 
 // Macros used in filling the type strucure with info from the file
-#define CASE_STRING( STRING )			CASE( #STRING )		strcpy( Type.##STRING, Info.Value );
-#define CASE_STRING2( STRING, STR2 )	CASE( #STRING )		strcpy( Type.##STR2, Info.Value );
+#define CASE_STRING( STRING )			CASE( #STRING )		strcpy( Type.STRING, Info.Value );
+#define CASE_STRING2( STRING, STR2 )	CASE( #STRING )		strcpy( Type.STR2, Info.Value );
 
 #define CASE_ABILITY( ABILITY ) \
-	CASE( #ABILITY )	if(atoi(Info.Value)) Type.Abilities |= unit_Type::##ABILITY##;
+	CASE( #ABILITY )	if(atoi(Info.Value)) Type.Abilities |= unit_Type::ABILITY;
 #define CASE_ABILITY2( ABILITY, ACTUAL ) \
-	CASE( #ABILITY )	if(atoi(Info.Value)) Type.Abilities |= unit_Type::##ACTUAL##;
+	CASE( #ABILITY )	if(atoi(Info.Value)) Type.Abilities |= unit_Type::ACTUAL;
 
-#define CASE_LONG_VALUE( VAR )			CASE( #VAR )		Type.##VAR = atol( Info.Value );
-#define CASE_LONG_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.##VAR2 = atol( Info.Value );
-#define CASE_FLOAT_VALUE( VAR )			CASE( #VAR )		Type.##VAR = atof( Info.Value );
-#define CASE_FLOAT_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.##VAR2 = atof( Info.Value );
+#define CASE_LONG_VALUE( VAR )			CASE( #VAR )		Type.VAR = atol( Info.Value );
+#define CASE_LONG_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.VAR2 = atol( Info.Value );
+#define CASE_FLOAT_VALUE( VAR )			CASE( #VAR )		Type.VAR = atof( Info.Value );
+#define CASE_FLOAT_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.VAR2 = atof( Info.Value );
 
 #define SET_TYPE_MEMBER()	STRING_SWITCH( Info.Variable ) \
 		CASE_STRING( Name ) \

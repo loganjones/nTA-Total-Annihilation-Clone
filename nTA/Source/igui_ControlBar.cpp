@@ -15,7 +15,7 @@
  #include "igui_ControlBar.inl"
 #endif // defined( _DEBUG )
 
-#define HasAbility( ABILITY )		Abilities & unit_Type::##ABILITY
+#define HasAbility( ABILITY )		Abilities & unit_Type::ABILITY
 #define ResetCurrentMenu()	if( m_CurrentMenu ) m_CurrentMenu->Detach(); m_CurrentMenu = NULL
 #define HandleUnitOrderMode( ORDER, SOUND )	CASE( #ORDER ) \
 	sound.PlaySound( SOUND ); \
