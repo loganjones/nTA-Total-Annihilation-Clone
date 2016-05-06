@@ -154,6 +154,7 @@
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
 		B5D0334B1CDC215D00409327 /* app_nTA_macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */; };
 		B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */; };
+		B5D0334F1CDC59A800409327 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D0334E1CDC59A800409327 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -474,6 +475,7 @@
 		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
 		B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = app_nTA_macOS.m; sourceTree = "<group>"; };
 		B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = std_Platform_macOS.cpp; sourceTree = "<group>"; };
+		B5D0334E1CDC59A800409327 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +483,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D0334F1CDC59A800409327 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +515,7 @@
 				B508FE5F1C4BCCFD008CFEB9 /* Assets.xcassets */,
 				B508FE611C4BCCFD008CFEB9 /* MainMenu.xib */,
 				B508FE641C4BCCFD008CFEB9 /* Info.plist */,
+				B5D0334E1CDC59A800409327 /* libz.tbd */,
 				B508FE5C1C4BCCFD008CFEB9 /* Supporting Files */,
 			);
 			path = "OS X";
