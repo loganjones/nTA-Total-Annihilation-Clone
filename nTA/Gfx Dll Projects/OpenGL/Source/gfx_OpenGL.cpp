@@ -268,7 +268,7 @@ BOOL gfx_OpenGL::CheckForExtensionString( LPCTSTR strExtension )
 //  float fZNear                - 
 //  float fZFar                 - 
 //
-void gfx_OpenGL::Set2DProjection( gfx_Resolution_t& resScreen, float fZNear, float fZFar )
+void gfx_OpenGL::Set2DProjection( const gfx_Resolution_t& resScreen, float fZNear, float fZFar )
 {
     // Switch to the projection matrix
     glMatrixMode(GL_PROJECTION);
@@ -296,7 +296,7 @@ void gfx_OpenGL::Set2DProjection( gfx_Resolution_t& resScreen, float fZNear, flo
 //  std_Rect_t& rctWhere        - 
 //  const PALETTEENTRY& peColor - 
 //
-void gfx_OpenGL::DrawRect( std_Rect_t& rctWhere, const PALETTEENTRY& peColor )
+void gfx_OpenGL::DrawRect( const std_Rect_t& rctWhere, const PALETTEENTRY& peColor )
 {
 	glDisable( GL_TEXTURE_2D );
 	glColor3ubv( (GLubyte*)&peColor );

@@ -126,7 +126,7 @@ BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNam
 //
 // Return: BOOL - 
 //
-BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iFrameNumber, std_Size_t& szDesired, gfx_Surface** ppSurface )
+BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iFrameNumber, const std_Size_t& szDesired, gfx_Surface** ppSurface )
 {
     LPTA_GAF_HEADER         Header;
     DWORD*                  EntryPointers;

@@ -51,7 +51,7 @@ DWORD CALLBACK gfx_EnumDisplayMode( DWORD dwIndex, std_Size* pResolution, long* 
 //
 // Return: BOOL - 
 //
-BOOL gfx_OpenGL::Create( gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen )
+BOOL gfx_OpenGL::Create( const gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen )
 {
 	DEVMODE					DeviceMode;
 	DWORD					WndStyle;

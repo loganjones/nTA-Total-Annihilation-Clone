@@ -335,7 +335,7 @@ void gfx_Direct3D8::RenderSurface( gfx_Surface* pSurface )
 //  std_Point_t& ptWhere  - 
 //  gfx_Surface* pSurface - 
 //
-void gfx_Direct3D8::RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface )
+void gfx_Direct3D8::RenderSurfaceEx( const std_Point_t& ptWhere, gfx_Surface* pSurface )
 {
 	const d3d_Surface* Surface = static_cast<d3d_Surface*>(pSurface);
 

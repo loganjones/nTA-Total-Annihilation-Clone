@@ -321,7 +321,7 @@ void gfx_OpenGL::RenderStringRight( LPCTSTR strToRender, const std_Vector3 vWher
 //  std_Point_t& ptWhere - 
 //  LPCTSTR strToRender  - 
 //
-void gfx_OpenGL::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
+void gfx_OpenGL::RenderStringAt(const std_Point_t& ptWhere, LPCTSTR strToRender )
 {
 	const ogl_Font* pFont = static_cast<ogl_Font*>(m_ActiveFont);
 
@@ -349,7 +349,7 @@ void gfx_OpenGL::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
 //  BOOL bCenterHorizontal - 
 //  BOOL bCenterVertical   - 
 //
-void gfx_OpenGL::RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical )
+void gfx_OpenGL::RenderStringCenteredAt(const std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical )
 {
 	long			n, Len, TotalWidth, MaxHeight,H,H1,H2;
 	const ogl_Font* pFont = static_cast<ogl_Font*>(m_ActiveFont);
@@ -367,17 +367,14 @@ void gfx_OpenGL::RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRend
 		if( H>H2 ) H2 = H;
 	}
 
-	if( bCenterHorizontal )
-		ptWhere.x -= TotalWidth / 2;
-
-	if( bCenterVertical )
-		//ptWhere.y += MaxHeight / 2;
-		//ptWhere.y += (H1 + H2) / 2;
-		ptWhere.y += pFont->m_Height / 2;
+	const std_Point_t pt = std_Point_t(
+		bCenterHorizontal ? ptWhere.x - TotalWidth / 2 : ptWhere.x,
+		bCenterVertical ? ptWhere.y + pFont->m_Height / 2 : ptWhere.y
+		);
 
 	// Call each display list corresponding to the characters given
     glPushMatrix();
-		glTranslatef( ptWhere.x, ptWhere.y, 0 );
+		glTranslatef( pt.x, pt.y, 0 );
 		glBindTexture( GL_TEXTURE_2D, pFont->m_Texture );
 		glListBase( pFont->m_CharLists );
 		glCallLists( strlen(strToRender), GL_BYTE, strToRender );

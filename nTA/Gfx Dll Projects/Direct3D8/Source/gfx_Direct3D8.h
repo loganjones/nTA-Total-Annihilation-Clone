@@ -76,7 +76,7 @@ public:
 
 	BOOL Initialize( std_PlatformParameters* pPlatformParams, LPCommentProc_t lpLoadProc, LPCommentProc_t lpErrorProc );
 
-	BOOL Create( gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen );
+	BOOL Create( const gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen );
 	BOOL Destroy();
 
 
@@ -95,9 +95,9 @@ public:
 	void BeginScene();
 	void EndScene();
 
-	void Set2DProjection( gfx_Resolution_t& resScreen, float fZNear, float fZFar );
+	void Set2DProjection( const gfx_Resolution_t& resScreen, float fZNear, float fZFar );
 
-	void DrawRect( std_Rect_t& rctWhere, const PALETTEENTRY& peColor );
+	void DrawRect( const std_Rect_t& rctWhere, const PALETTEENTRY& peColor );
 	void DrawRect( std_RectF rctWhere, const DWORD dwColor );
 	void DrawRect( std_RectF rctWhere, const BYTE byIndex );
 	void DrawRect( std_Vector3 vTrans, const float fRot, std_RectF rctWhere, const DWORD dwColor );
@@ -157,7 +157,7 @@ public:
 	void DestroySurface( gfx_Surface** pSurface );
 
 	void RenderSurface( gfx_Surface* pSurface );
-	void RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface );
+	void RenderSurfaceEx(const std_Point_t& ptWhere, gfx_Surface* pSurface );
 
 
 /////////////////////////////////////////////////
@@ -175,9 +175,9 @@ public:
 	void RenderStringRight( LPCTSTR strToRender, const std_Vector3 vWhere, const DWORD dwColor, gfx_Font* pFont=NULL );
 
 	// Renders a string using the active font at the desired location
-	void RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender );
+	void RenderStringAt(const std_Point_t& ptWhere, LPCTSTR strToRender );
 
-	void RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical );
+	void RenderStringCenteredAt(const std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical );
 
 
 /////////////////////////////////////////////////

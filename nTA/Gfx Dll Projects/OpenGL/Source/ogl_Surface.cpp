@@ -356,7 +356,7 @@ void gfx_OpenGL::RenderSurface( gfx_Surface* pSurface )
 //  std_Point_t& ptWhere  - 
 //  gfx_Surface* pSurface - 
 //
-void gfx_OpenGL::RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface )
+void gfx_OpenGL::RenderSurfaceEx( const std_Point_t& ptWhere, gfx_Surface* pSurface )
 {
 	const ogl_Surface* Surface = static_cast<ogl_Surface*>(pSurface);
 
