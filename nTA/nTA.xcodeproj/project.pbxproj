@@ -62,7 +62,6 @@
 		B50800361C4BCE34008CFEB9 /* unit_Object_Handlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF8D1C4BCE34008CFEB9 /* unit_Object_Handlers.cpp */; };
 		B50800371C4BCE34008CFEB9 /* unit_Orders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF8E1C4BCE34008CFEB9 /* unit_Orders.cpp */; };
 		B50800381C4BCE34008CFEB9 /* unit_Project.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF901C4BCE34008CFEB9 /* unit_Project.cpp */; };
-		B50800391C4BCE34008CFEB9 /* unit_Requests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF921C4BCE34008CFEB9 /* unit_Requests.cpp */; };
 		B508003A1C4BCE34008CFEB9 /* unit_Seacraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF931C4BCE34008CFEB9 /* unit_Seacraft.cpp */; };
 		B508003B1C4BCE34008CFEB9 /* unit_Structure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF961C4BCE34008CFEB9 /* unit_Structure.cpp */; };
 		B508003C1C4BCE34008CFEB9 /* util_RectFiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF9A1C4BCE34008CFEB9 /* util_RectFiller.cpp */; };
@@ -1035,7 +1034,6 @@
 				B50800451C4BCE34008CFEB9 /* wnd_Window_Events.cpp in Sources */,
 				B50800341C4BCE34008CFEB9 /* unit_Object_Commands.cpp in Sources */,
 				B508FFD11C4BCE34008CFEB9 /* game_Load.cpp in Sources */,
-				B50800391C4BCE34008CFEB9 /* unit_Requests.cpp in Sources */,
 				B508FFEE1C4BCE34008CFEB9 /* igui_Menu.cpp in Sources */,
 				B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */,
 				B508FFBD1C4BCE34008CFEB9 /* fe_NewMultiplayerGame.cpp in Sources */,
