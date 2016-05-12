@@ -83,7 +83,6 @@
 		B508FFB21C4BCE34008CFEB9 /* app_nTA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE731C4BCE33008CFEB9 /* app_nTA.cpp */; };
 		B508FFB31C4BCE34008CFEB9 /* app_nTA.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FE751C4BCE33008CFEB9 /* app_nTA.inl */; };
 		B508FFB41C4BCE34008CFEB9 /* app_nTA_Exposed.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FE761C4BCE33008CFEB9 /* app_nTA_Exposed.inl */; };
-		B508FFB51C4BCE34008CFEB9 /* app_nTA_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE771C4BCE33008CFEB9 /* app_nTA_Win32.cpp */; };
 		B508FFB81C4BCE34008CFEB9 /* fe_GuiManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE841C4BCE33008CFEB9 /* fe_GuiManager.cpp */; };
 		B508FFB91C4BCE34008CFEB9 /* fe_MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE861C4BCE33008CFEB9 /* fe_MainMenu.cpp */; };
 		B508FFBA1C4BCE34008CFEB9 /* fe_MS_PlayerSelection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE881C4BCE33008CFEB9 /* fe_MS_PlayerSelection.cpp */; };
@@ -95,7 +94,6 @@
 		B508FFC11C4BCE34008CFEB9 /* fe_SelectMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE951C4BCE33008CFEB9 /* fe_SelectMap.cpp */; };
 		B508FFC21C4BCE34008CFEB9 /* fe_Single.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE971C4BCE33008CFEB9 /* fe_Single.cpp */; };
 		B508FFC31C4BCE34008CFEB9 /* fe_Skirmish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE991C4BCE33008CFEB9 /* fe_Skirmish.cpp */; };
-		B508FFC41C4BCE34008CFEB9 /* fe_Skirmish_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE9B1C4BCE33008CFEB9 /* fe_Skirmish_Win32.cpp */; };
 		B508FFC51C4BCE34008CFEB9 /* fe_Wnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE9C1C4BCE33008CFEB9 /* fe_Wnd.cpp */; };
 		B508FFC61C4BCE34008CFEB9 /* feature_Factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE9F1C4BCE33008CFEB9 /* feature_Factory.cpp */; };
 		B508FFC71C4BCE34008CFEB9 /* feature_Factory.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FEA11C4BCE33008CFEB9 /* feature_Factory.inl */; };
@@ -149,10 +147,12 @@
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
 		B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */; };
 		B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7E1CE404630000809F /* sys_macOS.mm */; };
+		B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */; };
+		B5A46A831CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A821CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm */; };
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
-		B5D0334B1CDC215D00409327 /* app_nTA_macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */; };
+		B5D0334B1CDC215D00409327 /* app_nTA_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.mm */; };
 		B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */; };
 		B5D0334F1CDC59A800409327 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D0334E1CDC59A800409327 /* libz.tbd */; };
 /* End PBXBuildFile section */
@@ -470,12 +470,14 @@
 		B508FFAD1C4BCE34008CFEB9 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = std_FileIO_macOS.mm; sourceTree = "<group>"; };
 		B5A46A7E1CE404630000809F /* sys_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sys_macOS.mm; sourceTree = "<group>"; };
+		B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = fe_Skirmish_macOS.mm; sourceTree = "<group>"; };
+		B5A46A821CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = fe_MultiplayerSetup_macOS.mm; sourceTree = "<group>"; };
 		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
 		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
 		B5D033471CDAD74300409327 /* snd_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snd_Mac.cpp; sourceTree = "<group>"; };
 		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
-		B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = app_nTA_macOS.m; sourceTree = "<group>"; };
+		B5D0334A1CDC215D00409327 /* app_nTA_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = app_nTA_macOS.mm; sourceTree = "<group>"; };
 		B5D0334C1CDC280400409327 /* std_Platform_macOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = std_Platform_macOS.cpp; sourceTree = "<group>"; };
 		B5D0334E1CDC59A800409327 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -546,7 +548,7 @@
 				B508FE741C4BCE33008CFEB9 /* app_nTA.h */,
 				B508FE751C4BCE33008CFEB9 /* app_nTA.inl */,
 				B508FE761C4BCE33008CFEB9 /* app_nTA_Exposed.inl */,
-				B5D0334A1CDC215D00409327 /* app_nTA_macOS.m */,
+				B5D0334A1CDC215D00409327 /* app_nTA_macOS.mm */,
 				B508FE771C4BCE33008CFEB9 /* app_nTA_Win32.cpp */,
 				B508FE781C4BCE33008CFEB9 /* astar.h */,
 				B508FE801C4BCE33008CFEB9 /* Cavedog */,
@@ -559,6 +561,7 @@
 				B508FE891C4BCE33008CFEB9 /* fe_MS_PlayerSelection.h */,
 				B508FE8A1C4BCE33008CFEB9 /* fe_MultiplayerSetup.cpp */,
 				B508FE8B1C4BCE33008CFEB9 /* fe_MultiplayerSetup.h */,
+				B5A46A821CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm */,
 				B508FE8C1C4BCE33008CFEB9 /* fe_MultiplayerSetup_Win32.cpp */,
 				B508FE8D1C4BCE33008CFEB9 /* fe_NewMultiplayerGame.cpp */,
 				B508FE8E1C4BCE33008CFEB9 /* fe_NewMultiplayerGame.h */,
@@ -574,6 +577,7 @@
 				B508FE981C4BCE33008CFEB9 /* fe_Single.h */,
 				B508FE991C4BCE33008CFEB9 /* fe_Skirmish.cpp */,
 				B508FE9A1C4BCE33008CFEB9 /* fe_Skirmish.h */,
+				B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */,
 				B508FE9B1C4BCE33008CFEB9 /* fe_Skirmish_Win32.cpp */,
 				B508FE9C1C4BCE33008CFEB9 /* fe_Wnd.cpp */,
 				B508FE9D1C4BCE33008CFEB9 /* fe_Wnd.h */,
@@ -970,6 +974,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B508FFEC1C4BCE34008CFEB9 /* igui_GameWindow.cpp in Sources */,
+				B5A46A831CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm in Sources */,
 				B508FFC51C4BCE34008CFEB9 /* fe_Wnd.cpp in Sources */,
 				B508FFBA1C4BCE34008CFEB9 /* fe_MS_PlayerSelection.cpp in Sources */,
 				B508FFD01C4BCE34008CFEB9 /* gadget_TextEdit.cpp in Sources */,
@@ -1007,7 +1012,7 @@
 				B50800381C4BCE34008CFEB9 /* unit_Project.cpp in Sources */,
 				B508FFE51C4BCE34008CFEB9 /* gui_Window.cpp in Sources */,
 				B508002E1C4BCE34008CFEB9 /* unit_Job.cpp in Sources */,
-				B5D0334B1CDC215D00409327 /* app_nTA_macOS.m in Sources */,
+				B5D0334B1CDC215D00409327 /* app_nTA_macOS.mm in Sources */,
 				B508001E1C4BCE34008CFEB9 /* sys_App.cpp in Sources */,
 				B508003C1C4BCE34008CFEB9 /* util_RectFiller.cpp in Sources */,
 				B50800371C4BCE34008CFEB9 /* unit_Orders.cpp in Sources */,
@@ -1018,7 +1023,6 @@
 				B508FFBB1C4BCE34008CFEB9 /* fe_MultiplayerSetup.cpp in Sources */,
 				B508003F1C4BCE34008CFEB9 /* weapon_Factory.cpp in Sources */,
 				B50800431C4BCE34008CFEB9 /* wnd_Window.cpp in Sources */,
-				B508FFC41C4BCE34008CFEB9 /* fe_Skirmish_Win32.cpp in Sources */,
 				B508003D1C4BCE34008CFEB9 /* util_TxtParse.cpp in Sources */,
 				B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */,
 				B508001A1C4BCE34008CFEB9 /* std_Types.cpp in Sources */,
@@ -1027,9 +1031,9 @@
 				B50800031C4BCE34008CFEB9 /* player_Local.cpp in Sources */,
 				B508FFCC1C4BCE34008CFEB9 /* gadget_Pic.cpp in Sources */,
 				B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */,
+				B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */,
 				B508FFB01C4BCE34008CFEB9 /* app_FileTree.cpp in Sources */,
 				B508FFC61C4BCE34008CFEB9 /* feature_Factory.cpp in Sources */,
-				B508FFB51C4BCE34008CFEB9 /* app_nTA_Win32.cpp in Sources */,
 				B508FFC01C4BCE34008CFEB9 /* fe_SelectGame.cpp in Sources */,
 				B508FFDC1C4BCE34008CFEB9 /* game_UserInterface.cpp in Sources */,
 				B508000C1C4BCE34008CFEB9 /* script_Machine.cpp in Sources */,

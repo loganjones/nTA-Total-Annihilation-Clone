@@ -497,8 +497,8 @@ void app_nTA::SetStartMenu( LPCTSTR strMenuName )
 
 
 #if __APPLE__
-extern "C" const int _MakeARGV_macOS(char ***pargv);
-extern "C" void _FreeARGV_macOS(char **argv, const int argc);
+const int _MakeARGV_macOS(char ***pargv);
+void _FreeARGV_macOS(char **argv, const int argc);
 #endif
 
 //////////////////////////////////////////////////////////////////////
