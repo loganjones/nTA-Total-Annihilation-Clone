@@ -38,7 +38,6 @@
 		B508001E1C4BCE34008CFEB9 /* sys_App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF5C1C4BCE34008CFEB9 /* sys_App.cpp */; };
 		B508001F1C4BCE34008CFEB9 /* sys_App.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF5E1C4BCE34008CFEB9 /* sys_App.inl */; };
 		B50800211C4BCE34008CFEB9 /* sys_Externals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF621C4BCE34008CFEB9 /* sys_Externals.cpp */; };
-		B50800221C4BCE34008CFEB9 /* sys_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF641C4BCE34008CFEB9 /* sys_Win32.cpp */; };
 		B50800231C4BCE34008CFEB9 /* ta_GUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF691C4BCE34008CFEB9 /* ta_GUI.cpp */; };
 		B50800241C4BCE34008CFEB9 /* ta_OTA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF6C1C4BCE34008CFEB9 /* ta_OTA.cpp */; };
 		B50800251C4BCE34008CFEB9 /* ta_TDF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF6E1C4BCE34008CFEB9 /* ta_TDF.cpp */; };
@@ -149,6 +148,7 @@
 		B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF1B1C4BCE34008CFEB9 /* physics_Object.cpp */; };
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
 		B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */; };
+		B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7E1CE404630000809F /* sys_macOS.mm */; };
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
@@ -469,6 +469,7 @@
 		B508FFAC1C4BCE34008CFEB9 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
 		B508FFAD1C4BCE34008CFEB9 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = std_FileIO_macOS.mm; sourceTree = "<group>"; };
+		B5A46A7E1CE404630000809F /* sys_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sys_macOS.mm; sourceTree = "<group>"; };
 		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
 		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
@@ -769,6 +770,7 @@
 				B508FF611C4BCE34008CFEB9 /* sys_DLL_Win32.inl */,
 				B508FF621C4BCE34008CFEB9 /* sys_Externals.cpp */,
 				B508FF631C4BCE34008CFEB9 /* sys_Externals.h */,
+				B5A46A7E1CE404630000809F /* sys_macOS.mm */,
 				B508FF641C4BCE34008CFEB9 /* sys_Win32.cpp */,
 				B508FF651C4BCE34008CFEB9 /* ta_3DO.h */,
 				B508FF661C4BCE34008CFEB9 /* ta_COB.h */,
@@ -974,12 +976,12 @@
 				B508003A1C4BCE34008CFEB9 /* unit_Seacraft.cpp in Sources */,
 				B508FFE21C4BCE34008CFEB9 /* gui_Gadget.cpp in Sources */,
 				B508FFF01C4BCE34008CFEB9 /* igui_OrderButton.cpp in Sources */,
+				B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */,
 				B50800301C4BCE34008CFEB9 /* unit_MoveInfo.cpp in Sources */,
 				B508002B1C4BCE34008CFEB9 /* unit_Group.cpp in Sources */,
 				B50800421C4BCE34008CFEB9 /* wnd_TextBox.cpp in Sources */,
 				B508FFB91C4BCE34008CFEB9 /* fe_MainMenu.cpp in Sources */,
 				B50800211C4BCE34008CFEB9 /* sys_Externals.cpp in Sources */,
-				B50800221C4BCE34008CFEB9 /* sys_Win32.cpp in Sources */,
 				B50800271C4BCE34008CFEB9 /* unit_Factory.cpp in Sources */,
 				B50800231C4BCE34008CFEB9 /* ta_GUI.cpp in Sources */,
 				B508FFE81C4BCE34008CFEB9 /* igui_BuildOrders.cpp in Sources */,
