@@ -24,7 +24,6 @@
 		B508000E1C4BCE34008CFEB9 /* script_Proccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF371C4BCE34008CFEB9 /* script_Proccess.cpp */; };
 		B508000F1C4BCE34008CFEB9 /* script_Proccess.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF391C4BCE34008CFEB9 /* script_Proccess.inl */; };
 		B50800101C4BCE34008CFEB9 /* script_Proccess_Handlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF3A1C4BCE34008CFEB9 /* script_Proccess_Handlers.cpp */; };
-		B50800121C4BCE34008CFEB9 /* std_FileIO_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF421C4BCE34008CFEB9 /* std_FileIO_Win32.cpp */; };
 		B50800131C4BCE34008CFEB9 /* std_Math.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF441C4BCE34008CFEB9 /* std_Math.inl */; };
 		B50800141C4BCE34008CFEB9 /* std_Point.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF481C4BCE34008CFEB9 /* std_Point.inl */; };
 		B50800151C4BCE34008CFEB9 /* std_Rect.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF4A1C4BCE34008CFEB9 /* std_Rect.inl */; };
@@ -149,6 +148,7 @@
 		B508FFF71C4BCE34008CFEB9 /* net_Sockets.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF0C1C4BCE34008CFEB9 /* net_Sockets.inl */; };
 		B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF1B1C4BCE34008CFEB9 /* physics_Object.cpp */; };
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
+		B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */; };
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
@@ -468,6 +468,7 @@
 		B508FFAB1C4BCE34008CFEB9 /* wnd_Window_Events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wnd_Window_Events.cpp; sourceTree = "<group>"; };
 		B508FFAC1C4BCE34008CFEB9 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
 		B508FFAD1C4BCE34008CFEB9 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = std_FileIO_macOS.mm; sourceTree = "<group>"; };
 		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
 		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
@@ -731,6 +732,7 @@
 				B508FF3F1C4BCE34008CFEB9 /* std_Assert.h */,
 				B508FF401C4BCE34008CFEB9 /* std_Defs.h */,
 				B508FF411C4BCE34008CFEB9 /* std_FileIO.h */,
+				B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */,
 				B508FF421C4BCE34008CFEB9 /* std_FileIO_Win32.cpp */,
 				B508FF431C4BCE34008CFEB9 /* std_Math.h */,
 				B508FF441C4BCE34008CFEB9 /* std_Math.inl */,
@@ -997,6 +999,7 @@
 				B508000E1C4BCE34008CFEB9 /* script_Proccess.cpp in Sources */,
 				B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */,
 				B508FFCF1C4BCE34008CFEB9 /* gadget_String.cpp in Sources */,
+				B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */,
 				B508FFF41C4BCE34008CFEB9 /* net_RecvBuffer.cpp in Sources */,
 				B508FFBE1C4BCE34008CFEB9 /* fe_Options.cpp in Sources */,
 				B50800381C4BCE34008CFEB9 /* unit_Project.cpp in Sources */,
@@ -1011,7 +1014,6 @@
 				B508FFDF1C4BCE34008CFEB9 /* game_Weapon.cpp in Sources */,
 				B50800021C4BCE34008CFEB9 /* player_AI.cpp in Sources */,
 				B508FFBB1C4BCE34008CFEB9 /* fe_MultiplayerSetup.cpp in Sources */,
-				B50800121C4BCE34008CFEB9 /* std_FileIO_Win32.cpp in Sources */,
 				B508003F1C4BCE34008CFEB9 /* weapon_Factory.cpp in Sources */,
 				B50800431C4BCE34008CFEB9 /* wnd_Window.cpp in Sources */,
 				B508FFC41C4BCE34008CFEB9 /* fe_Skirmish_Win32.cpp in Sources */,

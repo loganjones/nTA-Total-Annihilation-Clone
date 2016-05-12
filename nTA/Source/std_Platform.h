@@ -49,7 +49,9 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreGraphics/CoreGraphics.h>
 
+#ifndef __OBJC__
 typedef bool BOOL;
+#endif
 typedef void * LPVOID;
 typedef const char * LPCTSTR;
 typedef char * LPTSTR;
