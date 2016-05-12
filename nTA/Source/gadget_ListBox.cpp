@@ -354,7 +354,7 @@ void gadget_ListBox::SetSort( BOOL bSort )
 //
 void gadget_ListBox::AttachSlider( gadget_Slider* pSlider )
 {
-	if( m_pScroller = pSlider )
+	if( (m_pScroller = pSlider) )
 	{
 		m_pScroller->SetBuddyWnd( this );
 		ResetSliderSize();

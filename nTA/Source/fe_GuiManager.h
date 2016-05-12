@@ -23,7 +23,7 @@ public:
 
 	void OnFrame();
 
-	BOOL Create( LPTSTR strStartMenu=NULL );
+	BOOL Create( LPCTSTR strStartMenu=NULL );
 	void Destroy();
 
 	void Update();

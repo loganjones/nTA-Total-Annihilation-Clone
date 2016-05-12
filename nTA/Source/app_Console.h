@@ -20,7 +20,7 @@ class app_Console
 public:
 
 	struct Command_t;
-	typedef map< LPTSTR, Command_t, pchar_less_nocase_t >			CommandMap_t;
+	typedef map< LPCTSTR, Command_t, pchar_less_nocase_t >			CommandMap_t;
 
 	typedef LRESULT (CALLBACK* LPCommandProc_t)( LPVOID );
 	typedef LRESULT (CALLBACK* LPCursorProc_t)(long,long);
@@ -39,9 +39,9 @@ public:
 
 	BOOL SetInputHandler( class in_Handler* pHandler );
 
-	BOOL AddCommand( LPTSTR strName, LPCommandProc_t lpCommandProc );
-	INLINE BOOL AddVariable( LPTSTR strName, LPCommandProc_t lpVarProc );
-	INLINE BOOL AddToggle( LPTSTR strName, LPCommandProc_t lpToggleProc, LPCommandProc_t lpUntoggleProc );
+	BOOL AddCommand( LPCTSTR strName, LPCommandProc_t lpCommandProc );
+	INLINE BOOL AddVariable( LPCTSTR strName, LPCommandProc_t lpVarProc );
+	INLINE BOOL AddToggle( LPCTSTR strName, LPCommandProc_t lpToggleProc, LPCommandProc_t lpUntoggleProc );
 
 	BOOL SetCursorFunc( LPCursorProc_t lpCursorFunc );
 

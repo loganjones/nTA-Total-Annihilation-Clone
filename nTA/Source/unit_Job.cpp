@@ -58,10 +58,12 @@ bool unit_Job::Update( long lSurplus, game_Player* pPlayer )
 
 		case job_Economy:
 			if( Flags & job_UseWind )
+            {
 				if( Flags & job_WindInit )
 					EnergyIncome += 5,
 					Flags &= ~job_WindInit;
 				else EnergyIncome += 5;
+            }
 			if( Worker->Active() && Subset(lSurplus,Requirements) )
 				pPlayer->Consume( Metal, MetalCost ),
 				pPlayer->Consume( Energy, EnergyCost ),

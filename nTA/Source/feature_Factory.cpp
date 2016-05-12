@@ -41,7 +41,7 @@ feature_Factory::~feature_Factory()
 //
 // Return: BOOL - 
 //
-BOOL feature_Factory::Create( BYTE* pTntFileBuffer, LPTSTR strWorld, game_LoadFacilitator Load )
+BOOL feature_Factory::Create( BYTE* pTntFileBuffer, LPCTSTR strWorld, game_LoadFacilitator Load )
 {
 	app_FileTree::HFIND				hList;
 	app_FileTree::FindData_t		ListInfo;
@@ -241,7 +241,7 @@ BOOL feature_Factory::AddHardcodedFeatureTypes()
 //
 // Return: BOOL - 
 //
-BOOL feature_Factory::ProcessDirectory( LPTSTR strDirectory, game_LoadFacilitator Load )
+BOOL feature_Factory::ProcessDirectory( LPCTSTR strDirectory, game_LoadFacilitator Load )
 {
 	char							SubDirectoryToSearch[128];
 	BOOL							bWorkingFeatureFiles;
@@ -294,7 +294,7 @@ BOOL feature_Factory::ProcessTDF( void* hFile, LPCTSTR strHostDirectory, LPCTSTR
 #define STRING_MEMBER( NAME ) CASE( #NAME ) \
 	strcpy( FeatureInfo.NAME, Info.Value );
 #define INT_MEMBER( NAME ) CASE( #NAME ) \
-		FeatureInfo.NAME = atol( Info.Value ); \
+		FeatureInfo.NAME = atoi( Info.Value ); \
 
 	// Sanity check
 	if( hFile==NULL ) return FALSE;
@@ -706,8 +706,8 @@ BOOL feature_Factory::SpawnFeature( LPTSTR strType, long x, long y, BYTE z )
 	FeatureType_t* pFeatureType = GetFeatureType( strType );
 	if( stricmp(pFeatureType->Name.c_str(),strType)!=0 )
 	{
-		DWORD A = std_NameHash( strType );
-		DWORD B = std_NameHash( pFeatureType->Name.c_str() );
+		__unused DWORD A = std_NameHash( strType );
+		__unused DWORD B = std_NameHash( pFeatureType->Name.c_str() );
 		assert( 0 );
 	}
 	assert( pFeatureType );

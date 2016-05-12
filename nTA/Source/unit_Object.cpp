@@ -155,7 +155,7 @@ void unit_Object::Animate()
 //
 void unit_Object::Render( std_Vector2 vOffset ) const
 {
-	const std_RectF ScreenRect( m_BaseRect - vOffset/* - m_HeightOffset*/ );
+	//const std_RectF ScreenRect( m_BaseRect - vOffset/* - m_HeightOffset*/ );
 	//const DWORD Flags = (m_bSelected ? gfx_Model::Selected : 0) |
 	//					(m_Elevation < theGame.Terrain.GetSeaLevel() ? gfx_Model::InWater : 0) |
 	//					(TRUE ? gfx_Model::SubmergedVisible : 0);
@@ -321,7 +321,7 @@ void unit_Object::SetUnitValue( const long& lUnitValueID, long lDesiredValue )
 	switch( lUnitValueID )
 	{
 		case INBUILDSTANCE:
-			if( m_ReadyToBuild=lDesiredValue ) ReadyToWork();
+			if( (m_ReadyToBuild=lDesiredValue) ) ReadyToWork();
 			break;
 
 		case BUSY:

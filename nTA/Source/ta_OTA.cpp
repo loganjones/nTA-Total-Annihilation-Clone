@@ -117,6 +117,9 @@ BOOL ta_ota_GetSchemaList( BYTE* pFileBuffer, DWORD dwFileSize, SchemaList_t& Sc
 				while( bValid && TxtParse.Locale()>=2 ) bValid = TxtParse.Continue(&Info);
 			}
 			break; // End case PARSE_Header
+                
+            default:
+                break;
 
 		} // end switch( Info.Type )
 
@@ -183,6 +186,7 @@ BOOL ta_ota_GetSchema( BYTE* pFileBuffer, DWORD dwFileSize, LPCTSTR strSchema, t
 					{
 						// Check if this is not the desired schema
 						if( stricmp(Info.Variable,"Type")==0 )
+                        {
 							if( stricmp(Info.Value,strSchema)==0 ) bFound = TRUE;
 							else {
 							//	while( bValid && TxtParse.Locale()>=2 )
@@ -190,6 +194,7 @@ BOOL ta_ota_GetSchema( BYTE* pFileBuffer, DWORD dwFileSize, LPCTSTR strSchema, t
 								bValid = TxtParse.SkipUntil( 1 );
 								break;
 							}
+                        }
 
 						GET_SCHEMA_ITEM( pSchema );
 					}
@@ -257,6 +262,9 @@ BOOL ta_ota_GetSchema( BYTE* pFileBuffer, DWORD dwFileSize, LPCTSTR strSchema, t
 				
 			} // end if( header is schema )
 			break; // End case PARSE_Header
+                
+            default:
+                break;
 
 		} // end switch( Info.Type )
 

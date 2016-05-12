@@ -86,9 +86,11 @@ void physics_System::OnFrame()
 
 		// Was there a confirmed collision
 		if( Collidee || bForceCollision )
+        {
 			if( pObject->OnCollision(Collidee) )
 				Collidee = NULL;
 			else {Collidee = NULL; continue;}
+        }
 
 		// If we got here, the object is still alive.
 		// Add it to the other mover list if it is still

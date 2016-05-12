@@ -174,7 +174,7 @@ BOOL fe_MultiplayerSetup::OnCreate()
 		//	gfx->CreateSurfacesFromGAF( pBuf, "SIDEx", 1, 5, SideSurfaces ),
 		//	pButton->SetButtonImages( SideSurfaces, SideSurfaces[3], SideSurfaces[4] ),
 		//	pButton->SetActive( TRUE ), pButton->SetVisible(TRUE);
-		if( pPic = (gadget_Pic*)GetGadget("battlestart") )
+		if( (pPic = (gadget_Pic*)GetGadget("battlestart")) )
 			gfx->CreateSurfacesFromGAF( pBuf, "battlestart", 1, 9, m_BattleStartAnim ),
 			pPic->SetFrames( m_BattleStartAnim, 9 );
 		delete [] pBuf;
@@ -265,7 +265,11 @@ DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, D
 	UINT32				Who;
 
 	if( dwMessage==gui_msg_ButtonPressed )
-		if( strSender[0]=='#' ) { Who=atoi(strSender+1); STRING_SWITCH( strSender+5 )
+    {
+		if( strSender[0]=='#' )
+        {
+            Who=atoi(strSender+1);
+            STRING_SWITCH( strSender+5 )
 
 			CASE( "Side" )
 				sound.PlaySound( guiResources.Sounds.Options );
@@ -283,8 +287,9 @@ DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, D
 				Player.ColorSel->SetFrame( Player.Color );
 				return 1;
 		
-	END_STRING_SWITCH
-	}else STRING_SWITCH( strSender )
+            END_STRING_SWITCH
+        }
+        else STRING_SWITCH( strSender )
 
 			CASE( "PrevMenu" )
 				net.EndSession();
@@ -308,7 +313,8 @@ DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, D
 				theApp.StartGame();
 				return 1;
 
-	END_STRING_SWITCH
+        END_STRING_SWITCH
+    }
 
 	return fe_Wnd::OnWndMessage( pSender, dwMessage, dwParamA, dwParamB );
 }

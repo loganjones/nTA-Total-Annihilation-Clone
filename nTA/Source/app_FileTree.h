@@ -97,9 +97,9 @@ public:
 	DWORD ReadFile( HFILE hFile, void* pDestBuffer, DWORD dwSizeToRead );
 	void CloseFile( HFILE hFile );
 
-	DWORD GetEntryCountInDirectory( LPTSTR strWhere );
-	DWORD GetFileCountInDirectory( LPTSTR strWhere );
-	DWORD GetDirectoryCountInDirectory( LPTSTR strWhere );
+	DWORD GetEntryCountInDirectory( LPCTSTR strWhere );
+	DWORD GetFileCountInDirectory( LPCTSTR strWhere );
+	DWORD GetDirectoryCountInDirectory( LPCTSTR strWhere );
 
 	// Starts the file tree entry search process
 	HFIND Find( FindType_t What, LPCTSTR strWith, LPCTSTR strWhere, FindData_t* pAnswer );

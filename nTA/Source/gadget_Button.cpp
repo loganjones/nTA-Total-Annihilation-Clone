@@ -170,8 +170,10 @@ void gadget_Button::SetText( LPCTSTR strText, long lStage )
 
 	// If the given stage is in range, set the text
 	if( lStage<=m_ButtonInfo.Stages )
+    {
 		if( m_StageText.empty() ) m_StageText.push_back( strText );
 		else m_StageText[lStage] = strText;
+    }
 }
 // End gadget_Button::SetText()
 //////////////////////////////////////////////////////////////////////
@@ -494,8 +496,10 @@ void gadget_Button::OnPressed( DWORD dwButton )
 {
 	// Check if any stage changing needs to happen
 	if( m_ButtonInfo.Stages )
+    {
 		if( dwButton==1 ) m_Stage = ((m_Stage+1) >= m_ButtonInfo.Stages) ? 0: m_Stage+1;
 		else m_Stage = (m_Stage == 0) ? m_ButtonInfo.Stages-1: m_Stage-1;
+    }
 
 	// Send the pressed message
 	SendMessage( m_pParent, gui_msg_ButtonPressed, (DWORD)(LPTSTR(m_CommonData.Name)), dwButton );

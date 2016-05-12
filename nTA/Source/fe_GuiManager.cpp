@@ -32,7 +32,7 @@ fe_GuiManager::~fe_GuiManager()
 //
 // Return: BOOL - 
 //
-BOOL fe_GuiManager::Create( LPTSTR strStartMenu )
+BOOL fe_GuiManager::Create( LPCTSTR strStartMenu )
 {
 	DWORD TotalTime = std_Time();
 

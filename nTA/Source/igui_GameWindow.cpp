@@ -268,6 +268,9 @@ void igui_GameWindow::DoOrder( InterafceOrder_t Order, DWORD dwParam )
 		case ORDER_OnOff:
 			m_CurrentSelection->RequestActivate( dwParam!=0 );
 			break;
+            
+        default:
+            break;
 	}
 	theGame.Interface.ControlBar().ResetOrderSelection();
 }
@@ -445,6 +448,9 @@ void igui_GameWindow::DoRectOrder()
 		case MODE_Default:
 			MultiSelection();
 			break;
+            
+        default:
+            break;
 
 	} // end switch( m_InterfaceMode )
 }
@@ -525,13 +531,17 @@ void igui_GameWindow::SingleSelection( class unit_Interface* pUnit )
 {
 	// Check if there is already a selection
 	if( m_CurrentSelection )
+    {
 		if( m_CurrentSelection==pUnit )
 		{
 			// TODO: Implement some kind of special handling.
 			return;
 		}
-		else // Unselect the old
+        else // Unselect the old
+        {
 			m_CurrentSelection->OnSelect( FALSE, TRUE );
+        }
+    }
 
 	// Select the new
 	m_CurrentSelection = pUnit;

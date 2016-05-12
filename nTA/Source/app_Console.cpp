@@ -75,7 +75,7 @@ BOOL app_Console::SetInputHandler( class in_Handler* pHandler )
 //
 // Return: BOOL - 
 //
-BOOL app_Console::AddCommand( LPTSTR strName, LPCommandProc_t lpCommandProc )
+BOOL app_Console::AddCommand( LPCTSTR strName, LPCommandProc_t lpCommandProc )
 {
 	Command_t		NewCommand;
 
@@ -161,7 +161,7 @@ void app_Console::Execute( char* pExecutionCode, DWORD dwLength )
 		}
 
 		// Retrieve the parameter string (if any)
-		Command_t* pCmd= &((*itCommand).second);
+	 	__unused Command_t* pCmd= &((*itCommand).second);
 		if( !GetToken( Token, &Stream, EXS_SEEKING_PARAM_STRING ) )
 			((*itCommand).second).lpCProc( NULL );
 		else ((*itCommand).second).lpCProc( Token );

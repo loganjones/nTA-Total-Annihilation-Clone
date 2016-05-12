@@ -172,7 +172,7 @@ void gadget_Slider::MoveKnobNear( long lWhere )
 		long Dist = 1000, i=0, Closest=1000; 
 		for( long n=0; n<Size; ++n)
 		{
-            Dist = ::abs( m_PosArray[n] - lWhere );
+            Dist = ::labs( m_PosArray[n] - lWhere );
 			if( Dist<Closest )
 			{
 				Closest = Dist;
@@ -217,7 +217,8 @@ void gadget_Slider::MoveKnobFoward()
 		{
             long n;
 			const long Size = m_PosArray.size();
-			for( n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n);
+			for( n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n)
+                ;
 			assert( n+1<Size );
 			SetKnobPosition( m_PosArray[n+1] );
 			SendKnobMovedMessage();
@@ -252,7 +253,8 @@ void gadget_Slider::MoveKnobBackward()
 		{
             long n;
 			const long Size = m_PosArray.size();
-			for( n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n);
+			for( n=0; n<Size && m_PosArray[n]!=m_Knob_CurrentPos; ++n)
+                ;
 			assert( n-1>=0 );
 			SetKnobPosition( m_PosArray[n-1] );
 			SendKnobMovedMessage();

@@ -284,7 +284,7 @@ DWORD fio_GetCDDriveStrings( LPTSTR strDrives )
 //			FileData	    - A pointer to the structure to be filled
 //                            with the search results, if any
 //
-void* fio_FindFirstFile( LPTSTR FilePath, LPfio_FindFileData FileData )
+void* fio_FindFirstFile( LPCTSTR FilePath, LPfio_FindFileData FileData )
 {
     HANDLE              hFind;
 	WIN32_FIND_DATA     W32_FileData;

@@ -115,7 +115,7 @@ bool net_Sockets::StartServer( char* pQueryResponse, DWORD dwQueryResponseSize )
 	m_QueryResponseSize = sizeof(net_PacketHeader) + dwQueryResponseSize;
 	m_QueryResponse = new char[m_QueryResponseSize];
 	((net_PacketHeader*)m_QueryResponse)->Marker = net_PacketMarker;
-	((net_PacketHeader*)m_QueryResponse)->Size = m_QueryResponseSize;
+	((net_PacketHeader*)m_QueryResponse)->Size = (UINT32)m_QueryResponseSize;
 	memcpy( m_QueryResponse + sizeof(net_PacketHeader), pQueryResponse, dwQueryResponseSize );
 
 	// Complete

@@ -138,6 +138,9 @@ void igui_InfoBar::Render()
 			gfx->RenderString( m_Line1, m_Name, 0xFFFFFFFF, theInterface->Font() );
 			gfx->RenderString( m_Line2, m_Description, 0xFFFFFFFF, theInterface->Font() );
 			break;
+            
+        case DISP_Nothing:
+            break;
 	}
 
 	gfx->PopMatrix();

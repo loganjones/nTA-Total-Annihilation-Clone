@@ -108,8 +108,10 @@ void ta_tdf_GetSideData( BYTE* pFileBuf, DWORD dwFileSize, SideList_t& Sides )
 			while( bValid && Parser.Locale()>0 )
 			{
 				if( Parser.Locale()==1 )
+                {
 					if( Info.Type==PARSE_VarVal ) GET_SIDE_VALUE()
 					else if( Info.Type==PARSE_Header ) GET_RECT_VALUE()
+                }
 				bValid = Parser.Continue( &Info );
 			}
 

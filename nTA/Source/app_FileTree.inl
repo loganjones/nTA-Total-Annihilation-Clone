@@ -28,7 +28,7 @@ UINT32  app_FileTree::ReadAndDecrypt( void* hFile, INT32 iKey, UINT32 uiOffset, 
 	fio_FileSeek( hFile, uiOffset );
 
 	// Read into the buffer
-	uiResult = fio_ReadFile( hFile, pBuffer, uiSize );
+	uiResult = (UINT32)fio_ReadFile( hFile, pBuffer, uiSize );
 
 	// Cast the pointer to a BYTE type
 	pBuf = static_cast<BYTE*>(pBuffer);
@@ -243,8 +243,10 @@ void  app_FileTree::CopyFileData( FileEntry_t& destFile, const FileEntry_t& srcF
 	for( pDir = pStartDir->SubDirs; pDir; pDir=pDir->Next)
 	{
 		if( stricmp(pDir->Name,Target)==0 )
-			if( ThisIsTheTarget ) return pDir;
-			else return RetrieveDirectory( Next, pDir );
+        {
+            if( ThisIsTheTarget ) return pDir;
+            else return RetrieveDirectory( Next, pDir );
+        }
 
 	} // end for( SubDirs )
 

@@ -47,7 +47,7 @@ script_Proccess::Thread_t		script_Proccess::NewThread;
 //
 DWORD script_Proccess::ExecuteThread( Thread_t& Thread )
 {
-	const UINT32*	pCode = pScript->pStart;
+	//const UINT32*	pCode = pScript->pStart;
 	long			Ret = 0;
 
 	while( Ret==0 )

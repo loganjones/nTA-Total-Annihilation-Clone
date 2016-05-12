@@ -33,16 +33,16 @@ BOOL ta_gui_LoadCommon( util_TxtParse& Parser, ta_gui_Common_t& Common )
 	{
 		if( Info.Type==PARSE_VarVal && Parser.Locale()==(Entry+1) )
 			STRING_SWITCH( Info.Variable )
-				CASE( "ID" )			Common.ID = (ta_gui_GadgetTypes_t)atol( Info.Value );
-				CASE( "Assoc" )			Common.Assoc = atol( Info.Value );
+				CASE( "ID" )			Common.ID = (ta_gui_GadgetTypes_t)atoi( Info.Value );
+				CASE( "Assoc" )			Common.Assoc = atoi( Info.Value );
 				CASE( "Name" )			strcpy( Common.Name, Info.Value );
-				CASE( "XPos" )			Common.XPos = atol( Info.Value );
-				CASE( "YPos" )			Common.YPos = atol( Info.Value );
-				CASE( "Width" )			Common.Width = atol( Info.Value );
-				CASE( "Height" )		Common.Height = atol( Info.Value );
-				CASE( "Attribs" )		Common.Attribs = atol( Info.Value );
-				CASE( "Active" )		Common.Active = atol( Info.Value );
-				CASE( "CommonAttribs" )	Common.CommonAttribs = atol( Info.Value );
+				CASE( "XPos" )			Common.XPos = atoi( Info.Value );
+				CASE( "YPos" )			Common.YPos = atoi( Info.Value );
+				CASE( "Width" )			Common.Width = atoi( Info.Value );
+				CASE( "Height" )		Common.Height = atoi( Info.Value );
+				CASE( "Attribs" )		Common.Attribs = atoi( Info.Value );
+				CASE( "Active" )		Common.Active = atoi( Info.Value );
+				CASE( "CommonAttribs" )	Common.CommonAttribs = atoi( Info.Value );
 			END_STRING_SWITCH
 		bValid = Parser.Continue( &Info );
 	}

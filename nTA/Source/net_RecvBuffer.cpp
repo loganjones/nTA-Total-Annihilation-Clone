@@ -98,7 +98,7 @@ void net_RecvBuffer::InitializeSender( net_Client& sender )
 //
 bool net_RecvBuffer::RecvFrom( net_Client& sender )
 {
-	int	BytesReceived;
+	ssize_t	BytesReceived;
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recv from net_Client(%d,%d)", sender.ID, sender.Socket );
 
 	// start a new packet?
@@ -226,7 +226,7 @@ bool net_RecvBuffer::BytesToRead()
 //
 bool net_RecvBuffer::NewPacket( net_Client& sender )
 {
-	int					BytesReceived;
+	ssize_t				BytesReceived;
 	net_PacketHeader	Header;
 
 	//

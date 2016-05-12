@@ -340,7 +340,7 @@ void fe_Options::LoadVisuals()
 			{
 				Modes = &m_Renderers[ Info.Name ];
 				Modes->clear();
-				for( Enum=0; Enum=gfx->EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth);)
+				for( Enum=0; (Enum=gfx->EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth));)
 					Modes->push_back( Mode );
 			}
 			else // Load the dll and call the exported enum function
@@ -351,7 +351,7 @@ void fe_Options::LoadVisuals()
 					continue;
 				Modes = &m_Renderers[ Info.Name ];
 				Modes->clear();
-				for( Enum=0; Enum=gfx_EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth);)
+				for( Enum=0; (Enum=gfx_EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth));)
 					Modes->push_back( Mode );
 				sys_UnloadDll( hDll );
 			}
@@ -385,13 +385,13 @@ void fe_Options::LoadMusic()
 {
 	gadget_Button*	pButton;
 
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDPrev" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDPrev" )) )
 		pButton->SetButtonImages( m_CDPrevImages, m_CDPrevImages[1], m_CDPrevImages[2] );
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDStop" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDStop" )) )
 		pButton->SetButtonImages( m_CDStopImages, m_CDStopImages[1], m_CDStopImages[2] );
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDPlay" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDPlay" )) )
 		pButton->SetButtonImages( m_CDPlayImages, m_CDPlayImages[1], m_CDPlayImages[2] );
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDNext" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDNext" )) )
 		pButton->SetButtonImages( m_CDNextImages, m_CDNextImages[1], m_CDNextImages[2] );
 }
 // End fe_Options::LoadMusic()

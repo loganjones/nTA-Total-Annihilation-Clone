@@ -378,22 +378,28 @@ void unit_Factory::ProccessFBI( void* hFile, unit_Type& Type, LPTSTR strObjectNa
 				CASE_LONG_VALUE2( ActivateWhenBuilt, InitialActivationOrder )
 				
 				CASE( "CanHover" ) if( atol(Info.Value)!=0 )
+                {
 					if( Type.Behaviour!=unit_Type::Structure )
 						Type.Behaviour = unit_Type::Hovercraft,
 						Type.Abilities |= unit_Type::CanHover;
 					else theApp.Console.Comment( CT_ERROR, "WARNING: Structure was given hovercraft behaviour. Ignored." );
+                }
 
 				CASE( "CanFly" ) if( atol(Info.Value)!=0 )
+                {
 					if( Type.Behaviour!=unit_Type::Structure )
 						Type.Behaviour = unit_Type::Aircraft,
 						Type.Abilities |= unit_Type::CanFly;
 					else theApp.Console.Comment( CT_ERROR, "WARNING: Structure was given aircraft behaviour. Ignored." );
+                }
 
 				CASE( "Floater" ) if( atol(Info.Value)!=0 )
+                {
 					if( Type.Behaviour!=unit_Type::Structure )
 						Type.Behaviour = unit_Type::Seacraft/*,
 						Type.Abilities |= unit_Type::CanFly*/;
 					else theApp.Console.Comment( CT_ERROR, "WARNING: Structure was given seacraft behaviour. Ignored." );
+                }
 
 				CASE_FLOAT_VALUE2( CruiseAlt, CruiseAltitude )
 				CASE_FLOAT_VALUE( BankScale )
@@ -553,7 +559,7 @@ void unit_Factory::ProccessSchema( ta_ota_Schema_t* pSchema )
 	const unit_Type*	pType;
 
 	for( SchemaUnitList_t::iterator it=pSchema->Units.begin(),end=pSchema->Units.end(); it!=end; ++it)
-		if(pType = GetUnitType( (*it).Unitname ))
+		if((pType = GetUnitType( (*it).Unitname )))
 			theGame.NotifySpawnCompleteUnit( pType, std_Point((*it).XPos,(*it).ZPos), (*it).Player - 1 );
 }
 // End unit_Factory::ProccessSchema()

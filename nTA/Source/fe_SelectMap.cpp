@@ -166,7 +166,7 @@ void fe_SelectMap::CheckMap( LPTSTR strName, LPVOID lpOtaFile, gadget_ListBox* p
 	ta_ota_Schema_t			Schema;
 	ta_ota_GlobalHeader_t	Header;
 	char					Path[32];
-	BYTE*					pTnt = NULL;
+	//BYTE*					pTnt = NULL;
 
 	FileSize = theFileTree.DumpFileToBuffer( (app_FileTree::HFILEENTRY)lpOtaFile, &pOta );
 	if( ta_ota_GetSchema( pOta, FileSize, "Network 1", &Schema, &Header ) )

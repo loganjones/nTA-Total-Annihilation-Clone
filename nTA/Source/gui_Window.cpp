@@ -342,7 +342,7 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 	delete [] pFileBuffer;
 
 	// Set the default focus
-	if( Gadget=GetGadget(Header.Focus) )
+	if( (Gadget=GetGadget(Header.Focus)) )
 		m_pWndManager->SetFocus(Gadget);
 
 	// Return success

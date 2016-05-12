@@ -179,7 +179,7 @@ BOOL game_Main::Load()
 	theApp.Console.Comment( CT_LOAD, "Loading features..." );
 	theApp.DoFrame();
 	{
-		LPTSTR World;
+		LPCTSTR World;
 		STRING_SWITCH( Ota.Planet )
 			CASE( "green planet" )
 				World = "green";

@@ -51,7 +51,7 @@ BOOL fe_MainMenu::OnCreate()
 	}
 
 	// Change the text of the debug string to show the version string
-	if( pString = (gadget_String*)GetGadget( "DebugString" ) )
+	if( (pString = (gadget_String*)GetGadget( "DebugString" )) )
 		pString->SetText( "nTA 0.01" );
 		//pString->SetText( "v3.1" );
 
@@ -60,7 +60,7 @@ BOOL fe_MainMenu::OnCreate()
 	if( (pBuf!=NULL) && (Size!=0) )
 	{
 		// Change the default images for the Credits button
-		if( pButton = (gadget_Button*)GetGadget( "Credits" ) )
+		if( (pButton = (gadget_Button*)GetGadget( "Credits" )) )
 		{			
 			gfx->CreateSurfacesFromGAF( pBuf, "Credits", 1, 5, m_Surfaces );
 			pButton->SetButtonImages( m_Surfaces, m_Surfaces[1], m_Surfaces[2] );

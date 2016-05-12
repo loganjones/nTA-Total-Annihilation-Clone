@@ -125,9 +125,11 @@ BOOL app_nTA::Start()
 
 	// Create the application and show the splash screen
 	if( m_RestartFlags & RESTART_Subsystems )
+    {
 		if( bFAILED(Create("nTA Splash.bmp")) )
 			return FALSE;
 		else Console.Comment( CT_NORMAL, "nTA application object created." );
+    }
 
 	// Find Total Annihilation or else
 	if( bFAILED(FindTotalAnnihilation()) )
@@ -349,6 +351,9 @@ void app_nTA::StateChanging( sys_App_States OldState, sys_App_States NewState )
 		case State_Paused:
 			input.UnacquireDevices();
 			break;
+            
+        default:
+            break;
 
 	} // end switch( NewState )
 }

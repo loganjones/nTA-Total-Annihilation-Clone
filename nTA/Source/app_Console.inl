@@ -16,7 +16,7 @@
 //
 // Return: BOOL - 
 //
-BOOL app_Console::AddVariable( LPTSTR strName, LPCommandProc_t lpVarProc )
+BOOL app_Console::AddVariable( LPCTSTR strName, LPCommandProc_t lpVarProc )
 {
 	return AddCommand( strName, lpVarProc );
 }
@@ -36,7 +36,7 @@ BOOL app_Console::AddVariable( LPTSTR strName, LPCommandProc_t lpVarProc )
 //
 // Return: BOOL - 
 //
-BOOL app_Console::AddToggle( LPTSTR strName, LPCommandProc_t lpToggleProc, LPCommandProc_t lpUntoggleProc )
+BOOL app_Console::AddToggle( LPCTSTR strName, LPCommandProc_t lpToggleProc, LPCommandProc_t lpUntoggleProc )
 {
 	char NewName[32] = "+\0";
 	strcat( NewName, strName );

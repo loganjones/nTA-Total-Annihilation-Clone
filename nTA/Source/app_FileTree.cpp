@@ -201,7 +201,7 @@ DWORD app_FileTree::AddDirectoryToScan( LPCTSTR strPath, BOOL bCertify )
 	NewDir.Types.clear();
 
 	// Make sure that the last char of the Path is not '\'
-	int Last = strlen( NewDir.strPath ) - 1;
+	ssize_t Last = strlen( NewDir.strPath ) - 1;
 	while( NewDir.strPath[ Last ]=='/' ) NewDir.strPath[ Last-- ] = '\0';
 
 	// Add this entry to the list
@@ -918,7 +918,7 @@ void app_FileTree::CloseFile( HFILE hFile )
 //
 // Return: DWORD - 
 //
-DWORD app_FileTree::GetEntryCountInDirectory( LPTSTR strWhere )
+DWORD app_FileTree::GetEntryCountInDirectory( LPCTSTR strWhere )
 {
 	DirEntry_t*		pWhere;
 	DirEntry_t*		pDir;
@@ -952,7 +952,7 @@ DWORD app_FileTree::GetEntryCountInDirectory( LPTSTR strWhere )
 //
 // Return: DWORD - 
 //
-DWORD app_FileTree::GetFileCountInDirectory( LPTSTR strWhere )
+DWORD app_FileTree::GetFileCountInDirectory( LPCTSTR strWhere )
 {
 	DirEntry_t*		pWhere;
 	FileEntry_t*	pFile;
@@ -982,7 +982,7 @@ DWORD app_FileTree::GetFileCountInDirectory( LPTSTR strWhere )
 //
 // Return: DWORD - 
 //
-DWORD app_FileTree::GetDirectoryCountInDirectory( LPTSTR strWhere )
+DWORD app_FileTree::GetDirectoryCountInDirectory( LPCTSTR strWhere )
 {
 	DirEntry_t*		pWhere;
 	DirEntry_t*		pDir;

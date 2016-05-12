@@ -82,7 +82,7 @@ void util_TxtParse::KillTrailers( LPTSTR str )
 {
 	assert( str );
 
-	int len = strlen(str)-1;
+	ssize_t len = strlen(str)-1;
 	for( ; len>=0 && iswspace(str[len]); --len)
 		str[len] = '\0';
 }
