@@ -463,7 +463,7 @@ void gadget_Button::OnInitButtonImages()
 void gadget_Button::OnButtonDown()
 {
 	// Send down message
-	SendMessage( m_pParent, gui_msg_ButtonDown, (DWORD)(LPTSTR(m_CommonData.Name)), 1 );
+	SendMessage( m_pParent, gui_msg_ButtonDown, (Param_t)(LPTSTR(m_CommonData.Name)), 1 );
 }
 // End gadget_Button::OnButtonDown()
 //////////////////////////////////////////////////////////////////////
@@ -478,7 +478,7 @@ void gadget_Button::OnButtonDown()
 void gadget_Button::OnButtonUp()
 {
 	// Send up message
-	SendMessage( m_pParent, gui_msg_ButtonUp, (DWORD)(LPTSTR(m_CommonData.Name)), 1 );
+	SendMessage( m_pParent, gui_msg_ButtonUp, (Param_t)(LPTSTR(m_CommonData.Name)), 1 );
 }
 // End gadget_Button::OnButtonUp()
 //////////////////////////////////////////////////////////////////////
@@ -502,7 +502,7 @@ void gadget_Button::OnPressed( DWORD dwButton )
     }
 
 	// Send the pressed message
-	SendMessage( m_pParent, gui_msg_ButtonPressed, (DWORD)(LPTSTR(m_CommonData.Name)), dwButton );
+	SendMessage( m_pParent, gui_msg_ButtonPressed, (Param_t)(LPTSTR(m_CommonData.Name)), dwButton );
 }
 // End gadget_Button::OnPressed()
 //////////////////////////////////////////////////////////////////////

@@ -68,7 +68,7 @@ public:
 	void OnUpdate();
 	void OnRender();
 
-	DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 	void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
 	void OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags );

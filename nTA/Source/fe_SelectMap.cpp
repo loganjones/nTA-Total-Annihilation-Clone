@@ -122,7 +122,7 @@ void fe_SelectMap::OnUpdate()
 //
 // Return: DWORD - 
 //
-DWORD fe_SelectMap::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_SelectMap::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 
@@ -130,7 +130,7 @@ DWORD fe_SelectMap::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dw
 		STRING_SWITCH( strSender )
 
 			CASE( "Load" )
-				m_pParent->OnWndMessage( this, gui_msg_ButtonPressed, (DWORD)(m_MapBox->GetCurrentSelection()), 0 );
+				m_pParent->OnWndMessage( this, gui_msg_ButtonPressed, (Param_t)(m_MapBox->GetCurrentSelection()), 0 );
 				sound.PlaySound( "Button1" );
 				Destroy();
 				return 1;

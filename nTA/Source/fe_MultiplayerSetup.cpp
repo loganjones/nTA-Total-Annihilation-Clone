@@ -259,7 +259,7 @@ void fe_MultiplayerSetup::OnUpdate()
 //
 // Return: DWORD - 
 //
-DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 	UINT32				Who;
@@ -430,7 +430,7 @@ void fe_MultiplayerSetup::OnSystemMessage()
 				RemovePlayers( Who ),
 				sprintf( Str, "**Player %d left.", Who ),
 				pBox->AddListBoxItem( Str );
-			else SendMessage( this, gui_msg_ButtonPressed, (DWORD)"PrevMenu", 0 );
+			else SendMessage( this, gui_msg_ButtonPressed, (Param_t)"PrevMenu", 0 );
 			break;
 	}
 }

@@ -98,7 +98,7 @@ void fe_Single::OnDestroy()
 //
 // Return: DWORD - 
 //
-DWORD fe_Single::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_Single::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 

@@ -110,7 +110,7 @@ void fe_MainMenu::OnDestroy()
 //
 // Return: DWORD - 
 //
-DWORD fe_MainMenu::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_MainMenu::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 

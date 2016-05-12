@@ -106,7 +106,7 @@ void igui_OrderButton::OnPressed()
 		if( m_CanAutoPress ) m_Pressed = !m_Pressed;
 
 	// Send the pressed message
-	SendMessage( m_pParent, gui_msg_ButtonPressed, (DWORD)(LPTSTR(m_CommonData.Name)), (DWORD)this );
+	SendMessage( m_pParent, gui_msg_ButtonPressed, (Param_t)(LPTSTR(m_CommonData.Name)), (Param_t)this );
 }
 // End igui_OrderButton::OnPressed()
 //////////////////////////////////////////////////////////////////////

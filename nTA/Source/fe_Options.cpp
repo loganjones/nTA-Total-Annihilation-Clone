@@ -169,7 +169,7 @@ void fe_Options::OnUpdate()
 //
 // Return: DWORD - 
 //
-DWORD fe_Options::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_Options::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR		strSender = (LPTSTR)dwParamA;
 	std_Size*	pRes = NULL;

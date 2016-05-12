@@ -574,7 +574,7 @@ void igui_ControlBar::OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlag
 //
 // Return: DWORD - 
 //
-DWORD igui_ControlBar::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD igui_ControlBar::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR	strSender = (LPTSTR)dwParamA;
 	DWORD	Page;

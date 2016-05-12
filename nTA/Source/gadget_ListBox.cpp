@@ -123,7 +123,7 @@ void gadget_ListBox::OnRender()
 //
 // Return: DWORD - 
 //
-DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	if( pSender==m_pScroller && dwMessage==gui_msg_SliderMoved )
 	{
@@ -160,7 +160,7 @@ void gadget_ListBox::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton,
 		int Last = m_CurrentSelectionIndex;
 		m_CurrentSelectionIndex = NewItem;
 		if( Last!=NewItem )
-			SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (DWORD)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
+			SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (Param_t)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
 	}
 }
 // End gadget_ListBox::OnMouseButton()
@@ -559,7 +559,7 @@ void gadget_ListBox::ShiftSelection( int iDist )
 	}
 
 	// Selection changed
-	SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (DWORD)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
+	SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (Param_t)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
 }
 // End gadget_ListBox::ShiftSelection()
 //////////////////////////////////////////////////////////////////////

@@ -281,7 +281,7 @@ void gadget_Slider::MoveKnobBackward()
 //
 void gadget_Slider::SendKnobMovedMessage()
 {
-	SendMessage( (m_pBuddyWnd) ? m_pBuddyWnd : m_pParent, gui_msg_SliderMoved, (DWORD)(LPTSTR(m_CommonData.Name)), GetPosition() );
+	SendMessage( (m_pBuddyWnd) ? m_pBuddyWnd : m_pParent, gui_msg_SliderMoved, (Param_t)(LPTSTR(m_CommonData.Name)), GetPosition() );
 }
 // End gadget_Slider::SendKnobMovedMessage()
 //////////////////////////////////////////////////////////////////////

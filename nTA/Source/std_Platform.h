@@ -56,7 +56,7 @@ typedef void * LPVOID;
 typedef const char * LPCTSTR;
 typedef char * LPTSTR;
 typedef char * LPSTR;
-typedef size_t DWORD;
+typedef uint32_t DWORD;
 typedef uint16_t WORD;
 typedef uint8_t BYTE;
 typedef uint32_t UINT32;
@@ -65,7 +65,7 @@ typedef uint16_t UINT16;
 typedef int16_t INT16;
 typedef uint8_t UINT8;
 typedef int8_t INT8;
-typedef unsigned int UINT;
+typedef uint32_t UINT;
 typedef long LRESULT;
 #define stricmp strcasecmp
 #define strnicmp strncasecmp

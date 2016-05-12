@@ -46,7 +46,7 @@ public:
 	INLINE void SetCursorSpeed( const float fSpeed );
 	INLINE const std_Point GetCursorPosition() const;
 
-	BOOL AddMessage( wnd_Window* pSrc, wnd_Window* pDest, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	BOOL AddMessage( wnd_Window* pSrc, wnd_Window* pDest, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 
 /////////////////////////////////////////////////

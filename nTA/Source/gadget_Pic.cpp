@@ -244,7 +244,7 @@ void gadget_Pic::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOO
 				// Release capture and check where the button was released
 				ReleaseCapture(),
 				std_Rect(0,0,m_Size).PointInRect(ptCursor) &&
-				SendMessage( m_pParent, gui_msg_ButtonPressed, (DWORD)(LPTSTR(m_CommonData.Name)), dwButton );
+				SendMessage( m_pParent, gui_msg_ButtonPressed, (Param_t)(LPTSTR(m_CommonData.Name)), dwButton );
 
 		} // end button was released
 

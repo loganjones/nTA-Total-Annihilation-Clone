@@ -243,7 +243,7 @@ void wnd_Manager::SetCursorPosition( const std_Point pt )
 //
 // Return: BOOL - 
 //
-BOOL wnd_Manager::AddMessage( wnd_Window* pSrc, wnd_Window* pDest, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+BOOL wnd_Manager::AddMessage( wnd_Window* pSrc, wnd_Window* pDest, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	Message_t	NewMessage;
 

@@ -74,7 +74,7 @@ void fe_Skirmish::OnDestroy()
 //
 // Return: DWORD - 
 //
-DWORD fe_Skirmish::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_Skirmish::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 

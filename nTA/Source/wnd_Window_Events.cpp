@@ -111,7 +111,7 @@ BOOL wnd_Window::OnSize( const std_Size_t& szNew )
 //
 // Return: DWORD - 
 //
-DWORD wnd_Window::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD wnd_Window::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	// No parent, no point going on
 	if( m_pParent==NULL ) return 1;

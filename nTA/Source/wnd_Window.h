@@ -70,7 +70,7 @@ public:
 	void SetCapture();
 	void ReleaseCapture();
 
-	BOOL SendMessage( wnd_Window* pDest, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	BOOL SendMessage( wnd_Window* pDest, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 
 /////////////////////////////////////////////////
@@ -86,7 +86,7 @@ public:
 	virtual BOOL OnPos( const std_Point_t& ptNew );
 	virtual BOOL OnSize( const std_Size_t& szNew );
 
-	virtual DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	virtual DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 	virtual void OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags );
 	virtual void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );

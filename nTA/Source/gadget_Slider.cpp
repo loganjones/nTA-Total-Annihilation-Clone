@@ -164,7 +164,7 @@ void gadget_Slider::OnRender()
 //
 // Return: DWORD - 
 //
-DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 
