@@ -363,7 +363,7 @@ void fe_Options::LoadVisuals()
 
 		// Set the current color depth
 		if( m_ColorDepthButton )
-			m_ColorDepthButton->SetStage( theApp.GetColorDepth() >> 5 );
+			m_ColorDepthButton->SetStage( (DWORD)theApp.GetColorDepth() >> 5 );
 
 		// Set the selection and attach the slider
 		m_RendererBox->SetSelection( theApp.GetRenderer() );
@@ -428,18 +428,18 @@ void fe_Options::SetModes( LPCTSTR strRenderer, long Depth, std_Size szDesiredSe
 	if( rend!=m_Renderers.end() )
 		for( Modes=&(*rend).second,it=Modes->begin(),end=Modes->end(); it!=end; ++it)
 			if( (*it).Depth==Depth ) {
-				sprintf( ResStr, "%d x %d", (*it).Resolution.width, (*it).Resolution.height );
+				sprintf( ResStr, "%ld x %ld", (*it).Resolution.width, (*it).Resolution.height );
 				m_ResolutionBox->AddListBoxItem( ResStr, &(*it) );
 	}
 
 	// Set the current selection
-	sprintf( ResStr, "%d x %d", szDesiredSelection.width, szDesiredSelection.height );
+	sprintf( ResStr, "%ld x %ld", szDesiredSelection.width, szDesiredSelection.height );
 	if( m_ResolutionBox->SetSelection( ResStr )==(-1) )
 		// Failed to find a suitable selection, look for a close match		
 		if( rend!=m_Renderers.end() )
 			for( Modes=&(*rend).second,it=Modes->begin(),end=Modes->end(); it!=end; ++it)
 				if( (*it).Depth==Depth && (*it).Resolution.width>=szDesiredSelection.width && (*it).Resolution.height>=szDesiredSelection.height ) {
-					sprintf( ResStr, "%d x %d", (*it).Resolution.width, (*it).Resolution.height );
+					sprintf( ResStr, "%ld x %ld", (*it).Resolution.width, (*it).Resolution.height );
 					m_ResolutionBox->SetSelection( ResStr );
 					break;
 		}

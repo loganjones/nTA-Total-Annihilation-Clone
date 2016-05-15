@@ -164,7 +164,7 @@ void igui_Console::OnRender()
 
 	// Draw the command line
 	Pos.Shift( 4, m_Size.height - 8, 0 );
-	CommandLineIndent.x += gfx->RenderString( m_Text, m_TextCaret, Pos + CommandLineIndent, 0xFFFFFFFF, theInterface->ConsoleFont() );
+	CommandLineIndent.x += gfx->RenderString( m_Text, (DWORD)m_TextCaret, Pos + CommandLineIndent, 0xFFFFFFFF, theInterface->ConsoleFont() );
 	gfx->RenderString( m_Text + m_TextCaret, Pos + CommandLineIndent, 0xFFFFFFFF, theInterface->ConsoleFont() );
 	if( m_DrawCaret ) gfx->RenderString( "|", Pos + CommandLineIndent, 0xFFFFFFFF, theInterface->ConsoleFont() );
 
@@ -196,7 +196,7 @@ void igui_Console::OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlags )
 	{
 		case IN_KEY_RETURN: if( bDown )
 			{
-				theApp.Console.Execute( m_Text, m_TextLength );
+				theApp.Console.Execute( m_Text, (DWORD)m_TextLength );
 				ResetText();
 			}
 			break;

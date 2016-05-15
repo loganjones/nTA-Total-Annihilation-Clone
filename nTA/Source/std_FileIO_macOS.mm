@@ -96,7 +96,7 @@ DWORD fio_GetFileSize( void* hFile )
     const long size = ftell(file);
     fseek(file, cursor, SEEK_SET);
     
-    return size;
+    return (DWORD)size;
 }
 // End fio_GetFileSize()
 //////////////////////////////////////////////////////////////////////
@@ -142,7 +142,7 @@ DWORD fio_ReadFile( void* hFile, void* Dest_Buffer, DWORD BytesToRead )
     const size_t bytesRead = fread(Dest_Buffer, 1, BytesToRead, (FILE *)hFile);
 
     // Return the total amount of bytes read
-	return bytesRead;
+	return (DWORD)bytesRead;
 }
 // End fio_ReadFile()
 //////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@ DWORD fio_WriteFile( void* hFile, void* Src_Buffer, DWORD BytesToWrite )
     const size_t bytesWritten = fwrite(Src_Buffer, 1, BytesToWrite, (FILE *)hFile);
 
     // Return the amount of bytes written
-	return bytesWritten;
+	return (DWORD)bytesWritten;
 }
 // End fio_WriteFile()
 //////////////////////////////////////////////////////////////////////
@@ -292,7 +292,7 @@ void* fio_FindFirstFile( LPCTSTR FilePath, LPfio_FindFileData FileData )
             
             if (FileData) {
                 if (fileName) { strcpy(FileData->Name, fileName.UTF8String); } else { FileData->Name[0] = '\0'; }
-                FileData->Size = fileSize ? fileSize.integerValue : 0;
+                FileData->Size = fileSize ? fileSize.unsignedIntValue : 0;
                 FileData->Attributes = isDirectory.boolValue ? fio_FFA_DIRECTORY : fio_FFA_NORMAL;
             }
             
@@ -339,7 +339,7 @@ BOOL  fio_FindNextFile( void* hFind, LPfio_FindFileData FileData )
             
             if (FileData) {
                 if (fileName) { strcpy(FileData->Name, fileName.UTF8String); } else { FileData->Name[0] = '\0'; }
-                FileData->Size = fileSize ? fileSize.integerValue : 0;
+                FileData->Size = fileSize ? fileSize.unsignedIntValue : 0;
                 FileData->Attributes = isDirectory.boolValue ? fio_FFA_DIRECTORY : fio_FFA_NORMAL;
             }
             

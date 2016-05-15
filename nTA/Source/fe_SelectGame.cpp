@@ -108,7 +108,7 @@ void fe_SelectGame::OnUpdate()
 			//	m_GameList->AddListBoxItem( net.Read().GetString(), (LPVOID)net.Read().Marker() );
 				theAddress.s_addr = net.Read().Marker();
 				sprintf( Name, "%s %s", net.Read().GetString(), inet_ntoa(theAddress) );
-				m_GameList->AddListBoxItem( Name, (LPVOID)net.Read().Marker() );
+				m_GameList->AddListBoxItem( Name, (LPVOID)(size_t)net.Read().Marker() );
 		}
 
 		// Check for a timeout

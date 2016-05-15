@@ -189,7 +189,7 @@ BOOL app_nTA::Start()
 
 		// Get the interface to the gfx system and create it
 		if( bFAILED(RetrieveGfxInterface()) ||
-			bFAILED(gfx->Create( m_RendererResolution, m_RendererDepth, m_bFullScreen )) )
+			bFAILED(gfx->Create( m_RendererResolution, (int)m_RendererDepth, m_bFullScreen )) )
 		{
 			ErrorBox( "Error -> app_nTA::Start()", "Failed to create the graphics system." );
 			return FALSE;
@@ -610,7 +610,7 @@ BOOL app_nTA::LoadConfig()
 	char	Command[ 64 ];
 
 	sprintf( Command, "exec %s/Startup.cfg", m_GameType );
-	Console.Execute( Command, strlen(Command) );
+	Console.Execute( Command, (DWORD)strlen(Command) );
 	return TRUE;
 }
 // End app_nTA::LoadConfig()

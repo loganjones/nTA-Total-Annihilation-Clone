@@ -48,7 +48,7 @@ protected:
 // Data members
 protected:
 
-	DWORD				m_UpdateTime;
+	std_Time_t			m_UpdateTime;
 
 	char				m_strFPS[32];
 	DWORD				m_FrameCount;

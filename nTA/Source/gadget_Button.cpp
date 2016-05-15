@@ -93,10 +93,10 @@ BOOL gadget_Button::Create( const std_Point_t& ptPos, const std_Size_t& szDim, w
 	m_ButtonInfo.QuickKey=0;
 
 	m_CommonData.ID = GADGET_Button;
-	m_CommonData.XPos = ptPos.x;
-	m_CommonData.YPos = ptPos.y;
-	m_CommonData.Width = szDim.width;
-	m_CommonData.Height= szDim.height;
+	m_CommonData.XPos = (INT32)ptPos.x;
+	m_CommonData.YPos = (INT32)ptPos.y;
+	m_CommonData.Width = (UINT32)szDim.width;
+	m_CommonData.Height= (UINT32)szDim.height;
 	m_CommonData.Active = 1;
 	m_CommonData.Name[0] = '\0';
 	m_CommonData.Attribs = GUI_STANDARD_BUTTON;

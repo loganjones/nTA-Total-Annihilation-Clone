@@ -109,7 +109,7 @@ void fe_MS_PlayerSelection::Destroy( fe_MultiplayerSetup* pParent )
 void fe_MS_PlayerSelection::Send( UINT32 uiTo, UINT32 uiIndex, UINT32 uiPrefix )
 {
 	if(uiPrefix) net.Write().Write(uiTo,4) << uiPrefix;
-	net.Write().Write(uiTo,6 + strlen(Name) + strlen(SideSel->GetText()))
+	net.Write().Write( uiTo, (UINT32)(6 + strlen(Name) + strlen(SideSel->GetText())) )
 		<< uiIndex
 		<< (UINT8)(uiTo==NetID)
 		<< Name

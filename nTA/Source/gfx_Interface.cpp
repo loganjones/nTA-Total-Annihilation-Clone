@@ -32,7 +32,7 @@ BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNam
 {
     LPTA_GAF_HEADER         Header;
     DWORD*                  EntryPointers;
-    LPTA_GAF_ENTRY          ImageEntry;
+    LPTA_GAF_ENTRY          ImageEntry = NULL;
     LPTA_GAF_FRAME_ENTRY    FrameEntries;
     LPTA_GAF_FRAME_DATA     FrameData;
 	gfx_Image_t				Image;
@@ -66,7 +66,7 @@ BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNam
 	    }
 
         // Check to see if the image entry was found
-	    if( FrameEntries==NULL )
+	    if( FrameEntries==NULL || ImageEntry==NULL )
 	    {
             // Image was not found
 		    return FALSE;
@@ -130,7 +130,7 @@ BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNam
 {
     LPTA_GAF_HEADER         Header;
     DWORD*                  EntryPointers;
-    LPTA_GAF_ENTRY          ImageEntry;
+    LPTA_GAF_ENTRY          ImageEntry = NULL;
     LPTA_GAF_FRAME_ENTRY    FrameEntries;
     LPTA_GAF_FRAME_DATA     FrameData;
 	gfx_Image_t				Image;
@@ -164,7 +164,7 @@ BOOL gfx_Interface::CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNam
 	    }
 
         // Check to see if the image entry was found
-	    if( FrameEntries==NULL )
+	    if( FrameEntries==NULL || ImageEntry==NULL )
 	    {
             // Image was not found
 		    return FALSE;
@@ -238,7 +238,7 @@ DWORD gfx_Interface::CreateSurfacesFromGAF( BYTE* pFileBuffer, LPCTSTR strImageN
 {
     LPTA_GAF_HEADER         Header;
     DWORD*                  EntryPointers;
-    LPTA_GAF_ENTRY          ImageEntry;
+    LPTA_GAF_ENTRY          ImageEntry = NULL;
     LPTA_GAF_FRAME_ENTRY    FrameEntries;
     LPTA_GAF_FRAME_DATA     FrameData;
 	gfx_Image_t				Image;
@@ -275,7 +275,7 @@ DWORD gfx_Interface::CreateSurfacesFromGAF( BYTE* pFileBuffer, LPCTSTR strImageN
 	    }
 
         // Check to see if the image entry was found
-	    if( FrameEntries==NULL )
+	    if( FrameEntries==NULL || ImageEntry==NULL )
 	    {
             // Image was not found
 		    return FALSE;
@@ -360,7 +360,7 @@ BOOL gfx_Interface::CreateFontFromGAF( BYTE* pFileBuffer, LPCTSTR strFontName, g
 {
 	TA_GAF_HEADER*				Header;
 	DWORD*						EntryPointers;
-	TA_GAF_ENTRY*				FontEntry;
+	TA_GAF_ENTRY*				FontEntry = NULL;
 	TA_GAF_FRAME_ENTRY*			FrameEntries;
 	TA_GAF_FRAME_DATA*			FrameData;
     BYTE						FontTexture[256*256];
@@ -407,7 +407,7 @@ BOOL gfx_Interface::CreateFontFromGAF( BYTE* pFileBuffer, LPCTSTR strFontName, g
     DWORD x,y;
 	BYTE* pMap;
 	BYTE* MapOffset = FontTexture;
-	BYTE RowCount=0;
+	//BYTE RowCount=0;
 	for( WORD FrameCount=0,num=0; FrameCount<FontEntry->NumberOfFrames; FrameCount++,num++ )
 	{
 		if( num==16 )
@@ -435,7 +435,7 @@ BOOL gfx_Interface::CreateFontFromGAF( BYTE* pFileBuffer, LPCTSTR strFontName, g
 			pMap = MapOffset;
 			BYTE* pLine;
 			WORD LineLength;
-			DWORD Rawindex=0;
+			//DWORD Rawindex=0;
 			DWORD Texindex=0;
 			BYTE mask;
 			BYTE color;
@@ -521,7 +521,7 @@ BOOL gfx_Interface::CreateCursorFromGAF( BYTE* pFileBuffer, LPCTSTR strCursorNam
 {
 	TA_GAF_HEADER*				Header;
 	DWORD*						EntryPointers;
-	TA_GAF_ENTRY*				GafEntry;
+	TA_GAF_ENTRY*				GafEntry = NULL;
 	TA_GAF_FRAME_ENTRY*			FrameEntries;
 	TA_GAF_FRAME_DATA*			FrameData;
 	gfx_Interface::CursorFrame*	CursorFrames;
@@ -707,7 +707,7 @@ BOOL gfx_Interface::RetrieveImageFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNam
 {
     LPTA_GAF_HEADER         Header;
     DWORD*                  EntryPointers;
-    LPTA_GAF_ENTRY          ImageEntry;
+    LPTA_GAF_ENTRY          ImageEntry = NULL;
     LPTA_GAF_FRAME_ENTRY    FrameEntries;
     LPTA_GAF_FRAME_DATA     FrameData;
 
@@ -804,7 +804,7 @@ BOOL gfx_Interface::RetrieveImagesFromGAF( BYTE* pFileBuffer, LPCTSTR strImageNa
 {
     LPTA_GAF_HEADER         Header;
     DWORD*                  EntryPointers;
-    LPTA_GAF_ENTRY          ImageEntry;
+    LPTA_GAF_ENTRY          ImageEntry = NULL;
     LPTA_GAF_FRAME_ENTRY    FrameEntries;
     LPTA_GAF_FRAME_DATA     FrameData;
 	int						iFrameNumber;

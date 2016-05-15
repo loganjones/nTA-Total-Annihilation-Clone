@@ -145,8 +145,8 @@ void unit_Factory::ProccessDownloads()
 				{
 					if( Info.Type==PARSE_VarVal && Parser.Locale()==1 ) STRING_SWITCH( Info.Variable )
 						CASE( "UnitMenu" )	Builder = std_NameHash(Info.Value);
-						CASE( "Menu" )		Page = atol(Info.Value);
-						CASE( "Button" )	Button = atol(Info.Value);
+						CASE( "Menu" )		Page = atoi(Info.Value);
+						CASE( "Button" )	Button = atoi(Info.Value);
 						CASE( "UnitName" )	strcpy( Buildee, Info.Value );
 					END_STRING_SWITCH
 					bWorking = Parser.Continue( &Info );
@@ -246,6 +246,8 @@ bool unit_Factory::LoadUnitType( void* hFile )
 
 #define CASE_LONG_VALUE( VAR )			CASE( #VAR )		Type.VAR = atol( Info.Value );
 #define CASE_LONG_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.VAR2 = atol( Info.Value );
+#define CASE_DWORD_VALUE( VAR )			CASE( #VAR )		Type.VAR = atoi( Info.Value );
+#define CASE_DWORD_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.VAR2 = atoi( Info.Value );
 #define CASE_FLOAT_VALUE( VAR )			CASE( #VAR )		Type.VAR = atof( Info.Value );
 #define CASE_FLOAT_VALUE2( VAR, VAR2 )	CASE( #VAR )		Type.VAR2 = atof( Info.Value );
 
@@ -298,12 +300,12 @@ void unit_Factory::ProccessFBI( void* hFile, unit_Type& Type, LPTSTR strObjectNa
 				CASE( "FootprintX" )	Type.FootPrint.width = atol(Info.Value);
 				CASE( "FootprintZ" )	Type.FootPrint.height =atol(Info.Value);
 				
-				CASE_LONG_VALUE( BuildCostEnergy )
-				CASE_LONG_VALUE( BuildCostMetal )
+				CASE_DWORD_VALUE( BuildCostEnergy )
+				CASE_DWORD_VALUE( BuildCostMetal )
 				CASE( "BuildTime" )		Type.BuildTime = atol(Info.Value) * WORKER_TIME_MODIFIER;
 				CASE( "BuildAngle" ) 	Type.BuildAngle = (atol(Info.Value) / ANGULAR_CONSTANT);
 				
-				CASE_LONG_VALUE( MaxDamage )
+				CASE_DWORD_VALUE( MaxDamage )
 			//	float	DamageModifier;
 				CASE( "MaxSlope" )
 					// Set the max slope
@@ -311,13 +313,13 @@ void unit_Factory::ProccessFBI( void* hFile, unit_Type& Type, LPTSTR strObjectNa
 					if( lValue==0 ) lValue = 256;
 					vect2.SetPolar( atanf( lValue / 16.0f ), 1.0f );
 					Type.MaxSlope = vect2.y;
-				CASE_LONG_VALUE( MaxWaterDepth )
-				CASE_LONG_VALUE( MinWaterDepth )
+				CASE_DWORD_VALUE( MaxWaterDepth )
+				CASE_DWORD_VALUE( MinWaterDepth )
 			//	long	WaterLine;
 				
 			//	long	EnergyUse;
 				CASE( "WorkerTime" )	Type.WorkerTime = atol(Info.Value) * WORKER_TIME_MODIFIER;
-				CASE_LONG_VALUE( BuildDistance )
+				CASE_DWORD_VALUE( BuildDistance )
 				
 				CASE_ABILITY2( Builder, CanBuild )
 
@@ -340,15 +342,15 @@ void unit_Factory::ProccessFBI( void* hFile, unit_Type& Type, LPTSTR strObjectNa
 						Type.pSounds = (*SndCat).second;
 					else Type.pSounds = &m_SoundCategories.front();
 				
-				CASE_LONG_VALUE( EnergyStorage )
-				CASE_LONG_VALUE( MetalStorage )
-				CASE_LONG_VALUE( EnergyMake )
-				CASE_LONG_VALUE( MetalMake )
+				CASE_DWORD_VALUE( EnergyStorage )
+				CASE_DWORD_VALUE( MetalStorage )
+				CASE_DWORD_VALUE( EnergyMake )
+				CASE_DWORD_VALUE( MetalMake )
 				CASE_LONG_VALUE( EnergyUse )
 				CASE_LONG_VALUE( MetalUse )
-				CASE_LONG_VALUE( MakesMetal )
+				CASE_DWORD_VALUE( MakesMetal )
 				CASE_FLOAT_VALUE2( ExtractsMetal, MetalExtractionRate )
-				CASE_LONG_VALUE( WindGenerator )
+				CASE_DWORD_VALUE( WindGenerator )
 			/*	
 				char	ExplodeAs[32];
 				char	SelfDestructAs[32];

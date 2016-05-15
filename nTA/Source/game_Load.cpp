@@ -104,7 +104,7 @@ BOOL game_Main::Load()
 	BOOL						bLoadSuccessfull = FALSE;
 	BYTE*						pBuf = NULL;
 	DWORD						Size;
-	DWORD						t;
+	std_Time_t					t;
 	char						FilePath[ MAX_PATH ];
 	ta_ota_GlobalHeader_t		Ota;
 	ta_ota_Schema_t				Schema;

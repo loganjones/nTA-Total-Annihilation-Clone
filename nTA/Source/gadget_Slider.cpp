@@ -204,8 +204,10 @@ DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t
 void gadget_Slider::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	if( m_bDraggingKnob && m_pWndManager->GetCapture()==this )
+    {
 		if( m_bVertical ) MoveKnobNear( ptCursor.y );
 		else MoveKnobNear( ptCursor.x );
+    }
 }
 // End gadget_Slider::OnCursorMove()
 //////////////////////////////////////////////////////////////////////
@@ -280,11 +282,11 @@ BOOL gadget_Slider::CreateButtons()
 	if( m_bVertical )
 	{
 		// Setup the button common data structures
-		BackButtonCommonData.XPos = (m_Size.width / 2) - (guiResources.m_SliderButtonUp[0]->GetSize().width / 2);
+		BackButtonCommonData.XPos = INT32( (m_Size.width / 2) - (guiResources.m_SliderButtonUp[0]->GetSize().width / 2) );
 		BackButtonCommonData.YPos = 0;
 		BackButtonCommonData.Width = BackButtonCommonData.Height = 1;
-		FowardButtonCommonData.XPos = (m_Size.width / 2) - (guiResources.m_SliderButtonDown[0]->GetSize().width / 2);
-		FowardButtonCommonData.YPos = m_Size.height - guiResources.m_SliderButtonDown[0]->GetSize().height;
+		FowardButtonCommonData.XPos = INT32( (m_Size.width / 2) - (guiResources.m_SliderButtonDown[0]->GetSize().width / 2) );
+		FowardButtonCommonData.YPos = INT32( m_Size.height - guiResources.m_SliderButtonDown[0]->GetSize().height );
 		FowardButtonCommonData.Width = FowardButtonCommonData.Height = 1;
 
 		// Create the buttons and assosiate them with their images
@@ -297,10 +299,10 @@ BOOL gadget_Slider::CreateButtons()
 	{
 		// Setup the button common data structures
 		BackButtonCommonData.XPos = 0;
-		BackButtonCommonData.YPos = (m_Size.height / 2) - (guiResources.m_SliderButtonLeft[0]->GetSize().height / 2);
+		BackButtonCommonData.YPos = INT32( (m_Size.height / 2) - (guiResources.m_SliderButtonLeft[0]->GetSize().height / 2) );
 		BackButtonCommonData.Width = BackButtonCommonData.Height = 1;
-		FowardButtonCommonData.XPos = m_Size.width - guiResources.m_SliderButtonRight[0]->GetSize().width;
-		FowardButtonCommonData.YPos = (m_Size.height / 2) - (guiResources.m_SliderButtonRight[0]->GetSize().height / 2);
+		FowardButtonCommonData.XPos = INT32( m_Size.width - guiResources.m_SliderButtonRight[0]->GetSize().width );
+		FowardButtonCommonData.YPos = INT32( (m_Size.height / 2) - (guiResources.m_SliderButtonRight[0]->GetSize().height / 2) );
 		FowardButtonCommonData.Width = BackButtonCommonData.Height = 1;
 
 		// Create the buttons and assosiate them with their images

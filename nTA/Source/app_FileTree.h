@@ -91,7 +91,7 @@ public:
 	template <class _Progress_t>
 	DWORD DumpFileToBuffer( LPCTSTR strFilePath, BYTE** ppBuffer, _Progress_t Progress=DefaultLoader_t() );
 
-	HFILE OpenFile( LPTSTR strFilePath );
+	HFILE OpenFile( LPCTSTR strFilePath );
 	DWORD GetFileSize( HFILE hFile );
 	DWORD ReadFile( HFILE hFile, void* pDestBuffer, LPReadProc_t lpReadProc=NULL, LPVOID lpProcVal=NULL );
 	DWORD ReadFile( HFILE hFile, void* pDestBuffer, DWORD dwSizeToRead );
@@ -146,7 +146,7 @@ protected:
 	inline BOOL IsSQSH( BYTE* pBuffer );
 	inline DWORD GetSQSHSize( BYTE* pBuffer );
 	inline DWORD DeSQSH( BYTE* In, BYTE* Out );
-	int ZLibDecompress( BYTE* in, BYTE* out, long CompressedSize, long DecompressedSize=(-1) );
+	size_t ZLibDecompress( BYTE* in, BYTE* out, UINT32 CompressedSize, INT32 DecompressedSize=(-1) );
 	int LZ77Decompress( BYTE* in, BYTE* out );
 
 // ZIP methods

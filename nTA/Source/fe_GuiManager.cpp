@@ -34,7 +34,7 @@ fe_GuiManager::~fe_GuiManager()
 //
 BOOL fe_GuiManager::Create( LPCTSTR strStartMenu )
 {
-	DWORD TotalTime = std_Time();
+ 	const std_Time_t TotalTime = std_Time();
 
 	// Call the default
 	if( bFAILED(wnd_Manager::Create()) )

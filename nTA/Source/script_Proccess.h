@@ -154,7 +154,7 @@ protected:
 		UINT32						Start;
 		UINT32						Offset;
 		UINT32*						pCode;
-		DWORD						Sleep;
+		std_Time_t					Sleep;
 		DWORD						Mask;
 		BOOL*						ThreadComplete;
 		Thread_t*					pParent;

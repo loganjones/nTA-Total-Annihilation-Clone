@@ -98,7 +98,7 @@ void gadget_TextEdit::OnRender()
 {
 	std_Vector3	Pos( m_ScreenPosition.x + 4, m_ScreenPosition.y + m_Size.height - 8, 0 );
 
-	Pos.x += gfx->RenderString( m_TextBox.Text(), m_TextBox.Caret(), Pos, 0xFFFFFFFF, guiResources.Fonts.Standard );
+	Pos.x += gfx->RenderString( m_TextBox.Text(), (DWORD)m_TextBox.Caret(), Pos, 0xFFFFFFFF, guiResources.Fonts.Standard );
 	gfx->RenderString( m_TextBox.Text() + m_TextBox.Caret(), Pos, 0xFFFFFFFF, guiResources.Fonts.Standard );
 	gfx->RenderString( "|", Pos, 0xFFFFFFFF, guiResources.Fonts.Standard );
 }

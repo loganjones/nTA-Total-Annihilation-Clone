@@ -112,8 +112,10 @@ void weapon_Factory::ProccessTdf( void* hFile )
 			while( bWorking && Parser.Locale()>0 )
 			{
 				if( Info.Type==PARSE_VarVal && Parser.Locale()==1 )
-					STRING_SWITCH( Info.Variable )
-					END_STRING_SWITCH
+                {
+					//STRING_SWITCH( Info.Variable )
+					//END_STRING_SWITCH
+                }
 				else if( Info.Type==PARSE_Header && Parser.Locale()==1 )
 				{
 				}

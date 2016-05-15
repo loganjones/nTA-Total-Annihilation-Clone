@@ -40,7 +40,7 @@ gadget_ListBox::~gadget_ListBox()
 //
 BOOL gadget_ListBox::OnCreate()
 {
-	m_MaxVisibleItems = m_Size.height / (guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION);
+	m_MaxVisibleItems = (int)m_Size.height / (guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION);
 	m_KeyDown = 0;
 
 	return TRUE;
@@ -128,7 +128,7 @@ DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_
 	if( pSender==m_pScroller && dwMessage==gui_msg_SliderMoved )
 	{
 		assert( dwParamB>=0 && dwParamB<=(m_ItemCount - m_MaxVisibleItems) );
-		m_FirstVisibleItemIndex = dwParamB;
+		m_FirstVisibleItemIndex = (int)dwParamB;
 		return 1;
 	}
 
@@ -151,8 +151,8 @@ DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_
 //
 void gadget_ListBox::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
-	const int	ItemHeight = guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION;
-	const int	ItemsDown = ptCursor.y / ItemHeight;
+	const int	ItemHeight = (int)guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION;
+	const int	ItemsDown = (int)ptCursor.y / ItemHeight;
 	const int	NewItem = m_FirstVisibleItemIndex + ItemsDown;
 
 	if( NewItem>=0 && NewItem<m_ItemCount )

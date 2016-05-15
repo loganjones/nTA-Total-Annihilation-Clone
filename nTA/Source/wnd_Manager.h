@@ -19,8 +19,8 @@ class wnd_Manager : public in_Handler
 		wnd_Window*		Src;
 		wnd_Window*		Dest;
 		DWORD			Message;
-		DWORD			ParamA;
-		DWORD			ParamB;
+		Param_t			ParamA;
+		Param_t			ParamB;
 	};
 	typedef list<Message_t>	MessageList_t;
 

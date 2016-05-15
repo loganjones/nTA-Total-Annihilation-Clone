@@ -819,7 +819,7 @@ DWORD app_FileTree::DumpFileToBuffer( LPCTSTR strFilePath, BYTE** ppBuffer, _Pro
 //
 // Return: HFILE - 
 //
-app_FileTree::HFILE app_FileTree::OpenFile( LPTSTR strFilePath )
+app_FileTree::HFILE app_FileTree::OpenFile( LPCTSTR strFilePath )
 {
 	// Error check
 	if( strFilePath==NULL ) return NULL;
@@ -1596,7 +1596,7 @@ BOOL app_FileTree::AddZipToTree( void* hFile, int iPriority )
 	DirEntry_t*							pDir;
 	LPTSTR								pPathSting;
 	LPTSTR								pSearchSting;
-	int									length;
+	ssize_t								length;
 	char								DirString[128];
 
 	// Assume there is no zip comment at the end of the file
@@ -1728,7 +1728,7 @@ void app_FileTree::AddDirToTree( LPCTSTR strPath, BOOL bDoRoot, int iLayers, int
 	DirEntry_t*						pDir;
 	FileEntry_t						FileData;
 	BOOL							bUsedIndex = FALSE;
-	DWORD							theIndex;
+	DWORD							theIndex = 0;
 
 	// Setup the find path
 	sprintf( FindPath, "%s/*", strPath );
@@ -1883,7 +1883,7 @@ DWORD app_FileTree::DeSQSH( BYTE* In, BYTE* Out )
 //
 // Return: int - 
 //
-int app_FileTree::ZLibDecompress( BYTE* in, BYTE* out, long CompressedSize, long DecompressedSize )
+size_t app_FileTree::ZLibDecompress( BYTE* in, BYTE* out, UINT32 CompressedSize, INT32 DecompressedSize )
 {
   z_stream zs;
   int result;

@@ -98,7 +98,7 @@ BOOL ta_ota_GetSchemaList( BYTE* pFileBuffer, DWORD dwFileSize, SchemaList_t& Sc
 			case PARSE_Header: if( strnicmp(Info.Value,"Schema ",7)==0 )
 			{
 				// Get the index # from the header title; ie [Schema #]
-				Index = atol( Info.Value + 7 );
+				Index = atoi( Info.Value + 7 );
 
 				// Continue to the type var/val
 				bValid = TxtParse.Continue(&Info); if( !bValid || Info.Type!=PARSE_LevelUp ) continue;

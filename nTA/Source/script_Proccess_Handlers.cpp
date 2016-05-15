@@ -192,12 +192,14 @@ IMPLEMENT_OPCODE_HANDLER( StopSpin )
 	AnimMap_t::iterator	it = Proccess.Animations.find( SPIN_ANIM_INDEX(Thread.pCode[1],Thread.pCode[2]) );
 
 	if( it!=Proccess.Animations.end() )
+    {
 		if( Deccel==0 )
 			Proccess.Animations.erase( it );
 		else
 			((*it).second).Type = animation_StopSpin,
 			((*it).second).vDesired.x = Deccel * (fPI/180.0f) / 1000.0f,
 			((*it).second).Last = std_Time();
+    }
 
 	Thread.pCode += 3;
 	Proccess.pUnit->StartAnimation();
@@ -394,7 +396,7 @@ IMPLEMENT_OPCODE_HANDLER( DontShade )
 IMPLEMENT_OPCODE_HANDLER( EmitSfx )
 {
 	// TODO: Implement SFX system
-	long SFX = PopStack();
+	__unused long SFX = PopStack();
 	Thread.pCode += 2;
 	return 0;
 }
@@ -715,7 +717,7 @@ IMPLEMENT_OPCODE_HANDLER( GetFunctionResult )
 //
 IMPLEMENT_OPCODE_HANDLER( StartScript )
 {
-	Thread.Offset = Thread.pCode - Proccess.pScript->pStart;
+	Thread.Offset = (UINT32)(Thread.pCode - Proccess.pScript->pStart);
 	Proccess.StartScript( Thread.pCode[1], Thread );
 	Thread.pCode += 3;
 	return 0;
@@ -737,7 +739,7 @@ IMPLEMENT_OPCODE_HANDLER( StartScript )
 //
 IMPLEMENT_OPCODE_HANDLER( CallScript )
 {
-	Thread.Offset = Thread.pCode - Proccess.pScript->pStart;
+	Thread.Offset = (UINT32)(Thread.pCode - Proccess.pScript->pStart);
 	Proccess.CallScript( Thread.pCode[1], Thread );
 	Thread.pCode += 3;
 	return 1;
@@ -852,7 +854,7 @@ IMPLEMENT_OPCODE_HANDLER( Signal )
 //
 IMPLEMENT_OPCODE_HANDLER( SetSignalMask )
 {
-	Thread.Mask = PopStack();
+	Thread.Mask = (DWORD)PopStack();
 	Thread.pCode += 1;
 	return 0;
 }

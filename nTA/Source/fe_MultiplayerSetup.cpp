@@ -59,7 +59,7 @@ void fe_MultiplayerSetup::Init( const char* strGameName, const char* strPlayerNa
 		strcpy( m_Password, strPassword ),
 		//AddNewPlayer( NextPlayer++, ~0, strPlayerName ),
 		Players[NextPlayer].Create( strPlayerName, NextPlayer, ~0, NULL, GetColor(), this ),
-		net.StartServer( m_GameName, strlen(m_GameName) + 1 ),
+		net.StartServer( m_GameName, (DWORD)strlen(m_GameName) + 1 ),
 		++NextPlayer,++PlayerCount,
 		GetGadget("SYNCHING")->SetVisible(FALSE),
 		GetGadget("battlestart")->SetVisible(FALSE),
@@ -68,7 +68,7 @@ void fe_MultiplayerSetup::Init( const char* strGameName, const char* strPlayerNa
 		m_GameName[0] = '\0',
 		GetGadget("battlestart")->SetVisible(),
 		GetGadget("Start")->SetActive(FALSE),
-		net.Write().Write( 0, 4 + strlen(strPlayerName) + 1 )
+		net.Write().Write( 0, 4 + (UINT32)strlen(strPlayerName) + 1 )
 			<< (UINT32)fems_ClientLogin
 			<< (UINT32)std_NameHash(strPassword)
 			<< strPlayerName;

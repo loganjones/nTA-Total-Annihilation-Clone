@@ -114,7 +114,7 @@ bool net_RecvBuffer::RecvFrom( net_Client& sender )
 	// packet complete?
 	if( sender.Recv.BytesLeft==0 )
 		theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Packet complete" ),
-		((net_PacketHeader*)sender.Recv.Start)->Size = sender.Recv.Cursor - sender.Recv.Start;
+		((net_PacketHeader*)sender.Recv.Start)->Size = (UINT32)(sender.Recv.Cursor - sender.Recv.Start);
 
 	// sender valid?
 	return BytesReceived>0;

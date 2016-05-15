@@ -211,7 +211,7 @@ void app_Console::Comment( DWORD dwType, LPCTSTR strComment, ... )
 			return;
 
 		// Append the comment to the file
-		fprintf( hFile, CommentString );
+        fwrite( CommentString, 1, strlen(CommentString), hFile );
 
 		// Add a newline also
 		putc( '\n', hFile );
@@ -256,7 +256,7 @@ void app_Console::vComment( DWORD dwType, LPCTSTR strComment, va_list vaArgument
 			return;
 
 		// Append the comment to the file
-		fprintf( hFile, CommentString );
+        fwrite( CommentString, 1, strlen(CommentString), hFile );
 
 		// Add a newline also
 		putc( '\n', hFile );

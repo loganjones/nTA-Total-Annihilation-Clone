@@ -67,10 +67,10 @@ BOOL gadget_String::Create( const std_Point_t& ptPos, const std_Size_t& szDim, w
 	m_StringInfo.Text[0] = '\0';
 
 	m_CommonData.ID = GADGET_String;
-	m_CommonData.XPos = ptPos.x;
-	m_CommonData.YPos = ptPos.y;
-	m_CommonData.Width = szDim.width;
-	m_CommonData.Height= szDim.height;
+	m_CommonData.XPos = (INT32)ptPos.x;
+	m_CommonData.YPos = (INT32)ptPos.y;
+	m_CommonData.Width = (UINT32)szDim.width;
+	m_CommonData.Height= (UINT32)szDim.height;
 	m_CommonData.Active = 1;
 	m_CommonData.Name[0] = '\0';
 	m_CommonData.Attribs = 2;
