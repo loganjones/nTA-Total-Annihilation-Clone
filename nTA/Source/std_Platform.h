@@ -41,7 +41,10 @@
 		char				MainWindowName[ 128 ];
     };
 
-#define Param_t DWORD
+	typedef int ssize_t;
+	typedef DWORD Param_t;
+
+#define __unused	
 
 
 #elif __APPLE__
@@ -74,7 +77,7 @@ typedef long LRESULT;
 #define WINAPI
 typedef int SOCKET;
 
-#define Param_t size_t
+typedef size_t Param_t;
 
 #define LOWORD(l) ((WORD)(l))
 #define HIWORD(l) ((WORD)(((DWORD)(l) >> 16) & 0xFFFF))
