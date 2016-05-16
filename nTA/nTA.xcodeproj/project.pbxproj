@@ -543,7 +543,6 @@
 		B508FE4D1C4BCCFD008CFEB9 = {
 			isa = PBXGroup;
 			children = (
-				B5A46AF91CE9227D0000809F /* OpenGL.framework */,
 				B508FE581C4BCCFD008CFEB9 /* OS X */,
 				B5A46ACA1CE9221D0000809F /* gfx_OpenGL */,
 				B508FE6A1C4BCE33008CFEB9 /* Source */,
@@ -568,6 +567,7 @@
 				B508FE611C4BCCFD008CFEB9 /* MainMenu.xib */,
 				B508FE641C4BCCFD008CFEB9 /* Info.plist */,
 				B5D0334E1CDC59A800409327 /* libz.tbd */,
+				B5A46AF91CE9227D0000809F /* OpenGL.framework */,
 				B508FE5C1C4BCCFD008CFEB9 /* Supporting Files */,
 			);
 			path = "OS X";
