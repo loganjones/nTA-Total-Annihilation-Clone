@@ -335,7 +335,7 @@ void ogl_Terrain::InitializeViewport( std_Point ptCenterPosition, std_Size szVie
 	// (ie every m_ScreenTileSize pixels)
 	// Check for out of bounds here as well
 	long Closest,Possible1,Possible2;
-	POINT NewScreenTilePoint;
+	std_Point NewScreenTilePoint;
 	Closest = ptCenterPosition.x - (m_ScreenTileGridWidth / 2);
 	if( Closest<m_ScreenTileSize )
 		NewScreenTilePoint.x = 0;
@@ -554,7 +554,7 @@ void ogl_Terrain::Scroll( std_Point ptScroll )
 void ogl_Terrain::ScrollHorizontaly( long lX, BOOL EarlyOutIsOK )
 {
 	// Make a copy the viewport and shift it with the proposed values
-	RECT NewView = m_MapView;
+	std_Rect NewView = m_MapView;
 	NewView.left += lX;
 	NewView.right += lX;
 
@@ -643,7 +643,7 @@ void ogl_Terrain::ScrollHorizontaly( long lX, BOOL EarlyOutIsOK )
 void ogl_Terrain::ScrollVerticaly( long lY, BOOL EarlyOutIsOK )
 {
 	// Make a copy the viewport and shift it with the proposed values
-	RECT NewView = m_MapView;
+	std_Rect NewView = m_MapView;
 	NewView.top += lY;
 	NewView.bottom += lY;
 

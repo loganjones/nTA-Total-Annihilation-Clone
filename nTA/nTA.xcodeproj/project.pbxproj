@@ -164,6 +164,7 @@
 		B5A46AF51CE9221D0000809F /* ogl_Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AE21CE9221D0000809F /* ogl_Terrain.cpp */; };
 		B5A46AF61CE9221D0000809F /* ogl_Terrain.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */; };
 		B5A46AFA1CE9227D0000809F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A46AF91CE9227D0000809F /* OpenGL.framework */; };
+		B5A46AFD1CE944FD0000809F /* gfx_OpenGL_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */; };
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
@@ -515,6 +516,7 @@
 		B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ogl_Terrain.inl; sourceTree = "<group>"; };
 		B5A46AF91CE9227D0000809F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		B5A46AFB1CE938CB0000809F /* gfx_OpenGL_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gfx_OpenGL_macOS.h; sourceTree = "<group>"; };
+		B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gfx_OpenGL_macOS.mm; sourceTree = "<group>"; };
 		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
 		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
@@ -911,11 +913,11 @@
 		B5A46ACA1CE9221D0000809F /* gfx_OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				B5A46AFB1CE938CB0000809F /* gfx_OpenGL_macOS.h */,
+				B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */,
+				B5A46ACD1CE9221D0000809F /* gfx_OpenGL_Win32.cpp */,
 				B5A46ACB1CE9221D0000809F /* gfx_OpenGL.cpp */,
 				B5A46ACC1CE9221D0000809F /* gfx_OpenGL.h */,
-				B5A46AFB1CE938CB0000809F /* gfx_OpenGL_macOS.h */,
-				B5A46ACD1CE9221D0000809F /* gfx_OpenGL_Win32.cpp */,
-				B5A46ACE1CE9221D0000809F /* ogl.h */,
 				B5A46ACF1CE9221D0000809F /* ogl_Cursor.cpp */,
 				B5A46AD01CE9221D0000809F /* ogl_Cursor.h */,
 				B5A46AD11CE9221D0000809F /* ogl_DynamicImage.cpp */,
@@ -938,6 +940,7 @@
 				B5A46AE21CE9221D0000809F /* ogl_Terrain.cpp */,
 				B5A46AE31CE9221D0000809F /* ogl_Terrain.h */,
 				B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */,
+				B5A46ACE1CE9221D0000809F /* ogl.h */,
 			);
 			name = gfx_OpenGL;
 			path = "Gfx Dll Projects/OpenGL/Source";
@@ -1134,6 +1137,7 @@
 				B50800251C4BCE34008CFEB9 /* ta_TDF.cpp in Sources */,
 				B508FFAE1C4BCE34008CFEB9 /* app_Console.cpp in Sources */,
 				B508FFB81C4BCE34008CFEB9 /* fe_GuiManager.cpp in Sources */,
+				B5A46AFD1CE944FD0000809F /* gfx_OpenGL_macOS.mm in Sources */,
 				B5A46AEE1CE9221D0000809F /* ogl_Model.cpp in Sources */,
 				B508000B1C4BCE34008CFEB9 /* script_Functions.cpp in Sources */,
 				B508FFE71C4BCE34008CFEB9 /* igui_BuildButton.cpp in Sources */,

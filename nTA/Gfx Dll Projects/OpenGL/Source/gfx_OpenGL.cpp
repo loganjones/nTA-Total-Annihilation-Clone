@@ -142,23 +142,6 @@ BOOL gfx_OpenGL::PostCreate()
 
 
 //////////////////////////////////////////////////////////////////////
-// gfx_OpenGL::TEMP_DoBlueScreen() //       Author: Logan "Burn" Jones
-////////////////////////////////////                   Date: 9/21/2001
-//               
-//====================================================================
-//
-void gfx_OpenGL::TEMP_DoBlueScreen()
-{
-	glClearColor( 0,0,1,1 );
-	glClear( GL_COLOR_BUFFER_BIT );
-	m_TriangleCount = 0;
-	SwapBuffers(m_hDC);
-}
-// End gfx_OpenGL::TEMP_DoBlueScreen()
-//////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////
 // gfx_OpenGL::GetScreenResolution() //     Author: Logan "Burn" Jones
 //////////////////////////////////////                 Date: 10/4/2001
 //               
@@ -477,63 +460,6 @@ void gfx_OpenGL::NanolatheEffect( std_Vector2 vFrom, std_Vector2 vTo )
 }
 // End gfx_OpenGL::NanolatheEffect()
 /////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////
-// gfx_OpenGL::SaveScreenShot() //          Author: Logan "Burn" Jones
-/////////////////////////////////                      Date: 5/14/2002
-//               
-//====================================================================
-// Parameters:
-//  LPCTSTR strScreenShotPath - 
-//
-void gfx_OpenGL::SaveScreenShot( LPCTSTR strScreenShotPath )
-{
-	char		FilePath[MAX_PATH];
-	DWORD*		SceneBuffer;
-
-	SceneBuffer = new DWORD[ m_ScreenResolution.height*m_ScreenResolution.width ];
-
-	glReadPixels( 0, 0, m_ScreenResolution.width, m_ScreenResolution.height, GL_RGBA, GL_UNSIGNED_BYTE, SceneBuffer );
-
-	const int Components = 3;
-    BITMAPFILEHEADER        FileHeader;
-    BITMAPINFOHEADER        InfoHeader;
-    BYTE*                   ImageBits = new BYTE[ m_ScreenResolution.width*m_ScreenResolution.height*Components];
-
-    ZeroMemory( &FileHeader, sizeof(BITMAPFILEHEADER) );
-    FileHeader.bfType = 0x4D42;
-    FileHeader.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-    FileHeader.bfSize = sizeof(BITMAPINFOHEADER) + sizeof(BITMAPINFOHEADER) + (m_ScreenResolution.width*m_ScreenResolution.height*Components);
-
-    ZeroMemory( &InfoHeader, sizeof(BITMAPINFOHEADER) );
-    InfoHeader.biSize = sizeof(BITMAPINFOHEADER);
-    InfoHeader.biWidth = (long)m_ScreenResolution.width;
-    InfoHeader.biHeight = ((long)m_ScreenResolution.height);
-    InfoHeader.biPlanes = 1;
-    InfoHeader.biBitCount = Components*8;
-    InfoHeader.biCompression = BI_RGB;
-    InfoHeader.biSizeImage = m_ScreenResolution.width*m_ScreenResolution.height*Components;
-
-	BYTE* pSrcBit = (BYTE*)SceneBuffer;
-	BYTE* pDestBit = ImageBits;
-	for( DWORD z=(m_ScreenResolution.width*m_ScreenResolution.height); z>0; z--,pDestBit+=3,pSrcBit+=4)
-	{
-		pDestBit[0] = pSrcBit[2];
-		pDestBit[1] = pSrcBit[1];
-		pDestBit[2] = pSrcBit[0];
-	}
-
-	sprintf( FilePath, "%s.bmp", strScreenShotPath );
-    void* hFile = fio_OpenFile( FilePath, fio_WRITE );
-    fio_WriteFile( hFile, &FileHeader, sizeof(BITMAPFILEHEADER) );
-    fio_WriteFile( hFile, &InfoHeader, sizeof(BITMAPINFOHEADER) );
-    fio_WriteFile( hFile, ImageBits, m_ScreenResolution.width*m_ScreenResolution.height*Components );
-    fio_CloseFile( hFile );
-    delete [] ImageBits;
-}
-// End gfx_OpenGL::SaveScreenShot()
-//////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////////
