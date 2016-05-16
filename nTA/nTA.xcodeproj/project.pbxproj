@@ -149,6 +149,22 @@
 		B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7E1CE404630000809F /* sys_macOS.mm */; };
 		B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */; };
 		B5A46A831CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A821CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm */; };
+		B5A46AE81CE9221D0000809F /* gfx_OpenGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46ACB1CE9221D0000809F /* gfx_OpenGL.cpp */; };
+		B5A46AEA1CE9221D0000809F /* ogl_Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46ACF1CE9221D0000809F /* ogl_Cursor.cpp */; };
+		B5A46AEB1CE9221D0000809F /* ogl_DynamicImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AD11CE9221D0000809F /* ogl_DynamicImage.cpp */; };
+		B5A46AEC1CE9221D0000809F /* ogl_Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AD31CE9221D0000809F /* ogl_Font.cpp */; };
+		B5A46AED1CE9221D0000809F /* ogl_Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AD51CE9221D0000809F /* ogl_Matrix.cpp */; };
+		B5A46AEE1CE9221D0000809F /* ogl_Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AD61CE9221D0000809F /* ogl_Model.cpp */; };
+		B5A46AEF1CE9221D0000809F /* ogl_ModelInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AD81CE9221D0000809F /* ogl_ModelInstance.cpp */; };
+		B5A46AF01CE9221D0000809F /* ogl_ModelInstance.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5A46ADA1CE9221D0000809F /* ogl_ModelInstance.inl */; };
+		B5A46AF11CE9221D0000809F /* ogl_ModelPiece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46ADB1CE9221D0000809F /* ogl_ModelPiece.cpp */; };
+		B5A46AF21CE9221D0000809F /* ogl_Palettes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46ADD1CE9221D0000809F /* ogl_Palettes.cpp */; };
+		B5A46AF31CE9221D0000809F /* ogl_Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46ADE1CE9221D0000809F /* ogl_Sprite.cpp */; };
+		B5A46AF41CE9221D0000809F /* ogl_Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AE01CE9221D0000809F /* ogl_Surface.cpp */; };
+		B5A46AF51CE9221D0000809F /* ogl_Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AE21CE9221D0000809F /* ogl_Terrain.cpp */; };
+		B5A46AF61CE9221D0000809F /* ogl_Terrain.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */; };
+		B5A46AFA1CE9227D0000809F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A46AF91CE9227D0000809F /* OpenGL.framework */; };
+		B5A46AFD1CE944FD0000809F /* gfx_OpenGL_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */; };
 		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
@@ -472,6 +488,35 @@
 		B5A46A7E1CE404630000809F /* sys_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sys_macOS.mm; sourceTree = "<group>"; };
 		B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = fe_Skirmish_macOS.mm; sourceTree = "<group>"; };
 		B5A46A821CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = fe_MultiplayerSetup_macOS.mm; sourceTree = "<group>"; };
+		B5A46ACB1CE9221D0000809F /* gfx_OpenGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gfx_OpenGL.cpp; sourceTree = "<group>"; };
+		B5A46ACC1CE9221D0000809F /* gfx_OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gfx_OpenGL.h; sourceTree = "<group>"; };
+		B5A46ACD1CE9221D0000809F /* gfx_OpenGL_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gfx_OpenGL_Win32.cpp; sourceTree = "<group>"; };
+		B5A46ACE1CE9221D0000809F /* ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl.h; sourceTree = "<group>"; };
+		B5A46ACF1CE9221D0000809F /* ogl_Cursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Cursor.cpp; sourceTree = "<group>"; };
+		B5A46AD01CE9221D0000809F /* ogl_Cursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_Cursor.h; sourceTree = "<group>"; };
+		B5A46AD11CE9221D0000809F /* ogl_DynamicImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_DynamicImage.cpp; sourceTree = "<group>"; };
+		B5A46AD21CE9221D0000809F /* ogl_DynamicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_DynamicImage.h; sourceTree = "<group>"; };
+		B5A46AD31CE9221D0000809F /* ogl_Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Font.cpp; sourceTree = "<group>"; };
+		B5A46AD41CE9221D0000809F /* ogl_Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_Font.h; sourceTree = "<group>"; };
+		B5A46AD51CE9221D0000809F /* ogl_Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Matrix.cpp; sourceTree = "<group>"; };
+		B5A46AD61CE9221D0000809F /* ogl_Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Model.cpp; sourceTree = "<group>"; };
+		B5A46AD71CE9221D0000809F /* ogl_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_Model.h; sourceTree = "<group>"; };
+		B5A46AD81CE9221D0000809F /* ogl_ModelInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_ModelInstance.cpp; sourceTree = "<group>"; };
+		B5A46AD91CE9221D0000809F /* ogl_ModelInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_ModelInstance.h; sourceTree = "<group>"; };
+		B5A46ADA1CE9221D0000809F /* ogl_ModelInstance.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ogl_ModelInstance.inl; sourceTree = "<group>"; };
+		B5A46ADB1CE9221D0000809F /* ogl_ModelPiece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_ModelPiece.cpp; sourceTree = "<group>"; };
+		B5A46ADC1CE9221D0000809F /* ogl_ModelPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_ModelPiece.h; sourceTree = "<group>"; };
+		B5A46ADD1CE9221D0000809F /* ogl_Palettes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Palettes.cpp; sourceTree = "<group>"; };
+		B5A46ADE1CE9221D0000809F /* ogl_Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Sprite.cpp; sourceTree = "<group>"; };
+		B5A46ADF1CE9221D0000809F /* ogl_Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_Sprite.h; sourceTree = "<group>"; };
+		B5A46AE01CE9221D0000809F /* ogl_Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Surface.cpp; sourceTree = "<group>"; };
+		B5A46AE11CE9221D0000809F /* ogl_Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_Surface.h; sourceTree = "<group>"; };
+		B5A46AE21CE9221D0000809F /* ogl_Terrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ogl_Terrain.cpp; sourceTree = "<group>"; };
+		B5A46AE31CE9221D0000809F /* ogl_Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl_Terrain.h; sourceTree = "<group>"; };
+		B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ogl_Terrain.inl; sourceTree = "<group>"; };
+		B5A46AF91CE9227D0000809F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		B5A46AFB1CE938CB0000809F /* gfx_OpenGL_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gfx_OpenGL_macOS.h; sourceTree = "<group>"; };
+		B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gfx_OpenGL_macOS.mm; sourceTree = "<group>"; };
 		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
 		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
@@ -487,6 +532,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A46AFA1CE9227D0000809F /* OpenGL.framework in Frameworks */,
 				B5D0334F1CDC59A800409327 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				B508FE581C4BCCFD008CFEB9 /* OS X */,
+				B5A46ACA1CE9221D0000809F /* gfx_OpenGL */,
 				B508FE6A1C4BCE33008CFEB9 /* Source */,
 				B508FE571C4BCCFD008CFEB9 /* Products */,
 			);
@@ -520,6 +567,7 @@
 				B508FE611C4BCCFD008CFEB9 /* MainMenu.xib */,
 				B508FE641C4BCCFD008CFEB9 /* Info.plist */,
 				B5D0334E1CDC59A800409327 /* libz.tbd */,
+				B5A46AF91CE9227D0000809F /* OpenGL.framework */,
 				B508FE5C1C4BCCFD008CFEB9 /* Supporting Files */,
 			);
 			path = "OS X";
@@ -862,6 +910,42 @@
 			path = Cavedog;
 			sourceTree = "<group>";
 		};
+		B5A46ACA1CE9221D0000809F /* gfx_OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				B5A46AFB1CE938CB0000809F /* gfx_OpenGL_macOS.h */,
+				B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */,
+				B5A46ACD1CE9221D0000809F /* gfx_OpenGL_Win32.cpp */,
+				B5A46ACB1CE9221D0000809F /* gfx_OpenGL.cpp */,
+				B5A46ACC1CE9221D0000809F /* gfx_OpenGL.h */,
+				B5A46ACF1CE9221D0000809F /* ogl_Cursor.cpp */,
+				B5A46AD01CE9221D0000809F /* ogl_Cursor.h */,
+				B5A46AD11CE9221D0000809F /* ogl_DynamicImage.cpp */,
+				B5A46AD21CE9221D0000809F /* ogl_DynamicImage.h */,
+				B5A46AD31CE9221D0000809F /* ogl_Font.cpp */,
+				B5A46AD41CE9221D0000809F /* ogl_Font.h */,
+				B5A46AD51CE9221D0000809F /* ogl_Matrix.cpp */,
+				B5A46AD61CE9221D0000809F /* ogl_Model.cpp */,
+				B5A46AD71CE9221D0000809F /* ogl_Model.h */,
+				B5A46AD81CE9221D0000809F /* ogl_ModelInstance.cpp */,
+				B5A46AD91CE9221D0000809F /* ogl_ModelInstance.h */,
+				B5A46ADA1CE9221D0000809F /* ogl_ModelInstance.inl */,
+				B5A46ADB1CE9221D0000809F /* ogl_ModelPiece.cpp */,
+				B5A46ADC1CE9221D0000809F /* ogl_ModelPiece.h */,
+				B5A46ADD1CE9221D0000809F /* ogl_Palettes.cpp */,
+				B5A46ADE1CE9221D0000809F /* ogl_Sprite.cpp */,
+				B5A46ADF1CE9221D0000809F /* ogl_Sprite.h */,
+				B5A46AE01CE9221D0000809F /* ogl_Surface.cpp */,
+				B5A46AE11CE9221D0000809F /* ogl_Surface.h */,
+				B5A46AE21CE9221D0000809F /* ogl_Terrain.cpp */,
+				B5A46AE31CE9221D0000809F /* ogl_Terrain.h */,
+				B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */,
+				B5A46ACE1CE9221D0000809F /* ogl.h */,
+			);
+			name = gfx_OpenGL;
+			path = "Gfx Dll Projects/OpenGL/Source";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -942,6 +1026,7 @@
 				B508FFAF1C4BCE34008CFEB9 /* app_Console.inl in Resources */,
 				B508FE631C4BCCFD008CFEB9 /* MainMenu.xib in Resources */,
 				B50800181C4BCE34008CFEB9 /* std_SizeF.inl in Resources */,
+				B5A46AF01CE9221D0000809F /* ogl_ModelInstance.inl in Resources */,
 				B508000F1C4BCE34008CFEB9 /* script_Proccess.inl in Resources */,
 				B508FFEB1C4BCE34008CFEB9 /* igui_ControlBar.inl in Resources */,
 				B508FFD31C4BCE34008CFEB9 /* game_Main.inl in Resources */,
@@ -952,6 +1037,7 @@
 				B50800011C4BCE34008CFEB9 /* physics_System.inl in Resources */,
 				B50800311C4BCE34008CFEB9 /* unit_MoveInfo.inl in Resources */,
 				B508000A1C4BCE34008CFEB9 /* script_Code.inl in Resources */,
+				B5A46AF61CE9221D0000809F /* ogl_Terrain.inl in Resources */,
 				B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */,
 				B508001D1C4BCE34008CFEB9 /* std_Vector3.inl in Resources */,
 				B508FFB31C4BCE34008CFEB9 /* app_nTA.inl in Resources */,
@@ -975,6 +1061,7 @@
 			files = (
 				B508FFEC1C4BCE34008CFEB9 /* igui_GameWindow.cpp in Sources */,
 				B5A46A831CE40A0D0000809F /* fe_MultiplayerSetup_macOS.mm in Sources */,
+				B5A46AEB1CE9221D0000809F /* ogl_DynamicImage.cpp in Sources */,
 				B508FFC51C4BCE34008CFEB9 /* fe_Wnd.cpp in Sources */,
 				B508FFBA1C4BCE34008CFEB9 /* fe_MS_PlayerSelection.cpp in Sources */,
 				B508FFD01C4BCE34008CFEB9 /* gadget_TextEdit.cpp in Sources */,
@@ -982,6 +1069,7 @@
 				B508FFE21C4BCE34008CFEB9 /* gui_Gadget.cpp in Sources */,
 				B508FFF01C4BCE34008CFEB9 /* igui_OrderButton.cpp in Sources */,
 				B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */,
+				B5A46AF51CE9221D0000809F /* ogl_Terrain.cpp in Sources */,
 				B50800301C4BCE34008CFEB9 /* unit_MoveInfo.cpp in Sources */,
 				B508002B1C4BCE34008CFEB9 /* unit_Group.cpp in Sources */,
 				B50800421C4BCE34008CFEB9 /* wnd_TextBox.cpp in Sources */,
@@ -993,8 +1081,10 @@
 				B508FFED1C4BCE34008CFEB9 /* igui_InfoBar.cpp in Sources */,
 				B508FFBF1C4BCE34008CFEB9 /* fe_SelectConnection.cpp in Sources */,
 				B50800041C4BCE34008CFEB9 /* player_Network.cpp in Sources */,
+				B5A46AEC1CE9221D0000809F /* ogl_Font.cpp in Sources */,
 				B508FFEA1C4BCE34008CFEB9 /* igui_ControlBar.cpp in Sources */,
 				B50800261C4BCE34008CFEB9 /* unit_Aircraft.cpp in Sources */,
+				B5A46AEA1CE9221D0000809F /* ogl_Cursor.cpp in Sources */,
 				B508FFB21C4BCE34008CFEB9 /* app_nTA.cpp in Sources */,
 				B508FFC81C4BCE34008CFEB9 /* feature_Object.cpp in Sources */,
 				B50800091C4BCE34008CFEB9 /* script_Code.cpp in Sources */,
@@ -1008,10 +1098,12 @@
 				B508FFCF1C4BCE34008CFEB9 /* gadget_String.cpp in Sources */,
 				B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */,
 				B508FFF41C4BCE34008CFEB9 /* net_RecvBuffer.cpp in Sources */,
+				B5A46AEF1CE9221D0000809F /* ogl_ModelInstance.cpp in Sources */,
 				B508FFBE1C4BCE34008CFEB9 /* fe_Options.cpp in Sources */,
 				B50800381C4BCE34008CFEB9 /* unit_Project.cpp in Sources */,
 				B508FFE51C4BCE34008CFEB9 /* gui_Window.cpp in Sources */,
 				B508002E1C4BCE34008CFEB9 /* unit_Job.cpp in Sources */,
+				B5A46AED1CE9221D0000809F /* ogl_Matrix.cpp in Sources */,
 				B5D0334B1CDC215D00409327 /* app_nTA_macOS.mm in Sources */,
 				B508001E1C4BCE34008CFEB9 /* sys_App.cpp in Sources */,
 				B508003C1C4BCE34008CFEB9 /* util_RectFiller.cpp in Sources */,
@@ -1029,6 +1121,7 @@
 				B50800361C4BCE34008CFEB9 /* unit_Object_Handlers.cpp in Sources */,
 				B508FE5E1C4BCCFD008CFEB9 /* main.m in Sources */,
 				B50800031C4BCE34008CFEB9 /* player_Local.cpp in Sources */,
+				B5A46AF21CE9221D0000809F /* ogl_Palettes.cpp in Sources */,
 				B508FFCC1C4BCE34008CFEB9 /* gadget_Pic.cpp in Sources */,
 				B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */,
 				B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */,
@@ -1044,6 +1137,8 @@
 				B50800251C4BCE34008CFEB9 /* ta_TDF.cpp in Sources */,
 				B508FFAE1C4BCE34008CFEB9 /* app_Console.cpp in Sources */,
 				B508FFB81C4BCE34008CFEB9 /* fe_GuiManager.cpp in Sources */,
+				B5A46AFD1CE944FD0000809F /* gfx_OpenGL_macOS.mm in Sources */,
+				B5A46AEE1CE9221D0000809F /* ogl_Model.cpp in Sources */,
 				B508000B1C4BCE34008CFEB9 /* script_Functions.cpp in Sources */,
 				B508FFE71C4BCE34008CFEB9 /* igui_BuildButton.cpp in Sources */,
 				B50800051C4BCE34008CFEB9 /* scene_Object.cpp in Sources */,
@@ -1053,10 +1148,12 @@
 				B508FFDA1C4BCE34008CFEB9 /* game_Terrain.cpp in Sources */,
 				B50800451C4BCE34008CFEB9 /* wnd_Window_Events.cpp in Sources */,
 				B50800341C4BCE34008CFEB9 /* unit_Object_Commands.cpp in Sources */,
+				B5A46AE81CE9221D0000809F /* gfx_OpenGL.cpp in Sources */,
 				B508FFD11C4BCE34008CFEB9 /* game_Load.cpp in Sources */,
 				B508FFEE1C4BCE34008CFEB9 /* igui_Menu.cpp in Sources */,
 				B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */,
 				B508FFBD1C4BCE34008CFEB9 /* fe_NewMultiplayerGame.cpp in Sources */,
+				B5A46AF41CE9221D0000809F /* ogl_Surface.cpp in Sources */,
 				B508002F1C4BCE34008CFEB9 /* unit_Locomotion.cpp in Sources */,
 				B508FFD41C4BCE34008CFEB9 /* game_NetMessage_Handlers.cpp in Sources */,
 				B508FFC21C4BCE34008CFEB9 /* fe_Single.cpp in Sources */,
@@ -1072,10 +1169,12 @@
 				B508FFD91C4BCE34008CFEB9 /* game_StreamMessages.cpp in Sources */,
 				B508FFCA1C4BCE34008CFEB9 /* gadget_ListBox.cpp in Sources */,
 				B50800241C4BCE34008CFEB9 /* ta_OTA.cpp in Sources */,
+				B5A46AF11CE9221D0000809F /* ogl_ModelPiece.cpp in Sources */,
 				B508FFD71C4BCE34008CFEB9 /* game_Player.cpp in Sources */,
 				B508FFE01C4BCE34008CFEB9 /* gfx_Interface.cpp in Sources */,
 				B508FFE91C4BCE34008CFEB9 /* igui_Console.cpp in Sources */,
 				B50800071C4BCE34008CFEB9 /* scene_System.cpp in Sources */,
+				B5A46AF31CE9221D0000809F /* ogl_Sprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,10 +51,8 @@
 #include "TargetConditionals.h"
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreGraphics/CoreGraphics.h>
+#include <objc/objc.h>
 
-#ifndef __OBJC__
-typedef bool BOOL;
-#endif
 typedef void * LPVOID;
 typedef const char * LPCTSTR;
 typedef char * LPTSTR;

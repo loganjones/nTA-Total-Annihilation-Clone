@@ -331,9 +331,17 @@ protected:
 typedef LRESULT (CALLBACK* LPRetrieveGfxInterface)(gfx_Interface**);
 typedef DWORD (CALLBACK* LPEnumDisplayMode)( DWORD, std_Size*, long* );
 
+#ifdef _USRDLL
+#  define GFX_DYNAMIC_LIBRARY     1
+#elif __APPLE__
+#  define GFX_DYNAMIC_LIBRARY     1
+#else
+#  define GFX_DYNAMIC_LIBRARY     0
+#endif
+
 
 // DLL only stuff
-#ifdef _USRDLL
+#if GFX_DYNAMIC_LIBRARY
 
 	// Prototype the functions used to access the derived interface
 	LRESULT WINAPI RetrieveGfxInterface(gfx_Interface** ppGfxInterface );
@@ -343,15 +351,17 @@ typedef DWORD (CALLBACK* LPEnumDisplayMode)( DWORD, std_Size*, long* );
 	extern gfx_Interface*		pGfxSystem;
 	extern gfx_Interface**		ppGfx;
 
+#endif // gfx lib
+
 // App only stuff
-#else
+#ifndef _USRDLL
 
 	// Include inline implementaions here for a NON-debug build
 	#ifndef _DEBUG
 		#include "gfx_Interface.inl"
 	#endif // !defined( _DEBUG )
 
-#endif
+#endif // app
 
 
 /////////////////////////////////////////////////////////////////////

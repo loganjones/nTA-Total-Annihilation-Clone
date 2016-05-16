@@ -6,10 +6,16 @@
 #define _GFX_OPENGL_H_
 /////////////////////////////////////////////////////////////////////
 
-#include <GL\gl.h>
-#include <GL\glext.h>
 #ifdef _WIN32
+ #include <GL\gl.h>
+ #include <GL\glext.h>
  #include <GL\wglext.h>
+#elif __APPLE__
+ #include <OpenGL/gl.h>
+ #include <OpenGL/glext.h>
+ #include "gfx_OpenGL_macOS.h"
+#else
+#  error "Unknown Platform"
 #endif
 
 #include "ogl_Surface.h"

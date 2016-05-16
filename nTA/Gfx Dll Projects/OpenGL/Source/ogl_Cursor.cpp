@@ -37,8 +37,8 @@ BOOL gfx_OpenGL::CreateCursor( LPCTSTR strName, DWORD dwNumFrames, CursorFrame* 
 
 	for( DWORD num=0; num<dwNumFrames; ++num)
 	{
-		TexSize.width = math_NextPowerOfTwo( pFrames[num].Image.Size.width );
-		TexSize.height= math_NextPowerOfTwo( pFrames[num].Image.Size.height);
+		TexSize.width = math_NextPowerOfTwo( (UINT32)pFrames[num].Image.Size.width );
+		TexSize.height= math_NextPowerOfTwo( (UINT32)pFrames[num].Image.Size.height);
 
 		ZeroMemory( TempBuffer, sqr(256) );
 		pImg = pFrames[num].Image.pBytes;
@@ -56,8 +56,8 @@ BOOL gfx_OpenGL::CreateCursor( LPCTSTR strName, DWORD dwNumFrames, CursorFrame* 
 		glTexImage2D( GL_TEXTURE_2D,
 					  0,
 					  GL_COLOR_INDEX8_EXT,
-					  TexSize.width,
-					  TexSize.height,
+					  (GLsizei)TexSize.width,
+					  (GLsizei)TexSize.height,
 					  0,
 					  GL_COLOR_INDEX,
 					  GL_UNSIGNED_BYTE,
@@ -67,13 +67,13 @@ BOOL gfx_OpenGL::CreateCursor( LPCTSTR strName, DWORD dwNumFrames, CursorFrame* 
 			glBindTexture( GL_TEXTURE_2D, NewCursor.m_pTextures[num] );
 			glBegin( GL_TRIANGLE_STRIP );
 				glTexCoord2f( 0, 0 );
-				glVertex2i( 0 - pFrames[num].HotSpot.x, 0 - pFrames[num].HotSpot.y );
+				glVertex2i( 0 - (GLint)pFrames[num].HotSpot.x, 0 - (GLint)pFrames[num].HotSpot.y );
 				glTexCoord2f( 0 , float(pFrames[num].Image.Size.height) / TexSize.height );
-				glVertex2i( 0 - pFrames[num].HotSpot.x, pFrames[num].Image.Size.height - pFrames[num].HotSpot.y );
+				glVertex2i( 0 - (GLint)pFrames[num].HotSpot.x, (GLint)(pFrames[num].Image.Size.height - pFrames[num].HotSpot.y) );
 				glTexCoord2f( float(pFrames[num].Image.Size.width) / TexSize.width, 0 );
-				glVertex2i( pFrames[num].Image.Size.width - pFrames[num].HotSpot.x, 0 - pFrames[num].HotSpot.y );
+				glVertex2i( (GLint)(pFrames[num].Image.Size.width - pFrames[num].HotSpot.x), 0 - (GLint)pFrames[num].HotSpot.y );
 				glTexCoord2f( float(pFrames[num].Image.Size.width) / TexSize.width , float(pFrames[num].Image.Size.height) / TexSize.height );
-				glVertex2i( pFrames[num].Image.Size.width - pFrames[num].HotSpot.x, pFrames[num].Image.Size.height - pFrames[num].HotSpot.y );
+				glVertex2i( (GLint)(pFrames[num].Image.Size.width - pFrames[num].HotSpot.x), (GLint)(pFrames[num].Image.Size.height - pFrames[num].HotSpot.y) );
 			glEnd();
 		glEndList();
 
