@@ -421,7 +421,9 @@ void ogl_Terrain::Scroll( std_Point ptScroll )
 	ScrollHorizontaly( ptScroll.x );
 	ScrollVerticaly( ptScroll.y );
 	return;
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
+    
 	// Make a copy the viewport and shift it with the proposed values
 	std_Rect NewView( m_MapView + ptScroll );
 
@@ -537,6 +539,7 @@ void ogl_Terrain::Scroll( std_Point ptScroll )
 		m_DirtyStrips.left = m_MapViewFootprint.left - 1;
 		m_DirtyStrips.right = m_MapViewFootprint.right;
 	}
+#pragma clang diagnostic pop
 }
 // End ogl_Terrain::Scroll()
 //////////////////////////////////////////////////////////////////////

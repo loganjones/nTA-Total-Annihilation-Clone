@@ -284,10 +284,10 @@ void gfx_OpenGL::DrawRect( const std_Rect_t& rctWhere, const PALETTEENTRY& peCol
 	glDisable( GL_TEXTURE_2D );
 	glColor3ubv( (GLubyte*)&peColor );
 	glBegin( GL_TRIANGLE_STRIP );
-		glVertex2i( rctWhere.left, rctWhere.top );
-		glVertex2i( rctWhere.left, rctWhere.bottom );
-		glVertex2i( rctWhere.right, rctWhere.top );
-		glVertex2i( rctWhere.right, rctWhere.bottom );
+		glVertex2i( (GLint)rctWhere.left, (GLint)rctWhere.top );
+		glVertex2i( (GLint)rctWhere.left, (GLint)rctWhere.bottom );
+		glVertex2i( (GLint)rctWhere.right, (GLint)rctWhere.top );
+		glVertex2i( (GLint)rctWhere.right, (GLint)rctWhere.bottom );
 	glEnd();
 	glColor4f(1,1,1,1);
 	glEnable( GL_TEXTURE_2D );

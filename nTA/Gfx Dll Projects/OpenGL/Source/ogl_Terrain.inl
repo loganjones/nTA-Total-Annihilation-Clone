@@ -14,7 +14,7 @@ void ogl_Terrain::RecalculateMetrics()
 {	
 	if( m_ScreenTileGridWidth>m_MapDimensions.width )
 	{
-		m_MaxMapWindowWidth = (m_MapDimensions.width / 4) * 4;
+		m_MaxMapWindowWidth = (int)(m_MapDimensions.width / 4) * 4;
 
 		m_ScreenTileColumns = m_MaxMapWindowWidth / m_ScreenTileSize;
 		if( (m_ScreenTileColumns*m_ScreenTileSize)<m_MaxMapWindowWidth )
@@ -23,7 +23,7 @@ void ogl_Terrain::RecalculateMetrics()
 
 	if( m_ScreenTileGridHeight>m_MapDimensions.height )
 	{
-		m_MaxMapWindowHeight = (m_MapDimensions.height / 3) * 3;
+		m_MaxMapWindowHeight = (int)(m_MapDimensions.height / 3) * 3;
 
 		m_ScreenTileRows = m_MaxMapWindowHeight / m_ScreenTileSize;
 		if( (m_ScreenTileRows*m_ScreenTileSize)<m_MaxMapWindowHeight )
@@ -63,7 +63,7 @@ void ogl_Terrain::AllocateScreenTiles( long iColumns, long iRows )
 	glGenTextures( m_NumberOfScreenTiles, m_ScreenTileTextures );
 
 	// Initialize the screen tile map
-	long x,y,count=0;
+    long x,y;//,count=0;
 	ScreenTile*		pTile = m_ScreenTiles;
 	GLuint*			pTex = m_ScreenTileTextures;
 	//BYTE			DefaultTexture[m_ScreenTileSize*m_ScreenTileSize];
@@ -232,7 +232,7 @@ void ogl_Terrain::UploadGfxRectToScreenTiles( long LeftIndex, long TopIndex, lon
 				glBindTexture( GL_TEXTURE_2D, *(pTile->pTexture) );
 			}
 			glTexSubImage2D( GL_TEXTURE_2D, 0,
-							 XOffset, YOffset,
+							 (GLint)XOffset, (GLint)YOffset,
 							 32, 32,
 							 GL_COLOR_INDEX,
 							 GL_UNSIGNED_BYTE,
