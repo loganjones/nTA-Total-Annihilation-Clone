@@ -53,6 +53,10 @@
 #include <CoreGraphics/CoreGraphics.h>
 #include <objc/objc.h>
 
+#if SYS_GLFW
+#include <GLFW/glfw3.h>
+#endif
+
 typedef void * LPVOID;
 typedef const char * LPCTSTR;
 typedef char * LPTSTR;
@@ -111,6 +115,11 @@ struct std_PlatformParameters
 {
     // Name given for the main window
     char				MainWindowName[ 128 ];
+    
+#if SYS_GLFW
+    GLFWwindow          *mainWindow;
+#endif
+    
 };
 
 extern char * itoa(  int value, char * buffer, int radix );

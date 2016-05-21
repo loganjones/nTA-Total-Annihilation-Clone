@@ -62,9 +62,9 @@ app_nTA::app_nTA():sys_App(),
 	// Initialize some platform specific stuff
 #ifdef _WIN32
 	strcpy( m_PlatformParameters.WindowClass, "nTA" );
-	strcpy( m_PlatformParameters.MainWindowName, "nTA" );
-	//sprintf( m_PlatformParameters.MainWindowName, "nTA - %s - %s %s", m_GameType, m_Renderer, (m_bFullScreen) ? "(FullScreen)":"(Windowed)" );
 #endif
+    strcpy( m_PlatformParameters.MainWindowName, "nTA" );
+    //sprintf( m_PlatformParameters.MainWindowName, "nTA - %s - %s %s", m_GameType, m_Renderer, (m_bFullScreen) ? "(FullScreen)":"(Windowed)" );
 
 	// Process the stuff given in the command line (if any)
 	ProcessCommandLine();
@@ -616,7 +616,7 @@ BOOL app_nTA::LoadConfig()
 // End app_nTA::LoadConfig()
 //////////////////////////////////////////////////////////////////////
 
-
+#if !SYS_GLFW
 //////////////////////////////////////////////////////////////////////
 // app_nTA::RetrieveGfxInterface() //              \author Logan Jones
 /////////////////////////////////////                  \date 9/22/2001
@@ -659,7 +659,7 @@ BOOL app_nTA::RetrieveGfxInterface()
 }
 // End app_nTA::RetrieveGfxInterface()
 //////////////////////////////////////////////////////////////////////
-
+#endif
 
 //////////////////////////////////////////////////////////////////////
 // app_nTA::LoadPalattes() //                      \author Logan Jones

@@ -13,40 +13,6 @@
 
 
 //////////////////////////////////////////////////////////////////////
-// sys_App::Create() //                            \author Logan Jones
-//////////////////////                                 \date 9/24/2001
-//               
-//====================================================================
-// Parameters:
-//  LPCTSTR strSplashPath - 
-//
-// Return: BOOL - 
-//
-BOOL sys_App::Create( LPCTSTR strSplashPath )
-{
-    // TODO: Some macOS specific setup goes here.
-
-	return TRUE;
-}
-// End sys_App::Create()
-//////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////
-// sys_App::Destroy() //                           \author Logan Jones
-///////////////////////                                \date 9/24/2001
-//               
-//====================================================================
-//
-void sys_App::Destroy()
-{
-    // TODO: Some macOS specific teardown goes here.
-}
-// End sys_App::Destroy()
-//////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////
 // sys_App::Quit() //                              \author Logan Jones
 ////////////////////                                   \date 9/10/2001
 // Description:  Quit is called to safely terminate this run of the app.

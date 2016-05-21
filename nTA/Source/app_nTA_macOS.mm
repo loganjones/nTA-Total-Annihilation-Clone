@@ -69,7 +69,34 @@ BOOL app_nTA::FindTotalAnnihilation()
 {
     // TODO: How to locate TA assets on a Mac!
     
-    // Validation successfull
+    // Try to find OTA in Steam's apps directory.
+    // TODO: Find a better way to locate SteamApps & a potential TA (other than this hardcoded path)
+    NSString *applicationSupport = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES).firstObject;
+    if (applicationSupport) {
+        NSString *ta = [NSString pathWithComponents:@[applicationSupport, @"Steam", @"SteamApps", @"common", @"Total Annihilation"]];
+        
+        BOOL isDirectory = NO;
+        BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:ta isDirectory:&isDirectory];
+        
+        if (exists && isDirectory) {
+            strcpy(m_TotalAnnihilationDirectory, ta.UTF8String);
+            return TRUE;
+        }
+    }
+    
+    // Try "~/Temp/Total Annihilation" ... because that's where I dumped the files from my PC.
+    {
+        NSString *ta = [NSString pathWithComponents:@[NSHomeDirectory(), @"Temp", @"Total Annihilation"]];
+        
+        BOOL isDirectory = NO;
+        BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:ta isDirectory:&isDirectory];
+        
+        if (exists && isDirectory) {
+            strcpy(m_TotalAnnihilationDirectory, ta.UTF8String);
+            return TRUE;
+        }
+    }
+    
     return FALSE;
 }
 // End app_nTA::FindTotalAnnihilation()
