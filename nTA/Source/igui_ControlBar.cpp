@@ -15,7 +15,7 @@
  #include "igui_ControlBar.inl"
 #endif // defined( _DEBUG )
 
-#define HasAbility( ABILITY )		Abilities & unit_Type::##ABILITY
+#define HasAbility( ABILITY )		Abilities & unit_Type::ABILITY
 #define ResetCurrentMenu()	if( m_CurrentMenu ) m_CurrentMenu->Detach(); m_CurrentMenu = NULL
 #define HandleUnitOrderMode( ORDER, SOUND )	CASE( #ORDER ) \
 	sound.PlaySound( SOUND ); \
@@ -574,7 +574,7 @@ void igui_ControlBar::OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlag
 //
 // Return: DWORD - 
 //
-DWORD igui_ControlBar::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD igui_ControlBar::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR	strSender = (LPTSTR)dwParamA;
 	DWORD	Page;

@@ -25,7 +25,7 @@ class unit_Factory
 public:
 
 	struct PathFind_t;
-	enum PathFindResult_t;
+    enum PathFindResult_t : short;
 
 
 /////////////////////////////////////////////////
@@ -137,7 +137,7 @@ public:
 		int							diagonal;
 	};
 
-	enum PathFindResult_t
+    enum PathFindResult_t : short
 	{
 		PATH_NOT_FOUND,
 		PATH_PROCCESSING,

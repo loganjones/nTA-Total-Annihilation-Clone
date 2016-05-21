@@ -189,7 +189,7 @@ void wnd_TextBox::InsertCharAtCaret( char chInsert )
 	else // Insert the character at the caret
 	{
 		// Move each character after and including the caret back one space
-		for( int n=m_TextLength+1; n>m_TextCaret; --n)
+		for( long n=m_TextLength+1; n>m_TextCaret; --n)
 			m_Text[ n ] = m_Text[ n-1 ];
 
 		// Place the new character at the caret
@@ -219,7 +219,7 @@ void wnd_TextBox::DoBackspace()
 	if( (m_TextLength>0)&&(m_TextCaret>0) )
 	{
 		// Move all characters after (and including) the cursor up one space
-		for( int n=(m_TextCaret-1); n<=(m_TextLength-1); n++)
+		for( long n=(m_TextCaret-1); n<=(m_TextLength-1); n++)
 			m_Text[ n ] = m_Text[ n+1 ];
 
 		// Move the caret back one space
@@ -249,7 +249,7 @@ void wnd_TextBox::DoDelete()
 	if( (m_TextLength>0)&&(m_TextCaret<m_TextLength) )
 	{
 		// Move all characters after the cursor up one space
-		for( int n=m_TextCaret; n<=(m_TextLength-1); ++n)
+		for( long n=m_TextCaret; n<=(m_TextLength-1); ++n)
 			m_Text[ n ] = m_Text[ n+1 ];
 
 		// The string is now one space shorter

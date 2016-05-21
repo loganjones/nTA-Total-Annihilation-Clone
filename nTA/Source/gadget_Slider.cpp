@@ -119,12 +119,12 @@ void gadget_Slider::OnUpdate()
 {
 	if( m_FowardButton.IsDown() )
 	{
-		if( (timeGetTime() - m_DownTime) > 500 )
+		if( (std_Time() - m_DownTime) > 500 )
 			MoveKnobFoward();
 	}
 	else if( m_BackButton.IsDown() )
 	{
-		if( (timeGetTime() - m_DownTime) > 500 )
+		if( (std_Time() - m_DownTime) > 500 )
 			MoveKnobBackward();
 	}
 
@@ -164,7 +164,7 @@ void gadget_Slider::OnRender()
 //
 // Return: DWORD - 
 //
-DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 
@@ -174,12 +174,12 @@ DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD d
 
 			CASE( "FOWARD" )
 				MoveKnobFoward();
-				m_DownTime = timeGetTime();
+				m_DownTime = std_Time();
 				return 1;
 
 			CASE( "BACK" )
 				MoveKnobBackward();
-				m_DownTime = timeGetTime();
+				m_DownTime = std_Time();
 				return 1;
 
 		END_STRING_SWITCH
@@ -201,11 +201,13 @@ DWORD gadget_Slider::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD d
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void gadget_Slider::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void gadget_Slider::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	if( m_bDraggingKnob && m_pWndManager->GetCapture()==this )
+    {
 		if( m_bVertical ) MoveKnobNear( ptCursor.y );
 		else MoveKnobNear( ptCursor.x );
+    }
 }
 // End gadget_Slider::OnCursorMove()
 //////////////////////////////////////////////////////////////////////
@@ -222,7 +224,7 @@ void gadget_Slider::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_Slider::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_Slider::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// Check if this is the primary button
 	if( dwButton==1 )
@@ -280,11 +282,11 @@ BOOL gadget_Slider::CreateButtons()
 	if( m_bVertical )
 	{
 		// Setup the button common data structures
-		BackButtonCommonData.XPos = (m_Size.width / 2) - (guiResources.m_SliderButtonUp[0]->GetSize().width / 2);
+		BackButtonCommonData.XPos = INT32( (m_Size.width / 2) - (guiResources.m_SliderButtonUp[0]->GetSize().width / 2) );
 		BackButtonCommonData.YPos = 0;
 		BackButtonCommonData.Width = BackButtonCommonData.Height = 1;
-		FowardButtonCommonData.XPos = (m_Size.width / 2) - (guiResources.m_SliderButtonDown[0]->GetSize().width / 2);
-		FowardButtonCommonData.YPos = m_Size.height - guiResources.m_SliderButtonDown[0]->GetSize().height;
+		FowardButtonCommonData.XPos = INT32( (m_Size.width / 2) - (guiResources.m_SliderButtonDown[0]->GetSize().width / 2) );
+		FowardButtonCommonData.YPos = INT32( m_Size.height - guiResources.m_SliderButtonDown[0]->GetSize().height );
 		FowardButtonCommonData.Width = FowardButtonCommonData.Height = 1;
 
 		// Create the buttons and assosiate them with their images
@@ -297,10 +299,10 @@ BOOL gadget_Slider::CreateButtons()
 	{
 		// Setup the button common data structures
 		BackButtonCommonData.XPos = 0;
-		BackButtonCommonData.YPos = (m_Size.height / 2) - (guiResources.m_SliderButtonLeft[0]->GetSize().height / 2);
+		BackButtonCommonData.YPos = INT32( (m_Size.height / 2) - (guiResources.m_SliderButtonLeft[0]->GetSize().height / 2) );
 		BackButtonCommonData.Width = BackButtonCommonData.Height = 1;
-		FowardButtonCommonData.XPos = m_Size.width - guiResources.m_SliderButtonRight[0]->GetSize().width;
-		FowardButtonCommonData.YPos = (m_Size.height / 2) - (guiResources.m_SliderButtonRight[0]->GetSize().height / 2);
+		FowardButtonCommonData.XPos = INT32( m_Size.width - guiResources.m_SliderButtonRight[0]->GetSize().width );
+		FowardButtonCommonData.YPos = INT32( (m_Size.height / 2) - (guiResources.m_SliderButtonRight[0]->GetSize().height / 2) );
 		FowardButtonCommonData.Width = BackButtonCommonData.Height = 1;
 
 		// Create the buttons and assosiate them with their images

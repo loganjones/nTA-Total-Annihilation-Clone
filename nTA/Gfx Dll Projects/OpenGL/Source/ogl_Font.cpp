@@ -71,8 +71,8 @@ BOOL gfx_OpenGL::CreateFont( FontEntry* pFontEntries, std_Size_t szFontDist, GFX
 	glTexImage2D( GL_TEXTURE_2D,
 				  0,
 				  GLTexInternalFormat,
-				  pImage->Size.width,
-				  pImage->Size.height,
+				  (GLsizei)pImage->Size.width,
+				  (GLsizei)pImage->Size.height,
 				  0,
 				  GLTexFormat,
 				  GL_UNSIGNED_BYTE,
@@ -93,14 +93,14 @@ BOOL gfx_OpenGL::CreateFont( FontEntry* pFontEntries, std_Size_t szFontDist, GFX
 		{
 			float w = pEntry->Size.width;
 			float h = pEntry->Size.height;
-			int ix= pEntry->Offset.x;
-			int iy= h-pEntry->Offset.y;
+			GLint ix= (GLint)pEntry->Offset.x;
+			GLint iy= (GLint)(h-pEntry->Offset.y);
 			//Origin.Set( pEntry->Offset.x, pEntry->Size.height - pEntry->Offset.y );
 			//SET_VERTEX( Origin.x, Origin.y, 0, TEX_COORD_U(TexOffset.x), TEX_COORD_V(TexOffset.y) );
 			//SET_VERTEX( Origin.x, Origin.y - pEntry->Size.height, 0, TEX_COORD_U(TexOffset.x), TEX_COORD_V(TexOffset.y+pEntry->Size.height) );
 			//SET_VERTEX( Origin.x + pEntry->Size.width, Origin.y, 0, TEX_COORD_U(TexOffset.x+pEntry->Size.width), TEX_COORD_V(TexOffset.y) );
 			//SET_VERTEX( Origin.x + pEntry->Size.width, Origin.y - pEntry->Size.height, 0, TEX_COORD_U(TexOffset.x+pEntry->Size.width), TEX_COORD_V(TexOffset.y+pEntry->Size.height) );
-			glNewList( NewFont.m_CharLists + iIndex, GL_COMPILE );
+			glNewList( NewFont.m_CharLists + (GLuint)iIndex, GL_COMPILE );
 				glBegin( GL_TRIANGLE_STRIP );
 					glTexCoord2f( TEX_COORD_U(TexOffset.x), TEX_COORD_V(TexOffset.y) );
 					glVertex2i( ix, iy-h );
@@ -171,7 +171,7 @@ void ogl_Font::Destroy()
 		glDeleteTextures( 1, &m_Texture );
 		list< ogl_Font >* pList = m_pHost;
 		m_pHost = NULL;
-		m_pHost->erase( m_HostIt );
+		pList->erase( m_HostIt );
 	}
 }
 // End ogl_Font::Destroy()
@@ -230,7 +230,7 @@ void gfx_OpenGL::RenderString( LPCTSTR strToRender, const std_Vector3 vWhere, co
 	glTranslatef(vWhere.x,vWhere.y,vWhere.z);
 		glBindTexture( GL_TEXTURE_2D, Font->m_Texture );
 		glListBase( Font->m_CharLists );
-		glCallLists( strlen(strToRender), GL_BYTE, strToRender );
+		glCallLists( (GLsizei)strlen(strToRender), GL_BYTE, strToRender );
 	glColor4f(1,1,1,1);
 	glPopMatrix();
 	m_TriangleCount += strlen(strToRender) * 2;
@@ -321,7 +321,7 @@ void gfx_OpenGL::RenderStringRight( LPCTSTR strToRender, const std_Vector3 vWher
 //  std_Point_t& ptWhere - 
 //  LPCTSTR strToRender  - 
 //
-void gfx_OpenGL::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
+void gfx_OpenGL::RenderStringAt(const std_Point_t& ptWhere, LPCTSTR strToRender )
 {
 	const ogl_Font* pFont = static_cast<ogl_Font*>(m_ActiveFont);
 
@@ -330,7 +330,7 @@ void gfx_OpenGL::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
 		glTranslatef( ptWhere.x, ptWhere.y, 0 );
 		glBindTexture( GL_TEXTURE_2D, pFont->m_Texture );
 		glListBase( pFont->m_CharLists );
-		glCallLists( strlen(strToRender), GL_BYTE, strToRender );
+		glCallLists( (GLsizei)strlen(strToRender), GL_BYTE, strToRender );
 	glPopMatrix();
 	m_TriangleCount += strlen(strToRender) * 2;
 }
@@ -349,7 +349,7 @@ void gfx_OpenGL::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
 //  BOOL bCenterHorizontal - 
 //  BOOL bCenterVertical   - 
 //
-void gfx_OpenGL::RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical )
+void gfx_OpenGL::RenderStringCenteredAt(const std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical )
 {
 	long			n, Len, TotalWidth, MaxHeight,H,H1,H2;
 	const ogl_Font* pFont = static_cast<ogl_Font*>(m_ActiveFont);
@@ -367,20 +367,17 @@ void gfx_OpenGL::RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRend
 		if( H>H2 ) H2 = H;
 	}
 
-	if( bCenterHorizontal )
-		ptWhere.x -= TotalWidth / 2;
-
-	if( bCenterVertical )
-		//ptWhere.y += MaxHeight / 2;
-		//ptWhere.y += (H1 + H2) / 2;
-		ptWhere.y += pFont->m_Height / 2;
+	const std_Point_t pt = std_Point_t(
+		bCenterHorizontal ? ptWhere.x - TotalWidth / 2 : ptWhere.x,
+		bCenterVertical ? ptWhere.y + pFont->m_Height / 2 : ptWhere.y
+		);
 
 	// Call each display list corresponding to the characters given
     glPushMatrix();
-		glTranslatef( ptWhere.x, ptWhere.y, 0 );
+		glTranslatef( pt.x, pt.y, 0 );
 		glBindTexture( GL_TEXTURE_2D, pFont->m_Texture );
 		glListBase( pFont->m_CharLists );
-		glCallLists( strlen(strToRender), GL_BYTE, strToRender );
+		glCallLists( (GLsizei)strlen(strToRender), GL_BYTE, strToRender );
 	glPopMatrix();
 	m_TriangleCount += Len * 2;
 }

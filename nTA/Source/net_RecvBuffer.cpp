@@ -98,7 +98,7 @@ void net_RecvBuffer::InitializeSender( net_Client& sender )
 //
 bool net_RecvBuffer::RecvFrom( net_Client& sender )
 {
-	int	BytesReceived;
+	ssize_t	BytesReceived;
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recv from net_Client(%d,%d)", sender.ID, sender.Socket );
 
 	// start a new packet?
@@ -114,7 +114,7 @@ bool net_RecvBuffer::RecvFrom( net_Client& sender )
 	// packet complete?
 	if( sender.Recv.BytesLeft==0 )
 		theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Packet complete" ),
-		((net_PacketHeader*)sender.Recv.Start)->Size = sender.Recv.Cursor - sender.Recv.Start;
+		((net_PacketHeader*)sender.Recv.Start)->Size = (UINT32)(sender.Recv.Cursor - sender.Recv.Start);
 
 	// sender valid?
 	return BytesReceived>0;
@@ -133,9 +133,9 @@ bool net_RecvBuffer::RecvFrom( net_Client& sender )
 //
 void net_RecvBuffer::RecvFrom( SOCKET sender )
 {
-	int	BytesReceived;
+	ssize_t	BytesReceived;
 	sockaddr_in	SourceAddress;
-	int			SourceAddressSize = sizeof( SourceAddress );
+	socklen_t   SourceAddressSize = sizeof( SourceAddress );
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recv from SOCKET %d", sender );
 
 	// Back to front?
@@ -226,7 +226,7 @@ bool net_RecvBuffer::BytesToRead()
 //
 bool net_RecvBuffer::NewPacket( net_Client& sender )
 {
-	int					BytesReceived;
+	ssize_t				BytesReceived;
 	net_PacketHeader	Header;
 
 	//

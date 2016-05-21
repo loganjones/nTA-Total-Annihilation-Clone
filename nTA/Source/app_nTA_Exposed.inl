@@ -131,7 +131,7 @@ LRESULT CALLBACK app_nTA::ft_AddScanType( LPVOID lpParams )
 		return 1;
 	}
 
-	theFileTree.AddFileType( Ext, Priority );
+	theFileTree.AddFileType( Ext, (int)Priority );
 
 	return 1;
 }
@@ -160,7 +160,7 @@ LRESULT CALLBACK app_nTA::ft_AddSubs( LPVOID lpParams )
 		return 1;
 	}
 
-	theFileTree.AddSubDirectoriesAsLibs( Priority );
+	theFileTree.AddSubDirectoriesAsLibs( (int)Priority );
 
 	return 1;
 }

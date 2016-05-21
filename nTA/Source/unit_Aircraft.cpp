@@ -91,11 +91,13 @@ void unit_Aircraft::DoAltitude()
 		m_Elevation = m_GroundLevel;
 
 	if( m_Elevation==m_DesiredAltitude )
+    {
 		if( m_MoveState==Landing )
 			m_MoveState = Idle,
 			MakeMeStatic();
 		else if( m_MoveState==TakingOff )
 			m_MoveState = Flying;
+    }
 }
 // End unit_Aircraft::DoAltitude()
 /////////////////////////////////////////////////////////////////////

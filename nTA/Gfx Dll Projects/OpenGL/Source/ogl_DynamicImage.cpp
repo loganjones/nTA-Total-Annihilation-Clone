@@ -43,15 +43,15 @@ BOOL gfx_OpenGL::CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppImag
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
 
-		pImage->m_TextureSize.Set( math_NextPowerOfTwo(szImage.width), math_NextPowerOfTwo(szImage.height) );
+		pImage->m_TextureSize.Set( math_NextPowerOfTwo((UINT32)szImage.width), math_NextPowerOfTwo((UINT32)szImage.height) );
 		pImage->m_LocalCopy = new BYTE[ *pImage->m_TextureSize ];
 		pImage->m_ImageSize = szImage;
 		glTexImage2D(
             GL_TEXTURE_2D,
             0,
             GL_COLOR_INDEX8_EXT,
-            pImage->m_TextureSize.width,
-            pImage->m_TextureSize.height,
+            (GLsizei)pImage->m_TextureSize.width,
+            (GLsizei)pImage->m_TextureSize.height,
             0,
             GL_COLOR_INDEX,
             GL_UNSIGNED_BYTE,
@@ -193,8 +193,8 @@ void ogl_DynamicImage::Update( BYTE** ppImage )
 	glBindTexture( GL_TEXTURE_2D, m_TextureIndex );	
 	glTexSubImage2D( GL_TEXTURE_2D, 0,
 					 0, 0,
-					 m_TextureSize.width,
-					 m_TextureSize.height,
+					 (GLsizei)m_TextureSize.width,
+					 (GLsizei)m_TextureSize.height,
 					 GL_COLOR_INDEX,
 					 GL_UNSIGNED_BYTE,
 					 m_LocalCopy );

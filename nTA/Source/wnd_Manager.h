@@ -19,8 +19,8 @@ class wnd_Manager : public in_Handler
 		wnd_Window*		Src;
 		wnd_Window*		Dest;
 		DWORD			Message;
-		DWORD			ParamA;
-		DWORD			ParamB;
+		Param_t			ParamA;
+		Param_t			ParamB;
 	};
 	typedef list<Message_t>	MessageList_t;
 
@@ -46,7 +46,7 @@ public:
 	INLINE void SetCursorSpeed( const float fSpeed );
 	INLINE const std_Point GetCursorPosition() const;
 
-	BOOL AddMessage( wnd_Window* pSrc, wnd_Window* pDest, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	BOOL AddMessage( wnd_Window* pSrc, wnd_Window* pDest, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 
 /////////////////////////////////////////////////

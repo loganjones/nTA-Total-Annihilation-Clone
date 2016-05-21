@@ -108,7 +108,7 @@ void fe_SelectGame::OnUpdate()
 			//	m_GameList->AddListBoxItem( net.Read().GetString(), (LPVOID)net.Read().Marker() );
 				theAddress.s_addr = net.Read().Marker();
 				sprintf( Name, "%s %s", net.Read().GetString(), inet_ntoa(theAddress) );
-				m_GameList->AddListBoxItem( Name, (LPVOID)net.Read().Marker() );
+				m_GameList->AddListBoxItem( Name, (LPVOID)(size_t)net.Read().Marker() );
 		}
 
 		// Check for a timeout
@@ -139,7 +139,7 @@ void fe_SelectGame::OnUpdate()
 //
 // Return: DWORD - 
 //
-DWORD fe_SelectGame::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_SelectGame::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 	gadget_TextEdit*	PlayerNameBox,*PasswordBox;

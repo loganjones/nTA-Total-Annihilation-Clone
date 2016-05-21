@@ -158,7 +158,7 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 	{
 		if( Info.Type==PARSE_VarVal && Parser.Locale()==1 )
 			STRING_SWITCH( Info.Variable )
-				CASE( "totalgadgets" )	Header.NumGadgets = atol( Info.Value );
+				CASE( "totalgadgets" )	Header.NumGadgets = atoi( Info.Value );
 				CASE( "Panel" )			strcpy( Header.Panel, Info.Value );
 				CASE( "defaultfocus" )	strcpy( Header.Focus, Info.Value );
 				CASE( "crDefault" )		strcpy( Header.crDefault, Info.Value );
@@ -202,10 +202,10 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 						if( Info.Type==Info.Type==PARSE_VarVal && Parser.Locale()==1 )
 							STRING_SWITCH( Info.Variable )
 								CASE( "text" )			strcpy( ButtonInfo.Text, Info.Value );
-								CASE( "status" )		ButtonInfo.Status = atol( Info.Value );
-								CASE( "quickkey" )		ButtonInfo.QuickKey = atol( Info.Value );
-								CASE( "grayedout" )		ButtonInfo.Grayed = atol( Info.Value );
-								CASE( "stages" )		ButtonInfo.Stages = atol( Info.Value );
+								CASE( "status" )		ButtonInfo.Status = atoi( Info.Value );
+								CASE( "quickkey" )		ButtonInfo.QuickKey = atoi( Info.Value );
+								CASE( "grayedout" )		ButtonInfo.Grayed = atoi( Info.Value );
+								CASE( "stages" )		ButtonInfo.Stages = atoi( Info.Value );
 							END_STRING_SWITCH
 						bValid = Parser.Continue( &Info );
 					} // end load gadget
@@ -239,7 +239,7 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 					{
 						if( Info.Type==Info.Type==PARSE_VarVal && Parser.Locale()==1 )
 							STRING_SWITCH( Info.Variable )
-								CASE( "maxchars" )		EditInfo.MaxChars = atol( Info.Value );
+								CASE( "maxchars" )		EditInfo.MaxChars = atoi( Info.Value );
 								CASE( "text" )			strcpy( EditInfo.Text, Info.Value );
 							END_STRING_SWITCH
 						bValid = Parser.Continue( &Info );
@@ -258,10 +258,10 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 					{
 						if( Info.Type==Info.Type==PARSE_VarVal && Parser.Locale()==1 )
 							STRING_SWITCH( Info.Variable )
-								CASE( "range" )			SliderInfo.Range = atol( Info.Value );
-								CASE( "thick" )			SliderInfo.Thickness = atol( Info.Value );
-								CASE( "knobpos" )		SliderInfo.KnobPos = atol( Info.Value );
-								CASE( "knobsize" )		SliderInfo.KnobSize = atol( Info.Value );
+								CASE( "range" )			SliderInfo.Range = atoi( Info.Value );
+								CASE( "thick" )			SliderInfo.Thickness = atoi( Info.Value );
+								CASE( "knobpos" )		SliderInfo.KnobPos = atoi( Info.Value );
+								CASE( "knobsize" )		SliderInfo.KnobSize = atoi( Info.Value );
 							END_STRING_SWITCH
 						bValid = Parser.Continue( &Info );
 					} // end load gadget
@@ -298,7 +298,7 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 					{
 						if( Info.Type==Info.Type==PARSE_VarVal && Parser.Locale()==1 )
 							STRING_SWITCH( Info.Variable )
-								CASE( "hotornot" )		PicInfo.HotOrNot = atol( Info.Value );
+								CASE( "hotornot" )		PicInfo.HotOrNot = atoi( Info.Value );
 							END_STRING_SWITCH
 						bValid = Parser.Continue( &Info );
 					} // end load gadget
@@ -342,7 +342,7 @@ BOOL gui_Window::LoadGui( LPCTSTR strGuiName )
 	delete [] pFileBuffer;
 
 	// Set the default focus
-	if( Gadget=GetGadget(Header.Focus) )
+	if( (Gadget=GetGadget(Header.Focus)) )
 		m_pWndManager->SetFocus(Gadget);
 
 	// Return success

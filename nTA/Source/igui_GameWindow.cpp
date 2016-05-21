@@ -268,6 +268,9 @@ void igui_GameWindow::DoOrder( InterafceOrder_t Order, DWORD dwParam )
 		case ORDER_OnOff:
 			m_CurrentSelection->RequestActivate( dwParam!=0 );
 			break;
+            
+        default:
+            break;
 	}
 	theGame.Interface.ControlBar().ResetOrderSelection();
 }
@@ -286,7 +289,7 @@ void igui_GameWindow::DoOrder( InterafceOrder_t Order, DWORD dwParam )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void igui_GameWindow::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void igui_GameWindow::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// Point on the map where the button was pressed
 	const std_Point	ptMap = theGame.Terrain.GetPoint( ptCursor, theGame.Interface.GuiResolution(), m_TerrainRes );
@@ -355,7 +358,7 @@ void igui_GameWindow::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL
 //  long lData            - 
 //  DWORD dwFlags         - 
 //
-void igui_GameWindow::OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags )
+void igui_GameWindow::OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags )
 {
 	if( lData<0 )	theGame.Terrain.Zoom( 16, 12 );
 	else	theGame.Terrain.Zoom( -16, -12 );
@@ -445,6 +448,9 @@ void igui_GameWindow::DoRectOrder()
 		case MODE_Default:
 			MultiSelection();
 			break;
+            
+        default:
+            break;
 
 	} // end switch( m_InterfaceMode )
 }
@@ -525,13 +531,17 @@ void igui_GameWindow::SingleSelection( class unit_Interface* pUnit )
 {
 	// Check if there is already a selection
 	if( m_CurrentSelection )
+    {
 		if( m_CurrentSelection==pUnit )
 		{
 			// TODO: Implement some kind of special handling.
 			return;
 		}
-		else // Unselect the old
+        else // Unselect the old
+        {
 			m_CurrentSelection->OnSelect( FALSE, TRUE );
+        }
+    }
 
 	// Select the new
 	m_CurrentSelection = pUnit;

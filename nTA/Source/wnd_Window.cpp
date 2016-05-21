@@ -200,7 +200,7 @@ void wnd_Window::ReleaseCapture()
 //
 // Return: BOOL - 
 //
-BOOL wnd_Window::SendMessage( wnd_Window* pDest, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+BOOL wnd_Window::SendMessage( wnd_Window* pDest, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	if( m_pWndManager==NULL ) return FALSE;
 

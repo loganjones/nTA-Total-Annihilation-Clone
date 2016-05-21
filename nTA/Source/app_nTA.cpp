@@ -125,9 +125,11 @@ BOOL app_nTA::Start()
 
 	// Create the application and show the splash screen
 	if( m_RestartFlags & RESTART_Subsystems )
+    {
 		if( bFAILED(Create("nTA Splash.bmp")) )
 			return FALSE;
 		else Console.Comment( CT_NORMAL, "nTA application object created." );
+    }
 
 	// Find Total Annihilation or else
 	if( bFAILED(FindTotalAnnihilation()) )
@@ -187,7 +189,7 @@ BOOL app_nTA::Start()
 
 		// Get the interface to the gfx system and create it
 		if( bFAILED(RetrieveGfxInterface()) ||
-			bFAILED(gfx->Create( m_RendererResolution, m_RendererDepth, m_bFullScreen )) )
+			bFAILED(gfx->Create( m_RendererResolution, (int)m_RendererDepth, m_bFullScreen )) )
 		{
 			ErrorBox( "Error -> app_nTA::Start()", "Failed to create the graphics system." );
 			return FALSE;
@@ -349,6 +351,9 @@ void app_nTA::StateChanging( sys_App_States OldState, sys_App_States NewState )
 		case State_Paused:
 			input.UnacquireDevices();
 			break;
+            
+        default:
+            break;
 
 	} // end switch( NewState )
 }
@@ -496,6 +501,11 @@ void app_nTA::SetStartMenu( LPCTSTR strMenuName )
 //////////////////////////////////////////////////////////////////////
 
 
+#if __APPLE__
+const int _MakeARGV_macOS(char ***pargv);
+void _FreeARGV_macOS(char **argv, const int argc);
+#endif
+
 //////////////////////////////////////////////////////////////////////
 // app_nTA::ProcessCommandLine() //                \author Logan Jones
 ///////////////////////////////////                    \date 9/20/2001
@@ -504,6 +514,11 @@ void app_nTA::SetStartMenu( LPCTSTR strMenuName )
 //
 void app_nTA::ProcessCommandLine()
 {
+#if __APPLE__
+    char **__argv;
+    const int __argc = _MakeARGV_macOS(&__argv);
+#endif
+
     LPTSTR      Value;
 	int			x;
 
@@ -574,6 +589,10 @@ void app_nTA::ProcessCommandLine()
             ++x; // Try the next argument
 
     } // End for( Number Of Command-Line Arguments )
+    
+#if __APPLE__
+    _FreeARGV_macOS(__argv, __argc);
+#endif
 }
 // End app_nTA::ProcessCommandLine()
 //////////////////////////////////////////////////////////////////////
@@ -591,7 +610,7 @@ BOOL app_nTA::LoadConfig()
 	char	Command[ 64 ];
 
 	sprintf( Command, "exec %s/Startup.cfg", m_GameType );
-	Console.Execute( Command, strlen(Command) );
+	Console.Execute( Command, (DWORD)strlen(Command) );
 	return TRUE;
 }
 // End app_nTA::LoadConfig()

@@ -80,7 +80,7 @@ public:
 
 	virtual BOOL Initialize( std_PlatformParameters* pPlatformParams, LPCommentProc_t lpLoadProc, LPCommentProc_t lpErrorProc ) = 0;
 
-	virtual BOOL Create( gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen ) = 0;
+	virtual BOOL Create( const gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen ) = 0;
 	virtual BOOL Destroy() = 0;
 
 
@@ -101,9 +101,9 @@ public:
 	// Returns the amount of tri's rendered in the current scene
 	INLINE DWORD GetTriangleCount() const;
 
-	virtual void Set2DProjection( gfx_Resolution_t& resScreen, float fNear, float fFar ) = 0;
+	virtual void Set2DProjection(const gfx_Resolution_t& resScreen, float fNear, float fFar ) = 0;
 
-	virtual void DrawRect( std_Rect_t& rctWhere, const PALETTEENTRY& peColor ) = 0;
+	virtual void DrawRect(const std_Rect_t& rctWhere, const PALETTEENTRY& peColor ) = 0;
 	virtual void DrawRect( std_RectF rctWhere, const DWORD dwColor ) = 0;
 	virtual void DrawRect( std_RectF rctWhere, const BYTE byIndex ) = 0;
 	virtual void DrawRect( std_Vector3 vTrans, const float fRot, std_RectF rctWhere, const DWORD dwColor ) = 0;
@@ -159,17 +159,17 @@ public:
 	virtual BOOL CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, gfx_Surface** ppSurface ) = 0;
 
 	INLINE BOOL CreateSurfaceFromPCX( BYTE* pFileBuffer, DWORD dwFileBufferSize, DWORD dwFlags, gfx_Surface** ppSurface );
-	INLINE BOOL CreateSurfaceFromPCX( BYTE* pFileBuffer, DWORD dwFileBufferSize, DWORD dwFlags, std_Size_t& szDesired, gfx_Surface** ppSurface );
+	INLINE BOOL CreateSurfaceFromPCX( BYTE* pFileBuffer, DWORD dwFileBufferSize, DWORD dwFlags, const std_Size_t& szDesired, gfx_Surface** ppSurface );
 
 	BOOL CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iFrameNumber, gfx_Surface** ppSurface );
-	BOOL CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iFrameNumber, std_Size_t& szDesired, gfx_Surface** ppSurface );
+	BOOL CreateSurfaceFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iFrameNumber, const std_Size_t& szDesired, gfx_Surface** ppSurface );
 	DWORD CreateSurfacesFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iStartFrame, int iFrameCount, gfx_Surface** ppSurface );
 
 	// Destroys a given surface
 	//virtual void DestroySurface( gfx_Surface** pSurface ) = 0;
 
 	virtual void RenderSurface( gfx_Surface* pSurface ) = 0;
-	virtual void RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface ) = 0;
+	virtual void RenderSurfaceEx( const std_Point_t& ptWhere, gfx_Surface* pSurface ) = 0;
 
 
 /////////////////////////////////////////////////
@@ -195,8 +195,8 @@ public:
 	
 	virtual void RenderStringRight( LPCTSTR strToRender, const std_Vector3 vWhere, const DWORD dwColor, gfx_Font* pFont=NULL ) = 0;
 
-	virtual void RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender ) = 0;
-	virtual void RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal=TRUE, BOOL bCenterVertical=TRUE ) = 0;
+	virtual void RenderStringAt( const std_Point_t& ptWhere, LPCTSTR strToRender ) = 0;
+	virtual void RenderStringCenteredAt( const std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal=TRUE, BOOL bCenterVertical=TRUE ) = 0;
 
 
 /////////////////////////////////////////////////
@@ -331,9 +331,17 @@ protected:
 typedef LRESULT (CALLBACK* LPRetrieveGfxInterface)(gfx_Interface**);
 typedef DWORD (CALLBACK* LPEnumDisplayMode)( DWORD, std_Size*, long* );
 
+#ifdef _USRDLL
+#  define GFX_DYNAMIC_LIBRARY     1
+#elif __APPLE__
+#  define GFX_DYNAMIC_LIBRARY     1
+#else
+#  define GFX_DYNAMIC_LIBRARY     0
+#endif
+
 
 // DLL only stuff
-#ifdef _USRDLL
+#if GFX_DYNAMIC_LIBRARY
 
 	// Prototype the functions used to access the derived interface
 	LRESULT WINAPI RetrieveGfxInterface(gfx_Interface** ppGfxInterface );
@@ -343,15 +351,17 @@ typedef DWORD (CALLBACK* LPEnumDisplayMode)( DWORD, std_Size*, long* );
 	extern gfx_Interface*		pGfxSystem;
 	extern gfx_Interface**		ppGfx;
 
+#endif // gfx lib
+
 // App only stuff
-#else
+#ifndef _USRDLL
 
 	// Include inline implementaions here for a NON-debug build
 	#ifndef _DEBUG
 		#include "gfx_Interface.inl"
 	#endif // !defined( _DEBUG )
 
-#endif
+#endif // app
 
 
 /////////////////////////////////////////////////////////////////////

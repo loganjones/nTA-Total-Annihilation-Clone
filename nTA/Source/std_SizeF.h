@@ -25,10 +25,14 @@ struct std_SizeF
 	// Other constructors
 	INLINE std_SizeF( const float newWidth, const float newHeight );
 	INLINE std_SizeF( const std_Size& szCopy );
+#ifdef _WIN32
 	INLINE std_SizeF( const SIZE szCopy );
+#endif
 
 	// Casting
+#ifdef _WIN32
 	INLINE operator SIZE();
+#endif
 
 	// Unary Operators
 	INLINE std_SizeF operator +() const;

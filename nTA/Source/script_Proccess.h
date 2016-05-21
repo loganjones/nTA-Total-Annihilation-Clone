@@ -9,11 +9,11 @@
 
 
 #define DEFINE_OPCODE_HANDLER( NAME, CODE ) \
-	static long CALLBACK handler_##NAME##( script_Proccess& Proccess, Thread_t& Thread );
+	static long CALLBACK handler_##NAME( script_Proccess& Proccess, Thread_t& Thread );
 #define IMPLEMENT_OPCODE_HANDLER( NAME ) \
-	long CALLBACK script_Proccess::handler_##NAME##( script_Proccess& Proccess, Thread_t& Thread )
+	long CALLBACK script_Proccess::handler_##NAME( script_Proccess& Proccess, Thread_t& Thread )
 #define ASSOCCIATE_INSTRUCTION_TO_OPCODE_HANDLER( NAME, CODE ) \
-	OpcodeHandlers[ CODE - UINT32(Opcode_MovePieceWithSpeed) ] = handler_##NAME##;
+	OpcodeHandlers[ CODE - UINT32(Opcode_MovePieceWithSpeed) ] = handler_##NAME;
 
 #define MOVE_ANIM_INDEX( PIECE, AXIS )	( ((PIECE) << 4) + 0 + (AXIS) )
 #define TURN_ANIM_INDEX( PIECE, AXIS )	( ((PIECE) << 4) + 3 + (AXIS) )
@@ -154,7 +154,7 @@ protected:
 		UINT32						Start;
 		UINT32						Offset;
 		UINT32*						pCode;
-		DWORD						Sleep;
+		std_Time_t					Sleep;
 		DWORD						Mask;
 		BOOL*						ThreadComplete;
 		Thread_t*					pParent;

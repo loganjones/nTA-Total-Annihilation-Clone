@@ -162,7 +162,7 @@ BOOL gfx_Interface::CreateSurfaceFromPCX( BYTE* pFileBuffer, DWORD dwFileBufferS
 //
 // Return: BOOL - 
 //
-BOOL gfx_Interface::CreateSurfaceFromPCX( BYTE* pFileBuffer, DWORD dwFileBufferSize, DWORD dwFlags, std_Size_t& szDesired, gfx_Surface** ppSurface )
+BOOL gfx_Interface::CreateSurfaceFromPCX( BYTE* pFileBuffer, DWORD dwFileBufferSize, DWORD dwFlags, const std_Size_t& szDesired, gfx_Surface** ppSurface )
 {
     // The PCX file header
     struct PCX_HEADER

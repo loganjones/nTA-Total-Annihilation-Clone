@@ -97,7 +97,7 @@ void gui_Gadget::Render()
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gui_Gadget::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gui_Gadget::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	m_pWndManager->SetFocus( this );
 	wnd_Window::OnMouseButton( ptCursor, dwButton, bDown, dwFlags );

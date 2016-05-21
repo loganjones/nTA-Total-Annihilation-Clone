@@ -90,7 +90,7 @@ BOOL fe_NewMultiplayerGame::OnCreate()
 //
 // Return: DWORD - 
 //
-DWORD fe_NewMultiplayerGame::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_NewMultiplayerGame::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 	gadget_TextEdit*	GameNameBox,*PlayerNameBox,*PasswordBox;

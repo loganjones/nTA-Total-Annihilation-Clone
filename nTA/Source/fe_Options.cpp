@@ -169,7 +169,7 @@ void fe_Options::OnUpdate()
 //
 // Return: DWORD - 
 //
-DWORD fe_Options::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_Options::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR		strSender = (LPTSTR)dwParamA;
 	std_Size*	pRes = NULL;
@@ -340,7 +340,7 @@ void fe_Options::LoadVisuals()
 			{
 				Modes = &m_Renderers[ Info.Name ];
 				Modes->clear();
-				for( Enum=0; Enum=gfx->EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth);)
+				for( Enum=0; (Enum=gfx->EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth));)
 					Modes->push_back( Mode );
 			}
 			else // Load the dll and call the exported enum function
@@ -351,7 +351,7 @@ void fe_Options::LoadVisuals()
 					continue;
 				Modes = &m_Renderers[ Info.Name ];
 				Modes->clear();
-				for( Enum=0; Enum=gfx_EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth);)
+				for( Enum=0; (Enum=gfx_EnumDisplayMode(Enum,&Mode.Resolution,&Mode.Depth));)
 					Modes->push_back( Mode );
 				sys_UnloadDll( hDll );
 			}
@@ -363,7 +363,7 @@ void fe_Options::LoadVisuals()
 
 		// Set the current color depth
 		if( m_ColorDepthButton )
-			m_ColorDepthButton->SetStage( theApp.GetColorDepth() >> 5 );
+			m_ColorDepthButton->SetStage( (DWORD)theApp.GetColorDepth() >> 5 );
 
 		// Set the selection and attach the slider
 		m_RendererBox->SetSelection( theApp.GetRenderer() );
@@ -385,13 +385,13 @@ void fe_Options::LoadMusic()
 {
 	gadget_Button*	pButton;
 
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDPrev" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDPrev" )) )
 		pButton->SetButtonImages( m_CDPrevImages, m_CDPrevImages[1], m_CDPrevImages[2] );
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDStop" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDStop" )) )
 		pButton->SetButtonImages( m_CDStopImages, m_CDStopImages[1], m_CDStopImages[2] );
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDPlay" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDPlay" )) )
 		pButton->SetButtonImages( m_CDPlayImages, m_CDPlayImages[1], m_CDPlayImages[2] );
-	if( pButton = (gadget_Button*)m_Music.GetGadget( "CDNext" ) )
+	if( (pButton = (gadget_Button*)m_Music.GetGadget( "CDNext" )) )
 		pButton->SetButtonImages( m_CDNextImages, m_CDNextImages[1], m_CDNextImages[2] );
 }
 // End fe_Options::LoadMusic()
@@ -428,18 +428,18 @@ void fe_Options::SetModes( LPCTSTR strRenderer, long Depth, std_Size szDesiredSe
 	if( rend!=m_Renderers.end() )
 		for( Modes=&(*rend).second,it=Modes->begin(),end=Modes->end(); it!=end; ++it)
 			if( (*it).Depth==Depth ) {
-				sprintf( ResStr, "%d x %d", (*it).Resolution.width, (*it).Resolution.height );
+				sprintf( ResStr, "%ld x %ld", (*it).Resolution.width, (*it).Resolution.height );
 				m_ResolutionBox->AddListBoxItem( ResStr, &(*it) );
 	}
 
 	// Set the current selection
-	sprintf( ResStr, "%d x %d", szDesiredSelection.width, szDesiredSelection.height );
+	sprintf( ResStr, "%ld x %ld", szDesiredSelection.width, szDesiredSelection.height );
 	if( m_ResolutionBox->SetSelection( ResStr )==(-1) )
 		// Failed to find a suitable selection, look for a close match		
 		if( rend!=m_Renderers.end() )
 			for( Modes=&(*rend).second,it=Modes->begin(),end=Modes->end(); it!=end; ++it)
 				if( (*it).Depth==Depth && (*it).Resolution.width>=szDesiredSelection.width && (*it).Resolution.height>=szDesiredSelection.height ) {
-					sprintf( ResStr, "%d x %d", (*it).Resolution.width, (*it).Resolution.height );
+					sprintf( ResStr, "%ld x %ld", (*it).Resolution.width, (*it).Resolution.height );
 					m_ResolutionBox->SetSelection( ResStr );
 					break;
 		}

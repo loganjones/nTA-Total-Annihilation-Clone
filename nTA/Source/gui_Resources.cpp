@@ -202,7 +202,7 @@ gui_Resources::ButtonImages_t* gui_Resources::GetClosestStandardButton( std_Size
 	for( ; pImage<=&StandardButton_96x31; ++pImage)
 	{
 		if( sz==pImage->Stages[0]->GetSize() ) { pMin=pImage; break; }
-		Deviation = abs( *(sz - pImage->Stages[0]->GetSize()) * abs( *sz - *(pImage->Stages[0]->GetSize()) ) );
+        Deviation = ::labs( *(sz - pImage->Stages[0]->GetSize()) * ::labs( *sz - *(pImage->Stages[0]->GetSize()) ) );
 		if( Deviation<Min ) { Min=Deviation; pMin=pImage; }
 	}
 	return pMin;

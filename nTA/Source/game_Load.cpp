@@ -104,14 +104,14 @@ BOOL game_Main::Load()
 	BOOL						bLoadSuccessfull = FALSE;
 	BYTE*						pBuf = NULL;
 	DWORD						Size;
-	DWORD						t;
+	std_Time_t					t;
 	char						FilePath[ MAX_PATH ];
 	ta_ota_GlobalHeader_t		Ota;
 	ta_ota_Schema_t				Schema;
 #define ERROR_AND_DELAY( SECONDS_TO_DELAY, SOUND_STRING ) {\
 	sound.PlaySound( SOUND_STRING ); \
-	t = timeGetTime(); \
-	while( (timeGetTime()-t)<(SECONDS_TO_DELAY * 1000) ) theApp.DoFrame(); \
+	t = std_Time(); \
+	while( (std_Time()-t)<(SECONDS_TO_DELAY * 1000) ) theApp.DoFrame(); \
 	EXIT_CODE_BLOCK }
 
 	// Make sure the gui stuff is loaded
@@ -179,7 +179,7 @@ BOOL game_Main::Load()
 	theApp.Console.Comment( CT_LOAD, "Loading features..." );
 	theApp.DoFrame();
 	{
-		LPTSTR World;
+		LPCTSTR World;
 		STRING_SWITCH( Ota.Planet )
 			CASE( "green planet" )
 				World = "green";

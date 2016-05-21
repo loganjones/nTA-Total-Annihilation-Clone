@@ -46,10 +46,12 @@ void game_Player::Initialize( ta_ota_Schema_t* pSchema )
 	m_Resources[Energy].Amount= m_Resources[Energy].Max;
 
 	// If we haven't alredy been assigned untis, spawn the commander
-	if( m_Units.empty() )
-		if(pType = theGame.Units.GetUnitType( pSideData->commander ))
+    if( m_Units.empty() )
+    {
+		if((pType = theGame.Units.GetUnitType( pSideData->commander )))
 			theGame.NotifySpawnCompleteUnit( pType, pSchema->StartPositions[m_Index], m_Index );
 		else {/*ERROR*/}
+    }
 
 	//// If we haven't alredy been assigned untis, spawn the commander
 	//if( m_Units.empty() )

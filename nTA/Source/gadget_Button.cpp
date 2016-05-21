@@ -93,10 +93,10 @@ BOOL gadget_Button::Create( const std_Point_t& ptPos, const std_Size_t& szDim, w
 	m_ButtonInfo.QuickKey=0;
 
 	m_CommonData.ID = GADGET_Button;
-	m_CommonData.XPos = ptPos.x;
-	m_CommonData.YPos = ptPos.y;
-	m_CommonData.Width = szDim.width;
-	m_CommonData.Height= szDim.height;
+	m_CommonData.XPos = (INT32)ptPos.x;
+	m_CommonData.YPos = (INT32)ptPos.y;
+	m_CommonData.Width = (UINT32)szDim.width;
+	m_CommonData.Height= (UINT32)szDim.height;
 	m_CommonData.Active = 1;
 	m_CommonData.Name[0] = '\0';
 	m_CommonData.Attribs = GUI_STANDARD_BUTTON;
@@ -170,8 +170,10 @@ void gadget_Button::SetText( LPCTSTR strText, long lStage )
 
 	// If the given stage is in range, set the text
 	if( lStage<=m_ButtonInfo.Stages )
+    {
 		if( m_StageText.empty() ) m_StageText.push_back( strText );
 		else m_StageText[lStage] = strText;
+    }
 }
 // End gadget_Button::SetText()
 //////////////////////////////////////////////////////////////////////
@@ -335,7 +337,7 @@ void gadget_Button::OnRender()
 //  std_Point_t& ptCursor - 
 //  DWORD dwFlags         - 
 //
-void gadget_Button::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
+void gadget_Button::OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags )
 {
 	// Check if we have capture
 	if( m_pWndManager->GetCapture()==this )
@@ -373,7 +375,7 @@ void gadget_Button::OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags )
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_Button::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_Button::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// If a primary button was pressed or released then do our stuff
 	if( dwButton==1 || dwButton==2 )
@@ -461,7 +463,7 @@ void gadget_Button::OnInitButtonImages()
 void gadget_Button::OnButtonDown()
 {
 	// Send down message
-	SendMessage( m_pParent, gui_msg_ButtonDown, (DWORD)(LPTSTR(m_CommonData.Name)), 1 );
+	SendMessage( m_pParent, gui_msg_ButtonDown, (Param_t)(LPTSTR(m_CommonData.Name)), 1 );
 }
 // End gadget_Button::OnButtonDown()
 //////////////////////////////////////////////////////////////////////
@@ -476,7 +478,7 @@ void gadget_Button::OnButtonDown()
 void gadget_Button::OnButtonUp()
 {
 	// Send up message
-	SendMessage( m_pParent, gui_msg_ButtonUp, (DWORD)(LPTSTR(m_CommonData.Name)), 1 );
+	SendMessage( m_pParent, gui_msg_ButtonUp, (Param_t)(LPTSTR(m_CommonData.Name)), 1 );
 }
 // End gadget_Button::OnButtonUp()
 //////////////////////////////////////////////////////////////////////
@@ -494,11 +496,13 @@ void gadget_Button::OnPressed( DWORD dwButton )
 {
 	// Check if any stage changing needs to happen
 	if( m_ButtonInfo.Stages )
+    {
 		if( dwButton==1 ) m_Stage = ((m_Stage+1) >= m_ButtonInfo.Stages) ? 0: m_Stage+1;
 		else m_Stage = (m_Stage == 0) ? m_ButtonInfo.Stages-1: m_Stage-1;
+    }
 
 	// Send the pressed message
-	SendMessage( m_pParent, gui_msg_ButtonPressed, (DWORD)(LPTSTR(m_CommonData.Name)), dwButton );
+	SendMessage( m_pParent, gui_msg_ButtonPressed, (Param_t)(LPTSTR(m_CommonData.Name)), dwButton );
 }
 // End gadget_Button::OnPressed()
 //////////////////////////////////////////////////////////////////////

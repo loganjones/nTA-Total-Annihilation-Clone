@@ -138,6 +138,9 @@ void igui_InfoBar::Render()
 			gfx->RenderString( m_Line1, m_Name, 0xFFFFFFFF, theInterface->Font() );
 			gfx->RenderString( m_Line2, m_Description, 0xFFFFFFFF, theInterface->Font() );
 			break;
+            
+        case DISP_Nothing:
+            break;
 	}
 
 	gfx->PopMatrix();
@@ -160,7 +163,7 @@ void igui_InfoBar::DisplayObjectInfo( class scene_Object* pObject )
 	else if( pObject->GetSceneryType()==OBJ_Feature )
 	{
 		m_What.Feature = static_cast<feature_Object*>(pObject);
-		sprintf( m_Line1, "%s", m_What.Feature->GetType()->Name );
+		sprintf( m_Line1, "%s", m_What.Feature->GetType()->Name.c_str() );
 		m_DisplayingWhat = DISP_FeatureInfo;
 	}
 	else if( pObject->GetSceneryType()==OBJ_Unit )

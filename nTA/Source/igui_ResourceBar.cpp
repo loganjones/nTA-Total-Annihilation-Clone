@@ -50,16 +50,16 @@ void igui_ResourceBar::Initialize( SideData_t* pSideData )
 	m_Metal_Num = pSideData->Header.metalnum.Position() - m_ScreenPosition + FontSize;
 	m_Metal_Produced = pSideData->Header.metalproduced.Position() - m_ScreenPosition + FontSize;
 	m_Metal_Consumed = pSideData->Header.metalconsumed.Position() - m_ScreenPosition + FontSize;
-	sprintf( m_Metal_Produced_String, "%.1f", 0 );
-	sprintf( m_Metal_Consumed_String, "%.1f", 0 );
+	sprintf( m_Metal_Produced_String, "%.1f", 0.0f );
+	sprintf( m_Metal_Consumed_String, "%.1f", 0.0f );
 
 	m_Energy_0 = pSideData->Header.energy0.Position() - m_ScreenPosition + FontSize;
 	m_Energy_Max = pSideData->Header.energymax.Position() - m_ScreenPosition + FontSize;
 	m_Energy_Num = pSideData->Header.energynum.Position() - m_ScreenPosition + FontSize;
 	m_Energy_Produced = pSideData->Header.energyproduced.Position() - m_ScreenPosition + FontSize;
 	m_Energy_Consumed = pSideData->Header.energyconsumed.Position() - m_ScreenPosition + FontSize;
-	sprintf( m_Energy_Produced_String, "%.1f", 0 );
-	sprintf( m_Energy_Consumed_String, "%.1f", 0 );
+	sprintf( m_Energy_Produced_String, "%.1f", 0.0f );
+	sprintf( m_Energy_Consumed_String, "%.1f", 0.0f );
 	m_Test = 0;
 	Test2 = 0;
 }

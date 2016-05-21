@@ -156,7 +156,7 @@ BOOL gfx_Direct3D8::Initialize( std_PlatformParameters* pPlatformParams, LPComme
 //
 // Return: BOOL - 
 //
-BOOL gfx_Direct3D8::Create( gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen )
+BOOL gfx_Direct3D8::Create( const gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen )
 {
 	DWORD					WndStyle;
 	DWORD					WndExStyle;
@@ -409,7 +409,7 @@ void gfx_Direct3D8::EndScene()
 //  float fZNear                - 
 //  float fZFar                 - 
 //
-void gfx_Direct3D8::Set2DProjection( gfx_Resolution_t& resScreen, float fZNear, float fZFar )
+void gfx_Direct3D8::Set2DProjection( const gfx_Resolution_t& resScreen, float fZNear, float fZFar )
 {
 	D3DXMATRIX Matrix;
 
@@ -432,7 +432,7 @@ void gfx_Direct3D8::Set2DProjection( gfx_Resolution_t& resScreen, float fZNear, 
 //  std_Rect_t& rctWhere        - 
 //  const PALETTEENTRY& peColor - 
 //
-void gfx_Direct3D8::DrawRect( std_Rect_t& rctWhere, const PALETTEENTRY& peColor )
+void gfx_Direct3D8::DrawRect( const std_Rect_t& rctWhere, const PALETTEENTRY& peColor )
 {
 	struct Rect_Vert
 	{

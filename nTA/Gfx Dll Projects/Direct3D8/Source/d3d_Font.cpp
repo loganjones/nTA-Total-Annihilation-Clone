@@ -332,7 +332,7 @@ void gfx_Direct3D8::RenderStringRight( LPCTSTR strToRender, const std_Vector3 vW
 //  std_Point_t& ptWhere - 
 //  LPCTSTR strToRender  - 
 //
-void gfx_Direct3D8::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
+void gfx_Direct3D8::RenderStringAt(const std_Point_t& ptWhere, LPCTSTR strToRender )
 {
 	const d3d_Font* pFont = static_cast<d3d_Font*>(m_ActiveFont);
 
@@ -372,7 +372,7 @@ void gfx_Direct3D8::RenderStringAt( std_Point_t& ptWhere, LPCTSTR strToRender )
 //  BOOL bCenterHorizontal - 
 //  BOOL bCenterVertical   - 
 //
-void gfx_Direct3D8::RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical )
+void gfx_Direct3D8::RenderStringCenteredAt(const std_Point_t& ptWhere, LPCTSTR strToRender, BOOL bCenterHorizontal, BOOL bCenterVertical )
 {
 	long			n, Len, TotalWidth, MaxHeight;
 	const d3d_Font* pFont = static_cast<d3d_Font*>(m_ActiveFont);
@@ -398,14 +398,13 @@ void gfx_Direct3D8::RenderStringCenteredAt( std_Point_t& ptWhere, LPCTSTR strToR
 			MaxHeight = height;
 	}
 
-	if( bCenterHorizontal )
-		ptWhere.x -= TotalWidth / 2;
-
-	if( bCenterVertical )
-		ptWhere.y += pFont->m_Height / 2;
+	const std_Point_t pt = std_Point_t(
+		bCenterHorizontal ? ptWhere.x - TotalWidth / 2 : ptWhere.x,
+		bCenterVertical ? ptWhere.y + pFont->m_Height / 2 : ptWhere.y
+		);
 
 	dxPushMatrix();
-	dxTranslatef( ptWhere.x, ptWhere.y, 0 );
+	dxTranslatef( pt.x, pt.y, 0 );
 	for( n=0; n<Len; ++n)
 	{
 		dxSetWorldMatrix();

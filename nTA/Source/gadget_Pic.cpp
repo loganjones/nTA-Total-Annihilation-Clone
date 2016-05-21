@@ -74,10 +74,10 @@ BOOL gadget_Pic::Create( const std_Point_t& ptPos, const std_Size_t& szDim, wnd_
 	m_PicInfo.HotOrNot = 0;
 
 	m_CommonData.ID = GADGET_Pic;
-	m_CommonData.XPos = ptPos.x;
-	m_CommonData.YPos = ptPos.y;
-	m_CommonData.Width = szDim.width;
-	m_CommonData.Height= szDim.height;
+	m_CommonData.XPos = (INT32)ptPos.x;
+	m_CommonData.YPos = (INT32)ptPos.y;
+	m_CommonData.Width = (UINT32)szDim.width;
+	m_CommonData.Height= (UINT32)szDim.height;
 	m_CommonData.Active = 1;
 	m_CommonData.Name[0] = '\0';
 	m_CommonData.Attribs = 0;
@@ -219,7 +219,7 @@ void gadget_Pic::OnRender()
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_Pic::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_Pic::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
 	// If a primary button was pressed or released then do our stuff
 	if( dwButton==1 || dwButton==2 )
@@ -244,7 +244,7 @@ void gadget_Pic::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDow
 				// Release capture and check where the button was released
 				ReleaseCapture(),
 				std_Rect(0,0,m_Size).PointInRect(ptCursor) &&
-				SendMessage( m_pParent, gui_msg_ButtonPressed, (DWORD)(LPTSTR(m_CommonData.Name)), dwButton );
+				SendMessage( m_pParent, gui_msg_ButtonPressed, (Param_t)(LPTSTR(m_CommonData.Name)), dwButton );
 
 		} // end button was released
 

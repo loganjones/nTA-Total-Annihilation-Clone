@@ -425,7 +425,7 @@ void wnd_Window::GetWndRect( std_Rect_t* pRect )
 //
 // Return: wnd_Window* - 
 //
-wnd_Window* wnd_Window::GetWndFromPoint( std_Point_t& point )
+wnd_Window* wnd_Window::GetWndFromPoint( const std_Point_t& point )
 {
 	wnd_Window*				pWnd;
 	std_Rect_t				rect;
@@ -455,7 +455,7 @@ wnd_Window* wnd_Window::GetWndFromPoint( std_Point_t& point )
 //
 // Return: wnd_Window* - 
 //
-wnd_Window* wnd_Window::GetChildWndFromPoint( std_Point_t& point )
+wnd_Window* wnd_Window::GetChildWndFromPoint( const std_Point_t& point )
 {
 	wnd_Window*				pWnd;
 	std_Rect_t				rect;

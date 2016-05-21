@@ -89,11 +89,15 @@ int igui_BuildOrders::Amount( LPCTSTR strName ) const
 	BuildOrderList_t::const_iterator	it = m_BuildOrders.begin(),
 										end= m_BuildOrders.end();
 
-	for(; it!=end; ++it )
+    for(; it!=end; ++it )
+    {
 		if( stricmp((*it).Type->UnitName,strName)==0 )
+        {
 			if( (*it).Amount>0 )
 				Amount += (*it).Amount;
 			else return -1;
+        }
+    }
 
 	return Amount;
 }

@@ -60,8 +60,8 @@ public:
 
 	INLINE void GetWndRect( std_Rect_t* pRect );
 
-	INLINE wnd_Window* GetWndFromPoint( std_Point_t& point );
-	INLINE wnd_Window* GetChildWndFromPoint( std_Point_t& point );
+	INLINE wnd_Window* GetWndFromPoint( const std_Point_t& point );
+	INLINE wnd_Window* GetChildWndFromPoint( const std_Point_t& point );
 
 	INLINE void MoveToTop();
 	INLINE void MoveToBottom();
@@ -70,7 +70,7 @@ public:
 	void SetCapture();
 	void ReleaseCapture();
 
-	BOOL SendMessage( wnd_Window* pDest, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	BOOL SendMessage( wnd_Window* pDest, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 
 /////////////////////////////////////////////////
@@ -86,11 +86,11 @@ public:
 	virtual BOOL OnPos( const std_Point_t& ptNew );
 	virtual BOOL OnSize( const std_Size_t& szNew );
 
-	virtual DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	virtual DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
-	virtual void OnCursorMove( std_Point_t& ptCursor, DWORD dwFlags );
-	virtual void OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
-	virtual void OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags );
+	virtual void OnCursorMove( const std_Point_t& ptCursor, DWORD dwFlags );
+	virtual void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
+	virtual void OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags );
 
 	virtual void OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlags );
 

@@ -59,7 +59,7 @@ void fe_MultiplayerSetup::Init( const char* strGameName, const char* strPlayerNa
 		strcpy( m_Password, strPassword ),
 		//AddNewPlayer( NextPlayer++, ~0, strPlayerName ),
 		Players[NextPlayer].Create( strPlayerName, NextPlayer, ~0, NULL, GetColor(), this ),
-		net.StartServer( m_GameName, strlen(m_GameName) + 1 ),
+		net.StartServer( m_GameName, (DWORD)strlen(m_GameName) + 1 ),
 		++NextPlayer,++PlayerCount,
 		GetGadget("SYNCHING")->SetVisible(FALSE),
 		GetGadget("battlestart")->SetVisible(FALSE),
@@ -68,7 +68,7 @@ void fe_MultiplayerSetup::Init( const char* strGameName, const char* strPlayerNa
 		m_GameName[0] = '\0',
 		GetGadget("battlestart")->SetVisible(),
 		GetGadget("Start")->SetActive(FALSE),
-		net.Write().Write( 0, 4 + strlen(strPlayerName) + 1 )
+		net.Write().Write( 0, 4 + (UINT32)strlen(strPlayerName) + 1 )
 			<< (UINT32)fems_ClientLogin
 			<< (UINT32)std_NameHash(strPassword)
 			<< strPlayerName;
@@ -174,7 +174,7 @@ BOOL fe_MultiplayerSetup::OnCreate()
 		//	gfx->CreateSurfacesFromGAF( pBuf, "SIDEx", 1, 5, SideSurfaces ),
 		//	pButton->SetButtonImages( SideSurfaces, SideSurfaces[3], SideSurfaces[4] ),
 		//	pButton->SetActive( TRUE ), pButton->SetVisible(TRUE);
-		if( pPic = (gadget_Pic*)GetGadget("battlestart") )
+		if( (pPic = (gadget_Pic*)GetGadget("battlestart")) )
 			gfx->CreateSurfacesFromGAF( pBuf, "battlestart", 1, 9, m_BattleStartAnim ),
 			pPic->SetFrames( m_BattleStartAnim, 9 );
 		delete [] pBuf;
@@ -259,13 +259,17 @@ void fe_MultiplayerSetup::OnUpdate()
 //
 // Return: DWORD - 
 //
-DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 	UINT32				Who;
 
 	if( dwMessage==gui_msg_ButtonPressed )
-		if( strSender[0]=='#' ) { Who=atoi(strSender+1); STRING_SWITCH( strSender+5 )
+    {
+		if( strSender[0]=='#' )
+        {
+            Who=atoi(strSender+1);
+            STRING_SWITCH( strSender+5 )
 
 			CASE( "Side" )
 				sound.PlaySound( guiResources.Sounds.Options );
@@ -283,8 +287,9 @@ DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, D
 				Player.ColorSel->SetFrame( Player.Color );
 				return 1;
 		
-	END_STRING_SWITCH
-	}else STRING_SWITCH( strSender )
+            END_STRING_SWITCH
+        }
+        else STRING_SWITCH( strSender )
 
 			CASE( "PrevMenu" )
 				net.EndSession();
@@ -308,7 +313,8 @@ DWORD fe_MultiplayerSetup::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, D
 				theApp.StartGame();
 				return 1;
 
-	END_STRING_SWITCH
+        END_STRING_SWITCH
+    }
 
 	return fe_Wnd::OnWndMessage( pSender, dwMessage, dwParamA, dwParamB );
 }
@@ -424,7 +430,7 @@ void fe_MultiplayerSetup::OnSystemMessage()
 				RemovePlayers( Who ),
 				sprintf( Str, "**Player %d left.", Who ),
 				pBox->AddListBoxItem( Str );
-			else SendMessage( this, gui_msg_ButtonPressed, (DWORD)"PrevMenu", 0 );
+			else SendMessage( this, gui_msg_ButtonPressed, (Param_t)"PrevMenu", 0 );
 			break;
 	}
 }

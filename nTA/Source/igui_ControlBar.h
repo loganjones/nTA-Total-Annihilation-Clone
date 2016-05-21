@@ -42,7 +42,7 @@ public:
 
 	void OnKeyboardButton( DWORD dwButton, BOOL bDown, DWORD dwFlags );
 
-	DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB );
+	DWORD OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB );
 
 
 /////////////////////////////////////////////////

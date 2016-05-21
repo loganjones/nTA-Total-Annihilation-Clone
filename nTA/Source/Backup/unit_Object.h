@@ -26,7 +26,7 @@ public:
 
 	typedef void*	HPath;
 
-	enum Tasks_t;
+    enum Tasks_t : short;
 	struct Order_t;
 	typedef vector< std_Vector2 >		Waypoints_t;
 	typedef list< Order_t >				Orders_t;

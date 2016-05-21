@@ -576,7 +576,7 @@ void ogl_Model::MarkTexture( LPTSTR strTexture, DWORD dwColor, UsedTextureList_t
 				return;
 
 		LPTA_GAF_ENTRY pEntry = (LPTA_GAF_ENTRY)((gfx_OpenGL*)pGfxSystem)->m_ModelTextures[strTexture];
-		BYTE* pFile = (BYTE*)pEntry->UnKnown_2;
+		BYTE* pFile = (BYTE*)(size_t)pEntry->UnKnown_2;
 		LPTA_GAF_FRAME_DATA pFrame = (LPTA_GAF_FRAME_DATA)(pFile + ((LPTA_GAF_FRAME_ENTRY)( ((BYTE*)pEntry) + sizeof(TA_GAF_ENTRY) ))->OffsetToFrameData);
 		NewTex.Texture = strTexture;
 		NewTex.Image.Stride = 1;
@@ -735,8 +735,8 @@ BOOL ogl_Model::AssembleTexture( UsedTextureList_t& Textures )
 	glTexImage2D( GL_TEXTURE_2D,
 		  0,
 		  GL_COLOR_INDEX8_EXT,
-		  TextureSize.width,
-		  TextureSize.height,
+		  (GLsizei)TextureSize.width,
+		  (GLsizei)TextureSize.height,
 		  0,
 		  GL_COLOR_INDEX,
 		  GL_UNSIGNED_BYTE,

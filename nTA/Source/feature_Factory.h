@@ -77,7 +77,7 @@ protected:
 // INTERFACE
 public:
 
-	BOOL Create( BYTE* pTntFileBuffer, LPTSTR strWorld, game_LoadFacilitator Load );
+	BOOL Create( BYTE* pTntFileBuffer, LPCTSTR strWorld, game_LoadFacilitator Load );
 	void Destroy();
 
 	void Update(){}
@@ -106,7 +106,7 @@ protected:
 	INLINE BOOL IsInToLoadList( LPCTSTR strSearch );
 
 	BOOL AddHardcodedFeatureTypes();
-	BOOL ProcessDirectory( LPTSTR strDirectory, game_LoadFacilitator Load );
+	BOOL ProcessDirectory( LPCTSTR strDirectory, game_LoadFacilitator Load );
 	BOOL ProcessTDF( void* hFile, LPCTSTR strHostDirectory, LPCTSTR strFileName, game_LoadFacilitator Load );
 	BOOL AddFeatureType( LPCTSTR strName, FeatureFileInfo_t* pFeatureFileInfo );
 	BOOL CreateFeatureImages( FeatureFileInfo_t* pFeatureFileInfo, FeatureType_t* pNewFeatureType );

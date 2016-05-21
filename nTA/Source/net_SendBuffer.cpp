@@ -96,7 +96,7 @@ void net_SendBuffer::InitializeTarget( net_Client& target )
 //
 void net_SendBuffer::SendTo( net_Client& target )
 {
-	int		BytesSent;
+	ssize_t BytesSent;
 	UINT32	Destination;
 
 	// Send data that remains in the packet
@@ -131,7 +131,7 @@ void net_SendBuffer::SendTo( net_Client& target )
 void net_SendBuffer::CompletePacket()
 {
 	if( (m_WriteCursor - m_WorkingPacket)>sizeof(net_PacketHeader) )
-		((net_PacketHeader*)m_WorkingPacket)->Size = m_WriteCursor - m_WorkingPacket,
+		((net_PacketHeader*)m_WorkingPacket)->Size = (UINT32)(m_WriteCursor - m_WorkingPacket),
 		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::CompletePacket(): %d byte packet to %d completed", ((net_PacketHeader*)m_WorkingPacket)->Size, ((net_PacketHeader*)m_WorkingPacket)->Marker ),
 		m_WorkingPacket = m_WriteCursor,
 		((net_PacketHeader*)m_WorkingPacket)->Marker = ~1;
@@ -189,11 +189,11 @@ bool net_SendBuffer::NextPacket( net_Client& target )
 //
 void net_SendBuffer::NewPacket( UINT32 uiTarget, UINT32 uiSize )
 {
-	((net_PacketHeader*)m_WorkingPacket)->Size = m_WriteCursor - m_WorkingPacket;
+	((net_PacketHeader*)m_WorkingPacket)->Size = (UINT32)(m_WriteCursor - m_WorkingPacket);
 	theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket( %d, %u ); Old(%d,%u)", uiTarget, uiSize, ((net_PacketHeader*)m_WorkingPacket)->Marker, ((net_PacketHeader*)m_WorkingPacket)->Size ),
 	m_WorkingPacket = m_WriteCursor;
 
-	if( (m_EndOfData-m_WorkingPacket)<max(uiSize,512) )
+	if( (m_EndOfData-m_WorkingPacket)<__max(uiSize,512) )
 		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket(): Back to front" ),
 		((net_PacketHeader*)m_WorkingPacket)->Size = m_BackToFront,
 		m_WorkingPacket = m_Data;

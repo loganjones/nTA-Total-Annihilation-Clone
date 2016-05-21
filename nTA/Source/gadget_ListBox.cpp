@@ -40,7 +40,7 @@ gadget_ListBox::~gadget_ListBox()
 //
 BOOL gadget_ListBox::OnCreate()
 {
-	m_MaxVisibleItems = m_Size.height / (guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION);
+	m_MaxVisibleItems = (int)m_Size.height / (guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION);
 	m_KeyDown = 0;
 
 	return TRUE;
@@ -123,12 +123,12 @@ void gadget_ListBox::OnRender()
 //
 // Return: DWORD - 
 //
-DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	if( pSender==m_pScroller && dwMessage==gui_msg_SliderMoved )
 	{
 		assert( dwParamB>=0 && dwParamB<=(m_ItemCount - m_MaxVisibleItems) );
-		m_FirstVisibleItemIndex = dwParamB;
+		m_FirstVisibleItemIndex = (int)dwParamB;
 		return 1;
 	}
 
@@ -149,10 +149,10 @@ DWORD gadget_ListBox::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD 
 //  BOOL bDown            - 
 //  DWORD dwFlags         - 
 //
-void gadget_ListBox::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
+void gadget_ListBox::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags )
 {
-	const int	ItemHeight = guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION;
-	const int	ItemsDown = ptCursor.y / ItemHeight;
+	const int	ItemHeight = (int)guiResources.Fonts.Standard->GetHeight() + LINE_SEPARATION;
+	const int	ItemsDown = (int)ptCursor.y / ItemHeight;
 	const int	NewItem = m_FirstVisibleItemIndex + ItemsDown;
 
 	if( NewItem>=0 && NewItem<m_ItemCount )
@@ -160,7 +160,7 @@ void gadget_ListBox::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL 
 		int Last = m_CurrentSelectionIndex;
 		m_CurrentSelectionIndex = NewItem;
 		if( Last!=NewItem )
-			SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (DWORD)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
+			SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (Param_t)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
 	}
 }
 // End gadget_ListBox::OnMouseButton()
@@ -177,7 +177,7 @@ void gadget_ListBox::OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL 
 //  long lData            - 
 //  DWORD dwFlags         - 
 //
-void gadget_ListBox::OnMouseWheel( std_Point_t& ptCursor, long lData, DWORD dwFlags )
+void gadget_ListBox::OnMouseWheel( const std_Point_t& ptCursor, long lData, DWORD dwFlags )
 {
 	if( lData>0 ) ShiftSelection( -4 );
 	else ShiftSelection( 4 );
@@ -354,7 +354,7 @@ void gadget_ListBox::SetSort( BOOL bSort )
 //
 void gadget_ListBox::AttachSlider( gadget_Slider* pSlider )
 {
-	if( m_pScroller = pSlider )
+	if( (m_pScroller = pSlider) )
 	{
 		m_pScroller->SetBuddyWnd( this );
 		ResetSliderSize();
@@ -559,7 +559,7 @@ void gadget_ListBox::ShiftSelection( int iDist )
 	}
 
 	// Selection changed
-	SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (DWORD)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
+	SendMessage( m_pParent, gui_msg_ListBoxSelectionChanged, (Param_t)(LPTSTR(m_CommonData.Name)), m_CurrentSelectionIndex );
 }
 // End gadget_ListBox::ShiftSelection()
 //////////////////////////////////////////////////////////////////////

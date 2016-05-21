@@ -29,7 +29,15 @@ inline std_ExactTime std_TimeDifferenceInSecs( std_PreciseTime_t ptA, std_Precis
 inline std_ExactTime std_TimeDifferenceInmSecs( std_PreciseTime_t ptA, std_PreciseTime_t ptB );
 
 
-#endif // defined( _WIN32 )
+#else // any other platform; use sys/time.h
+
+typedef long std_Time_t;
+
+// Return gettimeofday() in milliseconds. 
+inline std_Time_t std_Time();
+
+
+#endif // Platforms
 
 
 #include "std_Time.inl"

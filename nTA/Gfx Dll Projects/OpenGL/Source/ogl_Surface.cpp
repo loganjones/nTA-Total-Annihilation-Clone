@@ -59,7 +59,7 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
     } // end switch( pxFormat )
 
 	// Calculate the required texture size
-	TextureSize.Set( math_NextPowerOfTwo(pImage->Size.width), math_NextPowerOfTwo(pImage->Size.height) );
+	TextureSize.Set( math_NextPowerOfTwo((UINT32)pImage->Size.width), math_NextPowerOfTwo((UINT32)pImage->Size.height) );
 	NewSurface.m_ImageSize = pImage->Size;
 
     // Check to see if the surface needs to be chopped up
@@ -75,7 +75,7 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
 			if( pTempTexture==NULL ) return FALSE;
             pTemp = pTempTexture;
 			BYTE* pImg = pImage->pBytes;
-            for( int count=pImage->Size.height; count>0; --count)
+            for( long count=pImage->Size.height; count>0; --count)
             {
                 memcpy( pTemp, pImg, pImage->Size.width * pImage->Stride );
 			    pTemp += (TextureSize.width * pImage->Stride);
@@ -92,8 +92,8 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
             GL_TEXTURE_2D,
             0,
             GLTexInternalFormat,
-            TextureSize.width,
-            TextureSize.height,
+            (GLsizei)TextureSize.width,
+            (GLsizei)TextureSize.height,
             0,
             GLTexFormat,
             GL_UNSIGNED_BYTE,
@@ -112,11 +112,11 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
 				glTexCoord2f(0,0);
 				glVertex2i( 0, 0 );
 				glTexCoord2f( 0, NewSurface.m_Ratio.height );
-				glVertex2i( 0, pImage->Size.height );
+				glVertex2i( 0, (GLint)pImage->Size.height );
 				glTexCoord2f( NewSurface.m_Ratio.width, 0 );
-				glVertex2i( pImage->Size.width, 0 );
+				glVertex2i( (GLint)pImage->Size.width, 0 );
 				glTexCoord2f( NewSurface.m_Ratio.width, NewSurface.m_Ratio.height );
-				glVertex2i( pImage->Size.width, pImage->Size.height );
+				glVertex2i( (GLint)pImage->Size.width, (GLint)pImage->Size.height );
 			glEnd();
 		glEndList();
 
@@ -139,7 +139,7 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
 	NewSurface.m_Tiles.height = (pImage->Size.height / m_Caps.MaxTextureSize.height) + ( ((pImage->Size.height % m_Caps.MaxTextureSize.height)==0) ? 0:1 );
 
     // Generate the tiles
-    glGenTextures( *NewSurface.m_Tiles, NewSurface.m_Textures );
+    glGenTextures( (GLsizei)*NewSurface.m_Tiles, NewSurface.m_Textures );
 
     // We'll need these
     WORD		Width, Height;
@@ -201,8 +201,8 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
                 GL_TEXTURE_2D,
                 0,
                 GLTexInternalFormat,
-                TextureSize.width,
-                TextureSize.height,
+                (GLsizei)TextureSize.width,
+                (GLsizei)TextureSize.height,
                 0,
                 GLTexFormat,
                 GL_UNSIGNED_BYTE,
@@ -254,13 +254,13 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
 			glBindTexture( GL_TEXTURE_2D, NewSurface.m_Textures[ z ] );
 			glBegin( GL_TRIANGLE_STRIP );
 				glTexCoord2f(0,0);
-				glVertex2i( (x*m_Caps.MaxTextureSize.width), (y*m_Caps.MaxTextureSize.height) );
+				glVertex2i( (GLint)(x*m_Caps.MaxTextureSize.width), (GLint)(y*m_Caps.MaxTextureSize.height) );
 				glTexCoord2f(0,GLfloat(Height)/TextureSize.height);
-				glVertex2i( (x*m_Caps.MaxTextureSize.width), (y*m_Caps.MaxTextureSize.height)+Height );
+				glVertex2i( (GLint)(x*m_Caps.MaxTextureSize.width), (GLint)(y*m_Caps.MaxTextureSize.height)+Height );
 				glTexCoord2f(GLfloat(Width)/TextureSize.width,0);
-				glVertex2i( (x*m_Caps.MaxTextureSize.width)+Width, (y*m_Caps.MaxTextureSize.height) );
+				glVertex2i( (GLint)(x*m_Caps.MaxTextureSize.width)+Width, (GLint)(y*m_Caps.MaxTextureSize.height) );
 				glTexCoord2f(GLfloat(Width)/TextureSize.width,GLfloat(Height)/TextureSize.height);
-				glVertex2i( (x*m_Caps.MaxTextureSize.width)+Width, (y*m_Caps.MaxTextureSize.height)+Height );
+				glVertex2i( (GLint)(x*m_Caps.MaxTextureSize.width)+Width, (GLint)(y*m_Caps.MaxTextureSize.height)+Height );
 			glEnd();
 
 		} // end for( Number of tiles in this row )
@@ -356,7 +356,7 @@ void gfx_OpenGL::RenderSurface( gfx_Surface* pSurface )
 //  std_Point_t& ptWhere  - 
 //  gfx_Surface* pSurface - 
 //
-void gfx_OpenGL::RenderSurfaceEx( std_Point_t& ptWhere, gfx_Surface* pSurface )
+void gfx_OpenGL::RenderSurfaceEx( const std_Point_t& ptWhere, gfx_Surface* pSurface )
 {
 	const ogl_Surface* Surface = static_cast<ogl_Surface*>(pSurface);
 

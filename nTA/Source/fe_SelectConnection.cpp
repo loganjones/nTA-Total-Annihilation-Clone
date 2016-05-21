@@ -67,7 +67,7 @@ void fe_SelectConnection::OnDestroy()
 //
 // Return: DWORD - 
 //
-DWORD fe_SelectConnection::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_SelectConnection::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	return fe_Wnd::OnWndMessage( pSender, dwMessage, dwParamA, dwParamB );
 }

@@ -36,7 +36,7 @@ public:
 	void OnDestroy();
 	void OnUpdate();
 	void OnRender();
-	void OnMouseButton( std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
+	void OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOOL bDown, DWORD dwFlags );
 
 
 /////////////////////////////////////////////////

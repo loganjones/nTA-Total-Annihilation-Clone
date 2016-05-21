@@ -18,8 +18,8 @@
 #include "game_Constants.h"
 
 // Include the Cavedog files
-#include "Cavedog\sfxtype.h"
-#include "Cavedog\exptype.h"
+#include "Cavedog/sfxtype.h"
+#include "Cavedog/exptype.h"
 
 // This is the interface class for the terrain, almost everything
 // terrain related is accessed through this class

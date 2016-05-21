@@ -74,11 +74,12 @@ void fe_Skirmish::OnDestroy()
 //
 // Return: DWORD - 
 //
-DWORD fe_Skirmish::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_Skirmish::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 
 	if( dwMessage==gui_msg_ButtonPressed )
+    {
 		if( pMapSelector && pSender==pMapSelector && dwParamA )
 			((gadget_String*)GetGadget("MapName"))->SetText( strSender );
 		else STRING_SWITCH( strSender )
@@ -116,6 +117,7 @@ DWORD fe_Skirmish::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwP
 				sound.PlaySound( guiResources.Sounds.Skirmish );
 				return 1;
 		END_STRING_SWITCH
+    }
 
 	return fe_Wnd::OnWndMessage( pSender, dwMessage, dwParamA, dwParamB );
 }

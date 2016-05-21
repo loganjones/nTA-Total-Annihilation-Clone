@@ -52,7 +52,7 @@ BOOL fe_Single::OnCreate()
 	if( (pBuf!=NULL) && (Size!=0) )
 	{
 		// Change the default images for the Credits button
-		if( pButton = (gadget_Button*)GetGadget( "AnyMsn" ) )
+		if( (pButton = (gadget_Button*)GetGadget( "AnyMsn" )) )
 		{			
 			gfx->CreateSurfacesFromGAF( pBuf, "AnyMsn", 1, 5, m_Surfaces );
 			pButton->SetButtonImages( m_Surfaces, m_Surfaces[1], m_Surfaces[2] );
@@ -98,7 +98,7 @@ void fe_Single::OnDestroy()
 //
 // Return: DWORD - 
 //
-DWORD fe_Single::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, DWORD dwParamA, DWORD dwParamB )
+DWORD fe_Single::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t dwParamA, Param_t dwParamB )
 {
 	LPTSTR				strSender = (LPTSTR)dwParamA;
 

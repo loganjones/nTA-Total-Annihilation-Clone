@@ -115,7 +115,7 @@ bool net_Sockets::StartServer( char* pQueryResponse, DWORD dwQueryResponseSize )
 	m_QueryResponseSize = sizeof(net_PacketHeader) + dwQueryResponseSize;
 	m_QueryResponse = new char[m_QueryResponseSize];
 	((net_PacketHeader*)m_QueryResponse)->Marker = net_PacketMarker;
-	((net_PacketHeader*)m_QueryResponse)->Size = m_QueryResponseSize;
+	((net_PacketHeader*)m_QueryResponse)->Size = (UINT32)m_QueryResponseSize;
 	memcpy( m_QueryResponse + sizeof(net_PacketHeader), pQueryResponse, dwQueryResponseSize );
 
 	// Complete
@@ -191,7 +191,7 @@ void net_Sockets::SendRecv( bool* bQueried )
 void net_Sockets::QueryServer( const char* strIP )
 {
 	BOOL		Yes = TRUE;
-	int			iResult;
+	ssize_t		iResult;
 	char		Message[ sizeof(net_PacketHeader) + 6 ];
 	sockaddr_in	DestAddress;
 
@@ -421,7 +421,7 @@ void net_Sockets::SetupQuerySockets()
 	m_QuerySocket = socket( AF_INET, SOCK_DGRAM, 0 ); assert( m_QuerySocket!=INVALID_SOCKET );
 
 	setsockopt( m_QuerySocket, SOL_SOCKET, SO_REUSEADDR, (char*)&Yes, sizeof(Yes) );
-	iResult = bind( m_QuerySocket, (sockaddr*)&LocalAddress, sizeof(LocalAddress) ); assert( iResult==0 );
+    iResult = ::bind( m_QuerySocket, (sockaddr*)&LocalAddress, sizeof(LocalAddress) ); assert( iResult==0 );
 	FD_SET( m_QuerySocket, &m_Selectables );
 
 	// Setup the listen socket
@@ -429,7 +429,7 @@ void net_Sockets::SetupQuerySockets()
 		m_ListenSocket = socket( AF_INET, SOCK_STREAM, 0 );
 		setsockopt( m_ListenSocket, SOL_SOCKET, SO_REUSEADDR, (char*)&Yes, sizeof(Yes) );
 		LocalAddress.sin_port = htons( m_nTAPort );
-		iResult = bind( m_ListenSocket, (sockaddr*)&LocalAddress, sizeof(LocalAddress) ); assert( iResult==0 );
+        iResult = ::bind( m_ListenSocket, (sockaddr*)&LocalAddress, sizeof(LocalAddress) ); assert( iResult==0 );
 		iResult = listen( m_ListenSocket, 16 ); assert( iResult==0 );
 		m_fdMax = max( m_fdMax, m_ListenSocket );
 		FD_SET( m_ListenSocket, &m_Selectables );
@@ -450,9 +450,9 @@ void net_Sockets::SetupQuerySockets()
 void net_Sockets::HandleClientQuery()
 {
 	char		Data[ 32 ];
-	int			ByteCount;
+	ssize_t     ByteCount;
 	sockaddr_in	SourceAddress;
-	int			SourceAddressSize = sizeof( SourceAddress );
+	socklen_t   SourceAddressSize = sizeof( SourceAddress );
 
 	ByteCount = recvfrom( m_QuerySocket, Data, sizeof(Data), 0, (sockaddr*)&SourceAddress, &SourceAddressSize );
 

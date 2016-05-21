@@ -96,7 +96,7 @@ void script_Code::RealizePieces( BYTE* pScript, gfx_Model* pModel )
 			PieceName[i] = toupper(PieceName[i]);
 
 		// Get the actual index of the piece
-		PieceIndices[ n ] = pModel->GetPieceID( PieceName );
+		PieceIndices[ n ] = (UINT32)pModel->GetPieceID( PieceName );
 		if( n != PieceIndices[ n ] )
 			RealizationNeeded = TRUE;
 	}

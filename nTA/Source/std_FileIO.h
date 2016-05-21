@@ -60,7 +60,7 @@ enum fio_FindFileData_Flags
 };
 
 // Begin the search and find the first file
-void* fio_FindFirstFile( LPTSTR FilePath, LPfio_FindFileData FileData );
+void* fio_FindFirstFile( LPCTSTR FilePath, LPfio_FindFileData FileData );
 
 // Continue the search and find the next file
 BOOL  fio_FindNextFile( void* hFind, LPfio_FindFileData FileData );

@@ -26,7 +26,9 @@ struct std_Vector2
 	INLINE std_Vector2( const float fX, const float fY );
 	INLINE std_Vector2( const std_Point& pt );
 	INLINE std_Vector2( const std_Vector3& v );
+#ifdef _WIN32
 	INLINE std_Vector2( const POINT& ptCopy );
+#endif
 	INLINE std_Vector2( const DWORD dwCopy );
 
 	// Unary Operators
