@@ -198,6 +198,9 @@ public:
 	BOOL CreateModel( BYTE* pFileBuffer, gfx_Model** ppModel );
 	BOOL CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppImage );
 
+	// Creates an RGB(A) image from a source image and a color palette.
+	static void ResolvePalettedImage( const gfx_Image_t* palettedImage, LPPALETTE pPalette, GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* resolvedImage );
+
 
 /////////////////////////////////////////////////
 // Low level

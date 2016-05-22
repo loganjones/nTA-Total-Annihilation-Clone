@@ -87,7 +87,7 @@ public:
 // Utility methods
 protected:
 
-	BOOL Create( BYTE* pFileBuffer );
+	BOOL Create( BYTE* pFileBuffer, BOOL NeedsPaletteConversion );
 
 	void ScanModel( BYTE* pFileBuffer, DWORD dwOffset, DWORD& dwNameBufferSize, std_Vertex3* pGoundPlate, UsedTextureList_t& Textures );
 
@@ -118,6 +118,8 @@ protected:
 	InstanceMap_t				m_Instances;
 
 	model_InstanceList			m_ModelInstances;
+
+	BOOL						m_NeedsPaletteConversion;
 
 
 /////////////////////////////////////////////////

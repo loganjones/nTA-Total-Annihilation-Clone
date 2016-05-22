@@ -24,9 +24,10 @@ BOOL gfx_OpenGL::CreateCursor( LPCTSTR strName, DWORD dwNumFrames, CursorFrame* 
 {
 	ogl_Cursor		NewCursor;
 	std_Size_t		TexSize;
-	BYTE			TempBuffer[ sqr(256) ];
-	BYTE*			pImg;
-	BYTE*			pTmp;
+	const BOOL		NeedsPaletteConversion = (glColorTableEXT == NULL);
+	const GLuint    GLTexInternalFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX8_EXT;
+	const GLuint    GLTexFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX;
+	gfx_Image_t		ConvertedImage;
 
 	strcpy( NewCursor.m_Name, strName );
 	NewCursor.m_pTextures = new GLuint[ dwNumFrames ];
@@ -37,45 +38,68 @@ BOOL gfx_OpenGL::CreateCursor( LPCTSTR strName, DWORD dwNumFrames, CursorFrame* 
 
 	for( DWORD num=0; num<dwNumFrames; ++num)
 	{
-		TexSize.width = math_NextPowerOfTwo( (UINT32)pFrames[num].Image.Size.width );
-		TexSize.height= math_NextPowerOfTwo( (UINT32)pFrames[num].Image.Size.height);
+		const CursorFrame &Frame = pFrames[num];
+		const gfx_Image_t &Image = Frame.Image;
+		const std_Point_t &HotSpot = Frame.HotSpot;
 
-		ZeroMemory( TempBuffer, sqr(256) );
-		pImg = pFrames[num].Image.pBytes;
-		pTmp = TempBuffer;
-		for( long y=0; y<pFrames[num].Image.Size.height; ++y)
+		const  gfx_Image_t *pImage;
+		if (NeedsPaletteConversion)
 		{
-			memcpy( pTmp, pImg, pFrames[num].Image.Size.width );
-			pImg += pFrames[num].Image.Pitch;
-			pTmp += TexSize.width;
+			ResolvePalettedImage(&Image, m_pCurrentPalette, PIXEL_RGBA, &ConvertedImage);
+			pImage = &ConvertedImage;
+		}
+		else
+		{
+			pImage = &Image;
+		}
+
+		TexSize.width = math_NextPowerOfTwo( (UINT32)Image.Size.width );
+		TexSize.height= math_NextPowerOfTwo( (UINT32)Image.Size.height);
+
+		const BYTE *pImg = pImage->pBytes;
+		BYTE *TempBuffer = new BYTE[*TexSize * pImage->Stride];
+		BYTE *pTmp = TempBuffer;
+		ZeroMemory(TempBuffer, *TexSize * pImage->Stride);
+		for (long y = 0; y<Image.Size.height; ++y)
+		{
+			memcpy(pTmp, pImg, Image.Size.width * pImage->Stride);
+			pImg += pImage->Pitch;
+			pTmp += TexSize.width * pImage->Stride;
 		}
 
 		glBindTexture( GL_TEXTURE_2D, NewCursor.m_pTextures[num] );
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-		glTexImage2D( GL_TEXTURE_2D,
-					  0,
-					  GL_COLOR_INDEX8_EXT,
-					  (GLsizei)TexSize.width,
-					  (GLsizei)TexSize.height,
-					  0,
-					  GL_COLOR_INDEX,
-					  GL_UNSIGNED_BYTE,
-					  TempBuffer );
+		glTexImage2D(
+			GL_TEXTURE_2D,
+			0,
+			GLTexInternalFormat,
+			(GLsizei)TexSize.width,
+			(GLsizei)TexSize.height,
+			0,
+			GLTexFormat,
+			GL_UNSIGNED_BYTE,
+			TempBuffer);
 
 		glNewList( NewCursor.m_ListBase + num, GL_COMPILE );
 			glBindTexture( GL_TEXTURE_2D, NewCursor.m_pTextures[num] );
 			glBegin( GL_TRIANGLE_STRIP );
 				glTexCoord2f( 0, 0 );
-				glVertex2i( 0 - (GLint)pFrames[num].HotSpot.x, 0 - (GLint)pFrames[num].HotSpot.y );
-				glTexCoord2f( 0 , float(pFrames[num].Image.Size.height) / TexSize.height );
-				glVertex2i( 0 - (GLint)pFrames[num].HotSpot.x, (GLint)(pFrames[num].Image.Size.height - pFrames[num].HotSpot.y) );
-				glTexCoord2f( float(pFrames[num].Image.Size.width) / TexSize.width, 0 );
-				glVertex2i( (GLint)(pFrames[num].Image.Size.width - pFrames[num].HotSpot.x), 0 - (GLint)pFrames[num].HotSpot.y );
-				glTexCoord2f( float(pFrames[num].Image.Size.width) / TexSize.width , float(pFrames[num].Image.Size.height) / TexSize.height );
-				glVertex2i( (GLint)(pFrames[num].Image.Size.width - pFrames[num].HotSpot.x), (GLint)(pFrames[num].Image.Size.height - pFrames[num].HotSpot.y) );
+				glVertex2i( 0 - (GLint)HotSpot.x, 0 - (GLint)HotSpot.y );
+				glTexCoord2f( 0 , float(Image.Size.height) / TexSize.height );
+				glVertex2i( 0 - (GLint)HotSpot.x, (GLint)(Image.Size.height - HotSpot.y) );
+				glTexCoord2f( float(Image.Size.width) / TexSize.width, 0 );
+				glVertex2i( (GLint)(Image.Size.width - HotSpot.x), 0 - (GLint)HotSpot.y );
+				glTexCoord2f( float(Image.Size.width) / TexSize.width , float(Image.Size.height) / TexSize.height );
+				glVertex2i( (GLint)(Image.Size.width - HotSpot.x), (GLint)(Image.Size.height - HotSpot.y) );
 			glEnd();
 		glEndList();
+
+		if (NeedsPaletteConversion)
+		{
+			delete[] ConvertedImage.pBytes;
+		}
+		delete[] TempBuffer;
 
 	} // end for( dwNumFrames )
 

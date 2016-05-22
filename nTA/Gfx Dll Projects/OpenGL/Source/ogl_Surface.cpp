@@ -37,8 +37,19 @@ BOOL gfx_OpenGL::CreateSurface( GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* pImage, 
     {
 
 		case PIXEL_PALETTISED:
-			GLTexInternalFormat = GL_COLOR_INDEX8_EXT;
-			GLTexFormat = GL_COLOR_INDEX;
+			if (glColorTableEXT)
+			{
+				GLTexInternalFormat = GL_COLOR_INDEX8_EXT;
+				GLTexFormat = GL_COLOR_INDEX;
+			}
+			else
+			{
+				gfx_Image_t		ConvertedImage;
+				ResolvePalettedImage(pImage, m_pCurrentPalette, PIXEL_RGBA, &ConvertedImage);
+				BOOL result = CreateSurface(PIXEL_RGBA, &ConvertedImage, ppSurface);
+				delete[] ConvertedImage.pBytes;
+				return result;
+			}
 			break;
 
 		case PIXEL_RGB:

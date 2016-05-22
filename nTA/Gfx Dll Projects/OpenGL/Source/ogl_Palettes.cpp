@@ -53,14 +53,17 @@ BOOL gfx_OpenGL::CreatePalette( PALETTEENTRY* pPaletteEntries, LPPALETTE* ppPale
 BOOL gfx_OpenGL::SetCurrentPalette( LPPALETTE pPalette )
 {
 	// Set it as the shared palette
-	glColorTableEXT(
-        GL_SHARED_TEXTURE_PALETTE_EXT,
-        GL_RGBA8,
-        256,
-        GL_RGBA,
-        GL_UNSIGNED_BYTE,
-        static_cast<Palette_t*>(pPalette)->Entries );
-	glEnable( GL_SHARED_TEXTURE_PALETTE_EXT );
+	if (glColorTableEXT)
+	{
+		glColorTableEXT(
+			GL_SHARED_TEXTURE_PALETTE_EXT,
+			GL_RGBA8,
+			256,
+			GL_RGBA,
+			GL_UNSIGNED_BYTE,
+			static_cast<Palette_t*>(pPalette)->Entries );
+		glEnable( GL_SHARED_TEXTURE_PALETTE_EXT );
+	}
 
 	// Record the new current palette
 	m_pCurrentPalette = pPalette;
