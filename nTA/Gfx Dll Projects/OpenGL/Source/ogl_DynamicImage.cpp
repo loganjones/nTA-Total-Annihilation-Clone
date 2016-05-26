@@ -9,7 +9,7 @@
 /////////////////////////////////////////////////////////////////////
 // Default Construction/Destruction
 //
-ogl_DynamicImage::ogl_DynamicImage():m_LocalCopy( NULL )
+ogl_DynamicImage::ogl_DynamicImage():m_LocalCopy( NULL ),m_LocalTex( NULL )
 {}
 ogl_DynamicImage::~ogl_DynamicImage()
 {}
@@ -32,6 +32,9 @@ BOOL gfx_OpenGL::CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppImag
 {
 	ogl_DynamicImage*	pImage;
 	BOOL				bResult = FALSE;
+	const BOOL			NeedsPaletteConversion = (glColorTableEXT == NULL);
+	const GLuint		GLTexInternalFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX8_EXT;
+	const GLuint		GLTexFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX;
 
 	m_DynamicImages.push_front(ogl_DynamicImage());
 	pImage = &m_DynamicImages.front();
@@ -45,17 +48,18 @@ BOOL gfx_OpenGL::CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppImag
 
 		pImage->m_TextureSize.Set( math_NextPowerOfTwo((UINT32)szImage.width), math_NextPowerOfTwo((UINT32)szImage.height) );
 		pImage->m_LocalCopy = new BYTE[ *pImage->m_TextureSize ];
+		pImage->m_LocalTex = NeedsPaletteConversion ? new BYTE[*pImage->m_TextureSize * 4] : pImage->m_LocalCopy;
 		pImage->m_ImageSize = szImage;
 		glTexImage2D(
             GL_TEXTURE_2D,
             0,
-            GL_COLOR_INDEX8_EXT,
+			GLTexInternalFormat,
             (GLsizei)pImage->m_TextureSize.width,
             (GLsizei)pImage->m_TextureSize.height,
             0,
-            GL_COLOR_INDEX,
+			GLTexFormat,
             GL_UNSIGNED_BYTE,
-            pImage->m_LocalCopy );
+            pImage->m_LocalTex );
 
 	bResult = TRUE;
 	END_CODE_BLOCK
@@ -86,6 +90,10 @@ BOOL gfx_OpenGL::CreateDynamicImage( std_Size szImage, gfx_DynamicImage** ppImag
 //
 void ogl_DynamicImage::Destroy()
 {
+	if ( m_LocalTex != m_LocalCopy )
+	{
+		SAFE_DELETE_ARRAY( m_LocalTex );
+	}
 	SAFE_DELETE_ARRAY( m_LocalCopy );
 	glDeleteTextures( 1, &m_TextureIndex );
 	m_pInterface->m_DynamicImages.erase( m_Index );
@@ -190,14 +198,35 @@ void ogl_DynamicImage::GetBits( BYTE** ppImage )
 //
 void ogl_DynamicImage::Update( BYTE** ppImage )
 {
+	const BOOL			NeedsPaletteConversion = (m_LocalTex != m_LocalCopy);
+	const GLuint		GLTexFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX;
+
+	if( NeedsPaletteConversion )
+	{
+		gfx_Interface::LPPALETTE pPalette;
+		pGfxSystem->GetCurrentPalette(&pPalette);
+
+		gfx_Image_t		SourceImage;
+		SourceImage.pBytes = m_LocalCopy;
+		SourceImage.Size = m_TextureSize;
+		SourceImage.Stride = 1;
+		SourceImage.Pitch = m_TextureSize.width;
+		gfx_Image_t		ConvertedImage;
+		gfx_OpenGL::ResolvePalettedImage(&SourceImage, pPalette, PIXEL_RGBA, &ConvertedImage);
+
+		SAFE_DELETE_ARRAY(m_LocalTex);
+		m_LocalTex = ConvertedImage.pBytes;
+	}
+
 	glBindTexture( GL_TEXTURE_2D, m_TextureIndex );	
-	glTexSubImage2D( GL_TEXTURE_2D, 0,
-					 0, 0,
-					 (GLsizei)m_TextureSize.width,
-					 (GLsizei)m_TextureSize.height,
-					 GL_COLOR_INDEX,
-					 GL_UNSIGNED_BYTE,
-					 m_LocalCopy );
+	glTexSubImage2D(
+		GL_TEXTURE_2D, 0,
+		0, 0,
+		(GLsizei)m_TextureSize.width,
+		(GLsizei)m_TextureSize.height,
+		GLTexFormat,
+		GL_UNSIGNED_BYTE,
+		m_LocalTex);
 }
 // End ogl_DynamicImage::gfx_Direct3D8::Update()
 //////////////////////////////////////////////////////////////////////

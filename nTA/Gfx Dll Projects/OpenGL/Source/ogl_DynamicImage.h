@@ -40,6 +40,7 @@ public:
 	std_SizeF							m_SizeRatio;
 	GLuint								m_TextureIndex;
 	BYTE*								m_LocalCopy;
+	BYTE*								m_LocalTex;
 
 
 /////////////////////////////////////////////////

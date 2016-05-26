@@ -535,6 +535,73 @@ void gfx_OpenGL::BeginInterfaceRendering()
 //////////////////////////////////////////////////////////////////////
 
 
+//////////////////////////////////////////////////////////////////////
+// gfx_OpenGL::ResolvePalettedImage() //           \author Logan Jones
+///////////////////////////////////////                \date 5/21/2016
+//               
+//====================================================================
+//
+void gfx_OpenGL::ResolvePalettedImage( const gfx_Image_t* palettedImage, LPPALETTE pPalette, GFX_PIXEL_FORMAT pxFormat, gfx_Image_t* resolvedImage )
+{
+	// Check the pixel format
+	switch (pxFormat)
+	{
+
+	case PIXEL_RGBA:
+	{
+		resolvedImage->Stride = 4;
+		resolvedImage->Size = palettedImage->Size;
+		resolvedImage->Pitch = resolvedImage->Size.width * resolvedImage->Stride;
+		resolvedImage->pBytes = new BYTE[*resolvedImage->Size * resolvedImage->Stride];
+
+		const PALETTEENTRY *palette = static_cast<PALETTEENTRY *>(pPalette);
+
+		long a, b, n;
+		BYTE *aBytes = palettedImage->pBytes, *bBytes = resolvedImage->pBytes;
+		for (a = 0, b = 0, n = *resolvedImage->Size; a < n; ++a, b += 4)
+		{
+			const BYTE index = aBytes[a];
+			const PALETTEENTRY *entry = palette + index;
+			bBytes[b + 0] = entry->peRed;
+			bBytes[b + 1] = entry->peGreen;
+			bBytes[b + 2] = entry->peBlue;
+			bBytes[b + 3] = entry->peFlags;
+		}
+	}
+	break;
+
+	case PIXEL_RGB:
+	{
+		resolvedImage->Stride = 3;
+		resolvedImage->Size = palettedImage->Size;
+		resolvedImage->Pitch = resolvedImage->Size.width * resolvedImage->Stride;
+		resolvedImage->pBytes = new BYTE[*resolvedImage->Size * resolvedImage->Stride];
+
+		const PALETTEENTRY *palette = static_cast<PALETTEENTRY *>(pPalette);
+
+		long a, b, n;
+		BYTE *aBytes = palettedImage->pBytes, *bBytes = resolvedImage->pBytes;
+		for (a = 0, b = 0, n = *resolvedImage->Size; a < n; ++a, b += 3)
+		{
+			const BYTE index = aBytes[a];
+			const PALETTEENTRY *entry = palette + index;
+			bBytes[b + 0] = entry->peRed;
+			bBytes[b + 1] = entry->peGreen;
+			bBytes[b + 2] = entry->peBlue;
+		}
+	}
+	break;
+
+	case PIXEL_PALETTISED:
+	default: // This is our error condition; not supposed to happen
+		assertEx(0, "Redundant palette conversion.");
+
+	} // end switch( pxFormat )
+}
+// End gfx_OpenGL::ResolvePalettedImage()
+//////////////////////////////////////////////////////////////////////
+
+
 /////////////////////////////////////////////////////////////////////
 // End - gfx_OpenGL.cpp //
 /////////////////////////

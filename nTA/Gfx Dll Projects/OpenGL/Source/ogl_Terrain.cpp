@@ -43,7 +43,7 @@ BOOL gfx_OpenGL::LoadTerrain( BYTE* pTntBuffer, gfx_Terrain** ppTerrain )
 
 	// Set the return pointer to the terrain member and return the result of the terrain creation
 	(*ppTerrain) = &m_theTerrain;
-	return m_theTerrain.Create( pTntBuffer );
+	return m_theTerrain.Create( pTntBuffer, glColorTableEXT == NULL );
 }
 // End gfx_OpenGL::LoadTerrain()
 //////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ ogl_Terrain::~ogl_Terrain()
 //
 // Return: BOOL - 
 //
-BOOL ogl_Terrain::Create( BYTE* pTntBuffer )
+BOOL ogl_Terrain::Create( BYTE* pTntBuffer, BOOL NeedsPaletteConversion )
 {
 	LPTA_TNT_HEADER			pHeader;
 	LPTA_TNT_EXT_HEADER		pMapHeader;
@@ -119,6 +119,8 @@ BOOL ogl_Terrain::Create( BYTE* pTntBuffer )
 	m_NumTileIndeces.height = pHeader->Height/ 2;
 
 	m_GfxTiles = pTntBuffer + pMapHeader->OffsetToTileArray;
+
+	m_NeedsPaletteConversion = NeedsPaletteConversion;
 
 	AllocateScreenTiles( m_ScreenTileColumns, m_ScreenTileRows );
 
@@ -815,6 +817,273 @@ std_Rect ogl_Terrain::GetWorldRect() const
 	return ( std_Rect(0,0,m_MapDimensions) );
 }
 // End ogl_Terrain::GetWorldRect()
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+// ogl_Terrain::AllocateScreenTiles() //    Author: Logan "Burn" Jones
+///////////////////////////////////////                 Date: 2/6/2002
+//               
+//====================================================================
+// Parameters:
+//  long iColumns - 
+//  long iRows    - 
+//
+void ogl_Terrain::AllocateScreenTiles(long iColumns, long iRows)
+{
+	// Sanity check
+	assert((iColumns>0) && (iRows>0));
+
+	//m_NumberOfScreenTiles.width = iColumns;
+	//m_NumberOfScreenTiles.height = iRows;
+
+	m_ScreenTiles = new ScreenTile[m_NumberOfScreenTiles];
+	m_ScreenTileTextures = new GLuint[m_NumberOfScreenTiles];
+	assert(m_ScreenTiles&&m_ScreenTileTextures);
+	glGenTextures(m_NumberOfScreenTiles, m_ScreenTileTextures);
+
+	// Initialize the screen tile map
+	long x, y;//,count=0;
+	ScreenTile*		pTile = m_ScreenTiles;
+	GLuint*			pTex = m_ScreenTileTextures;
+	//BYTE			DefaultTexture[m_ScreenTileSize*m_ScreenTileSize];
+	BYTE*			DefaultTexture = m_NeedsPaletteConversion ? new BYTE[256 * 256 * 3] : new BYTE[256 * 256];
+	const GLuint    GLTexInternalFormat = m_NeedsPaletteConversion ? GL_RGB : GL_COLOR_INDEX8_EXT;
+	const GLuint    GLTexFormat = m_NeedsPaletteConversion ? GL_RGB : GL_COLOR_INDEX;
+	for (y = 0; y<iRows; y++)
+	{
+		for (x = 0; x<iColumns; x++, pTile++, pTex++)
+		{
+			// Check for first column
+			if (x == 0) pTile->Left = NULL;
+			else pTile->Left = (pTile - 1);
+
+			// Check for last column
+			if (x == (iColumns - 1)) pTile->Right = NULL;
+			else pTile->Right = (pTile + 1);
+
+			// Check for first row
+			if (y == 0) pTile->Top = NULL;
+			else pTile->Top = (pTile - iColumns);
+
+			// Check for last row
+			if (y == (iRows - 1)) pTile->Bottom = NULL;
+			else pTile->Bottom = (pTile + iColumns);
+
+			pTile->pTexture = pTex;
+			glBindTexture(GL_TEXTURE_2D, *(pTile->pTexture));
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+			glTexImage2D(
+				GL_TEXTURE_2D,
+				0,
+				GLTexInternalFormat,
+				m_ScreenTileSize,
+				m_ScreenTileSize,
+				0,
+				GLTexFormat,
+				GL_UNSIGNED_BYTE,
+				DefaultTexture);
+
+		} // end for( Columns )
+
+	} // end for( Rows )
+
+	delete[] DefaultTexture;
+
+	m_ScreenTileDisplayList = glGenLists(1);
+	glNewList(m_ScreenTileDisplayList, GL_COMPILE);
+	glBegin(GL_TRIANGLE_STRIP);
+	glTexCoord2f(0, 0);
+	glVertex3i(0, 0, m_ScreenTileRenderDepth);
+	glTexCoord2f(0, 1);
+	glVertex3i(0, m_ScreenTileSize, m_ScreenTileRenderDepth);
+	glTexCoord2f(1, 0);
+	glVertex3i(m_ScreenTileSize, 0, m_ScreenTileRenderDepth);
+	glTexCoord2f(1, 1);
+	glVertex3i(m_ScreenTileSize, m_ScreenTileSize, m_ScreenTileRenderDepth);
+	glEnd();
+	glEndList();
+
+	// The top left tile should be the first one in the array initially
+	m_TopLeftTile = m_ScreenTiles;
+	m_TopRightTile = m_ScreenTiles + (m_ScreenTileColumns - 1);
+	m_BottomLeftTile = m_ScreenTiles + (m_NumberOfScreenTiles - m_ScreenTileColumns);
+	m_BottomRightTile = m_ScreenTiles + (m_NumberOfScreenTiles - 1);
+}
+// End ogl_Terrain::AllocateScreenTiles()
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+// ogl_Terrain::FillScreenTiles() //        Author: Logan "Burn" Jones
+///////////////////////////////////                     Date: 2/6/2002
+//               
+//====================================================================
+//
+void ogl_Terrain::FillScreenTiles()
+{
+	ScreenTile*		pStartRow = m_TopLeftTile;
+	ScreenTile*		pTile;
+	WORD*			pFirstIndexOnThisRow;
+	WORD*			pFirstIndexForThisTile;
+	WORD*			pTileIndex;
+	const BOOL		NeedsPaletteConversion = m_NeedsPaletteConversion;
+	const GLuint    GLTexFormat = NeedsPaletteConversion ? GL_RGB : GL_COLOR_INDEX;
+	BYTE*           ConvertedTileBits = NeedsPaletteConversion ? new BYTE[32 * 32 * 3] : NULL;
+	gfx_OpenGL::LPPALETTE pPalette = NULL;
+
+	if (NeedsPaletteConversion)
+	{
+		pGfxSystem->GetCurrentPalette(&pPalette);
+	}
+
+	pFirstIndexOnThisRow = m_TileIndeces + ((m_ScreenTileStartingIndex.y*m_NumTileIndeces.width) + m_ScreenTileStartingIndex.x);
+	for (; pStartRow; pStartRow = pStartRow->Bottom)
+	{
+		pFirstIndexForThisTile = pFirstIndexOnThisRow;
+		for (pTile = pStartRow; pTile; pTile = pTile->Right)
+		{
+			glBindTexture(GL_TEXTURE_2D, *(pTile->pTexture));
+
+			pTileIndex = pFirstIndexForThisTile;
+			for (int y = 0; y<m_GfxPerScreenTile; y++)
+			{
+				for (int x = 0; x<m_GfxPerScreenTile; x++)
+				{
+					const BYTE *tilePixels = GfxTileBits(pTileIndex[x]);
+					if (NeedsPaletteConversion)
+					{
+						const PALETTEENTRY *palette = static_cast<PALETTEENTRY *>(pPalette);
+						for (int a = 0, b = 0, n = 32 * 32; a < n; ++a, b += 3)
+						{
+							const BYTE index = tilePixels[a];
+							const PALETTEENTRY *entry = palette + index;
+							ConvertedTileBits[b + 0] = entry->peRed;
+							ConvertedTileBits[b + 1] = entry->peGreen;
+							ConvertedTileBits[b + 2] = entry->peBlue;
+						}
+						tilePixels = ConvertedTileBits;
+					}
+
+					glTexSubImage2D(
+						GL_TEXTURE_2D, 0,
+						x * 32, y * 32,
+						32, 32,
+						GLTexFormat,
+						GL_UNSIGNED_BYTE,
+						tilePixels);
+				}
+				pTileIndex += m_NumTileIndeces.width;
+			}
+
+			pFirstIndexForThisTile += m_GfxPerScreenTile;
+
+		} // end for( pTile )
+
+		pFirstIndexOnThisRow += m_NumTileIndeces.width * m_GfxPerScreenTile;
+		//pFirstIndexOnThisRow = pTileIndex - (m_NumTileIndeces.width - m_GfxPerScreenTile);
+
+	} // end for( pStartRow )
+
+	SAFE_DELETE_ARRAY(ConvertedTileBits);
+}
+// End ogl_Terrain::FillScreenTiles()
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+// ogl_Terrain::UploadGfxRectToScreenTiles() // Author: Logan "Burn" Jones
+//////////////////////////////////////////////          Date: 2/6/2002
+//               
+//====================================================================
+// Parameters:
+//  long LeftIndex  - 
+//  long TopIndex   - 
+//  long FillWidth  - 
+//  long FillHeight - 
+//
+void ogl_Terrain::UploadGfxRectToScreenTiles(long LeftIndex, long TopIndex, long FillWidth, long FillHeight)
+{
+	const BOOL		NeedsPaletteConversion = m_NeedsPaletteConversion;
+	const GLuint    GLTexFormat = NeedsPaletteConversion ? GL_RGB : GL_COLOR_INDEX;
+	BYTE*           ConvertedTileBits = NeedsPaletteConversion ? new BYTE[32 * 32 * 3] : NULL;
+	gfx_OpenGL::LPPALETTE pPalette = NULL;
+
+	if (NeedsPaletteConversion)
+	{
+		pGfxSystem->GetCurrentPalette(&pPalette);
+	}
+
+	long XOffset = (LeftIndex * 32) - m_ScreenTilePosition.x;
+	long YOffset = (TopIndex * 32) - m_ScreenTilePosition.y;
+	long XSreenTile = XOffset / m_ScreenTileSize;
+	long YSreenTile = YOffset / m_ScreenTileSize;
+
+	ScreenTile* pStartingTile = m_TopLeftTile;
+	long n;
+	for (n = 0; n<XSreenTile; n++, pStartingTile = pStartingTile->Right);
+	for (n = 0; n<YSreenTile; n++, pStartingTile = pStartingTile->Bottom);
+
+	long StartingXOffset = XOffset - (XSreenTile*m_ScreenTileSize);
+	YOffset = YOffset - (YSreenTile*m_ScreenTileSize);
+
+	WORD* pStartingIndex = m_TileIndeces + ((TopIndex*m_NumTileIndeces.width) + LeftIndex);
+	for (long y = 0; y<FillHeight; y++, YOffset += 32, pStartingIndex += m_NumTileIndeces.width)
+	{
+		if (YOffset == m_ScreenTileSize)
+		{
+			YOffset = 0;
+			pStartingTile = pStartingTile->Bottom;
+			if (pStartingTile == NULL) break;
+		}
+		glBindTexture(GL_TEXTURE_2D, *(pStartingTile->pTexture));
+
+		XOffset = StartingXOffset;
+		WORD* pIndex = pStartingIndex;
+		ScreenTile* pTile = pStartingTile;
+		for (long x = 0; x<FillWidth; x++, XOffset += 32)
+		{
+			if (XOffset == m_ScreenTileSize)
+			{
+				XOffset = 0;
+				pTile = pTile->Right;
+				if (pTile == NULL) break;
+				glBindTexture(GL_TEXTURE_2D, *(pTile->pTexture));
+			}
+
+			const BYTE *tilePixels = GfxTileBits(pIndex[x]);
+			if (NeedsPaletteConversion)
+			{
+				const PALETTEENTRY *palette = static_cast<PALETTEENTRY *>(pPalette);
+				for (int a = 0, b = 0, n = 32 * 32; a < n; ++a, b += 3)
+				{
+					const BYTE index = tilePixels[a];
+					const PALETTEENTRY *entry = palette + index;
+					ConvertedTileBits[b + 0] = entry->peRed;
+					ConvertedTileBits[b + 1] = entry->peGreen;
+					ConvertedTileBits[b + 2] = entry->peBlue;
+				}
+				tilePixels = ConvertedTileBits;
+			}
+
+			glTexSubImage2D(
+				GL_TEXTURE_2D, 0,
+				(GLint)XOffset, (GLint)YOffset,
+				32, 32,
+				GLTexFormat,
+				GL_UNSIGNED_BYTE,
+				tilePixels);
+
+		} // end for( FillWidth )
+
+	} // end for( FillHeight )
+
+	SAFE_DELETE_ARRAY(ConvertedTileBits);
+}
+// End ogl_Terrain::UploadGfxRectToScreenTiles()
 //////////////////////////////////////////////////////////////////////
 
 

@@ -61,7 +61,7 @@ BOOL gfx_OpenGL::CreateModel( BYTE* pFileBuffer, gfx_Model** ppModel )
 	pModel = new ogl_Model;
 
 	// Create the model
-	if( bFAILED(pModel->Create(pFileBuffer)) )
+	if( bFAILED(pModel->Create(pFileBuffer, glColorTableEXT == NULL)) )
 	{
 		delete pModel;
 		return FALSE;
@@ -85,7 +85,7 @@ BOOL gfx_OpenGL::CreateModel( BYTE* pFileBuffer, gfx_Model** ppModel )
 //
 // Return: BOOL - 
 //
-BOOL ogl_Model::Create( BYTE* pFileBuffer )
+BOOL ogl_Model::Create( BYTE* pFileBuffer, BOOL NeedsPaletteConversion )
 {
 	DWORD				NameBufferSize = 0;
 	std_Vertex3			GroundPlate[4];
@@ -108,6 +108,8 @@ BOOL ogl_Model::Create( BYTE* pFileBuffer )
 
 	// Allocate the piece array
 	m_Pieces = new Piece_t[ m_PieceCount ];
+
+	m_NeedsPaletteConversion = NeedsPaletteConversion;
 
 	// Assemble the texture
 	if( bFAILED(AssembleTexture( Textures )) )
@@ -653,10 +655,19 @@ BOOL ogl_Model::AssembleTexture( UsedTextureList_t& Textures )
 	UsedTextureList_t::const_iterator	end = Textures.end();
 	UsedTexture_t						SubTex;
 	gfx_Image_t							Reduced;
-	BYTE*								pTexture;
 	util_RectFiller						Filler;
 	gfx_Image_t*						pImage;
 	std_Rect							Destination;
+
+	const BOOL		NeedsPaletteConversion = m_NeedsPaletteConversion;
+	const GLuint    GLTexInternalFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX8_EXT;
+	const GLuint    GLTexFormat = NeedsPaletteConversion ? GL_RGBA : GL_COLOR_INDEX;
+	gfx_OpenGL::LPPALETTE pPalette = NULL;
+
+	if (NeedsPaletteConversion)
+	{
+		pGfxSystem->GetCurrentPalette(&pPalette);
+	}
 
 	// Calculate the current size
 	for(; it!=end; ++it) CurrentSize += *(*it).Image.Size;
@@ -684,7 +695,11 @@ BOOL ogl_Model::AssembleTexture( UsedTextureList_t& Textures )
 	TextureSize = sz * 2;
 
 	// Allocate the texture
-	pTexture = new BYTE[ *TextureSize ];
+	gfx_Image_t TextureImage;
+	TextureImage.Size = TextureSize;
+	TextureImage.Stride = NeedsPaletteConversion ? 4 : 1;
+	TextureImage.Pitch = TextureImage.Size.width * TextureImage.Stride;
+	TextureImage.pBytes = new BYTE[ *TextureSize * TextureImage.Stride];
 
 	// Initialize the filler
 	Filler.Initialize( TextureSize.width, TextureSize.height );
@@ -701,12 +716,28 @@ BOOL ogl_Model::AssembleTexture( UsedTextureList_t& Textures )
 		}
 
 		// Copy the image to the texture
-		BYTE* pTex = pTexture + (Destination.left + Destination.top * TextureSize.width);
+		BYTE* pTex = TextureImage.pBytes + (Destination.left * TextureImage.Stride + Destination.top * TextureImage.Pitch);
 		BYTE* pImg = pImage->pBytes;
 		for( long y=pImage->Size.height; y>0; --y)
 		{
-			memcpy( pTex, pImg, pImage->Size.width );
-			pTex += TextureSize.width;
+			if (NeedsPaletteConversion)
+			{
+				const PALETTEENTRY *palette = static_cast<PALETTEENTRY *>(pPalette);
+				for (int a = 0, b = 0, n = pImage->Size.width; a < n; ++a, b += TextureImage.Stride)
+				{
+					const BYTE index = pImg[a];
+					const PALETTEENTRY *entry = palette + index;
+					pTex[b + 0] = entry->peRed;
+					pTex[b + 1] = entry->peGreen;
+					pTex[b + 2] = entry->peBlue;
+					pTex[b + 3] = entry->peFlags;
+				}
+			}
+			else
+			{
+				memcpy( pTex, pImg, pImage->Size.width );
+			}
+			pTex += TextureImage.Pitch;
 			pImg += pImage->Pitch;
 		}
 
@@ -732,18 +763,20 @@ BOOL ogl_Model::AssembleTexture( UsedTextureList_t& Textures )
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-	glTexImage2D( GL_TEXTURE_2D,
-		  0,
-		  GL_COLOR_INDEX8_EXT,
-		  (GLsizei)TextureSize.width,
-		  (GLsizei)TextureSize.height,
-		  0,
-		  GL_COLOR_INDEX,
-		  GL_UNSIGNED_BYTE,
-		  pTexture );
+	glTexImage2D(
+		GL_TEXTURE_2D,
+		0,
+		GLTexInternalFormat,
+		(GLsizei)TextureSize.width,
+		(GLsizei)TextureSize.height,
+		0,
+		GLTexFormat,
+		GL_UNSIGNED_BYTE,
+		TextureImage.pBytes);
 
 	//CreateBMP( (BYTE*)LockedRect.pBits, m_pHostInterface->m_Palettes.front().Entries, MaxTextureSize.width, MaxTextureSize.height );
 
+	SAFE_DELETE_ARRAY(TextureImage.pBytes);
 	return TRUE;
 }
 // End ogl_Model::AssembleTexture()

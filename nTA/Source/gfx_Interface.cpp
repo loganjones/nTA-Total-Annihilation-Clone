@@ -935,7 +935,10 @@ BOOL gfx_Interface::ListModelTextures()
 		    ImageEntry = (LPTA_GAF_ENTRY)(FileBuffer + EntryPointers[i]);
 			//TextureMap_t::iterator it = m_ModelTextures.find(ImageEntry->Name);
 			//if( it!=m_ModelTextures.end() );
-            ImageEntry->UnKnown_2 = 0;//(DWORD)FileBuffer;
+            
+            // TODO: Casting a pointer to a 32bit int is *dangerous* ; FIX THIS
+            ImageEntry->UnKnown_2 = (INT32)(size_t)FileBuffer;
+            
 			m_ModelTextures[ ImageEntry->Name ] = (BYTE*)ImageEntry;
 	    }
 

@@ -41,8 +41,19 @@ BOOL gfx_OpenGL::CreateFont( FontEntry* pFontEntries, std_Size_t szFontDist, GFX
     {
 
 		case PIXEL_PALETTISED:
-			GLTexInternalFormat = GL_COLOR_INDEX8_EXT;
-			GLTexFormat = GL_COLOR_INDEX;
+			if (glColorTableEXT)
+			{
+				GLTexInternalFormat = GL_COLOR_INDEX8_EXT;
+				GLTexFormat = GL_COLOR_INDEX;
+			}
+			else
+			{
+				gfx_Image_t		ConvertedImage;
+				ResolvePalettedImage(pImage, m_pCurrentPalette, PIXEL_RGBA, &ConvertedImage);
+				BOOL result = CreateFont(pFontEntries, szFontDist, PIXEL_RGBA, &ConvertedImage, ppFont, bSetAsCurrent);
+				delete[] ConvertedImage.pBytes;
+				return result;
+			}
 			break;
 
 		case PIXEL_RGB:

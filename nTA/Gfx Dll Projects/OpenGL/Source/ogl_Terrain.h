@@ -53,7 +53,7 @@ public:
 protected:
 
 	// Called by the gfx system to create and initialize the terrain
-	BOOL Create( BYTE* pTntBuffer );
+	BOOL Create( BYTE* pTntBuffer, BOOL NeedsPaletteConversion );
 
 	// Recalculates some of the necessary metrics
 	INLINE void RecalculateMetrics();
@@ -162,6 +162,10 @@ protected:
 	// The boundries of the "clean" rect for the screen tile grid
 	// Anything outside needs to be "refreshed" before being displayed
 	std_Rect		m_DirtyStrips;
+
+	// TRUE if the terrain should be drawn directly as RGB pixels
+	// instead of palette indexed pixels.
+	BOOL			m_NeedsPaletteConversion;
 
 
 /////////////////////////////////////////////////
