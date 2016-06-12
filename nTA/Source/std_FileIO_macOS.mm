@@ -13,6 +13,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Helper class to facilitate fio_FindFirstFile() and fio_FindNextFile().
+ */
+@interface _fio_FindOperation : NSObject
+@property (nonatomic) NSDirectoryEnumerator<NSURL *> *enumerator;
+@property (nonatomic) NSPredicate *predicate;
+- (BOOL)nextWithFindData:(LPfio_FindFileData)FileData;
+@end
+
 
 //////////////////////////////////////////////////////////////////////
 // fio_OpenFile() //                               \author Logan Jones
@@ -269,10 +278,21 @@ void* fio_FindFirstFile( LPCTSTR FilePath, LPfio_FindFileData FileData )
     void* hFind = NULL;
     
     @autoreleasepool {
-    
-        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *path = [NSString stringWithUTF8String:FilePath];
+        NSString *match = path.lastPathComponent;
         
-        NSDirectoryEnumerator<NSURL *> *e = [fm enumeratorAtURL:[NSURL fileURLWithPath:[NSString stringWithUTF8String:FilePath]]
+        _fio_FindOperation *finder = [[_fio_FindOperation alloc] init];
+        
+        // If the last part of the path contains a wildcard then we'll need
+        // to match each directory enumeration result with a predicate.
+        if ([match containsString:@"*"]) {
+            finder.predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
+            path = [path stringByDeletingLastPathComponent];
+        }
+        
+        // Enumerate each item at path's location.
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSDirectoryEnumerator<NSURL *> *e = [fm enumeratorAtURL:[NSURL fileURLWithPath:path]
                                      includingPropertiesForKeys:@[NSURLNameKey, NSURLIsDirectoryKey, NSURLFileSizeKey]
                                                         options:NSDirectoryEnumerationSkipsHiddenFiles
                                                    errorHandler:^BOOL(NSURL * _Nonnull url, NSError * _Nonnull error) {
@@ -280,23 +300,12 @@ void* fio_FindFirstFile( LPCTSTR FilePath, LPfio_FindFileData FileData )
                                              return YES;
                                              }
                                              ];
+        finder.enumerator = e;
         
-        NSURL *first = e.nextObject;
-        if (first) {
-            NSString *fileName;
-            [first getResourceValue:&fileName forKey:NSURLNameKey error:nil];
-            NSNumber *isDirectory;
-            [first getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
-            NSNumber *fileSize;
-            [first getResourceValue:&fileSize forKey:NSURLFileSizeKey error:nil];
-            
-            if (FileData) {
-                if (fileName) { strcpy(FileData->Name, fileName.UTF8String); } else { FileData->Name[0] = '\0'; }
-                FileData->Size = fileSize ? fileSize.unsignedIntValue : 0;
-                FileData->Attributes = isDirectory.boolValue ? fio_FFA_DIRECTORY : fio_FFA_NORMAL;
-            }
-            
-            hFind = (void *)CFBridgingRetain(e);
+        // Run an iteration of the finder.
+        if ([finder nextWithFindData:FileData]) {
+            // Got something? Return a retained reference of the finder.
+            hFind = (void *)CFBridgingRetain(finder);
         }
         
     }
@@ -326,25 +335,15 @@ BOOL  fio_FindNextFile( void* hFind, LPfio_FindFileData FileData )
     BOOL result = NO;
     @autoreleasepool {
         
-        NSDirectoryEnumerator<NSURL *> *e = (__bridge NSDirectoryEnumerator<NSURL *> *)(hFind);
+        _fio_FindOperation *finder = (__bridge _fio_FindOperation *)(hFind);
         
-        NSURL *next = e.nextObject;
-        if (next) {
-            NSString *fileName;
-            [next getResourceValue:&fileName forKey:NSURLNameKey error:nil];
-            NSNumber *isDirectory;
-            [next getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
-            NSNumber *fileSize;
-            [next getResourceValue:&fileSize forKey:NSURLFileSizeKey error:nil];
+        // Run another iteration of the finder.
+        if ([finder nextWithFindData:FileData]) {
             
-            if (FileData) {
-                if (fileName) { strcpy(FileData->Name, fileName.UTF8String); } else { FileData->Name[0] = '\0'; }
-                FileData->Size = fileSize ? fileSize.unsignedIntValue : 0;
-                FileData->Attributes = isDirectory.boolValue ? fio_FFA_DIRECTORY : fio_FFA_NORMAL;
-            }
-            
+            // Got something? Return true.
             result = YES;
         }
+        
     }
     return result;
 }
@@ -369,6 +368,51 @@ void  fio_FindClose( void* hFind )
 }
 // End fio_FindClose()
 //////////////////////////////////////////////////////////////////////
+
+
+
+@implementation _fio_FindOperation
+
+- (BOOL)nextWithFindData:(LPfio_FindFileData)FileData {
+    
+    // Grab the next result from the enumeration (if it exists).
+    NSURL *next;
+    while ((next = self.enumerator.nextObject)) {
+        
+        NSString *fileName;
+        [next getResourceValue:&fileName forKey:NSURLNameKey error:nil];
+        
+        // If the predicate is non-nil then we need to check the filename
+        // agasint the predicate.
+        if (self.predicate && ![self.predicate evaluateWithObject:fileName]) {
+            
+            // Didn't match, try the next enumeration result.
+            continue;
+        }
+        
+        // It matched! (or we didn't need to check it)
+        // Fill out the FileData structure and return true.
+        
+        NSNumber *isDirectory;
+        [next getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
+        NSNumber *fileSize;
+        [next getResourceValue:&fileSize forKey:NSURLFileSizeKey error:nil];
+        
+        if (FileData) {
+            if (fileName) { strcpy(FileData->Name, fileName.UTF8String); } else { FileData->Name[0] = '\0'; }
+            FileData->Size = fileSize ? fileSize.unsignedIntValue : 0;
+            FileData->Attributes = isDirectory.boolValue ? fio_FFA_DIRECTORY : fio_FFA_NORMAL;
+        }
+        
+        return YES;
+    };
+    
+    // No more results in the enumeration.
+    // The find is done.
+    return NO;
+}
+
+@end
 
 
 /////////////////////////////////////////////////////////////////////
