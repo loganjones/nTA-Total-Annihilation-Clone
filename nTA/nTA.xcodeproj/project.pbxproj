@@ -144,6 +144,8 @@
 		B508FFF71C4BCE34008CFEB9 /* net_Sockets.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF0C1C4BCE34008CFEB9 /* net_Sockets.inl */; };
 		B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF1B1C4BCE34008CFEB9 /* physics_Object.cpp */; };
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
+		B56F2E0D1D0DDDDF0098D35D /* OTA in Resources */ = {isa = PBXBuildFile; fileRef = B56F2E0B1D0DDDDF0098D35D /* OTA */; };
+		B56F2E0E1D0DDDDF0098D35D /* root in Resources */ = {isa = PBXBuildFile; fileRef = B56F2E0C1D0DDDDF0098D35D /* root */; };
 		B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */; };
 		B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7E1CE404630000809F /* sys_macOS.mm */; };
 		B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */; };
@@ -486,6 +488,8 @@
 		B508FFAB1C4BCE34008CFEB9 /* wnd_Window_Events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wnd_Window_Events.cpp; sourceTree = "<group>"; };
 		B508FFAC1C4BCE34008CFEB9 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
 		B508FFAD1C4BCE34008CFEB9 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		B56F2E0B1D0DDDDF0098D35D /* OTA */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OTA; path = Distribution/OTA; sourceTree = SOURCE_ROOT; };
+		B56F2E0C1D0DDDDF0098D35D /* root */ = {isa = PBXFileReference; lastKnownFileType = folder; name = root; path = Distribution/root; sourceTree = SOURCE_ROOT; };
 		B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = std_FileIO_macOS.mm; sourceTree = "<group>"; };
 		B5A46A7E1CE404630000809F /* sys_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sys_macOS.mm; sourceTree = "<group>"; };
 		B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = fe_Skirmish_macOS.mm; sourceTree = "<group>"; };
@@ -567,6 +571,8 @@
 		B508FE581C4BCCFD008CFEB9 /* OS X */ = {
 			isa = PBXGroup;
 			children = (
+				B56F2E0B1D0DDDDF0098D35D /* OTA */,
+				B56F2E0C1D0DDDDF0098D35D /* root */,
 				B508FE591C4BCCFD008CFEB9 /* AppDelegate.h */,
 				B508FE5A1C4BCCFD008CFEB9 /* AppDelegate.m */,
 				B508FE5F1C4BCCFD008CFEB9 /* Assets.xcassets */,
@@ -1014,6 +1020,7 @@
 			files = (
 				B508FFD61C4BCE34008CFEB9 /* game_NetMessages.nm in Resources */,
 				B50800131C4BCE34008CFEB9 /* std_Math.inl in Resources */,
+				B56F2E0D1D0DDDDF0098D35D /* OTA in Resources */,
 				B50800171C4BCE34008CFEB9 /* std_Size.inl in Resources */,
 				B508FFCE1C4BCE34008CFEB9 /* gadget_Slider.inl in Resources */,
 				B508FFDD1C4BCE34008CFEB9 /* game_UserInterface.inl in Resources */,
@@ -1051,6 +1058,7 @@
 				B508001D1C4BCE34008CFEB9 /* std_Vector3.inl in Resources */,
 				B508FFB31C4BCE34008CFEB9 /* app_nTA.inl in Resources */,
 				B50800161C4BCE34008CFEB9 /* std_RectF.inl in Resources */,
+				B56F2E0E1D0DDDDF0098D35D /* root in Resources */,
 				B508FFF71C4BCE34008CFEB9 /* net_Sockets.inl in Resources */,
 				B508FFE31C4BCE34008CFEB9 /* gui_Gadget.inl in Resources */,
 				B508001B1C4BCE34008CFEB9 /* std_Types.inl in Resources */,
