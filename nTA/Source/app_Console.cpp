@@ -17,6 +17,11 @@
 //
 app_Console::app_Console():
 	m_pHandler( NULL ),
+#ifdef DEBUG
+    m_WhatToPrint( CT_ALL ),
+#else
+    m_WhatToPrint( CT_ERROR ),
+#endif
 	m_CommentHandler( NULL ),
 	m_CommentHandlerOwner( NULL )
 {}
@@ -219,7 +224,15 @@ void app_Console::Comment( DWORD dwType, LPCTSTR strComment, ... )
 		// Close the log file
 		fclose( hFile );
 
-	} // end if( log comment )
+    } // end if( log comment )
+    
+    // Print this comment if desired
+    if( m_WhatToPrint & dwType )
+    {
+        printf("%s\n", CommentString);
+        
+    } // end if( print comment )
+    
 }
 // End app_Console::Comment()
 //////////////////////////////////////////////////////////////////////
@@ -264,7 +277,14 @@ void app_Console::vComment( DWORD dwType, LPCTSTR strComment, va_list vaArgument
 		// Close the log file
 		fclose( hFile );
 
-	} // end if( log comment )
+    } // end if( log comment )
+    
+    // Print this comment if desired
+    if( m_WhatToPrint & dwType )
+    {
+        printf("%s\n", CommentString);
+        
+    } // end if( print comment )
 }
 // End app_Console::vComment()
 //////////////////////////////////////////////////////////////////////
