@@ -77,3 +77,32 @@ void sys_App::Destroy()
 }
 // End sys_App::Destroy()
 //////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+// sys_App::CheckForSysMessage() //                \author Logan Jones
+//////////////////////////////////                     \date 9/10/2001
+// Description:  Checks the windows message queue.
+//
+//====================================================================
+// Return: BOOL - Returns TRUE if a message was found and handled, FALSE otherwise
+//
+BOOL sys_App::CheckForSysMessage()
+{
+    // GLFW uses PollEvents() to check & process platform specific events
+    // that have been queued up by the system.
+    // This will run the callbacks (window, input, etc) associated with those events.
+    glfwPollEvents();
+    
+    // Check if the main window has been given a close message
+    // and proceed to ShutDown if so.
+    if (glfwWindowShouldClose(m_PlatformParameters.mainWindow)) {
+        ChangeState( State_ShutDown );
+        return TRUE;
+    }
+    
+    // No message was found, return FALSE
+    return FALSE;
+}
+// End sys_App::CheckForSysMessage()
+//////////////////////////////////////////////////////////////////////

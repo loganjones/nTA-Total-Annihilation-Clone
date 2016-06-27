@@ -60,24 +60,6 @@ BOOL sys_App::ErrorBox( LPCTSTR strTitle, LPCTSTR strErrorMsg, ... )
 //////////////////////////////////////////////////////////////////////
 
 
-//////////////////////////////////////////////////////////////////////
-// sys_App::CheckForSysMessage() //                \author Logan Jones
-//////////////////////////////////                     \date 9/10/2001
-// Description:  Checks the windows message queue.
-//               
-//====================================================================
-// Return: BOOL - Returns TRUE if a message was found and handled, FALSE otherwise
-//
-BOOL sys_App::CheckForSysMessage()
-{
-
-	// No message was found, return FALSE
-	return FALSE;
-}
-// End sys_App::CheckForSysMessage()
-//////////////////////////////////////////////////////////////////////
-
-
 /////////////////////////////////////////////////////////////////////
 // End - sys_macOS.mm //
 ////////////////////////
