@@ -169,7 +169,7 @@
 		B5C95D501CF0FB1300351E3E /* sys_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C95D4F1CF0FB1300351E3E /* sys_glfw.cpp */; };
 		B5C95D521CF0FBF600351E3E /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C95D511CF0FBF600351E3E /* libglfw3.a */; };
 		B5C95D541D01357900351E3E /* app_nTA_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C95D531D01357900351E3E /* app_nTA_glfw.cpp */; };
-		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
+		B5D033441CD97E2500409327 /* in_GLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_GLFW.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
 		B5D0334B1CDC215D00409327 /* app_nTA_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.mm */; };
@@ -526,8 +526,8 @@
 		B5C95D4F1CF0FB1300351E3E /* sys_glfw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sys_glfw.cpp; sourceTree = "<group>"; };
 		B5C95D511CF0FBF600351E3E /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = glfw/lib/libglfw3.a; sourceTree = "<group>"; };
 		B5C95D531D01357900351E3E /* app_nTA_glfw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = app_nTA_glfw.cpp; sourceTree = "<group>"; };
-		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
-		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
+		B5D033421CD97E2500409327 /* in_GLFW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_GLFW.cpp; sourceTree = "<group>"; };
+		B5D033431CD97E2500409327 /* in_GLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = in_GLFW.h; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
 		B5D033471CDAD74300409327 /* snd_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snd_Mac.cpp; sourceTree = "<group>"; };
 		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
@@ -741,8 +741,8 @@
 				B508FEFD1C4BCE34008CFEB9 /* in_Defs.h */,
 				B508FEFE1C4BCE34008CFEB9 /* in_DInput8.cpp */,
 				B508FEFF1C4BCE34008CFEB9 /* in_DInput8.h */,
-				B5D033421CD97E2500409327 /* in_Mac.cpp */,
-				B5D033431CD97E2500409327 /* in_Mac.hpp */,
+				B5D033421CD97E2500409327 /* in_GLFW.cpp */,
+				B5D033431CD97E2500409327 /* in_GLFW.h */,
 				B508FF001C4BCE34008CFEB9 /* input.h */,
 				B508FF011C4BCE34008CFEB9 /* net.h */,
 				B508FF021C4BCE34008CFEB9 /* net_Client.h */,
@@ -1134,7 +1134,7 @@
 				B508003F1C4BCE34008CFEB9 /* weapon_Factory.cpp in Sources */,
 				B50800431C4BCE34008CFEB9 /* wnd_Window.cpp in Sources */,
 				B508003D1C4BCE34008CFEB9 /* util_TxtParse.cpp in Sources */,
-				B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */,
+				B5D033441CD97E2500409327 /* in_GLFW.cpp in Sources */,
 				B508001A1C4BCE34008CFEB9 /* std_Types.cpp in Sources */,
 				B50800361C4BCE34008CFEB9 /* unit_Object_Handlers.cpp in Sources */,
 				B50800031C4BCE34008CFEB9 /* player_Local.cpp in Sources */,
