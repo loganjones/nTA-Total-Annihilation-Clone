@@ -1,13 +1,12 @@
 # nTA - A partial clone of Total Annihilation
 
-
-This is a side project that I was working on while attending [TTU](https://www.ttu.edu) as an undergraduate in the early 2000's. The code was originally released to the public on [TA Universe](http://www.tauniverse.com)'s fourms ([see thread](http://www.tauniverse.com/forum/showthread.php?t=15783)).
+This is a side project that I was working on while attending [TTU](https://www.ttu.edu) as an undergraduate. The code was originally released to the public on [TA Universe](http://www.tauniverse.com)'s fourms ([see thread](http://www.tauniverse.com/forum/showthread.php?t=15783)).
 
 nTA grew out of some tools that I had built for creating and editing Total Annihilation units. I think Scriptor (a unit script compiler) was the only one released publicly; but after cobbling together a unit viewer (with animations!), a map viewer, an hpi compressor, and so on, I eventually decided to just try and recreate the whole game (I was young and optimistic/naive).
 
 Honestly, I have a big soft spot for this project and the other TA tools. I learned a lot about programming and software-engineering from working on these projects; and I credit this early work for getting me where I am in my tech career.
 
-**Keep working on those passion projects kids!**
+**Keep working on those passion projects!**
 
 ![Screenshot](nTA.jpg "Screenshot")
 
@@ -48,4 +47,4 @@ Beyond that, I mostly work on macOS these days so it would be great to get nTA w
 ## Dreaming
 It would be pretty cool if this (or some fork) could become some kind of "Open Total Annihilation" open source project like [Free Civ](http://www.freeciv.org) or [openage](https://github.com/SFTtech/openage).
 
-Also, playing TA on an iPad would be streets-ahead.
+Also, playing TA natively on an iPad would be awesome.
