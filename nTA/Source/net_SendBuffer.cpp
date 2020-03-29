@@ -193,7 +193,7 @@ void net_SendBuffer::NewPacket( UINT32 uiTarget, UINT32 uiSize )
 	theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket( %d, %u ); Old(%d,%u)", uiTarget, uiSize, ((net_PacketHeader*)m_WorkingPacket)->Marker, ((net_PacketHeader*)m_WorkingPacket)->Size ),
 	m_WorkingPacket = m_WriteCursor;
 
-	if( (m_EndOfData-m_WorkingPacket)<__max(uiSize,512) )
+	if( (m_EndOfData-m_WorkingPacket)<__max(uiSize,UINT32(512)) )
 		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket(): Back to front" ),
 		((net_PacketHeader*)m_WorkingPacket)->Size = m_BackToFront,
 		m_WorkingPacket = m_Data;
