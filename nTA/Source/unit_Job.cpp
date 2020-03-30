@@ -44,7 +44,7 @@ bool unit_Job::Update( long lSurplus, game_Player* pPlayer )
 
 		case job_Project:
 			if( Subset(lSurplus,Requirements) ) {
-				pPlayer->Consume( Metal, MetalCost ),
+                pPlayer->Consume( Metal, MetalCost );
 				pPlayer->Consume( Energy, EnergyCost );
 				Project->AppliedTime += Worker->m_pUnitType->WorkerTime;
 				Active = Project->Target!=NULL;
@@ -59,17 +59,19 @@ bool unit_Job::Update( long lSurplus, game_Player* pPlayer )
 		case job_Economy:
 			if( Flags & job_UseWind )
             {
-				if( Flags & job_WindInit )
-					EnergyIncome += 5,
+                if( Flags & job_WindInit ) {
+                    EnergyIncome += 5;
 					Flags &= ~job_WindInit;
+                }
 				else EnergyIncome += 5;
             }
-			if( Worker->Active() && Subset(lSurplus,Requirements) )
-				pPlayer->Consume( Metal, MetalCost ),
-				pPlayer->Consume( Energy, EnergyCost ),
-				pPlayer->Produce( Metal, MetalIncome ),
-				pPlayer->Produce( Energy, EnergyIncome ),
+            if( Worker->Active() && Subset(lSurplus,Requirements) ) {
+                pPlayer->Consume( Metal, MetalCost );
+                pPlayer->Consume( Energy, EnergyCost );
+                pPlayer->Produce( Metal, MetalIncome );
+                pPlayer->Produce( Energy, EnergyIncome );
 				Active = true;
+            }
 			else Active = false;
 			return true;
 

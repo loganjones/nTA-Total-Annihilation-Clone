@@ -52,10 +52,14 @@ void igui_BuildButton::OnRender()
 	if( pOrders && (Amount=pOrders->Amount(m_CommonData.Name))!=0 ) {
 
 		// Setup the info string depending on the amount (less than 0 indicates infinite)
-		if( Amount>0 ) m_BuildText[0] = '+',
-					   itoa( Amount, m_BuildText+1, 10 );
-		else m_BuildText[0] = '~',
-			 m_BuildText[1] = '\0';
+        if( Amount>0 ) {
+            m_BuildText[0] = '+';
+            itoa( Amount, m_BuildText+1, 10 );
+        }
+        else {
+            m_BuildText[0] = '~';
+            m_BuildText[1] = '\0';
+        }
 
 		// Render the info
 		gfx->SetCurrentFont( guiResources.Fonts.Standard );

@@ -114,9 +114,10 @@ unit_Object* unit_Factory::SpawnUnit( const unit_Type* pType, const std_Point& p
 	++m_NextID;
 
 	GetTerrainNormal( pUnit->m_BaseRect.Position() / 16, pType, Normal );
-	if( !pType->Upright )
-		pUnit->m_Orientation.x = Normal.x,
+    if( !pType->Upright ) {
+        pUnit->m_Orientation.x = Normal.x;
 		pUnit->m_Orientation.y = Normal.y;
+    }
 
 	return pUnit;
 }

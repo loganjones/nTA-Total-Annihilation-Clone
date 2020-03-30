@@ -128,9 +128,10 @@ void igui_InfoBar::Render()
 			gfx->RenderString( "Idle", m_Status, 0xFFFFFFFF, theInterface->Font() );
 			gfx->RenderString( m_Line1, m_UnitName, 0xFFFFFFFF, theInterface->Font() );
 			DrawHealthBar( m_DamageBar, m_What.Unit->AbsoluteHealth() );
-			if( m_What.Unit->m_PrimaryJob && m_What.Unit->m_PrimaryJob->Project->Target )
-				DrawHealthBar( m_DamageBar2, m_What.Unit->m_PrimaryJob->Project->Target->AbsoluteHealth() ),
+            if( m_What.Unit->m_PrimaryJob && m_What.Unit->m_PrimaryJob->Project->Target ) {
+                DrawHealthBar( m_DamageBar2, m_What.Unit->m_PrimaryJob->Project->Target->AbsoluteHealth() );
 				gfx->RenderString( m_What.Unit->m_PrimaryJob->Project->TargetType->Name, m_UnitName2, 0xFFFFFFFF, theInterface->Font() );
+            }
 			break;
 		}
 

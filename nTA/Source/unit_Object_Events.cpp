@@ -27,25 +27,28 @@ void unit_Object::OnComplete()
 	m_pPlayer->Update( Energy, Production, m_pUnitType->EnergyMake );
 
 	// Does this unit contribute to the economy
-	if( m_pUnitType->MetalUse || m_pUnitType->EnergyUse || m_pUnitType->MakesMetal || m_pUnitType->MetalExtractionRate || m_pUnitType->WindGenerator )
-		m_ProductionJob = m_pPlayer->NewJob( this, job_Economy ),
-		m_ProductionJob->MetalIncome = m_pUnitType->MetalUse<0 ? -m_pUnitType->MetalUse : 0,
-		m_ProductionJob->EnergyIncome= m_pUnitType->EnergyUse<0? -m_pUnitType->EnergyUse: 0,
-		m_ProductionJob->MetalCost = m_pUnitType->MetalUse>0 ? m_pUnitType->MetalUse : 0,
-		m_ProductionJob->EnergyCost= m_pUnitType->EnergyUse>0? m_pUnitType->EnergyUse: 0,
-		m_ProductionJob->Requirements = (m_pUnitType->MetalUse>0 ? (1<<Metal):0) | (m_pUnitType->EnergyUse>0 ? (1<<Energy):0),
-		m_ProductionJob->Flags = m_pUnitType->WindGenerator ? job_UseWind|job_WindInit : 0,
+    if( m_pUnitType->MetalUse || m_pUnitType->EnergyUse || m_pUnitType->MakesMetal || m_pUnitType->MetalExtractionRate || m_pUnitType->WindGenerator ) {
+        m_ProductionJob = m_pPlayer->NewJob( this, job_Economy );
+        m_ProductionJob->MetalIncome = m_pUnitType->MetalUse<0 ? -m_pUnitType->MetalUse : 0;
+        m_ProductionJob->EnergyIncome= m_pUnitType->EnergyUse<0? -m_pUnitType->EnergyUse: 0;
+        m_ProductionJob->MetalCost = m_pUnitType->MetalUse>0 ? m_pUnitType->MetalUse : 0;
+        m_ProductionJob->EnergyCost= m_pUnitType->EnergyUse>0? m_pUnitType->EnergyUse: 0;
+        m_ProductionJob->Requirements = (m_pUnitType->MetalUse>0 ? (1<<Metal):0) | (m_pUnitType->EnergyUse>0 ? (1<<Energy):0);
+        m_ProductionJob->Flags = m_pUnitType->WindGenerator ? job_UseWind|job_WindInit : 0;
 		m_ProductionJob->MetalIncome += m_pUnitType->MakesMetal + m_pUnitType->MetalExtractionRate * 223 * 12;
-
+    }
+    
 	// If the unit can extract metal then set the speed
-	if( m_pUnitType->MetalExtractionRate )
+    if( m_pUnitType->MetalExtractionRate ) {
 		m_Script->SetSpeed( 223 );
+    }
 
 	// If the unit can activate, then activate according to the startup state
-	if( m_pUnitType->Abilities & unit_Type::OnOffable )
-		if( m_pUnitType->InitialActivationOrder ) Activate();
-		else OnActivate(),Deactivate();
-	else Activate(false);
+    if( m_pUnitType->Abilities & unit_Type::OnOffable ) {
+        if( m_pUnitType->InitialActivationOrder ) { Activate(); }
+        else { OnActivate(); Deactivate(); }
+    }
+    else { Activate(false); }
 
 	m_Cloaked = m_pUnitType->InitialCloakOrder;
 }
@@ -62,9 +65,10 @@ void unit_Object::OnComplete()
 void unit_Object::OnActivate()
 {
 	// Update economy consumption values
-	if( m_ProductionJob )
-		m_pPlayer->Update( Metal, Consumption, m_ProductionJob->MetalCost ),
+    if( m_ProductionJob ) {
+        m_pPlayer->Update( Metal, Consumption, m_ProductionJob->MetalCost );
 		m_pPlayer->Update( Energy, Consumption, m_ProductionJob->EnergyCost );
+    }
 }
 // End unit_Object::OnActivate()
 /////////////////////////////////////////////////////////////////////
@@ -79,9 +83,10 @@ void unit_Object::OnActivate()
 void unit_Object::OnDeactivate()
 {
 	// Update economy consumption values
-	if( m_ProductionJob )
-		m_pPlayer->Update( Metal, Consumption, 0, m_ProductionJob->MetalCost ),
+    if( m_ProductionJob ) {
+        m_pPlayer->Update( Metal, Consumption, 0, m_ProductionJob->MetalCost );
 		m_pPlayer->Update( Energy, Consumption, 0, m_ProductionJob->EnergyCost );
+    }
 }
 // End unit_Object::OnDeactivate()
 /////////////////////////////////////////////////////////////////////
@@ -116,12 +121,13 @@ void unit_Object::JobComplete( unit_Job* pJob )
 	m_pPlayer->Update( Energy,Consumption, 0, m_PrimaryJob->EnergyCost);
 
 	// Is this the project initiator
-	if( pJob->Project->WorkerCount==1 )
-		pJob->Project->Target->OnComplete(),
+    if( pJob->Project->WorkerCount==1 ) {
+        pJob->Project->Target->OnComplete();
 		// SendMessage( pJob->Project->Target, unit_msg_AreYouClear );
 		// Give initial order; like get the hell out of the way
-		pJob->Project->Target->m_AttachedProject = NULL,
+        pJob->Project->Target->m_AttachedProject = NULL;
 		delete pJob->Project;
+    }
 	else --pJob->Project->WorkerCount;
 
 	// TEMP
@@ -166,14 +172,15 @@ void unit_Object::YardClear()
 //
 void unit_Object::OnSelect( bool bSelected, bool bSingle )
 {
-	if( bSelected )
-	{
+	if( bSelected ) {
 		m_bSelected = TRUE;
 		m_Model->SetRenderFlag( model_Selected );
 		if( bSingle ) sound.PlaySound( m_pUnitType->pSounds->Select1 );
 	}
-	else m_bSelected = FALSE,
+    else {
+        m_bSelected = FALSE;
 		m_Model->ClearRenderFlag( model_Selected );
+    }
 }
 // End unit_Object::OnSelect()
 //////////////////////////////////////////////////////////////////////

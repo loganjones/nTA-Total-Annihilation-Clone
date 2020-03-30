@@ -92,11 +92,13 @@ void unit_Aircraft::DoAltitude()
 
 	if( m_Elevation==m_DesiredAltitude )
     {
-		if( m_MoveState==Landing )
-			m_MoveState = Idle,
+        if( m_MoveState==Landing ) {
+            m_MoveState = Idle;
 			MakeMeStatic();
-		else if( m_MoveState==TakingOff )
+        }
+        else if( m_MoveState==TakingOff ) {
 			m_MoveState = Flying;
+        }
     }
 }
 // End unit_Aircraft::DoAltitude()
@@ -118,14 +120,18 @@ void unit_Aircraft::TurnTowards( std_Vector2& v, const std_Vector2& vTo, const f
 	const float sharpness = 0.1f;
 	const float max_bank = fPI/6.0f;
 
-	if( (v*vTo)>=cosf(fRate) )
-		v = vTo,
+    if( (v*vTo)>=cosf(fRate) ) {
+        v = vTo;
 		math_IIRFilter( 0, sharpness, m_Orientation.y );
-	else if( math_Determinant(v,vTo)>=0 )
-		v.Rotate( fRate ),
+    }
+    else if( math_Determinant(v,vTo)>=0 ) {
+        v.Rotate( fRate );
 		math_IIRFilter( -max_bank, sharpness, m_Orientation.y );
-	else v.Rotate( -fRate ),
+    }
+    else {
+        v.Rotate( -fRate );
 		math_IIRFilter( max_bank, sharpness, m_Orientation.y );
+    }
 }
 // End unit_Aircraft::TurnTowards()
 /////////////////////////////////////////////////////////////////////
@@ -180,10 +186,11 @@ void unit_Aircraft::OnRequestMoveTo( const std_Point& ptWhere, bool bEnqueue )
 {
 	// If the aircraft is idle, set the state so that the we move only
 	// when we rise to the desired altitude
-	if( m_MoveState==Idle || m_MoveState==Landing )
-		m_MoveState = TakingOff,
-		m_DesiredAltitude = m_GroundLevel + m_pUnitType->CruiseAltitude,
+    if( m_MoveState==Idle || m_MoveState==Landing ) {
+        m_MoveState = TakingOff;
+        m_DesiredAltitude = m_GroundLevel + m_pUnitType->CruiseAltitude;
 		m_Script->Activate();
+    }
 
 	// Not idle, set to flying state so th aircraft will start moving.
 	// The desired altitude will be reached in flight.

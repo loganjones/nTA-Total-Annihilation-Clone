@@ -197,10 +197,11 @@ void gadget_Pic::OnRender()
 	else gfx->DrawRect( std_Rect(m_ScreenPosition,m_Size), (DWORD)0xFF0000FF );
 
 	// Render the text
-	if( !m_Text.empty() )
-		gfx->SetCurrentFont( guiResources.Fonts.StandardSmall ),
-		Pos = m_ScreenPosition + std_Point_t( m_Size.width / 2, (m_Size.height / 2) - 1 ),
+    if( !m_Text.empty() ) {
+        gfx->SetCurrentFont( guiResources.Fonts.StandardSmall );
+        Pos = m_ScreenPosition + std_Point_t( m_Size.width / 2, (m_Size.height / 2) - 1 );
 		gfx->RenderStringCenteredAt( Pos, m_Text.c_str() );
+    }
 
 	gui_Gadget::OnRender();
 }
@@ -225,27 +226,27 @@ void gadget_Pic::OnMouseButton( const std_Point_t& ptCursor, DWORD dwButton, BOO
 	if( dwButton==1 || dwButton==2 )
 
 		// Has it been pressed or released
-		if( bDown )
+        if( bDown ) {
 
 			// Set the mouse capture and indicate that the button is pressed
-			SetCapture(),
+            SetCapture();
 
 			// Set the button state for the one that went down
 			m_ButtonStates |= dwButton;
+        }
+        else {// button was released
 
-		else // button was released
-		{
 			// Unset the button state for the one that was released
 			m_ButtonStates &= ~dwButton;
 
 			// If no button states are now set, then the button has been pressed
-			if( !m_ButtonStates )
+            if( !m_ButtonStates ) {
 
 				// Release capture and check where the button was released
-				ReleaseCapture(),
+                ReleaseCapture();
 				std_Rect(0,0,m_Size).PointInRect(ptCursor) &&
 				SendMessage( m_pParent, gui_msg_ButtonPressed, (Param_t)(LPTSTR(m_CommonData.Name)), dwButton );
-
+            }
 		} // end button was released
 
 	// Call the default

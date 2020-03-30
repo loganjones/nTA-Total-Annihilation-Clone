@@ -434,12 +434,14 @@ void unit_Object::EconomicActivity( float& fMetalProduction, float& fMetalConsum
 	fEnergyConsumtion= m_PrimaryJob ? m_PrimaryJob->EnergyCost: 0;
 
 	if( m_ProductionJob ) {
-		if( m_ProductionJob->Active )
-			fMetalProduction += m_ProductionJob->MetalIncome,
+        if( m_ProductionJob->Active ) {
+            fMetalProduction += m_ProductionJob->MetalIncome;
 			fEnergyProduction+= m_ProductionJob->EnergyIncome;
-		if( Active() )
-			fMetalConsumtion += m_ProductionJob->MetalCost,
+        }
+        if( Active() ) {
+            fMetalConsumtion += m_ProductionJob->MetalCost;
 			fEnergyConsumtion+= m_ProductionJob->EnergyCost;
+        }
 	}
 }
 // End unit_Object::EconomicActivity()

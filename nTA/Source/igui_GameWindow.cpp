@@ -189,18 +189,18 @@ void igui_GameWindow::RenderGame()
 
 	theGame.Render();
 
-	if( m_InterfaceMode==MODE_Build && m_BuildInfoHasBeenSet )
+    if( m_InterfaceMode==MODE_Build && m_BuildInfoHasBeenSet ) {
 		gfx->DrawWireRect(
 			m_BuildRect - std_Vector2(0,m_BuildHeight/2) - ViewPos,
-			m_CanBuild ? m_BuildRect_CanBuildColor : m_BuildRect_CanNotBuildColor ),
+            m_CanBuild ? m_BuildRect_CanBuildColor : m_BuildRect_CanNotBuildColor );
 		gfx->DrawWireRect(
 			SmallerRect(m_BuildRect,1) - std_Vector2(0,m_BuildHeight/2) - ViewPos,
 			m_CanBuild ? m_BuildRect_CanBuildColor : m_BuildRect_CanNotBuildColor );
-
-	if( m_MButton1Down && m_SelectionRectSet )
-		gfx->DrawWireRect( m_SelectionRect - ViewPos, m_SelectionRect_OuterColor ),
+    }
+    if( m_MButton1Down && m_SelectionRectSet ) {
+        gfx->DrawWireRect( m_SelectionRect - ViewPos, m_SelectionRect_OuterColor );
 		gfx->DrawWireRect( SmallerRect(m_SelectionRect,1) - ViewPos, m_SelectionRect_InnerColor );
-
+    }
 	gfx->PopMatrix();
 }
 // End igui_GameWindow::RenderGame()
@@ -478,20 +478,23 @@ void igui_GameWindow::DoPointOrder( const std_Point& ptCursor )
 
 		case MODE_Default:
 		case MODE_Move:
-			if( ObjectUnderCursor && IsSelectable(ObjectUnderCursor) )
+            if( ObjectUnderCursor && IsSelectable(ObjectUnderCursor) ) {
 				SingleSelection( static_cast<unit_Object*>(ObjectUnderCursor) );
-			else if( ObjectUnderCursor==NULL )//|| pObject->IsFlat() )
-				m_CurrentSelection->RequestMoveTo( theGame.Terrain.GetMapPoint(ptCursor), theInterface->ShiftKeyDown() ),
-				theGame.Interface.ControlBar().ResetOrderSelection(),
+            }
+            else if( ObjectUnderCursor==NULL ) { //|| pObject->IsFlat() )
+                m_CurrentSelection->RequestMoveTo( theGame.Terrain.GetMapPoint(ptCursor), theInterface->ShiftKeyDown() );
+                theGame.Interface.ControlBar().ResetOrderSelection();
 				m_InterfaceMode = MODE_Default;
+            }
 			break;
 
 		case MODE_Build:
 			if( m_BuildInfoHasBeenSet && m_CanBuild ) {
 				m_CurrentSelection->RequestBuild( m_BuildType, m_BuildRect.Position(), theInterface->ShiftKeyDown() );
-				if( !theInterface->ShiftKeyDown() )
-					theGame.Interface.ControlBar().ResetOrderSelection(),
+                if( !theInterface->ShiftKeyDown() ) {
+                    theGame.Interface.ControlBar().ResetOrderSelection();
 					m_InterfaceMode = MODE_Default;
+                }
 			}
 			break;
 

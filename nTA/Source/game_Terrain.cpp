@@ -118,12 +118,14 @@ BOOL game_Terrain::InitializeMap()
 	ZeroMemory( m_Map, *m_MapSize * sizeof(MapNode) );
 
 	// Fill the borders
-	for( x=0; x<m_MapSize.width; ++x)
-		m_Map[x].OccupationCount_Static = 9999,
+    for( x=0; x<m_MapSize.width; ++x) {
+        m_Map[x].OccupationCount_Static = 9999;
 		m_Map[*m_MapSize - m_MapSize.width + x].OccupationCount_Static = 9999;
-	for( y=x=0; y<m_MapSize.height; ++y,x+=m_MapSize.width)
-		m_Map[x].OccupationCount_Static = 9999,
+    }
+    for( y=x=0; y<m_MapSize.height; ++y,x+=m_MapSize.width) {
+        m_Map[x].OccupationCount_Static = 9999;
 		m_Map[x + m_MapSize.width - 1].OccupationCount_Static = 9999;
+    }
 
 	pTntMap = (LPTA_TNT_MAP_ENTRY)(m_TntBuffer + pMapHeader->OffsetToMapInfoArray);
 	pNode = m_Map + (m_MapSize.width);

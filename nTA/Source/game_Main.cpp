@@ -79,12 +79,13 @@ void game_Main::OnFrame()
 	{
 		m_UpdateTimeElapsed = std_Time();
 
-		net.SendRecv(),
+        net.SendRecv();
 		ProccessNetMessages();
 
-		if( m_EconomyTick==0 )
-			m_EconomyTick = 30,
+        if( m_EconomyTick==0 ) {
+            m_EconomyTick = 30;
 			for_each( Players.begin(), Players.end(), UpdatePlayerEconomy );
+        }
 		else --m_EconomyTick;
 
 		// Update the speicific object systems and the object manager
@@ -93,7 +94,11 @@ void game_Main::OnFrame()
 
 		Terrain.ApplyCommands();
 
-		if( m_MoveTick==0 )m_MoveTick=0,ColliderSystem.OnFrame();else --m_MoveTick;
+        if( m_MoveTick==0 ) {
+            m_MoveTick=0;
+            ColliderSystem.OnFrame();
+        }
+        else --m_MoveTick;
 		ScenerySystem.Update();
 
 		// Update players

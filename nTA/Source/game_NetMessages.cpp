@@ -104,12 +104,14 @@ void game_Main::OnNotifySpawnCompleteUnit( const unit_Type* pType, const std_Poi
 //
 void game_Main::NotifySpawnCompleteUnit( const unit_Type* pType, const std_Point& ptWhere, UINT8 iPlayer )
 {
-	if( theGame.IsGameServer ) OnNotifySpawnCompleteUnit( pType, ptWhere, iPlayer ),
+    if( theGame.IsGameServer ) {
+        OnNotifySpawnCompleteUnit( pType, ptWhere, iPlayer );
 		net.Write().Write()
 		<< (UINT8)Notify_SpawnCompleteUnit
 		<< pType->Key
 		<< ptWhere
 		<< iPlayer;
+    }
 }
 // End game_Main::NotifySpawnCompleteUnit()
 /////////////////////////////////////////////////////////////////////

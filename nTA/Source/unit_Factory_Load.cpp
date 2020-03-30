@@ -381,17 +381,19 @@ void unit_Factory::ProccessFBI( void* hFile, unit_Type& Type, LPTSTR strObjectNa
 				
 				CASE( "CanHover" ) if( atol(Info.Value)!=0 )
                 {
-					if( Type.Behaviour!=unit_Type::Structure )
-						Type.Behaviour = unit_Type::Hovercraft,
+                    if( Type.Behaviour!=unit_Type::Structure ) {
+                        Type.Behaviour = unit_Type::Hovercraft;
 						Type.Abilities |= unit_Type::CanHover;
+                    }
 					else theApp.Console.Comment( CT_ERROR, "WARNING: Structure was given hovercraft behaviour. Ignored." );
                 }
 
 				CASE( "CanFly" ) if( atol(Info.Value)!=0 )
                 {
-					if( Type.Behaviour!=unit_Type::Structure )
-						Type.Behaviour = unit_Type::Aircraft,
+                    if( Type.Behaviour!=unit_Type::Structure ) {
+                        Type.Behaviour = unit_Type::Aircraft;
 						Type.Abilities |= unit_Type::CanFly;
+                    }
 					else theApp.Console.Comment( CT_ERROR, "WARNING: Structure was given aircraft behaviour. Ignored." );
                 }
 

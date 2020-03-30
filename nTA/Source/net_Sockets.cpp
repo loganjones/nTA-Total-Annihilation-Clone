@@ -144,9 +144,10 @@ void net_Sockets::SendRecv( bool* bQueried )
 	TimeOut.tv_usec = 25 * 1000;
 
 	// Send data to each connection
-	for( it=m_Connections.begin(); it!=end; ++it)
-		m_SendBuffer.CompletePacket(),
+    for( it=m_Connections.begin(); it!=end; ++it) {
+        m_SendBuffer.CompletePacket();
 		m_SendBuffer.SendTo( (*it).second );
+    }
 
 	// Receive data from each connection
 	iResult = select( m_fdMax+1, &Reads, NULL, NULL, &TimeOut );
@@ -166,15 +167,22 @@ void net_Sockets::SendRecv( bool* bQueried )
 
 	if( m_QuerySocket!=INVALID_SOCKET && FD_ISSET(m_QuerySocket,&Reads) ){
 		theApp.Console.Comment( CT_DEBUG, "net_Sockets::SendRecv(): Data available on query socket %d", m_QuerySocket );
-		if( m_IsServer )
-			if(bQueried) HandleClientQuery(),*bQueried=true;
-			else HandleClientQuery();
+        if( m_IsServer ) {
+            if(bQueried) {
+                HandleClientQuery();
+                *bQueried=true;
+            }
+            else {
+                HandleClientQuery();
+            }
+        }
 		else m_RecvBuffer.RecvFrom(m_QuerySocket);}
 
 	// Accept a new connection?
-	if( m_Listening && FD_ISSET(m_ListenSocket,&Reads) )
-		theApp.Console.Comment( CT_DEBUG, "net_Sockets::SendRecv(): Connection available on listen socket %d", m_ListenSocket ),
+    if( m_Listening && FD_ISSET(m_ListenSocket,&Reads) ) {
+        theApp.Console.Comment( CT_DEBUG, "net_Sockets::SendRecv(): Connection available on listen socket %d", m_ListenSocket );
 		AcceptNewClient();
+    }
 }
 // End net_Sockets::SendRecv()
 /////////////////////////////////////////////////////////////////////
@@ -303,7 +311,7 @@ void net_Sockets::GetClientList()
 	ClientList_t::const_iterator	it = m_Connections.begin(),
 									end= m_Connections.end();
 
-	((UINT32*)Message)[0] = htonl(net_ClientList),
+    ((UINT32*)Message)[0] = htonl(net_ClientList);
 	((UINT32*)Message)[1] = htonl(m_ConnectionCount);
 	for( int i=2; it!=end; ++it)
 		((UINT32*)Message)[i] = htonl((*it).first);
@@ -351,10 +359,11 @@ void net_Sockets::RemoveClient( UINT32 uiClientIndex )
 	--m_ConnectionCount;
 
 	// Add a 'client left' message to the recv buffer
-	//if( m_IsServer )
-		((UINT32*)Message)[0] = htonl(net_ConnectionClosed),
-		((UINT32*)Message)[1] = htonl(uiClientIndex),
+	//if( m_IsServer ) {
+        ((UINT32*)Message)[0] = htonl(net_ConnectionClosed);
+        ((UINT32*)Message)[1] = htonl(uiClientIndex);
 		m_RecvBuffer.Inject( Message, sizeof(Message), net_SystemMarker );
+    //}
 }
 // End net_Sockets::RemoveClient()
 /////////////////////////////////////////////////////////////////////

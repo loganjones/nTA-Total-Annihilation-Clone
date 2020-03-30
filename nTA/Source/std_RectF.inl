@@ -141,19 +141,22 @@ left(newTopLeft.x),top(newTopLeft.y),right(left+newSize.width),bottom(top+newSiz
 //
 std_RectF::std_RectF( const std_RectF& rctA, const std_RectF& rctB )
 {
-	if( rctA.left<rctB.left )
-		left = rctA.left,
+    if( rctA.left<rctB.left ) {
+        left = rctA.left;
 		right = rctB.right;
-	else		
-		left = rctB.left,
+    }
+    else {
+        left = rctB.left;
 		right = rctA.right;
-
-	if( rctA.top<rctB.top )
-		top = rctA.top,
+    }
+    if( rctA.top<rctB.top ) {
+        top = rctA.top;
 		bottom = rctB.bottom;
-	else		
-		top = rctB.top,
+    }
+    else {
+        top = rctB.top;
 		bottom = rctA.bottom;
+    }
 }
 // End std_RectF::std_RectF()
 /////////////////////////////////////////////////////////////////////
@@ -780,19 +783,22 @@ void std_RectF::Shift( const float shiftHorizontal, const float shiftVertical )
 //
 void std_RectF::Encompass( const std_RectF& rctA, const std_RectF& rctB )
 {
-	if( rctA.left<rctB.left )
-		left = rctA.left,
+    if( rctA.left<rctB.left ) {
+        left = rctA.left;
 		right = rctB.right;
-	else		
-		left = rctB.left,
+    }
+    else {
+        left = rctB.left;
 		right = rctA.right;
-
-	if( rctA.top<rctB.top )
-		top = rctA.top,
+    }
+    if( rctA.top<rctB.top ) {
+        top = rctA.top;
 		bottom = rctB.bottom;
-	else		
-		top = rctB.top,
+    }
+    else {
+        top = rctB.top;
 		bottom = rctA.bottom;
+    }
 }
 // End std_RectF::Encompass()
 /////////////////////////////////////////////////////////////////////

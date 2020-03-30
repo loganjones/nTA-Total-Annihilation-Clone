@@ -28,9 +28,10 @@ void igui_ControlBar::SetButtonImages( gadget_Button* pButton )
 		ZeroMemory( pSurfaces, sizeof(gfx_Surface*) * 6 );
 		if( gfx->CreateSurfacesFromGAF(
 							guiResources.CommonGuiBuffer,
-							Name, 1, 3, pSurfaces)==0 )
-			m_Surfaces.erase( Name ),
+                            Name, 1, 3, pSurfaces)==0 ) {
+            m_Surfaces.erase( Name );
 			pSurfaces = NULL;
+        }
 	}
 	else pSurfaces = ((*it).second).Surfaces;
 
