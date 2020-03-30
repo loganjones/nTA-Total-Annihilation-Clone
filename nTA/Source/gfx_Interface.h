@@ -293,6 +293,16 @@ public:
 	static BOOL RetrieveImagesFromGAF( BYTE* pFileBuffer, LPCTSTR strImageName, int iStartFrame, int iFrameCount, gfx_Image_t* pImage );
 
 	static INLINE BOOL BitBlt( std_Point_t ptDestStart, gfx_Image_t* pDestImage, gfx_Image_t* pSrcImage, std_Rect_t* pSrcRect=NULL );
+    
+
+/////////////////////////////////////////////////
+// Texture Types
+public:
+    struct TextureEntry_t
+    {
+        BYTE*            ImageEntry;
+        BYTE*            FileBuffer;
+    };
 
 
 /////////////////////////////////////////////////////////////////////
@@ -315,7 +325,7 @@ protected:
 	//struct streq { bool operator()(const char* strA, const char* strB) const { return strcmp(strA,strB)==0; } };
 	//typedef unordered_map< char*, BYTE*, hash<char*>, streq >	TextureMap_t;
 	struct strless { bool operator()(const char* strA, const char* strB) const { return strcmp(strA,strB)<0; } };
-	typedef map< char*, BYTE*, strless >	TextureMap_t;
+	typedef map< char*, TextureEntry_t, strless >	TextureMap_t;
 	TextureMap_t				m_ModelTextures;
 
 
