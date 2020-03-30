@@ -112,10 +112,11 @@ void fe_SelectGame::OnUpdate()
 		}
 
 		// Check for a timeout
-		if( (std_Time() - m_UpdateStartTime)>10000 )
-			net.StopQuery(),
-			m_UpdateButton->SetText( "Update" ),
+        if( (std_Time() - m_UpdateStartTime)>10000 ) {
+            net.StopQuery();
+            m_UpdateButton->SetText( "Update" );
 			m_UpdatingServerList = false;
+        }
 	}
 
 	// Activate these buttons only if ther is a game to select
@@ -158,17 +159,19 @@ DWORD fe_SelectGame::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param_t
 				gadget_Button* pButton = (gadget_Button*)pSender;
 
 				// Is an update already happening
-				if( m_UpdatingServerList )
+                if( m_UpdatingServerList ) {
 					// Stop the update
-					net.StopQuery(),
-					pButton->SetText( "Update" ),
+                    net.StopQuery();
+                    pButton->SetText( "Update" );
 					m_UpdatingServerList = false;
-				else // No, do an update
-					net.QueryServer(),
-					m_GameList->ClearList(),
-					pButton->SetText( "Stop" ),
-					m_UpdatingServerList = true,
+                }
+                else {// No, do an update
+                    net.QueryServer();
+                    m_GameList->ClearList();
+                    pButton->SetText( "Stop" );
+                    m_UpdatingServerList = true;
 					m_UpdateStartTime = std_Time();
+                }
 				return 1;
 
 			CASE( "JoinGame" )

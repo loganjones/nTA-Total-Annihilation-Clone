@@ -120,15 +120,18 @@ void unit_Ground::Locomotion( const std_Vector2& vSteering )
 	m_SteeringForce = math_Truncate( vSteering, (m_Direction*vSteering)>0 ? m_pUnitType->Acceleration:m_pUnitType->BrakeRate );
 	std_Vector2 NewVelocity = math_Truncate( m_Velocity + m_SteeringForce, m_pUnitType->MaxSpeed );
 	std_Vector2	NewDirection= math_Normalize( NewVelocity );
-	if( (m_Direction*NewDirection)>=cosf(m_pUnitType->TurnRate) )
-		m_Velocity = NewVelocity,
+    if( (m_Direction*NewDirection)>=cosf(m_pUnitType->TurnRate) ) {
+        m_Velocity = NewVelocity;
 		m_Direction = NewDirection;
-	else if( math_Determinant(m_Direction,NewDirection)>=0 )
-		m_Velocity.SetPolar( m_Direction.Angle() + m_pUnitType->TurnRate, NewVelocity.Magnitude() ),
+    }
+    else if( math_Determinant(m_Direction,NewDirection)>=0 ) {
+        m_Velocity.SetPolar( m_Direction.Angle() + m_pUnitType->TurnRate, NewVelocity.Magnitude() );
 		m_Direction = math_Normalize( m_Velocity );
-	else
-		m_Velocity.SetPolar( m_Direction.Angle() - m_pUnitType->TurnRate, NewVelocity.Magnitude() ),
+    }
+    else {
+        m_Velocity.SetPolar( m_Direction.Angle() - m_pUnitType->TurnRate, NewVelocity.Magnitude() );
 		m_Direction = math_Normalize( m_Velocity );
+    }
 /*
 	const float AccelE = sqrtf( 1 - ((m_pUnitType->TurnRate>m_pUnitType->Acceleration) ? (sqr(m_pUnitType->Acceleration)/sqr(m_pUnitType->TurnRate)):(sqr(m_pUnitType->TurnRate)/sqr(m_pUnitType->Acceleration))) );
 	const float BrakeE = sqrtf( 1 - ((m_pUnitType->TurnRate>m_pUnitType->BrakeRate) ? (sqr(m_pUnitType->BrakeRate)/sqr(m_pUnitType->TurnRate)):(sqr(m_pUnitType->TurnRate)/sqr(m_pUnitType->BrakeRate))) );

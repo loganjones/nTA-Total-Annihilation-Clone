@@ -217,21 +217,26 @@ BOOL game_Main::Load()
 	END_CODE_BLOCK
 
 	// This client is ready
-	if( net.IsConnected()==false )
+    if( net.IsConnected()==false ) {
 		LoadGameData.ReadyToPlay = true;
-	else if( net.IsServer() )
+    }
+    else if( net.IsServer() ) {
 		theApp.Console.Comment( CT_LOAD, "Waiting for clients..." );
-	else theApp.Console.Comment( CT_LOAD, "Waiting for others..." ),
+    }
+    else {
+        theApp.Console.Comment( CT_LOAD, "Waiting for others..." );
 		net.Write().Write(0,1)<<(UINT8)LGNM_ClientReady;
+    }
 
 	// Wait unitl everyone is loaded
 	while( !LoadGameData.ReadyToPlay )
 		theApp.DoFrame();
 
 	// Go clients go
-	if( net.IsServer() )
-		net.Write().Write(~0,1) << (UINT8)LGNM_Go,
+    if( net.IsServer() ) {
+        net.Write().Write(~0,1) << (UINT8)LGNM_Go;
 		theApp.DoFrame();
+    }
 
 	if( bLoadSuccessfull )
 		theApp.Console.Comment( CT_LOAD, "Game loaded successfully" );
@@ -365,7 +370,7 @@ void game_Main::RenderLoadScreen()
 
 	gfx->EndScene();
 
-	net.SendRecv(),
+    net.SendRecv();
 	ProccessNetMessages();
 }
 // End game_Main::RenderLoadScreen()

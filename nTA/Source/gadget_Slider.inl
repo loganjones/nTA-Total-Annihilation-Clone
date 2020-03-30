@@ -82,9 +82,10 @@ void gadget_Slider::SetTickFreq( long lFreq )
 	// Fill the tick array
 	m_TickArray.resize( NumTicks );
 	m_PosArray.resize( NumTicks );
-	for( long n=0; n<(NumTicks-1); ++n)
-		m_TickArray[n] = m_MinRange + n*lFreq,
+    for( long n=0; n<(NumTicks-1); ++n) {
+        m_TickArray[n] = m_MinRange + n*lFreq;
 		m_PosArray[n] = m_Knob_MinPos + long((float(m_TickArray[n] - m_MinRange) / Range) * (m_Knob_MaxPos - m_Knob_MinPos));
+    }
 	m_TickArray.back() = m_MaxRange;
 	m_PosArray.back() = m_Knob_MaxPos;
 

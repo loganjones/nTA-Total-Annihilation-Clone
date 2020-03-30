@@ -43,8 +43,14 @@ bool fe_MS_PlayerSelection::Create( const char* strName, UINT32 uiIndex, UINT32 
 	SideSel->Create(std_Point(pos.x+284,pos.y), std_Size(96,20), (wnd_Window*)pParent );
 	sprintf( Name, "#%.4uSide", uiIndex );
 	SideSel->SetName( Name );
-	if( strSide==NULL ) Side=theGame.SideData.begin(),SideSel->SetText((*Side).name);
-	else if( stricmp(strSide,"WATCH")==0 ) Side=theGame.SideData.end(),SideSel->SetText("WATCH");
+    if( strSide==NULL ) {
+        Side=theGame.SideData.begin();
+        SideSel->SetText((*Side).name);
+    }
+    else if( stricmp(strSide,"WATCH")==0 ) {
+        Side=theGame.SideData.end();
+        SideSel->SetText("WATCH");
+    }
 	else {
 		Side = theGame.SideData.begin();
 		for( ;Side!=theGame.SideData.end() && stricmp((*Side).name,strSide)!=0;++Side);
@@ -66,7 +72,7 @@ bool fe_MS_PlayerSelection::Create( const char* strName, UINT32 uiIndex, UINT32 
 	sprintf( Name, "#%.4uReady", uiIndex );
 	Ready->SetName( Name );
 
-	strcpy( Name, NameDisp->GetText() ),
+    strcpy( Name, NameDisp->GetText() );
 	//NameDisp->SetText( NameDisp->GetName() );
 	NetID = uiNetID;
 	Valid = 0xFACEBAAC;

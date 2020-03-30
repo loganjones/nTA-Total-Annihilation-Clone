@@ -936,10 +936,8 @@ BOOL gfx_Interface::ListModelTextures()
 			//TextureMap_t::iterator it = m_ModelTextures.find(ImageEntry->Name);
 			//if( it!=m_ModelTextures.end() );
             
-            // TODO: Casting a pointer to a 32bit int is *dangerous* ; FIX THIS
-            ImageEntry->UnKnown_2 = (INT32)(size_t)FileBuffer;
-            
-			m_ModelTextures[ ImageEntry->Name ] = (BYTE*)ImageEntry;
+            TextureEntry_t entry = { (BYTE*)ImageEntry, FileBuffer };
+			m_ModelTextures[ ImageEntry->Name ] = entry;
 	    }
 
 		// Add the file buffer to the list and find next file

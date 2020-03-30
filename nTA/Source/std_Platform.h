@@ -52,6 +52,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreGraphics/CoreGraphics.h>
 #include <objc/objc.h>
+#include <algorithm>
 
 #if SYS_GLFW
 #include <GLFW/glfw3.h>
@@ -86,8 +87,8 @@ typedef size_t Param_t;
 #define LOBYTE(w) ((BYTE)(w))
 #define HIBYTE(w) ((BYTE)(((WORD)(w) >> 8) & 0xFF))
 
-#define __min(a,b)  MIN(a,b)
-#define __max(a,b)  MAX(a,b)
+#define __min(a,b)  std::min(a,b)
+#define __max(a,b)  std::max(a,b)
 
 #define MAX_PATH 255
 

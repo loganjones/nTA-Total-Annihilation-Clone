@@ -48,10 +48,11 @@ void game_UserInterface::BuildButtonPressed( LPCTSTR strTypeName, bool bWeapon, 
 	if( bWeapon || m_ControlBar.m_CurrentSelection->IsStructure() ) {
 
 		// Create a new build oreder list if neccessary
-		if( !m_ControlBar.m_CurrentSelection->BuildOrders() )
-			m_BuildOrders.push_front( igui_BuildOrders(m_ControlBar.m_CurrentSelection,this) ),
-			m_BuildOrders.front().m_ID = m_BuildOrders.begin(),
+        if( !m_ControlBar.m_CurrentSelection->BuildOrders() ) {
+            m_BuildOrders.push_front( igui_BuildOrders(m_ControlBar.m_CurrentSelection,this) );
+            m_BuildOrders.front().m_ID = m_BuildOrders.begin();
 			m_ControlBar.m_CurrentSelection->BuildOrders() = &m_BuildOrders.front();
+        }
 
 		// Add/Sub the order as desired
 		if( bAdd ) m_ControlBar.m_CurrentSelection->BuildOrders()->Add( theGame.Units.GetUnitType(strTypeName), Amount );
@@ -60,9 +61,11 @@ void game_UserInterface::BuildButtonPressed( LPCTSTR strTypeName, bool bWeapon, 
 
 	// non-accumulating build order
 	// let the user handle it just like any other normal unit order
-	} else
-		m_ControlBar.ResetPressed(),
+    }
+    else {
+        m_ControlBar.ResetPressed();
 		m_GameWindow.DoBuildMode( std_NameHash(strTypeName) );
+    }
 }
 // End game_UserInterface::BuildButtonPressed()
 /////////////////////////////////////////////////////////////////////

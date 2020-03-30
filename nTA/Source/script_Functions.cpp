@@ -325,9 +325,10 @@ void script_Proccess::StartBuilding( float fHeading, float fPitch )
 	if( pScript->pStart[NewThread.Offset]==Opcode_StackAllocate ) {
 		NewThread.Locals.push_back( long(fHeading * ANGULAR_CONSTANT) );
 		++NewThread.Offset;
-		if( pScript->pStart[NewThread.Offset]==Opcode_StackAllocate )
-			NewThread.Locals.push_back( long(fPitch * ANGULAR_CONSTANT) ),
+        if( pScript->pStart[NewThread.Offset]==Opcode_StackAllocate ) {
+            NewThread.Locals.push_back( long(fPitch * ANGULAR_CONSTANT) );
 			++NewThread.Offset;
+        }
 	}
 	NewThread.pCode = pScript->pStart + NewThread.Offset;
 	NewThread.pParent = NULL;

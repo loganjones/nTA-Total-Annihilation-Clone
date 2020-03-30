@@ -77,7 +77,7 @@ void physics_System::OnFrame()
 					Collidee = *it;
 
 		// Test against dynamics
-		it = m_pMovers->begin(),
+        it = m_pMovers->begin();
 		end= m_pMovers->end();
 		for( ; it!=end; ++it)
 			if( pObject->m_MovementBox.RectInRect((*it)->m_MovementBox) )

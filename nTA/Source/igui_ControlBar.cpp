@@ -584,15 +584,17 @@ DWORD igui_ControlBar::OnWndMessage( wnd_Window* pSender, DWORD dwMessage, Param
 		STRING_SWITCH( strSender )
 
 			CASE( "Orders" )
-				if( m_CurrentPage )
-					sound.PlaySound( guiResources.Sounds.OrdersButton ),
+                if( m_CurrentPage ) {
+                    sound.PlaySound( guiResources.Sounds.OrdersButton );
 					SetMenu( 0 );
+                }
 				return 1;
 
 			CASE( "Build" )
-				if( !m_CurrentPage )
-					sound.PlaySound( guiResources.Sounds.BuildButton ),
+                if( !m_CurrentPage ) {
+                    sound.PlaySound( guiResources.Sounds.BuildButton );
 					SetMenu( m_CurrentSelection->m_LastBuildPage );
+                }
 				return 1;
 
 			CASE( "Next" )

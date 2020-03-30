@@ -100,23 +100,25 @@ void net_SendBuffer::SendTo( net_Client& target )
 	UINT32	Destination;
 
 	// Send data that remains in the packet
-	if( target.Send.BytesLeft )
-		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sending %d bytes to net_Client(%d,%d)", target.Send.BytesLeft, target.ID, target.Socket ),
-		BytesSent = send( target.Socket, target.Send.Cursor, target.Send.BytesLeft, 0 ),
-		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sent %d bytes", BytesSent ),
-		target.Send.BytesLeft -= BytesSent,
+    if( target.Send.BytesLeft ) {
+        theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sending %d bytes to net_Client(%d,%d)", target.Send.BytesLeft, target.ID, target.Socket );
+        BytesSent = send( target.Socket, target.Send.Cursor, target.Send.BytesLeft, 0 );
+        theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sent %d bytes", BytesSent );
+        target.Send.BytesLeft -= BytesSent;
 		target.Send.Cursor += BytesSent;
+    }
 
 	// or find a new packet and send it (note that the net_PacketMarker is added)
-	else if( NextPacket(target) )
-		Destination = ((net_PacketHeader*)target.Send.Cursor)->Marker,
-		((net_PacketHeader*)target.Send.Cursor)->Marker = net_PacketMarker,
-		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sending %d bytes to net_Client(%d,%d)", target.Send.BytesLeft, target.ID, target.Socket ),
-		BytesSent = send( target.Socket, target.Send.Cursor, target.Send.BytesLeft, 0 ),
-		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sent %d bytes", BytesSent ),
-		target.Send.BytesLeft -= BytesSent,
-		((net_PacketHeader*)target.Send.Cursor)->Marker = Destination,
+    else if( NextPacket(target) ) {
+        Destination = ((net_PacketHeader*)target.Send.Cursor)->Marker;
+        ((net_PacketHeader*)target.Send.Cursor)->Marker = net_PacketMarker;
+        theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sending %d bytes to net_Client(%d,%d)", target.Send.BytesLeft, target.ID, target.Socket );
+        BytesSent = send( target.Socket, target.Send.Cursor, target.Send.BytesLeft, 0 );
+        theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::SendTo(): Sent %d bytes", BytesSent );
+        target.Send.BytesLeft -= BytesSent;
+        ((net_PacketHeader*)target.Send.Cursor)->Marker = Destination;
 		target.Send.Cursor += BytesSent;
+    }
 }
 // End net_SendBuffer::SendTo()
 /////////////////////////////////////////////////////////////////////
@@ -130,11 +132,12 @@ void net_SendBuffer::SendTo( net_Client& target )
 //
 void net_SendBuffer::CompletePacket()
 {
-	if( (m_WriteCursor - m_WorkingPacket)>sizeof(net_PacketHeader) )
-		((net_PacketHeader*)m_WorkingPacket)->Size = (UINT32)(m_WriteCursor - m_WorkingPacket),
-		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::CompletePacket(): %d byte packet to %d completed", ((net_PacketHeader*)m_WorkingPacket)->Size, ((net_PacketHeader*)m_WorkingPacket)->Marker ),
-		m_WorkingPacket = m_WriteCursor,
+    if( (m_WriteCursor - m_WorkingPacket)>sizeof(net_PacketHeader) ) {
+        ((net_PacketHeader*)m_WorkingPacket)->Size = (UINT32)(m_WriteCursor - m_WorkingPacket);
+        theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::CompletePacket(): %d byte packet to %d completed", ((net_PacketHeader*)m_WorkingPacket)->Size, ((net_PacketHeader*)m_WorkingPacket)->Marker );
+        m_WorkingPacket = m_WriteCursor;
 		((net_PacketHeader*)m_WorkingPacket)->Marker = ~1;
+    }
 }
 // End net_SendBuffer::CompletePacket()
 /////////////////////////////////////////////////////////////////////
@@ -190,13 +193,14 @@ bool net_SendBuffer::NextPacket( net_Client& target )
 void net_SendBuffer::NewPacket( UINT32 uiTarget, UINT32 uiSize )
 {
 	((net_PacketHeader*)m_WorkingPacket)->Size = (UINT32)(m_WriteCursor - m_WorkingPacket);
-	theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket( %d, %u ); Old(%d,%u)", uiTarget, uiSize, ((net_PacketHeader*)m_WorkingPacket)->Marker, ((net_PacketHeader*)m_WorkingPacket)->Size ),
+    theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket( %d, %u ); Old(%d,%u)", uiTarget, uiSize, ((net_PacketHeader*)m_WorkingPacket)->Marker, ((net_PacketHeader*)m_WorkingPacket)->Size );
 	m_WorkingPacket = m_WriteCursor;
 
-	if( (m_EndOfData-m_WorkingPacket)<__max(uiSize,512) )
-		theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket(): Back to front" ),
-		((net_PacketHeader*)m_WorkingPacket)->Size = m_BackToFront,
+    if( (m_EndOfData-m_WorkingPacket)<__max(uiSize,UINT32(512)) ) {
+        theApp.Console.Comment( CT_DEBUG, "net_SendBuffer::NewPacket(): Back to front" );
+        ((net_PacketHeader*)m_WorkingPacket)->Size = m_BackToFront;
 		m_WorkingPacket = m_Data;
+    }
 
 	((net_PacketHeader*)m_WorkingPacket)->Marker = uiTarget;
 	((net_PacketHeader*)m_WorkingPacket)->Size = 0;

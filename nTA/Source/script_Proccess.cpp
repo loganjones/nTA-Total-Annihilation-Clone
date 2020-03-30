@@ -83,29 +83,36 @@ void script_Proccess::UpdateAnims()
 			case animation_Move:
 				Anim.vCurrent.x += Anim.Velocity * (std_Time() - Anim.Last);
 				if( Anim.Velocity>0 )
-					if( Anim.vCurrent.x>Anim.Desired )
-						pModel->SetPieceOffset( Anim.Piece, Anim.Axis, Anim.Desired ),
+                    if( Anim.vCurrent.x>Anim.Desired ) {
+                        pModel->SetPieceOffset( Anim.Piece, Anim.Axis, Anim.Desired );
 						Animations.erase( it );
-					else Anim.Last = std_Time(),
+                    }
+                    else {
+                        Anim.Last = std_Time();
 						pModel->SetPieceOffset( Anim.Piece, Anim.Axis, Anim.vCurrent.x );
+                    }
 				else
-					if( Anim.vCurrent.x<Anim.Desired )
-						pModel->SetPieceOffset( Anim.Piece, Anim.Axis, Anim.Desired ),
+                    if( Anim.vCurrent.x<Anim.Desired ) {
+                        pModel->SetPieceOffset( Anim.Piece, Anim.Axis, Anim.Desired );
 						Animations.erase( it );
-					else Anim.Last = std_Time(),
+                    }
+                    else {
+                        Anim.Last = std_Time();
 						pModel->SetPieceOffset( Anim.Piece, Anim.Axis, Anim.vCurrent.x );
+                    }
 				break;
 
 			case animation_Turn:
 				fRate = Anim.Velocity * (std_Time() - Anim.Last);
-				if( acosf(Anim.vCurrent*Anim.vDesired)<=fRate )
-					pModel->SetPieceAngle( Anim.Piece, Anim.Axis, Anim.Desired ),
+                if( acosf(Anim.vCurrent*Anim.vDesired)<=fRate ) {
+                    pModel->SetPieceAngle( Anim.Piece, Anim.Axis, Anim.Desired );
 					Animations.erase( it );
+                }
 				else {
 					if( math_Determinant(Anim.vCurrent,Anim.vDesired)>=0 )
 						Anim.vCurrent.Rotate( fRate );
 					else Anim.vCurrent.Rotate( -fRate );
-					pModel->SetPieceAngle( Anim.Piece, Anim.Axis, Anim.vCurrent.Angle() * (180.0f/fPI) ),
+                    pModel->SetPieceAngle( Anim.Piece, Anim.Axis, Anim.vCurrent.Angle() * (180.0f/fPI) );
 					Anim.Last = std_Time();
 				}
 				/*Anim.vCurrent.Rotate( Anim.Velocity * (std_Time() - Anim.Last) );
@@ -119,9 +126,10 @@ void script_Proccess::UpdateAnims()
 
 			case animation_StartSpin:
 				Anim.Velocity += Anim.vDesired.x * (std_Time() - Anim.Last);
-				if( Anim.Velocity>=Anim.Desired )
-					Anim.Velocity = Anim.Desired,
+                if( Anim.Velocity>=Anim.Desired ) {
+                    Anim.Velocity = Anim.Desired;
 					Anim.Type = animation_Spin;
+                }
 			case animation_Spin:
 				Anim.vCurrent.Rotate( Anim.Velocity * (std_Time() - Anim.Last) );
 				pModel->SetPieceAngle( Anim.Piece, Anim.Axis, Anim.vCurrent.Angle() * (180.0f/fPI) );
@@ -152,12 +160,14 @@ void script_Proccess::UpdateAnims()
 //
 void script_Proccess::ReSync()
 {
-	if( HasMoved )
-		pModel->SynchronizeVertices(),
+    if( HasMoved ) {
+        pModel->SynchronizeVertices();
 		HasMoved = false;
-	if( StateChanged )
-		pModel->SynchronizeStates(),
+    }
+    if( StateChanged ) {
+        pModel->SynchronizeStates();
 		StateChanged = false;
+    }
 }
 // End script_Proccess::ReSync()
 //////////////////////////////////////////////////////////////////////

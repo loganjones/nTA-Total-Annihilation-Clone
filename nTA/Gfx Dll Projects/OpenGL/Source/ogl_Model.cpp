@@ -577,8 +577,9 @@ void ogl_Model::MarkTexture( LPTSTR strTexture, DWORD dwColor, UsedTextureList_t
 			if( (*it).Texture && stricmp(strTexture,(*it).Texture)==0 )
 				return;
 
-		LPTA_GAF_ENTRY pEntry = (LPTA_GAF_ENTRY)((gfx_OpenGL*)pGfxSystem)->m_ModelTextures[strTexture];
-		BYTE* pFile = (BYTE*)(size_t)pEntry->UnKnown_2;
+        gfx_Interface::TextureEntry_t textureEntry = ((gfx_OpenGL*)pGfxSystem)->m_ModelTextures[strTexture];
+		LPTA_GAF_ENTRY pEntry = (LPTA_GAF_ENTRY)textureEntry.ImageEntry;
+		BYTE* pFile = textureEntry.FileBuffer;
 		LPTA_GAF_FRAME_DATA pFrame = (LPTA_GAF_FRAME_DATA)(pFile + ((LPTA_GAF_FRAME_ENTRY)( ((BYTE*)pEntry) + sizeof(TA_GAF_ENTRY) ))->OffsetToFrameData);
 		NewTex.Texture = strTexture;
 		NewTex.Image.Stride = 1;

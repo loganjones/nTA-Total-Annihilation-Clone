@@ -130,12 +130,14 @@ void unit_Interface::RequestUnit( const unit_Type* pType )
 //
 void unit_Interface::NotifyPrepareToBuild( const unit_Type* pType, const std_Point& ptWhere )
 {
-	if( theGame.IsGameServer ) OnNotifyPrepareToBuild( pType, ptWhere ),
+    if( theGame.IsGameServer ) {
+        OnNotifyPrepareToBuild( pType, ptWhere );
 		net.Write().Write()
 		<< (UINT8)Notify_PrepareToBuild
 		<< m_UniqueID
 		<< pType->Key
 		<< ptWhere;
+    }
 }
 // End unit_Interface::NotifyPrepareToBuild()
 /////////////////////////////////////////////////////////////////////
@@ -149,12 +151,14 @@ void unit_Interface::NotifyPrepareToBuild( const unit_Type* pType, const std_Poi
 //
 void unit_Interface::NotifySpawnNewUnit( const unit_Type* pType, const std_Point& ptWhere )
 {
-	if( theGame.IsGameServer ) OnNotifySpawnNewUnit( pType, ptWhere ),
+    if( theGame.IsGameServer ) {
+        OnNotifySpawnNewUnit( pType, ptWhere );
 		net.Write().Write()
 		<< (UINT8)Notify_SpawnNewUnit
 		<< m_UniqueID
 		<< pType->Key
 		<< ptWhere;
+    }
 }
 // End unit_Interface::NotifySpawnNewUnit()
 /////////////////////////////////////////////////////////////////////

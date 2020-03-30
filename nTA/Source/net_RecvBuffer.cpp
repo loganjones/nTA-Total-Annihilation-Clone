@@ -102,19 +102,23 @@ bool net_RecvBuffer::RecvFrom( net_Client& sender )
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recv from net_Client(%d,%d)", sender.ID, sender.Socket );
 
 	// start a new packet?
-	if( sender.Recv.BytesLeft==0 )
-		if( !NewPacket(sender) ) return false;
+    if( sender.Recv.BytesLeft==0 ) {
+        if( !NewPacket(sender) ) {
+            return false;
+        }
+    }
 
 	// recv data from sender
-	BytesReceived = recv( sender.Socket, sender.Recv.Cursor, sender.Recv.BytesLeft, 0 ),
-	sender.Recv.BytesLeft -= BytesReceived,
+    BytesReceived = recv( sender.Socket, sender.Recv.Cursor, sender.Recv.BytesLeft, 0 );
+    sender.Recv.BytesLeft -= BytesReceived;
 	sender.Recv.Cursor += BytesReceived;
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recvieved %d bytes", BytesReceived );
 	
 	// packet complete?
-	if( sender.Recv.BytesLeft==0 )
-		theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Packet complete" ),
+    if( sender.Recv.BytesLeft==0 ) {
+        theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Packet complete" );
 		((net_PacketHeader*)sender.Recv.Start)->Size = (UINT32)(sender.Recv.Cursor - sender.Recv.Start);
+    }
 
 	// sender valid?
 	return BytesReceived>0;
@@ -139,16 +143,18 @@ void net_RecvBuffer::RecvFrom( SOCKET sender )
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recv from SOCKET %d", sender );
 
 	// Back to front?
-	if( 512>((m_Data+m_DataSize)-m_NextRecv) )
-		((net_PacketHeader*)m_NextRecv)->Marker = m_BackToFront,
+    if( 512>((m_Data+m_DataSize)-m_NextRecv) ) {
+        ((net_PacketHeader*)m_NextRecv)->Marker = m_BackToFront;
 		m_NextRecv = m_Data;
+    }
 
 	BytesReceived = recvfrom( sender, m_NextRecv, ((m_Data+m_DataSize)-m_NextRecv), 0, (sockaddr*)&SourceAddress, &SourceAddressSize );
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::RecvFrom(): Recvieved %d bytes from %s", BytesReceived, inet_ntoa(SourceAddress.sin_addr) );
-	if( BytesReceived && ((net_PacketHeader*)m_NextRecv)->Marker==net_PacketMarker )
-		((net_PacketHeader*)m_NextRecv)->Marker = SourceAddress.sin_addr.s_addr,
-		m_NextRecv += ((net_PacketHeader*)m_NextRecv)->Size,
+    if( BytesReceived && ((net_PacketHeader*)m_NextRecv)->Marker==net_PacketMarker ) {
+        ((net_PacketHeader*)m_NextRecv)->Marker = SourceAddress.sin_addr.s_addr;
+        m_NextRecv += ((net_PacketHeader*)m_NextRecv)->Size;
 		((net_PacketHeader*)m_NextRecv)->Size = 0;
+    }
 }
 // End net_RecvBuffer::RecvFrom()
 /////////////////////////////////////////////////////////////////////
@@ -167,9 +173,10 @@ void net_RecvBuffer::RecvFrom( SOCKET sender )
 void net_RecvBuffer::Inject( const char* pData, UINT32 uiDataSize, UINT32 uiID )
 {
 	// Back to front?
-	if( uiDataSize>((m_Data+m_DataSize)-m_NextRecv) )
-		((net_PacketHeader*)m_NextRecv)->Marker = m_BackToFront,
+    if( uiDataSize>((m_Data+m_DataSize)-m_NextRecv) ) {
+        ((net_PacketHeader*)m_NextRecv)->Marker = m_BackToFront;
 		m_NextRecv = m_Data;
+    }
 
 	((net_PacketHeader*)m_NextRecv)->Marker = uiID;
 	((net_PacketHeader*)m_NextRecv)->Size = uiDataSize + sizeof(net_PacketHeader);
@@ -195,14 +202,15 @@ bool net_RecvBuffer::BytesToRead()
 		m_WorkingPacket = m_EndOfWorkingPacket;
 
 		// Back to front of m_Data?
-		if( ((net_PacketHeader*)m_WorkingPacket)->Marker==m_BackToFront )
-			m_WorkingPacket = m_Data,
-			m_EndOfWorkingPacket = m_Data,
+        if( ((net_PacketHeader*)m_WorkingPacket)->Marker==m_BackToFront ) {
+            m_WorkingPacket = m_Data;
+            m_EndOfWorkingPacket = m_Data;
 			m_ReadCursor = m_EndOfWorkingPacket;
+        }
 
 		// Next packet ready?
 		if( ((net_PacketHeader*)m_WorkingPacket)->Size ) {
-			m_ReadCursor = m_WorkingPacket + sizeof(net_PacketHeader),
+            m_ReadCursor = m_WorkingPacket + sizeof(net_PacketHeader);
 			m_EndOfWorkingPacket = m_WorkingPacket + ((net_PacketHeader*)m_WorkingPacket)->Size;
 			return true;
 		} else return false;
@@ -242,9 +250,10 @@ bool net_RecvBuffer::NewPacket( net_Client& sender )
 	theApp.Console.Comment( CT_DEBUG, "net_RecvBuffer::NewPacket(): New %d byte packet", Header.Size );
 
 	// Back to front?
-	if( Header.Size>((m_Data+m_DataSize)-m_NextRecv) )
-		((net_PacketHeader*)m_NextRecv)->Marker = m_BackToFront,
+    if( Header.Size>((m_Data+m_DataSize)-m_NextRecv) ) {
+        ((net_PacketHeader*)m_NextRecv)->Marker = m_BackToFront;
 		m_NextRecv = m_Data;
+    }
 
 	Header.Marker = sender.ID;
 	memcpy( m_NextRecv, &Header, sizeof(Header) );

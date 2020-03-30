@@ -157,14 +157,16 @@ IMPLEMENT_OPCODE_HANDLER( StartSpin )
 	Anim.Piece= Thread.pCode[1];
 	Anim.Axis = Thread.pCode[2];
 	Anim.vCurrent.SetPolar( Proccess.pModel->PieceAngle(Anim.Piece,Anim.Axis) * (fPI/180.0f), 1 );
-	if( Accel )
-		Anim.Type = animation_StartSpin,
-		Anim.Velocity = 0,
-		Anim.Desired = Speed * (fPI/180.0f) / 1000.0f,
+    if( Accel ) {
+        Anim.Type = animation_StartSpin;
+        Anim.Velocity = 0;
+        Anim.Desired = Speed * (fPI/180.0f) / 1000.0f;
 		Anim.vDesired.x = Accel * (fPI/180.0f) / 1000.0f;
-	else
-		Anim.Type = animation_Spin,
+    }
+    else {
+        Anim.Type = animation_Spin;
 		Anim.Velocity = Speed * (fPI/180.0f) / 1000.0f;
+    }
 	Anim.Last = std_Time();
 
 	Thread.pCode += 3;
@@ -193,12 +195,14 @@ IMPLEMENT_OPCODE_HANDLER( StopSpin )
 
 	if( it!=Proccess.Animations.end() )
     {
-		if( Deccel==0 )
+        if( Deccel==0 ) {
 			Proccess.Animations.erase( it );
-		else
-			((*it).second).Type = animation_StopSpin,
-			((*it).second).vDesired.x = Deccel * (fPI/180.0f) / 1000.0f,
+        }
+        else {
+            ((*it).second).Type = animation_StopSpin;
+            ((*it).second).vDesired.x = Deccel * (fPI/180.0f) / 1000.0f;
 			((*it).second).Last = std_Time();
+        }
     }
 
 	Thread.pCode += 3;

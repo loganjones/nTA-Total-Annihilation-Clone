@@ -54,24 +54,26 @@ fe_MultiplayerSetup::~fe_MultiplayerSetup()
 //
 void fe_MultiplayerSetup::Init( const char* strGameName, const char* strPlayerName, const char* strPassword )
 {
-	if( strGameName ) // Start the server
-		strcpy( m_GameName, strGameName ),
-		strcpy( m_Password, strPassword ),
-		//AddNewPlayer( NextPlayer++, ~0, strPlayerName ),
-		Players[NextPlayer].Create( strPlayerName, NextPlayer, ~0, NULL, GetColor(), this ),
-		net.StartServer( m_GameName, (DWORD)strlen(m_GameName) + 1 ),
-		++NextPlayer,++PlayerCount,
-		GetGadget("SYNCHING")->SetVisible(FALSE),
-		GetGadget("battlestart")->SetVisible(FALSE),
+    if( strGameName ) { // Start the server
+        strcpy( m_GameName, strGameName );
+        strcpy( m_Password, strPassword );
+		//AddNewPlayer( NextPlayer++, ~0, strPlayerName );
+        Players[NextPlayer].Create( strPlayerName, NextPlayer, ~0, NULL, GetColor(), this );
+        net.StartServer( m_GameName, (DWORD)strlen(m_GameName) + 1 );
+        ++NextPlayer; ++PlayerCount;
+        GetGadget("SYNCHING")->SetVisible(FALSE);
+        GetGadget("battlestart")->SetVisible(FALSE);
 		LoadSettings();
-	else // Login to the server
-		m_GameName[0] = '\0',
-		GetGadget("battlestart")->SetVisible(),
-		GetGadget("Start")->SetActive(FALSE),
+    }
+    else {// Login to the server
+        m_GameName[0] = '\0';
+        GetGadget("battlestart")->SetVisible();
+        GetGadget("Start")->SetActive(FALSE);
 		net.Write().Write( 0, 4 + (UINT32)strlen(strPlayerName) + 1 )
 			<< (UINT32)fems_ClientLogin
 			<< (UINT32)std_NameHash(strPassword)
 			<< strPlayerName;
+    }
 }
 // End fe_MultiplayerSetup::Init()
 /////////////////////////////////////////////////////////////////////
@@ -174,9 +176,10 @@ BOOL fe_MultiplayerSetup::OnCreate()
 		//	gfx->CreateSurfacesFromGAF( pBuf, "SIDEx", 1, 5, SideSurfaces ),
 		//	pButton->SetButtonImages( SideSurfaces, SideSurfaces[3], SideSurfaces[4] ),
 		//	pButton->SetActive( TRUE ), pButton->SetVisible(TRUE);
-		if( (pPic = (gadget_Pic*)GetGadget("battlestart")) )
-			gfx->CreateSurfacesFromGAF( pBuf, "battlestart", 1, 9, m_BattleStartAnim ),
+        if( (pPic = (gadget_Pic*)GetGadget("battlestart")) ) {
+            gfx->CreateSurfacesFromGAF( pBuf, "battlestart", 1, 9, m_BattleStartAnim );
 			pPic->SetFrames( m_BattleStartAnim, 9 );
+        }
 		delete [] pBuf;
 	}
 
@@ -352,11 +355,12 @@ void fe_MultiplayerSetup::DestroyPlayers()
 {
 	PlayerInfoMap_t::iterator	it = Players.begin(),
 								end= Players.end(),del;
-	while( it!=end )
-		del = it++,
-		(*del).second.Destroy(this),
-		--PlayerCount,
+    while( it!=end ) {
+        del = it++;
+        (*del).second.Destroy(this);
+        --PlayerCount;
 		Players.erase( del );
+    }
 }
 // End fe_MultiplayerSetup::DestroyPlayers()
 /////////////////////////////////////////////////////////////////////
@@ -393,12 +397,13 @@ void fe_MultiplayerSetup::RemovePlayers( UINT32 uiWho )
 	PlayerInfoMap_t::iterator	it = Players.begin(),
 								end= Players.end(),next;
 	while( it!=end )
-		if( ((*it).second).NetID==uiWho )
-			next=it,++next,
-			net.Write().Write(~0,8) << (UINT32)fems_RemovePlayer << (*it).first,
-			(*it).second.Destroy(this),
-			--PlayerCount,
-			Players.erase(it),it=next;
+        if( ((*it).second).NetID==uiWho ) {
+            next=it; ++next;
+            net.Write().Write(~0,8) << (UINT32)fems_RemovePlayer << (*it).first;
+            (*it).second.Destroy(this);
+            --PlayerCount;
+            Players.erase(it); it=next;
+        }
 		else ++it;
 }
 // End fe_MultiplayerSetup::RemovePlayers()
@@ -421,15 +426,17 @@ void fe_MultiplayerSetup::OnSystemMessage()
 
 	switch( Msg ) {
 		case net_NewConnection:
-			if( net.IsServer() )
-				sprintf( Str, "**Player %d arrived.", Who ),
+            if( net.IsServer() ) {
+                sprintf( Str, "**Player %d arrived.", Who );
 				pBox->AddListBoxItem( Str );
+            }
 			break;
 		case net_ConnectionClosed:
-			if( net.IsServer() )
-				RemovePlayers( Who ),
-				sprintf( Str, "**Player %d left.", Who ),
+            if( net.IsServer() ) {
+                RemovePlayers( Who );
+                sprintf( Str, "**Player %d left.", Who );
 				pBox->AddListBoxItem( Str );
+            }
 			else SendMessage( this, gui_msg_ButtonPressed, (Param_t)"PrevMenu", 0 );
 			break;
 	}
@@ -475,18 +482,19 @@ void fe_MultiplayerSetup::OnClientLogin()
 
 	net.Read() >> ClientPassword >> Str;
 
-	if( ClientPassword==std_NameHash(m_Password) )
-		Players[NextPlayer].Create( Str, NextPlayer, Who, NULL, GetColor(), this ),
-		Players[NextPlayer].Send( ~0, NextPlayer, fems_NewPlayer ),
-		++PlayerCount,
-		ResyncClient( Who ),
+    if( ClientPassword==std_NameHash(m_Password) ) {
+        Players[NextPlayer].Create( Str, NextPlayer, Who, NULL, GetColor(), this );
+        Players[NextPlayer].Send( ~0, NextPlayer, fems_NewPlayer );
+        ++PlayerCount;
+        ResyncClient( Who );
 		++NextPlayer;
-
-	else // Invalid password
-		Players.erase(Who),
-		sprintf( Str, "Bad Password; %X != %X", ClientPassword, std_NameHash(m_Password) ),
-		pBox->AddListBoxItem( Str ),
+    }
+    else {// Invalid password
+        Players.erase(Who);
+        sprintf( Str, "Bad Password; %X != %X", ClientPassword, std_NameHash(m_Password) );
+        pBox->AddListBoxItem( Str );
 		net.RemoveClient( Who );
+    }
 }
 // End fe_MultiplayerSetup::OnClientLogin()
 /////////////////////////////////////////////////////////////////////
@@ -513,7 +521,7 @@ void fe_MultiplayerSetup::OnResync()
 	for( c=0; c<count; ++c) {
 		net.Read() >> index >> local >> name >> side >> color;
 		theApp.Console.Comment( CT_LOAD, "fe_MultiplayerSetup::OnResync(): Player %d %s (%s)", index, name, local ? "local":"non-local" );
-		Players[index].Create( name, index, local ? ~0:0, side, color, this ),
+        Players[index].Create( name, index, local ? ~0:0, side, color, this );
 		++PlayerCount;
 	}
 	GetGadget("SYNCHING")->SetVisible(FALSE);
@@ -536,11 +544,13 @@ void fe_MultiplayerSetup::OnNewPlayer()
 	char	side[16];
 
 	net.Read() >> index >> local >> name >> side >> color;
-	if( PlayerCount==0 )
+    if( PlayerCount==0 ) {
 		theApp.Console.Comment( CT_LOAD, "fe_MultiplayerSetup::OnNewPlayer(): Ignoring" );
-	else
-		Players[index].Create( name, index, local ? ~0:0, side, color, this ),
+    }
+    else {
+        Players[index].Create( name, index, local ? ~0:0, side, color, this );
 		++PlayerCount;
+    }
 }
 // End fe_MultiplayerSetup::OnNewPlayer()
 /////////////////////////////////////////////////////////////////////

@@ -84,14 +84,24 @@ BOOL app_nTA::FindTotalAnnihilation()
         }
     }
     
-    // Try "~/Temp/Total Annihilation" ... because that's where I dumped the files from my PC.
+    // Try "~/Documents/Total Annihilation" ... because that's where I dumped the files from my PC.
     {
-        NSString *ta = [NSString pathWithComponents:@[NSHomeDirectory(), @"Temp", @"Total Annihilation"]];
+        NSString *documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        NSString *ta = [[NSString pathWithComponents:@[documents, @"Total Annihilation"]] stringByResolvingSymlinksInPath];
         
         BOOL isDirectory = NO;
         BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:ta isDirectory:&isDirectory];
+        if (!exists) { return FALSE; }
         
-        if (exists && isDirectory) {
+        if (isDirectory) {
+            strcpy(m_TotalAnnihilationDirectory, ta.UTF8String);
+            return TRUE;
+        }
+        
+        NSURL *url = [NSURL fileURLWithPath:ta];
+        NSURL *url2 = [NSURL URLByResolvingAliasFileAtURL:url options:NSURLBookmarkResolutionWithoutUI error:nil];
+        if (url2) {
+            ta = [url2 path];
             strcpy(m_TotalAnnihilationDirectory, ta.UTF8String);
             return TRUE;
         }

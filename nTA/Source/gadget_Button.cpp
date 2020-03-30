@@ -127,7 +127,7 @@ BOOL gadget_Button::SetButtonImages( gfx_Surface** pStages, gfx_Surface* pPresse
 	m_DisabledImage = pDisabled;
 	if( pStages && pStages[0] ) SetWndSize( pStages[0]->GetSize() );
 	if( dwStages!=~0 ){
-		m_StageText.clear(),
+        m_StageText.clear();
 		m_ButtonInfo.Stages = dwStages;
 		if(m_Stage>=dwStages) m_Stage=dwStages-1;
 	}
@@ -431,11 +431,12 @@ void gadget_Button::OnInitButtonImages()
 {
 	gui_Resources::ButtonImages_t*	pImages;
 
-	if( m_CommonData.Attribs & GUI_STANDARD_BUTTON )
-		pImages = guiResources.GetClosestStandardButton( std_Size(m_CommonData.Width,m_CommonData.Height) ),
-		m_StageImage = pImages->Stages,
-		m_PressedImage = pImages->Pressed,
+    if( m_CommonData.Attribs & GUI_STANDARD_BUTTON ) {
+        pImages = guiResources.GetClosestStandardButton( std_Size(m_CommonData.Width,m_CommonData.Height) );
+        m_StageImage = pImages->Stages;
+        m_PressedImage = pImages->Pressed;
 		m_DisabledImage = pImages->Disabled;
+    }
 
 	else if( m_CommonData.Attribs & GUI_STAGE_BUTTON )
 		switch( m_ButtonInfo.Stages )

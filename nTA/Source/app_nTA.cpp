@@ -421,9 +421,10 @@ void app_nTA::GameFrame()
 
 		// Please load
 		case GS_START_GAME:
-			if( bFAILED(LoadGame()) )
-				EndGame(),
+            if( bFAILED(LoadGame()) ) {
+                EndGame();
 				theFrontEnd.Create( m_StartMenu );
+            }
 			else m_GameState = GS_RUNNING;
 			return;
 

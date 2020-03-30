@@ -94,27 +94,28 @@ void igui_Menu::CreateButton( ta_gui_Common_t& Common, ta_gui_Button& Info )
 	gadget_Button* pButton;
 
 	// Could this be a build button
-	if( Common.Attribs & GADGET_IS_BUILD_BUTTON )
+    if( Common.Attribs & GADGET_IS_BUILD_BUTTON ) {
 
 		// It could still be a empty spot, i.e. a patch
 		if( stricmp(Common.Name,"IGPATCH")==0 )
 			pButton = new igui_OrderButton;
 		else // Probably a build button
 			pButton = new igui_BuildButton;
-
+    }
 	// How about an order button
-	else if( Common.Attribs & GADGET_IS_ORDER_BUTTON )
+    else if( Common.Attribs & GADGET_IS_ORDER_BUTTON ) {
 		pButton = new igui_OrderButton;
-
+    }
 	// No... It could be a prev/next or stop button
 	else if( stricmp("Prev",Common.Name+3)==0 ||
 			 stricmp("Next",Common.Name+3)==0 ||
-			 stricmp("Stop",Common.Name+3)==0 )
-		pButton = new gadget_Button,
+             stricmp("Stop",Common.Name+3)==0 ) {
+        pButton = new gadget_Button;
 		strcpy( Common.Name, Common.Name + 3 );
-
-	else // I don't know what it is
+    }
+    else {// I don't know what it is
 			pButton = new gadget_Button;
+    }
 
 	// Create the button and add it to the list
 	if( pButton->Create(&Common,&Info,this) )
