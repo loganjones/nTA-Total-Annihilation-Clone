@@ -723,7 +723,7 @@ BOOL ogl_Model::AssembleTexture( UsedTextureList_t& Textures )
 			if (NeedsPaletteConversion)
 			{
 				const PALETTEENTRY *palette = static_cast<PALETTEENTRY *>(pPalette);
-				for (int a = 0, b = 0, n = pImage->Size.width; a < n; ++a, b += TextureImage.Stride)
+				for (long a = 0, b = 0, n = pImage->Size.width; a < n; ++a, b += TextureImage.Stride)
 				{
 					const BYTE index = pImg[a];
 					const PALETTEENTRY *entry = palette + index;

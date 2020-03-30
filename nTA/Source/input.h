@@ -18,9 +18,11 @@
 #ifdef _WIN32
  #include "in_DInput8.h"
  typedef in_DInput8			input_Interface;
+#elif SYS_GLFW
+ #include "in_GLFW.h"
+ typedef in_GLFW            input_Interface;
 #else // Other platforms go here
- #include "in_Mac.hpp"
- typedef in_Mac             input_Interface;
+# error "Unsupported platform for input."
 #endif
 
 // Global input_Interface object

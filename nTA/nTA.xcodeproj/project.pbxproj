@@ -73,7 +73,6 @@
 		B50800441C4BCE34008CFEB9 /* wnd_Window.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FFAA1C4BCE34008CFEB9 /* wnd_Window.inl */; };
 		B50800451C4BCE34008CFEB9 /* wnd_Window_Events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FFAB1C4BCE34008CFEB9 /* wnd_Window_Events.cpp */; };
 		B508FE5B1C4BCCFD008CFEB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B508FE5A1C4BCCFD008CFEB9 /* AppDelegate.m */; };
-		B508FE5E1C4BCCFD008CFEB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B508FE5D1C4BCCFD008CFEB9 /* main.m */; };
 		B508FE601C4BCCFD008CFEB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B508FE5F1C4BCCFD008CFEB9 /* Assets.xcassets */; };
 		B508FE631C4BCCFD008CFEB9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508FE611C4BCCFD008CFEB9 /* MainMenu.xib */; };
 		B508FFAE1C4BCE34008CFEB9 /* app_Console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FE6C1C4BCE33008CFEB9 /* app_Console.cpp */; };
@@ -145,6 +144,8 @@
 		B508FFF71C4BCE34008CFEB9 /* net_Sockets.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF0C1C4BCE34008CFEB9 /* net_Sockets.inl */; };
 		B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508FF1B1C4BCE34008CFEB9 /* physics_Object.cpp */; };
 		B508FFFF1C4BCE34008CFEB9 /* physics_Object.inl in Resources */ = {isa = PBXBuildFile; fileRef = B508FF1D1C4BCE34008CFEB9 /* physics_Object.inl */; };
+		B56F2E0D1D0DDDDF0098D35D /* OTA in Resources */ = {isa = PBXBuildFile; fileRef = B56F2E0B1D0DDDDF0098D35D /* OTA */; };
+		B56F2E0E1D0DDDDF0098D35D /* root in Resources */ = {isa = PBXBuildFile; fileRef = B56F2E0C1D0DDDDF0098D35D /* root */; };
 		B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */; };
 		B5A46A7F1CE404630000809F /* sys_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A7E1CE404630000809F /* sys_macOS.mm */; };
 		B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */; };
@@ -165,7 +166,10 @@
 		B5A46AF61CE9221D0000809F /* ogl_Terrain.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5A46AE41CE9221D0000809F /* ogl_Terrain.inl */; };
 		B5A46AFA1CE9227D0000809F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A46AF91CE9227D0000809F /* OpenGL.framework */; };
 		B5A46AFD1CE944FD0000809F /* gfx_OpenGL_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */; };
-		B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_Mac.cpp */; };
+		B5C95D501CF0FB1300351E3E /* sys_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C95D4F1CF0FB1300351E3E /* sys_glfw.cpp */; };
+		B5C95D521CF0FBF600351E3E /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C95D511CF0FBF600351E3E /* libglfw3.a */; };
+		B5C95D541D01357900351E3E /* app_nTA_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C95D531D01357900351E3E /* app_nTA_glfw.cpp */; };
+		B5D033441CD97E2500409327 /* in_GLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033421CD97E2500409327 /* in_GLFW.cpp */; };
 		B5D033461CDAD53300409327 /* sys_DLL_macOS.inl in Resources */ = {isa = PBXBuildFile; fileRef = B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */; };
 		B5D033491CDAD74300409327 /* snd_Mac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D033471CDAD74300409327 /* snd_Mac.cpp */; };
 		B5D0334B1CDC215D00409327 /* app_nTA_macOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5D0334A1CDC215D00409327 /* app_nTA_macOS.mm */; };
@@ -484,6 +488,8 @@
 		B508FFAB1C4BCE34008CFEB9 /* wnd_Window_Events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wnd_Window_Events.cpp; sourceTree = "<group>"; };
 		B508FFAC1C4BCE34008CFEB9 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
 		B508FFAD1C4BCE34008CFEB9 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		B56F2E0B1D0DDDDF0098D35D /* OTA */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OTA; path = Distribution/OTA; sourceTree = SOURCE_ROOT; };
+		B56F2E0C1D0DDDDF0098D35D /* root */ = {isa = PBXFileReference; lastKnownFileType = folder; name = root; path = Distribution/root; sourceTree = SOURCE_ROOT; };
 		B5A46A7C1CE17A040000809F /* std_FileIO_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = std_FileIO_macOS.mm; sourceTree = "<group>"; };
 		B5A46A7E1CE404630000809F /* sys_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sys_macOS.mm; sourceTree = "<group>"; };
 		B5A46A801CE409E70000809F /* fe_Skirmish_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = fe_Skirmish_macOS.mm; sourceTree = "<group>"; };
@@ -517,8 +523,11 @@
 		B5A46AF91CE9227D0000809F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		B5A46AFB1CE938CB0000809F /* gfx_OpenGL_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gfx_OpenGL_macOS.h; sourceTree = "<group>"; };
 		B5A46AFC1CE944FD0000809F /* gfx_OpenGL_macOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gfx_OpenGL_macOS.mm; sourceTree = "<group>"; };
-		B5D033421CD97E2500409327 /* in_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_Mac.cpp; sourceTree = "<group>"; };
-		B5D033431CD97E2500409327 /* in_Mac.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = in_Mac.hpp; sourceTree = "<group>"; };
+		B5C95D4F1CF0FB1300351E3E /* sys_glfw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sys_glfw.cpp; sourceTree = "<group>"; };
+		B5C95D511CF0FBF600351E3E /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = glfw/lib/libglfw3.a; sourceTree = "<group>"; };
+		B5C95D531D01357900351E3E /* app_nTA_glfw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = app_nTA_glfw.cpp; sourceTree = "<group>"; };
+		B5D033421CD97E2500409327 /* in_GLFW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = in_GLFW.cpp; sourceTree = "<group>"; };
+		B5D033431CD97E2500409327 /* in_GLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = in_GLFW.h; sourceTree = "<group>"; };
 		B5D033451CDAD53300409327 /* sys_DLL_macOS.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sys_DLL_macOS.inl; sourceTree = "<group>"; };
 		B5D033471CDAD74300409327 /* snd_Mac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snd_Mac.cpp; sourceTree = "<group>"; };
 		B5D033481CDAD74300409327 /* snd_Mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snd_Mac.h; sourceTree = "<group>"; };
@@ -534,6 +543,7 @@
 			files = (
 				B5A46AFA1CE9227D0000809F /* OpenGL.framework in Frameworks */,
 				B5D0334F1CDC59A800409327 /* libz.tbd in Frameworks */,
+				B5C95D521CF0FBF600351E3E /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,12 +571,15 @@
 		B508FE581C4BCCFD008CFEB9 /* OS X */ = {
 			isa = PBXGroup;
 			children = (
+				B56F2E0B1D0DDDDF0098D35D /* OTA */,
+				B56F2E0C1D0DDDDF0098D35D /* root */,
 				B508FE591C4BCCFD008CFEB9 /* AppDelegate.h */,
 				B508FE5A1C4BCCFD008CFEB9 /* AppDelegate.m */,
 				B508FE5F1C4BCCFD008CFEB9 /* Assets.xcassets */,
 				B508FE611C4BCCFD008CFEB9 /* MainMenu.xib */,
 				B508FE641C4BCCFD008CFEB9 /* Info.plist */,
 				B5D0334E1CDC59A800409327 /* libz.tbd */,
+				B5C95D511CF0FBF600351E3E /* libglfw3.a */,
 				B5A46AF91CE9227D0000809F /* OpenGL.framework */,
 				B508FE5C1C4BCCFD008CFEB9 /* Supporting Files */,
 			);
@@ -596,6 +609,7 @@
 				B508FE741C4BCE33008CFEB9 /* app_nTA.h */,
 				B508FE751C4BCE33008CFEB9 /* app_nTA.inl */,
 				B508FE761C4BCE33008CFEB9 /* app_nTA_Exposed.inl */,
+				B5C95D531D01357900351E3E /* app_nTA_glfw.cpp */,
 				B5D0334A1CDC215D00409327 /* app_nTA_macOS.mm */,
 				B508FE771C4BCE33008CFEB9 /* app_nTA_Win32.cpp */,
 				B508FE781C4BCE33008CFEB9 /* astar.h */,
@@ -727,8 +741,8 @@
 				B508FEFD1C4BCE34008CFEB9 /* in_Defs.h */,
 				B508FEFE1C4BCE34008CFEB9 /* in_DInput8.cpp */,
 				B508FEFF1C4BCE34008CFEB9 /* in_DInput8.h */,
-				B5D033421CD97E2500409327 /* in_Mac.cpp */,
-				B5D033431CD97E2500409327 /* in_Mac.hpp */,
+				B5D033421CD97E2500409327 /* in_GLFW.cpp */,
+				B5D033431CD97E2500409327 /* in_GLFW.h */,
 				B508FF001C4BCE34008CFEB9 /* input.h */,
 				B508FF011C4BCE34008CFEB9 /* net.h */,
 				B508FF021C4BCE34008CFEB9 /* net_Client.h */,
@@ -822,6 +836,7 @@
 				B508FF611C4BCE34008CFEB9 /* sys_DLL_Win32.inl */,
 				B508FF621C4BCE34008CFEB9 /* sys_Externals.cpp */,
 				B508FF631C4BCE34008CFEB9 /* sys_Externals.h */,
+				B5C95D4F1CF0FB1300351E3E /* sys_glfw.cpp */,
 				B5A46A7E1CE404630000809F /* sys_macOS.mm */,
 				B508FF641C4BCE34008CFEB9 /* sys_Win32.cpp */,
 				B508FF651C4BCE34008CFEB9 /* ta_3DO.h */,
@@ -1005,6 +1020,7 @@
 			files = (
 				B508FFD61C4BCE34008CFEB9 /* game_NetMessages.nm in Resources */,
 				B50800131C4BCE34008CFEB9 /* std_Math.inl in Resources */,
+				B56F2E0D1D0DDDDF0098D35D /* OTA in Resources */,
 				B50800171C4BCE34008CFEB9 /* std_Size.inl in Resources */,
 				B508FFCE1C4BCE34008CFEB9 /* gadget_Slider.inl in Resources */,
 				B508FFDD1C4BCE34008CFEB9 /* game_UserInterface.inl in Resources */,
@@ -1042,6 +1058,7 @@
 				B508001D1C4BCE34008CFEB9 /* std_Vector3.inl in Resources */,
 				B508FFB31C4BCE34008CFEB9 /* app_nTA.inl in Resources */,
 				B50800161C4BCE34008CFEB9 /* std_RectF.inl in Resources */,
+				B56F2E0E1D0DDDDF0098D35D /* root in Resources */,
 				B508FFF71C4BCE34008CFEB9 /* net_Sockets.inl in Resources */,
 				B508FFE31C4BCE34008CFEB9 /* gui_Gadget.inl in Resources */,
 				B508001B1C4BCE34008CFEB9 /* std_Types.inl in Resources */,
@@ -1094,6 +1111,7 @@
 				B508FFF61C4BCE34008CFEB9 /* net_Sockets.cpp in Sources */,
 				B508002D1C4BCE34008CFEB9 /* unit_Interface.cpp in Sources */,
 				B508000E1C4BCE34008CFEB9 /* script_Proccess.cpp in Sources */,
+				B5C95D501CF0FB1300351E3E /* sys_glfw.cpp in Sources */,
 				B508FFFE1C4BCE34008CFEB9 /* physics_Object.cpp in Sources */,
 				B508FFCF1C4BCE34008CFEB9 /* gadget_String.cpp in Sources */,
 				B5A46A7D1CE17A040000809F /* std_FileIO_macOS.mm in Sources */,
@@ -1116,14 +1134,14 @@
 				B508003F1C4BCE34008CFEB9 /* weapon_Factory.cpp in Sources */,
 				B50800431C4BCE34008CFEB9 /* wnd_Window.cpp in Sources */,
 				B508003D1C4BCE34008CFEB9 /* util_TxtParse.cpp in Sources */,
-				B5D033441CD97E2500409327 /* in_Mac.cpp in Sources */,
+				B5D033441CD97E2500409327 /* in_GLFW.cpp in Sources */,
 				B508001A1C4BCE34008CFEB9 /* std_Types.cpp in Sources */,
 				B50800361C4BCE34008CFEB9 /* unit_Object_Handlers.cpp in Sources */,
-				B508FE5E1C4BCCFD008CFEB9 /* main.m in Sources */,
 				B50800031C4BCE34008CFEB9 /* player_Local.cpp in Sources */,
 				B5A46AF21CE9221D0000809F /* ogl_Palettes.cpp in Sources */,
 				B508FFCC1C4BCE34008CFEB9 /* gadget_Pic.cpp in Sources */,
 				B5D0334D1CDC280400409327 /* std_Platform_macOS.cpp in Sources */,
+				B5C95D541D01357900351E3E /* app_nTA_glfw.cpp in Sources */,
 				B5A46A811CE409E70000809F /* fe_Skirmish_macOS.mm in Sources */,
 				B508FFB01C4BCE34008CFEB9 /* app_FileTree.cpp in Sources */,
 				B508FFC61C4BCE34008CFEB9 /* feature_Factory.cpp in Sources */,
@@ -1276,8 +1294,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/OS X/glfw/include\"";
 				INFOPLIST_FILE = "OS X/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/OS X/glfw/lib\"",
+				);
+				OTHER_CFLAGS = "-DSYS_GLFW=1";
 				PRODUCT_BUNDLE_IDENTIFIER = Toasty.nTA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1288,8 +1312,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/OS X/glfw/include\"";
 				INFOPLIST_FILE = "OS X/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/OS X/glfw/lib\"",
+				);
+				OTHER_CFLAGS = "-DSYS_GLFW=1";
 				PRODUCT_BUNDLE_IDENTIFIER = Toasty.nTA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

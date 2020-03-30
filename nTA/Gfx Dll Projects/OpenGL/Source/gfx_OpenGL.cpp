@@ -181,6 +181,11 @@ void gfx_OpenGL::EndScene()
 {
 #ifdef _WIN32
 	SwapBuffers(m_hDC);
+#elif SYS_GLFW
+    // TODO: Find a better mechanism for exposing the platform dependent 'GL swap buffers' operation.
+    glfwSwapBuffers(m_pPlatformParams->mainWindow);
+#else
+#  error "Unsupported platform for gfx_OpenGL::EndScene()"
 #endif
 }
 // End gfx_OpenGL::EndScene()

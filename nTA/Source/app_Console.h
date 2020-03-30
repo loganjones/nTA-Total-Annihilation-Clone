@@ -72,7 +72,8 @@ public:
 
 	CommandMap_t		m_Commands;
 
-	DWORD				m_WhatToLog;
+    DWORD				m_WhatToLog;
+    DWORD				m_WhatToPrint;
 	char				m_LogFileName[32];
 
 	in_Handler*			m_pHandler;

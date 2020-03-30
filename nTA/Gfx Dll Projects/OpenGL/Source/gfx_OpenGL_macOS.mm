@@ -46,8 +46,30 @@ DWORD CALLBACK gfx_EnumDisplayMode( DWORD dwIndex, std_Size* pResolution, long* 
 //
 BOOL gfx_OpenGL::Create( const gfx_Resolution_t& resScreen, int iColorDepth, BOOL bFullscreen )
 {
-	// TODO: Implement gfx_OpenGL::Create!
-	return FALSE;
+    GLFWwindow* window = this->m_pPlatformParams->mainWindow;
+    
+    // If we are supposed to be full screen, change to the desired display mode
+    if( bFullscreen )
+    {
+        // TODO: Implement fullscreen window support.
+        
+    } // end if( Full Screen )
+    
+    if( bFAILED(LoadExtensions()) )
+    {
+        ErrorComment( "One or more required extensions not found." );
+        return FALSE;
+    }
+    
+    glfwMakeContextCurrent(window);
+    glfwSwapInterval( 1 );
+    
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    
+    m_ScreenResolution = resScreen;
+    
+    return PostCreate();
 }
 // End gfx_OpenGL::Create()
 //////////////////////////////////////////////////////////////////////
